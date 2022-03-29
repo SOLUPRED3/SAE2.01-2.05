@@ -1,0 +1,5 @@
+= DailyBank
+Thomas Falsimagne, Tilian Hure, Maxime Dourlent 
+v1, 2022-03-29 : Initial readme
+:icons: font
+:experimental:
