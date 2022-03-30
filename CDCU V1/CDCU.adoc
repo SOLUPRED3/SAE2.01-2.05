@@ -1,0 +1,60 @@
+= Cahier des charges utilisateur V1 :
+Thomas Falsimagne, Tilian Hure, Maxime Dourlent
+v1, 2022-03-29 : Initial CDCU
+:icons: font
+:experimental:
+:toc:
+
+_Thomas Falsimagne, Tilian Hure, Maxime Dourlent_
+
+[.text-justify]
+== I. Contexte général :
+
+
+Pour s’adapter aux exigences d’instantanéité de leurs clients, les banques françaises ont accentué leurs efforts de restructuration et leurs investissements dans le digital.
+
+Au sein des réseaux de banque de détail, cela se traduit par des investissements majeurs dans la modernisation des outils de bureautique des guichetiers, et dans la robotisation des tâches automatisables. Un exercice qui s’accompagne de restructurations et, dans certains cas, d’une refonte du réseau.
+
+Pour chacun des "projets de vie" du client, des professionnels de diverses disciplines (marketeurs, développeurs, designers mais aussi des fonctions "juridiques" ou "risque") interagissent pour développer les parcours et les trajectoires de chaque client, captées, traitées, mises à jour et accessibles par tous en temps réel.
+
+
+L'ensemble de ces intéractions nécessitent de profonds changements culturels et organisationnels, en plus d’une nouvelle architecture IT.
+
+== II. Objectifs du projet :
+[.text-justify]
+L’application doit permettre de gérer des comptes bancaires de dépôt pour des clients préalablement créés. Elle devra permettre de débiter, créditer un compte soit par virement c’est à dire un échange d’argent entre deux comptes distincts mais domiciliés dans le réseau bancaire, soit par une personne physique se présentant devant un guichet.
+
+[.text-justify]
+== III. Version existante :
+Dans la version existante (V0), nous pouvons interagir en tant que guichetier ou chef d'agence.
+
+=== 1. Un guichetier peut :
+* Modifier les informations client
+* Créer un nouveau client
+* Consulter un compte
+* Débiter un compte (depuis une base de données)
+
+=== 2. Un chef d'agence peut :
+* Rendre inactif un client
+
+=== 3. Diagramme des cas d'utilisations - V0 :
+
+image::images/uc1.svg[alt]
+
+[grey]#_Figure 1. Diagramme des Cas d’Utilisation initial_#
+
+
+== IV. Description fonctionnelle des besoins - V1:
+[.text-justify]
+De nouveaux besoins sont apparus pour cette application, nous allons les définir ici.
+
+=== 1. Un guichetier peut :
+* Créditer / débiter un compte (Java et BD)
+* Créer un compte
+* Effectuer un virement de compte à compte
+* Clôturer un compte
+
+=== 2. Un chef d'agence peut :
+* Gérer (faire le « CRUD ») les employés (guichetier et chef d’agence)
+
+=== Diagramme des cas d'utilisation :
