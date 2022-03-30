@@ -1,10 +1,12 @@
 = DailyBank
-Thomas Falsimagne, Tilian Hure, Maxime Dourlent 
+Équipe 4A01 :
+Maxime SOURLENT, Thomas FALSIMAGNE, Tilian HURÉ
 v1, 2022-03-29 : Initial readme
 :icons: font
 :experimental:
 
-Thomas Falsimagne, Tilian Hure, Maxime Dourlent 
+Équipe 4A01 :
+Maxime SOURLENT, Thomas FALSIMAGNE, Tilian HURÉ
 
 [.text-justify]
 == Contexte : 
