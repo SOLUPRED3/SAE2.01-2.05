@@ -3,7 +3,7 @@ v1, 2022-03-29 : Initial readme
 :icons: font
 :experimental:
 
-Équipe 4A01 :\n
+Équipe 4A01 : +
 Maxime DOURLENT, Thomas FALSIMAGNE, Tilian HURÉ
 
 [.text-justify]
