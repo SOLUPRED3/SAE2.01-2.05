@@ -1,6 +1,5 @@
 = Cahier des charges utilisateur V1 :
 Thomas Falsimagne, Tilian Hure, Maxime Dourlent
-
 v1, 2022-03-29 : Initial CDCU
 :icons: font
 :experimental:
