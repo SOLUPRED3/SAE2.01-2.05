@@ -10,7 +10,6 @@ _Thomas Falsimagne, Tilian Hure, Maxime Dourlent_
 [.text-justify]
 == I. Contexte général :
 
-
 Pour s’adapter aux exigences d’instantanéité de leurs clients, les banques françaises ont accentué leurs efforts de restructuration et leurs investissements dans le digital.
 
 Au sein des réseaux de banque de détail, cela se traduit par des investissements majeurs dans la modernisation des outils de bureautique des guichetiers, et dans la robotisation des tâches automatisables. Un exercice qui s’accompagne de restructurations et, dans certains cas, d’une refonte du réseau.
@@ -39,7 +38,7 @@ Dans la version existante (V0), nous pouvons interagir en tant que guichetier ou
 
 === 3. Diagramme des cas d'utilisations - V0 :
 
-image::images/uc1.svg[alt]
+image::images/uc0.svg[alt]
 
 [grey]#_Figure 1. Diagramme des Cas d’Utilisation initial_#
 
@@ -57,4 +56,6 @@ De nouveaux besoins sont apparus pour cette application, nous allons les défini
 === 2. Un chef d'agence peut :
 * Gérer (faire le « CRUD ») les employés (guichetier et chef d’agence)
 
-=== Diagramme des cas d'utilisation :
+=== Diagramme des cas d'utilisation - V1 :
+
+image::images/uc1.png[alt]
