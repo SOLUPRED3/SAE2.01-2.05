@@ -31,7 +31,10 @@ L’application doit permettre de gérer des comptes bancaires de dépôt pour d
 
 [.text-justify]
 == III. Version existante :
+[NOTE]
+====
 Dans la version existante (V0), nous pouvons interagir en tant que guichetier ou chef d'agence.
+====
 
 === 1. Un guichetier peut :
 * Modifier les informations client
