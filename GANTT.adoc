@@ -5,8 +5,8 @@
 |Tâches |Personne assigné | Temps alloué
 
 |Analyse du contexte
-|20 minutes
 |Groupe
+|20 minutes
 
 |Créer le GIT
 |Tilian
