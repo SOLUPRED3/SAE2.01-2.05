@@ -8,7 +8,7 @@
 |Groupe
 |20 minutes
 
-|Créer le GIT
+|Mise en place du GIT
 |Tilian
 |20 minutes
 
