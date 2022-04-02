@@ -1,4 +1,4 @@
-= Cahier des charges utilisateur V1 :
+= Cahier Ces Charges Utilisateur - Version 1 :
 Thomas Falsimagne, Tilian Hure, Maxime Dourlent
 
 ifdef::env-github[]
@@ -11,7 +11,7 @@ ifdef::env-github[]
 :toc:
 endif::[]
 
-
++
 [.text-justify]
 == I. Contexte général :
 
@@ -23,12 +23,12 @@ Pour chacun des "projets de vie" du client, des professionnels de diverses disci
 
 L'ensemble de ces intéractions nécessitent de profonds changements culturels et organisationnels, en plus d’une nouvelle architecture IT.
 
-
++
 == II. Objectifs du projet :
 [.text-justify]
 L’application doit permettre de gérer des comptes bancaires de dépôt pour des clients préalablement créés. Elle devra permettre de débiter, créditer un compte soit par virement c’est à dire un échange d’argent entre deux comptes distincts mais domiciliés dans le réseau bancaire, soit par une personne physique se présentant devant un guichet.
 
-
++
 [.text-justify]
 == III. Version existante :
 [NOTE]
@@ -47,9 +47,9 @@ Dans la version existante (V0), nous pouvons interagir en tant que guichetier ou
 
 === 3. Diagramme des cas d'utilisations (V0) :
 image::images/uc0.svg[alt]
-[grey]#_Figure 1. Diagramme des Cas d’Utilisation initial_#
+[grey]#_Figure 1. Diagramme des Cas d’Utilisation initial (V0)_#
 
-
++
 == IV. Description fonctionnelle des besoins (V1) :
 [.text-justify]
 Notre objectif pour cette première version est d'implémenter les besoins décrits ci-dessous à la version existante de l'application.
@@ -65,4 +65,4 @@ Notre objectif pour cette première version est d'implémenter les besoins décr
 
 === 3. Diagramme des cas d'utilisation (V1) :
 image::images/uc1.png[alt]
-[grey]#_Figure 2. Diagramme des Cas d’Utilisation pour la version 1_#
+[grey]#_Figure 2. Diagramme des Cas d’Utilisation pour la V1_#
