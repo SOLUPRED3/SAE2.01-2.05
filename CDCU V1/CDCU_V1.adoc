@@ -11,7 +11,7 @@ ifdef::env-github[]
 :toc:
 endif::[]
 
-_Thomas Falsimagne, Tilian Huré, Maxime Dourlent_
+
 [.text-justify]
 == I. Contexte général :
 
@@ -21,12 +21,13 @@ Au sein des réseaux de banque de détail, cela se traduit par des investissemen
 
 Pour chacun des "projets de vie" du client, des professionnels de diverses disciplines (marketeurs, développeurs, designers mais aussi des fonctions "juridiques" ou "risque") interagissent pour développer les parcours et les trajectoires de chaque client, captées, traitées, mises à jour et accessibles par tous en temps réel.
 
-
 L'ensemble de ces intéractions nécessitent de profonds changements culturels et organisationnels, en plus d’une nouvelle architecture IT.
+
 
 == II. Objectifs du projet :
 [.text-justify]
 L’application doit permettre de gérer des comptes bancaires de dépôt pour des clients préalablement créés. Elle devra permettre de débiter, créditer un compte soit par virement c’est à dire un échange d’argent entre deux comptes distincts mais domiciliés dans le réseau bancaire, soit par une personne physique se présentant devant un guichet.
+
 
 [.text-justify]
 == III. Version existante :
@@ -44,16 +45,14 @@ Dans la version existante (V0), nous pouvons interagir en tant que guichetier ou
 === 2. Un chef d'agence peut :
 * Rendre inactif un client
 
-=== 3. Diagramme des cas d'utilisations - V0 :
-
+=== 3. Diagramme des cas d'utilisations (V0) :
 image::images/uc0.svg[alt]
-
 [grey]#_Figure 1. Diagramme des Cas d’Utilisation initial_#
 
 
-== IV. Description fonctionnelle des besoins - V1:
+== IV. Description fonctionnelle des besoins (V1) :
 [.text-justify]
-De nouveaux besoins sont apparus pour cette application, nous allons les définir ici.
+Notre objectif pour cette première version est d'implémenter les besoins décrits ci-dessous à la version existante de l'application.
 
 === 1. Un guichetier peut :
 * Créditer / débiter un compte (Java et BD)
@@ -64,6 +63,6 @@ De nouveaux besoins sont apparus pour cette application, nous allons les défini
 === 2. Un chef d'agence peut :
 * Gérer (faire le « CRUD ») les employés (guichetier et chef d’agence)
 
-=== Diagramme des cas d'utilisation - V1 :
-
+=== 3. Diagramme des cas d'utilisation (V1) :
 image::images/uc1.png[alt]
+[grey]#_Figure 2. Diagramme des Cas d’Utilisation pour la version 1_#
