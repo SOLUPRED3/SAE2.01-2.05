@@ -50,7 +50,7 @@ image::images/uc0.svg[alt]
 [grey]#_Figure 1. Diagramme des Cas d’Utilisation initial (V0)_# +
 +
 
-== IV. Description fonctionnelle des besoins (V1) :
+== IV. Description fonctionnelle des besoins actuels (V1) :
 [.text-justify]
 Notre objectif pour cette première version est d'implémenter les besoins décrits ci-dessous à la version existante de l'application.
 
