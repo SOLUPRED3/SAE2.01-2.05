@@ -11,5 +11,39 @@ Maxime DOURLENT, Thomas FALSIMAGNE, Tilian HURÉ
 La banque DailyBank souhaite développer une application JAVA-Oracle de gestion des comptes clients pour remplacer plusieurs outils obsolètes. Ce développement s’inscrit dans le cadre de la restructuration de ses services bancaires et l’application sera déployée dans les 100 agences que compte son réseau. Vous travaillerez à partir d’une application existante « Daily Bank » qu’il faudra adapter aux nouveaux besoins de la banque.
 
 
+== Livrables
 
+[cols="1,2,2,5",options=header]
+|===
+| Date    | Nom         |  Lien                             | Retour
+| 03/04   | Gantt V1    |                              | Il manque les tests, tout doit apparaître dans le GANTT. Attention à l'échelle : en jour ce n'est pas adapté, ou alors indiquer une conversion ex 1jour=1h. L'affectation groupe est bizarre, plutôt des noms. MFC
+|         | CdC V1      |                                   |  Revoir les éléments de correction du CDCU :   Pour le contexte, essayez après votre présentation d'amener sur ce qui vous est demandé plus spécifiquement .   Quelques confusions entre contexte (étude de l’environnement eco et concurrentiel qui entraine le projet), objectif (intérêt de l’appli pour la banque) et problématique ( a quels besoins répond l’appli) à retravailler. Pour V0 présenter les USERS et leur rôle dans l’organisation. Commenter le UC V0 et notamment l’héritage. Pour V1 on peut préciser certaines fonctionnalités : ex expliquer ce qu’est rendre inactif un client, préciser "gérer". Eventuellement les prioriser. Préciser les besoins non fonctionnels, les règles de gestion (ex pour débiter un compte). Dans les contraintes : préciser les contraintes juridiques, techniques. Présenter l’organisation de l’équipe : outils collaboratifs ainsi que dates de livraison et liste des livrables attendus. Reportez-vous aux consignes/aides données par Mme Pendaries pour le cdcu. MFC
+|         | Suivi Projet |                                   |   Attention il manque les cdcu et gantt de V2 et V3 dans vos issues, les tests, et à qui sont assignées ces issues (il faudra retrouver ces infos dans les gantt). Attention à l'arborescence de votre repository à organiser par version.  MFC         
+| 22/04  | CdC V2/V3 final|                                     |  
+|         | Gantt V2    |                               |     
+|         | Gantt V3 |         |     
+|         | Doc. Tec. V1 |        |    
+|         | Doc User V1    |        |
+|         | Recette V1  |                      | 
+|         | Suivi projet|   | 
+| 22/05   | Gantt V2  à jour    |       | 
+|         | Doc. Util. V1 |         |         
+|         | Doc. Tec. V1 |                |     
+|         | Code V1     |                     | 
+|         | Recette V1 |                      | 
+|         | Gantt V3 à jour   |                      | 
+|         | `jar` projet |    | 
+| 05/06   | Gantt V3 à Jour  |    |  
+|         | Doc. Util. V2 |         |           
+|         | Doc. Tec. V2 |    |     
+|         | Code V2     |                       |
+|         | Recette V2  |   |
+|         | `jar` projet |     |
+|12/06   | Gantt V3 à Jour  |    |  
+|         | Doc. Util. V3 |         |           
+|         | Doc. Tec. V3 |    |     
+|         | Code V3     |                       |
+|         | Recette V3  |   |
+|         | `jar` projet |     |
+|===
 
