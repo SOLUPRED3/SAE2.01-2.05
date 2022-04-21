@@ -12,7 +12,7 @@ L'application, doit permettre de gérer des comptes bancaires de dépôt de clie
 
 [.text-justify]
 == Installation et utilisation :
-
+[.text-justify]
 Concernant l'installation de l'application et son utilisation, vous allez avoir besoin de certains prérequis. En effet, il sera indispensable de disposer d'un environnement d'exécution Java en version 8 pour pouvoir exécuter l'application.
 Cette version devra être installée et configurée dans le terminal, avec jenvsur Mac et Linux ou une alternative sur Windows. Une fois que la configuration est prête, il vous faudra installer l'application qui sera un fichier .jar exécutable. Pour l'exécuter, il vous faudra aller dans le terminal et taper la commande : 
 
