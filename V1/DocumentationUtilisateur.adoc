@@ -1,0 +1,25 @@
+= Documentation utilisateur V0 :
+Thomas Falsimagne, Tilian Hure, Maxime Dourlent
+v1.0, 2022-04-21
+
+:toc:
+:numbered:
+
+[.text-justify]
+== Présentation générale, rôle de l'application : 
+
+L'application, doit permettre de gérer des comptes bancaires de dépôt de clients préalablement créés. Elle devra donc en conséquence permettre de créditer, débiter un compte soit par virement, c'est à dire un échange d'argent entre deux comptes distincts mais domiciliés dans le réseau bancaire, soit par une personne physique se présentant devant son guichet.
+
+== Installation et utilisation :
+
+[.text-justify]
+== Fonctionnement : 
+
+Au niveau de cette première version, quelques fonctionnalités sont disponibles mais beaucoup sont manquantes. Pour celles qui sont déjà implémentées, nous allons décrire leurs fonctionnement.
+
+Premièrement, en ce qui concerne le guichetier, il est possible pour lui de modifier les informations du client. En effet, en appuyant sur le bouton adéquat, il peut modifier les champs qui correspondent à l'adresse, au numéro de téléphone, etc... 
+
+Ensuite, il peut également, en appuyant sur le bouton "Nouveau client" créer un nouveau client. Il est également possible pour lui de cliquer sur la un compte qui est présent dans liste disposée devant lui et d'en consulter les informations. Le bouton qui est relatif à cette action est le bouton "Consulter". Pour terminer la description relative au guichetier, il est également possible pour lui de débiter un compte en réalisant la même action que précédemment, à la seule différence qu'il doit ici cliquer sur le bouton "Débiter".
+
+Quant au chef d'agence, la seule action qu'il est possible pour lui de faire à l'heure actuelle est de rendre inactif un client, cette action est disponible avec le bouton "Rendre inactif".
+
