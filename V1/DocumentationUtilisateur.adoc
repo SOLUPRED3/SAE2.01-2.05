@@ -23,3 +23,4 @@ Ensuite, il peut également, en appuyant sur le bouton "Nouveau client" créer u
 
 Quant au chef d'agence, la seule action qu'il est possible pour lui de faire à l'heure actuelle est de rendre inactif un client, cette action est disponible avec le bouton "Rendre inactif".
 
+== Résultats produits avec jeux d'essai commentés :
