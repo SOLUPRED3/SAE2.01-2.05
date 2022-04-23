@@ -1,4 +1,4 @@
-= Cahier Ces Charges Utilisateur - Version 1
+= Cahier Des Charges Utilisateur (V2)
 
 ifdef::env-github[]
 :tip-caption: :bulb:
