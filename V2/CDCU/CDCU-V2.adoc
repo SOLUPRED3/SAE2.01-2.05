@@ -53,7 +53,7 @@ Les chefs d'agences interviennent en tant qu'administrateurs sur l'application. 
 * Rendre inactif un client (bloquer tout interaction avec les données d'un client pour les utilisateurs guichetiers)
 
 === 3. Diagramme des cas d'utilisation initial :
-image::uc0.svg[UC-V0]
+image::images/uc0.svg[UC-V0]
 
 [NOTE]
 ====
@@ -87,7 +87,7 @@ _Gérer_ désigne la possibilité de créer, consulter, modifier et supprimer de
 ====
 
 === 3. Diagramme des cas d'utilisation actuel :
-image::uc-v2.svg[TODO]
+image::images/uc2.svg[UC-V2]
 
 
 == V. Contraintes et organisation
