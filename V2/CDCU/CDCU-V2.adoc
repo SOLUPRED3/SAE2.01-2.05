@@ -138,7 +138,7 @@ Notre équipe devra développer le projet en respectant les échéances données
 * Outils de développement :
 ** Eclipse (IDE) avec l'environnement Java 8 et le module Java FX
 ** SceneBuilder (structuration d'IHM)
-** Atome (réalisation des documents complémentaires)
+** Atom (réalisation des documents complémentaires)
 ** Project Libre (diagramme de Gantt)
 ** ... (TO COMPLETE)
 * Livrables attendus :
