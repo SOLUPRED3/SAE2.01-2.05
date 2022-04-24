@@ -77,6 +77,9 @@ La mission de notre équipe dans ce projet est de développer la version existan
 === 2. Fonctionnalités pour les utilisateurs chefs d'agence :
 * _Gérer*_ les employés (guichetiers et autres chefs d’agence)
 * Effectuer un Débit exceptionnel (TODO)
+
+NOTE: la banque peut offrir un découvert exceptionnel. En général, celui-ci est accordé pour une durée restreinte et un montant relativement faible.
+
 * Simuler un emprunt
 * Simuler une assurance d’emprunt (possibilité de couverture en cas de maladie ou de décès)
 
