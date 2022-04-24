@@ -103,6 +103,7 @@ Le développement de l'application présente principalement des contraintes tech
 * Développer l'application en Java (version 1.8)
 * Développer l'interface homme-machine existant avec Java FX
 * Utiliser la base de données existante
+* Utilisation de Git pour le versioning du code 
 * ... (TO COMPLETE)
 
 === 2. Contraites juridiques :
@@ -111,7 +112,17 @@ La banque DailyBank doit veiller à n'enfreindre aucune loi via son application.
  +
 *Contraintes juridiques actuelles :*
 
-* TODO
+* La Loi n°78-17 du 6 janvier 1978 (modifiée) relative à l’informatique, aux
+fichiers et aux libertés
+
+* La Loi n°78-753 du 17 juillet 1978 (modifiée) relative à l’accès aux documents
+administratifs et à la réutilisation des informations publiques (loi « Cada ») 
+
+* La Loi n°51-711 du 7 juin 1951 (modifiée) sur le secret statistique
+
+Le *RGPD* est un enjeu fondamental pour le secteur banquier et financier qui est fortement concerné par ces nouvelles règles. En effet, la conformité RGPD est essentielle pour la pérennité de l'activité des acteurs du secteur, leur image et leur relation de confiance avec leurs clients.
+
+
 
 === 3. Organisation de l'équipe :
 [.text-justify]
