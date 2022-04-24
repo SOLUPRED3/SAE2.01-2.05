@@ -106,7 +106,6 @@ Le développement de l'application présente principalement des contraintes tech
 * Développer l'application en Java (version 1.8)
 * Développer l'interface homme-machine existant avec Java FX
 * Utiliser la base de données existante
-* Utilisation de Git pour le versioning du code 
 * ... (TO COMPLETE)
 
 === 2. Contraites juridiques :
