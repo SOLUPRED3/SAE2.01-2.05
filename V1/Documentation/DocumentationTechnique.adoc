@@ -38,4 +38,4 @@ N'ayant pas le code, il nous est impossible de réaliser le diagramme de classe.
 
 == Éléments de code significatifs : 
 
-Pour la même raison énoncé ci-dessus il nous est impossible d'apporter des éléments dans cette section.
+Pour la même raison énoncée ci-dessus il nous est impossible d'apporter des éléments dans cette section.
