@@ -141,17 +141,14 @@ Notre équipe devra développer le projet en respectant les échéances données
 * Outils collaboratifs :
 ** GitHub (planification des tâches et dépot de tous les fichiers et documents éllaborés)
 ** Discord (communication et travail en distanciel)
-** ... (TO COMPLETE)
 * Outils de développement :
 ** Eclipse (IDE) avec l'environnement Java 8 et le module Java FX
 ** SceneBuilder (structuration d'IHM)
 ** Atom (réalisation des documents complémentaires)
 ** Project Libre (diagramme de Gantt)
-** ... (TO COMPLETE)
 * Livrables attendus :
 ** Diagramme de Gantt (planification et répartition des tâches)
 ** Cahier des charges (modalités du projet)
 ** Documentation technique (pour une ré-utilisation externe à notre équipe du code source)
 ** Documentation utilisateur (description de l'installation et du fonctionnement de l'application pour ses utilisateurs)
 ** Cahier de tests (démonstration du bon fonctionnement de l'application)
-** ... (TO COMPLETE)(?)
