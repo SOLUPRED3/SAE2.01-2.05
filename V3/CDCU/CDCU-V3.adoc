@@ -142,6 +142,7 @@ La banque DailyBank doit veiller à n'enfreindre aucune loi via son application.
 * Débit exceptionnel (TODO)
 * Simuler emprunt
 * Simuler une assurance d'emprunt
+* TO COMPLETE & TO DO
 
 
 === 3. Organisation de l'équipe :
