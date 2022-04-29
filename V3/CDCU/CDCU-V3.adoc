@@ -58,7 +58,7 @@ Les chefs d'agences interviennent en tant qu'administrateurs sur l'application. 
 
 
 === 3. Diagramme des cas d'utilisation initial :
-image::uc0.svg[UC-V0]
+image::images/uc0.svg[UC-V0]
 
 [NOTE]
 ====
@@ -106,7 +106,7 @@ Il doit également être possible d'utiliser certaines fonctionnalités en exéc
 * Exécuter les prélèvements automatiques
 
 === 3. Diagramme des cas d'utilisation actuel :
-image::uc-v2.svg[uc2]
+image::images/uc3.svg[UC-V3]
 
 
 
