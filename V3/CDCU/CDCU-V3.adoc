@@ -188,7 +188,7 @@ Effectivement, c'est un enjeu fondamental pour tout le secteur bancaire qui est 
 le respect de celui-ci.
 Pour les acteurs de ce secteur, comme DailyBank, cela est essentiel premièrement pour ce qui touche à la pérennité de leur activité.
 Mais c'est également leur image et la relation de confiance qu'ils entretiennent avec leurs clients qui est en jeu.
-Toutefois, il est à noter que notre projet, se déroulant dans un périmètre scolaire, ne suivra probablement pas ce qui vient d'être énoncé ci-dessus.
+Toutefois, il est à noter que notre projet, se déroulant dans un périmètre scolaire, ne suivra probablement pas ce qui vient d'être énoncé ci-dessus.#
 
 
 === 4. Contraintes organisationnelles :
