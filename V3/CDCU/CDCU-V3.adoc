@@ -17,28 +17,34 @@ Maxime DOURLENT, Thomas FALSIMAGNE, Tilian HURÉ
 
 [.text-justify]
 == I. Contexte général
-Pour s’adapter aux exigences d’instantanéité de leurs clients, les banques françaises ont accentué leurs efforts de restructuration et de développement dans le digital. Cela se traduit principalement par des investissements majeurs dans la modernisation des outils de bureautique des guichetiers, et dans la robotisation des tâches automatisables. +
+Pour s’adapter aux exigences d’instantanéité de leurs clients, les banques françaises ont accentué leurs efforts de restructuration et de développement dans le digital.
+Cela se traduit principalement par des investissements majeurs dans la modernisation
+des outils de bureautique des guichetiers, mais aussi dans la robotisation des tâches qui peuvent être automatisées. +
  +
- C'est notamment le cas de la banque DailyBank qui souhaite développer une application de gestion de ses comptes clients pour remplacer plusieurs des ses outils devenus obsolètes. +
+ C'est notamment le cas de DailyBank, une banque qui souhaite développer son application de gestion de comptes clients
+ pour remplacer plusieurs des ses outils devenus obsolètes. +
  +
 
 
 
 == II. Objectifs du projet
 [.text-justify]
-Les objectifs de ce projet sont de permettre à DailyBank de bénéficier d'une application de gestion de comptes bancaires de dépôt pour ses clients, afin de remplacer plusieurs outils obsolètes et restructurer certains services bancaires. +
+L'objectif de ce projet est de permettre à DailyBank de bénéficier d'une application de gestion de comptes bancaires
+et de dépôt pour ses clients, afin de remplacer plusieurs outils obsolètes et restructurer certains services bancaires. +
  +
 
 
 
 == III. Version existante (V0)
 [.text-justify]
-La version existante de l'application offre déjà un interface homme-machine, une base de données, ainsi qu'une partie du code implémentant les fonctionnalités déjà présentes. Il est possible d'interagir en tant que deux types d'utilisateurs.
+La version existante de l'application offre déjà un interface homme-machine, une base de données, ainsi qu'une partie du code implémentant les fonctionnalités déjà présentes.
+Il est possible d'interagir en tant que deux types d'utilisateurs, guichetier et chef d'agence.
 
 
 === 1. Les guichetiers :
 [.text-justify]
-Les guichetiers sont les principaux types d'utilisateurs de l'application. Leur rôle dans l'organisation consiste à gérer les clients ainsi que leurs comptes. +
+Les guichetiers sont les principaux types d'utilisateurs de l'application.
+Leur rôle dans l'organisation consiste à gérer les clients ainsi que leurs comptes. +
  +
 *Les guichetiers peuvent :*
 
@@ -50,7 +56,9 @@ Les guichetiers sont les principaux types d'utilisateurs de l'application. Leur 
 
 === 2. Les chefs d'agence :
 [.text-justify]
-Les chefs d'agences interviennent en tant qu'administrateurs sur l'application. Leur rôle dans l'organisation consiste davantage à gérer les employés guichetiers et les autres chefs d'agence, mais ils peuvent également intervenir dans la gestion des clients et de leurs comptes. +
+Les chefs d'agences interviennent en tant qu'administrateurs sur l'application.
+Leur rôle dans l'organisation consiste davantage à gérer les employés guichetiers et les autres chefs d'agence, mais ils peuvent également intervenir
+dans la gestion des clients et de leurs comptes. +
  +
 *Les chefs d'agence peuvent :*
 
@@ -63,14 +71,18 @@ image::images/uc0.svg[UC-V0]
 [NOTE]
 ====
 [.text-justify]
-Les chefs d'agence sont des guichetiers avec des droits d'administration suplémentaires. Ils peuvent donc accèder à toutes les fonctionnalités des utilisateurs guichetiers, en plus de celles qui leurs sont spécifiques.
+Les chefs d'agence sont des guichetiers avec des droits d'administration supplémentaires.
+Ils peuvent ainsi accèder à toutes les fonctionnalités dont dispose un guichetier,
+mais aussi à quelques autres qui leurs sont spécifiques.
 ====
 
 
 
 == IV. Description fonctionnelle des besoins actuels
 [.text-justify]
-La mission de notre équipe dans ce projet est de développer la version existante de l'application en y ajoutant les fonctionnalités décrites ci-dessous pour les deux types d'utilisateurs concernés.
+La mission de notre équipe dans ce projet est de développer la version existante
+de l'application, en y ajoutant les fonctionnalités qui sont énoncées ci-dessous,
+pour le guichetier et le chef d'agence.
 
 
 === 1. Fonctionnalités pour les utilisateurs guichetiers :
@@ -98,7 +110,8 @@ _Gérer_ désigne la possibilité de créer, consulter, modifier et supprimer de
 
 === 3. Fonctionnalités "batch" :
 [.text-justify]
-Il doit également être possible d'utiliser certaines fonctionnalités de l'application en exécutant simplement des fichiers système "batch" (Windows). +
+Il devra être possible de réaliser certains traitements via l'intermédiaire de
+fichiers système "batch" (Windows). +
  +
 *Fonctionnalités exécutables :*
 
@@ -113,13 +126,15 @@ image::images/uc3.svg[UC-V3]
 == V. Contraintes
 [.text-justify]
 Pour développer l'application dans son intégralité,
-plusieurs contraintes devront être respectées dont deux principaux types. Une bonne organisation de notre équipe sera également requise pour mener à bien le projet.
+plusieurs contraintes devront être respectées dont deux principaux types.
+Une bonne organisation de notre équipe sera également requise pour mener à bien le projet.
 
 
 === 1. Contraintes techniques :
 [.text-justify]
-Le développement de l'application présente certaines contraintes techniques devant être respectées. En effet, il faudra les suivre
-à la fois pour l'utilisation finale de celle-ci, mais aussi pour les maintenances futures,
+Le développement de l'application présente certaines contraintes techniques devant être respectées.
+En effet, il faudra les suivre, que ce soit
+pour l'utilisation finale de l'application mais aussi pour les maintenances futures,
 qui seront probablement réalisées par d'autres développeurs. +
  +
 *Contraintes :*
@@ -133,7 +148,8 @@ qui seront probablement réalisées par d'autres développeurs. +
 
 === 2. Contraintes fonctionnelles :
 [.text-justify]
-Pour que l'application soit fonctionnelle et pour éviter au maximum les risques d'erreurs ou de mal-fonctionnement, certaines fonctionnalités devront respecter des contraintes particulières. +
+Pour que l'application soit fonctionnelle et pour éviter au maximum les risques d'erreurs ou de mal-fonctionnement,
+certaines fonctionnalités devront respecter des contraintes particulières. +
  +
 *Contraintes :*
 
@@ -156,13 +172,15 @@ Pour que l'application soit fonctionnelle et pour éviter au maximum les risques
 === 3. Contraintes juridiques :
 [.text-justify]
 DailyBank doit veiller à ne pas enfreindre la loi avec son application.
-En effet, il est pensable que cette dernière, comme beaucoup, voire toutes les applications liées à la gestion de données personnelles,
-doive respecter certaines lois.
-En effet, en ce qui concerne la confidentialité et la gestion des informations relatives aux clients et à leurs comptes, elle ne peut pas faire n'importe quoi.
-Nous pouvons — car c'est la principale loi qui régit aujourd'hui en Europe —
-citer le RGPD (Règlement Général sur la Protection des Données). C'est un enjeu fondamental pour tout le secteur bancaire qui est fortement concerné par
-l'exécution de celui-ci.
-En effet, c'est en premier lieu essentiel pour les acteurs comme DailyBank, en ce qui concerne la pérennité de leur activité.
+En effet, cette dernière, comme toutes les applications liées à la gestion de données personnelles,
+doit respecter certaines lois.
+Par exemple, en ce qui concerne la confidentialité et la gestion des informations relatives aux clients et à leurs comptes,
+elle est soumise à une certaine législation.
+Nous pouvons — car c'est aujourd'hui la principale loi qui régit la protection des données en Europe —
+citer le RGPD (Règlement Général sur la Protection des Données).
+Effectivement, c'est un enjeu fondamental pour tout le secteur bancaire qui est fortement concerné par
+le respect de celui-ci.
+C'est en premier lieu essentiel pour les acteurs comme DailyBank pour ce qui touche à la pérennité de leur activité.
 Mais c'est aussi leur image et la relation de confiance qu'ils entretiennent avec leurs clients qui est en jeu.
 Bien sûr, il est à noter que notre projet, se déroulant dans un périmètre scolaire, ne suivra probablement pas ce qui vient d'être énoncé ci-dessus.
 
@@ -170,7 +188,7 @@ Bien sûr, il est à noter que notre projet, se déroulant dans un périmètre s
 === 4. Contraintes organisationnelles :
 [.text-justify]
 Tout d'abord, notre équipe doit développer le projet en respectant les échéances avec une organisation rigoureuse.
-Il faudra pour cela utiliser des outils adaptés et fournir tous les fichiers et documents nécessaires à
+Il faudra pour cela utiliser des outils adaptés, et fournir tous les fichiers et documents nécessaires à
 l'utilisation finale de l'application, et à son développement dans le futur. +
  +
 *Contraintes :*
