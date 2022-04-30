@@ -38,7 +38,7 @@ et de dépôt pour ses clients, afin de remplacer plusieurs outils obsolètes et
 == III. Version existante (V0)
 [.text-justify]
 La version existante de l'application offre déjà un interface homme-machine, une base de données, ainsi qu'une partie du code implémentant les fonctionnalités déjà présentes.
-Il est possible d'interagir en tant que deux types d'utilisateurs, guichetier et chef d'agence.
+Il est possible d'interagir en tant que deux types d'utilisateurs : guichetier et chef d'agence.
 
 
 === 1. Les guichetiers :
