@@ -170,6 +170,7 @@ certaines fonctionnalités devront respecter des contraintes particulières. +
 
 
 === 3. Contraintes juridiques :
+
 [.text-justify]
 DailyBank doit veiller à ne pas enfreindre la loi avec son application.
 En effet, cette dernière, comme toutes les applications liées à la gestion de données personnelles,
@@ -186,6 +187,7 @@ Bien sûr, il est à noter que notre projet, se déroulant dans un périmètre s
 
 
 === 4. Contraintes organisationnelles :
+
 [.text-justify]
 Tout d'abord, notre équipe doit développer le projet en respectant les échéances avec une organisation rigoureuse.
 Il faudra pour cela utiliser des outils adaptés et fournir tous les fichiers et documents nécessaires à
