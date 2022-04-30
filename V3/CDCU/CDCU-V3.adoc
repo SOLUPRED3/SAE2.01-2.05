@@ -29,8 +29,7 @@ des outils de bureautique des guichetiers, mais aussi dans la robotisation des t
 
 == II. Objectifs du projet
 [.text-justify]
-L'objectif de ce projet est de permettre à DailyBank de bénéficier d'une application de gestion de comptes bancaires
-et de dépôt pour ses clients, afin de remplacer plusieurs outils obsolètes et restructurer certains services bancaires. +
+L'objectif de ce projet est de permettre à DailyBank de bénéficier d'une application de gestion de comptes bancaires de dépôt pour ses clients, afin de remplacer plusieurs outils obsolètes et restructurer certains services bancaires. +
  +
 
 
