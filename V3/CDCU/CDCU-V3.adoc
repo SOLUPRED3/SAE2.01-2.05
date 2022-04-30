@@ -126,7 +126,7 @@ image::images/uc3.svg[UC-V3]
 == V. Contraintes
 [.text-justify]
 Pour développer l'application dans son intégralité,
-plusieurs contraintes devront être respectées dont deux principaux types.
+plusieurs contraintes devront être respectées, qu'elles soient techniques, fonctionnelles, organisationnelles ou juridiques.
 Une bonne organisation de notre équipe sera également requise pour mener à bien le projet.
 
 
