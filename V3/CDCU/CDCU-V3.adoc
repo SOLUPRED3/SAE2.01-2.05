@@ -105,7 +105,7 @@ Il doit également être possible d'utiliser certaines fonctionnalités de l'app
 * Générer les relevés mensuels en PDF
 * Exécuter les prélèvements automatiques
 
-=== 3. Diagramme des cas d'utilisation actuel :
+=== 4. Diagramme des cas d'utilisation actuel :
 image::images/uc3.svg[UC-V3]
 
 
