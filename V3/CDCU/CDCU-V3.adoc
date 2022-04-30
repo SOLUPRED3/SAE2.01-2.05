@@ -17,7 +17,7 @@ Maxime DOURLENT, Thomas FALSIMAGNE, Tilian HURÉ
 
 [.text-justify]
 == I. Contexte général
-Pour s’adapter aux exigences d’instantanéité de leurs clients, les banques françaises ont accentué leurs efforts de restructuration et leurs investissements dans le digital. Cela se traduit principalement par des investissements majeurs dans la modernisation des outils de bureautique des guichetiers, et dans la robotisation des tâches automatisables. +
+Pour s’adapter aux exigences d’instantanéité de leurs clients, les banques françaises ont accentué leurs efforts de restructuration et de développement dans le digital. Cela se traduit principalement par des investissements majeurs dans la modernisation des outils de bureautique des guichetiers, et dans la robotisation des tâches automatisables. +
  +
  C'est notamment le cas de la banque DailyBank qui souhaite développer une application de gestion de ses comptes clients pour remplacer plusieurs des ses outils devenus obsolètes. +
  +
@@ -33,7 +33,7 @@ Les objectifs de ce projet sont de permettre à DailyBank de bénéficier d'une 
 
 == III. Version existante (V0)
 [.text-justify]
-La version existante de l'application offre déjà un interface homme-machine ainsi qu'un partie du code implémentant les fonctionnalités déjà présentes. Il est possible d'interagir en tant que deux types d'utilisateurs.
+La version existante de l'application offre déjà un interface homme-machine, une base de données, ainsi qu'une partie du code implémentant les fonctionnalités déjà présentes. Il est possible d'interagir en tant que deux types d'utilisateurs.
 
 
 === 1. Les guichetiers :
@@ -84,7 +84,7 @@ La mission de notre équipe dans ce projet est de développer la version existan
 
 === 2. Fonctionnalités pour les utilisateurs chefs d'agence :
 * _Gérer*_ les employés [silver]#(guichetiers et autres chefs d’agence)#
-* Effectuer un débit exceptionnel [silver]#(TODO)#
+* Effectuer un débit exceptionnel [red]#(manque de précision)#
 * Simuler un emprunt
 * Simuler une assurance d’emprunt [silver]#(possibilité de couverture en cas de maladie ou de décès)#
 * V3 TODO (fonctionnalités choisies)
@@ -98,9 +98,9 @@ _Gérer_ désigne la possibilité de créer, consulter, modifier et supprimer de
 
 === 3. Fonctionnalités "batch" :
 [.text-justify]
-Il doit également être possible d'utiliser certaines fonctionnalités en exécutant (ouvrant) simplement des fichiers batch. +
+Il doit également être possible d'utiliser certaines fonctionnalités de l'application en exécutant simplement des fichiers système "batch" (Windows). +
  +
-*Fonctionnalités exécutables à partir de fichiers bash :*
+*Fonctionnalités exécutables :*
 
 * Générer les relevés mensuels en PDF
 * Exécuter les prélèvements automatiques
@@ -121,35 +121,39 @@ Le développement de l'application présente principalement des contraintes tech
  +
 *Contraintes :*
 
-* Partir d'une solution existante
-* Développer l'application en Java (version 1.8)
+* Partir de la solution existante
+* Développer l'application et ses fonctionnalités en Java (version 1.8)
 * Développer l'interface homme-machine existant avec Java FX
-* Utiliser une base de données existante
-* ... (TO COMPLETE)
+* Utiliser la base de données existante
+* Générer un fichier exécutable JAR fonctionnel
 
 
 === 2. Contraintes fonctionnelles :
 [.text-justify]
-Pour mener à bien l'utilisation finale de l'application et éviter au maximum les potentiels risques d'erreur ou de mal-fonctionnement, certaines fonctionnalités devront respecter des contraintes particulières. +
+Pour mener à bien l'utilisation finale de l'application et éviter au maximum les potentiels risques d'erreurs ou de mal-fonctionnement, certaines fonctionnalités devront respecter des contraintes particulières. +
  +
 *Contraintes :*
 
-* Certaines informations seront obligatores pour la création d'un nouveau client comme son nom et un éventuel numéro
-* Certaines informations seront obligatoires pour la création d'un nouveau compte comme son numéro
+* Certaines informations seront obligatores pour la création d'un nouveau client comme un nom et un éventuel numéro (identifiant unique)
+* Certaines informations seront obligatoires pour la création d'un nouveau compte comme un numéro (identifiant unique)
 * Un débit ne peut être d'un montant négatif
 * Un crédit ne peut être d'un montant négatif
 * Un viremment ne peut être d'un montant négatif
-* Un relevé mensuel doit contenir l'adresse et le nom de la banque et du client concerné, le type, la date et le montant de chaque opération effectuée sur chaque compte, ainsi que les soldes de ces derniers
+////
+* Un relevé mensuel doit au moins contenir l'adresse et le nom de la banque et du client concernés, le type, la date et le montant de chaque opération effectuée sur chaque compte, ainsi que les soldes de ces derniers
+////
 * Un prélèvement automatique ne peut être d'un montant négatif
-* Débit exceptionnel (TODO)
+////
+* Débit exceptionnel [red]#(manque de précision)#
 * Simuler emprunt
 * Simuler une assurance d'emprunt
+////
 
 
 === 3. Contraintes juridiques :
 [.text-justify]
-La banque DailyBank doit veiller à n'enfreindre aucune loi via son application. Il est pensable que cette dernière, comme toutes les applications du même genre directement liées à la justice, doive respecter des contraintes précises, notamment en ce qui concerne la confidentialité et la gestion des informations relatives aux clients et à leurs comptes. On peut citer le RGPD (Règlement Général sur la Protection des Données) étant un enjeu fondamental pour le secteur banquier fortement concerné par ces nouvelles règles, mais aussi essentiel pour la pérennité de l'activité des acteurs de ce dernier, leur image et leur relation de confiance avec leurs clients.
-Cependant, notre projet se déroulant uniquement dans un périmètre scolaire, la majorité de ces contraintes ne pourront pas être encore appliquées.
+La banque DailyBank doit veiller à n'enfreindre aucune loi via son application. Il est pensable que cette dernière, comme toutes les applications du même genre directement liées à la justice, doive respecter des contraintes précises, notamment en ce qui concerne la confidentialité et la gestion des informations relatives aux clients et à leurs comptes. On peut notamment citer le RGPD (Règlement Général sur la Protection des Données) étant un enjeu fondamental pour tout le secteur banquier fortement concerné par ces nouvelles règles, mais aussi essentiel pour la pérennité de l'activité de ses acteurs, comme DailyBank, leur image et leur relation de confiance avec leurs clients.
+Cependant, notre projet se déroulant uniquement dans un périmètre scolaire, la majorité de ces contraintes ne pourront pas être réellement appliquées.
 
 
 === 4. Contraintes organisationnelles :
@@ -160,16 +164,19 @@ Notre équipe devra développer le projet en respectant les échéances données
 
 * Échéances : fin de la semaine du 06/06 au 12/06 2022
 * Outils collaboratifs :
-** GitHub [silver]#(planification des tâches et dépot de tous les fichiers et documents éllaborés)#
+** GitHub [silver]#(planification des tâches et dépot de tous les fichiers et documents élaborés)#
 ** Discord [silver]#(communication et travail en distanciel)#
 * Outils de développement :
 ** Eclipse [silver]#(IDE)# avec l'environnement Java 8 et le module Java FX
+** SQL-Developper et DBeaver [silver]#(SGBDR)#
 ** SceneBuilder [silver]#(structuration d'IHM)#
-** Atom [silver]#(réalisation des documents complémentaires)#
+** Atom [silver]#(réalisation des documents complémentaires en Asciidoc)#
 ** Project Libre [silver]#(diagramme de Gantt)#
 * Livrables attendus :
 ** Diagramme de Gantt [silver]#(planification et répartition des tâches)#
 ** Cahier des charges [silver]#(modalités du projet)#
+** Fichier exécutable de l'application au format JAR
+** Code source de l'application
 ** Documentation technique [silver]#(pour une ré-utilisation externe à notre équipe du code source)#
 ** Documentation utilisateur [silver]#(description de l'installation et du fonctionnement de l'application pour ses utilisateurs)#
 ** Cahier de tests [silver]#(démonstration du bon fonctionnement de l'application)#
