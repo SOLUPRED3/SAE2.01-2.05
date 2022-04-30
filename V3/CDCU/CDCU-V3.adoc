@@ -43,7 +43,7 @@ Il est possible d'interagir en tant que deux types d'utilisateurs : guichetier e
 
 === 1. Les guichetiers :
 [.text-justify]
-Les guichetiers est l'utilisateur le plus courant de l'application.
+Le guichetiers est l'utilisateur le plus courant de l'application.
 Son rôle dans l'organisation consiste à gérer les clients ainsi que leurs comptes. +
  +
 *Les guichetiers peuvent :*
