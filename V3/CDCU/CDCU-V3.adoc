@@ -43,7 +43,7 @@ Il est possible d'interagir en tant que deux types d'utilisateurs : guichetier e
 
 === 1. Les guichetiers :
 [.text-justify]
-Le guichetiers est l'utilisateur le plus courant de l'application.
+Le guichetier est l'utilisateur le plus courant de l'application.
 Son rôle dans l'organisation consiste à gérer les clients ainsi que leurs comptes. +
  +
 *Les guichetiers peuvent :*
@@ -56,8 +56,8 @@ Son rôle dans l'organisation consiste à gérer les clients ainsi que leurs com
 
 === 2. Les chefs d'agence :
 [.text-justify]
-Les chefs d'agences interviennent en tant qu'administrateurs sur l'application.
-Leur rôle dans l'organisation consiste davantage à gérer les employés guichetiers et les autres chefs d'agence, mais ils peuvent également intervenir
+Le chef d'agence intervient en tant qu'administrateur sur l'application.
+Son rôle dans l'organisation consiste davantage à gérer les employés guichetiers et les autres chefs d'agence, mais il peut également intervenir
 dans la gestion des clients et de leurs comptes. +
  +
 *Les chefs d'agence peuvent :*
@@ -71,9 +71,9 @@ image::images/uc0.svg[UC-V0]
 [NOTE]
 ====
 [.text-justify]
-Les chefs d'agence sont des guichetiers avec des droits d'administration supplémentaires.
-Ils peuvent ainsi accèder à toutes les fonctionnalités dont dispose un guichetier,
-mais aussi à quelques autres qui leurs sont spécifiques.
+Le chef d'agence est un guichetier avec des droits d'administration supplémentaires.
+Il peut ainsi accèder à toutes les fonctionnalités dont dispose un guichetier,
+mais aussi à quelques autres qui lui sont spécifiques.
 ====
 
 
@@ -181,15 +181,15 @@ citer le RGPD (Règlement Général sur la Protection des Données).
 Effectivement, c'est un enjeu fondamental pour tout le secteur bancaire qui est fortement concerné par
 le respect de celui-ci.
 C'est en premier lieu essentiel pour les acteurs comme DailyBank pour ce qui touche à la pérennité de leur activité.
-Mais c'est aussi leur image et la relation de confiance qu'ils entretiennent avec leurs clients qui est en jeu.
+Mais c'est également leur image et la relation de confiance qu'ils entretiennent avec leurs clients qui est en jeu.
 Bien sûr, il est à noter que notre projet, se déroulant dans un périmètre scolaire, ne suivra probablement pas ce qui vient d'être énoncé ci-dessus.
 
 
 === 4. Contraintes organisationnelles :
 [.text-justify]
 Tout d'abord, notre équipe doit développer le projet en respectant les échéances avec une organisation rigoureuse.
-Il faudra pour cela utiliser des outils adaptés, et fournir tous les fichiers et documents nécessaires à
-l'utilisation finale de l'application, et à son développement dans le futur. +
+Il faudra pour cela utiliser des outils adaptés et fournir tous les fichiers et documents nécessaires à
+l'utilisation finale de l'application et à son développement dans le futur. +
  +
 *Contraintes :*
 
