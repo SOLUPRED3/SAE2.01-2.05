@@ -45,7 +45,7 @@ Les guichetiers sont les principaux utilisateurs de l'application. Leur rôle da
  +
 *Les guichetiers peuvent :*
 
-* Modifier les informations client
+* Modifier les informations d'un client
 * Créer un nouveau client
 * Consulter un compte
 * Débiter un compte
@@ -154,14 +154,9 @@ Pour que l'application soit fonctionnelle et éviter au maximum les risques d'er
 * Un débit ne peut pas être un montant négatif et ne peut pas dépasser le découvert autorisé du compte source
 * Un crédit ne peut pas être un montant négatif
 * Un virement ne peut pas être un montant négatif et ne peut pas dépasser le découvert autorisé du compte source
-////
-* Un relevé mensuel doit au moins contenir l'adresse et le nom de la banque et du client concernés, le type, la date et le montant de chaque opération effectuée sur chaque compte, ainsi que les soldes de ces derniers
-////
 * Un prélèvement automatique ne peut pas être un montant négatif et ne peut dépasser le découvert autorisé du compte source
 ////
 * Débit exceptionnel [red]#(manque de précision)#
-* Simuler emprunt
-* Simuler une assurance d'emprunt
 ////
 
 
