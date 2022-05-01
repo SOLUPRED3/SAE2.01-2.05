@@ -11,7 +11,7 @@ ifdef::env-github[]
 endif::[]
 
 
-Équipe 4A01 : +
+Équipe *4A01* : +
 Maxime DOURLENT, Thomas FALSIMAGNE, Tilian HURÉ
 
 
