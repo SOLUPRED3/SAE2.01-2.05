@@ -79,6 +79,7 @@ La mission de notre équipe dans ce projet est de développer la version existan
 * Clôturer un compte
 * Générer un relevé mensuel d’un compte en PDF
 * _Gérer*_ les prélèvements automatiques
+* *BONUS*: Visualiser l'historique des opérations effectuées [silver]#(débits, crédits et viremments)#
 
 
 === 2. Fonctionnalités pour les utilisateurs chefs d'agence :
@@ -86,7 +87,6 @@ La mission de notre équipe dans ce projet est de développer la version existan
 * Effectuer un débit exceptionnel [red]#(manque de précision)#
 * Simuler un emprunt
 * Simuler une assurance d’emprunt [silver]#(possibilité de couverture en cas de maladie ou de décès)#
-* *BONUS*: Visualiser l'historique des opérations effectuées [silver]#(débits, crédits et viremments)#
 
 [NOTE]
 ====
