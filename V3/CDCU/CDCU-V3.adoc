@@ -90,7 +90,7 @@ La mission de notre équipe dans ce projet est de développer la version existan
 
 === 2. Fonctionnalités pour les utilisateurs chefs d'agence :
 * _Gérer*_ les employés [silver]#(guichetiers et autres chefs d’agence)#
-* Effectuer un débit exceptionnel [red]#(manque de précision)#
+* Effectuer un débit exceptionnel [silver]#(débit en cas de solde insuffisante, en fonction d'un découvert autorisé)#
 * Simuler un emprunt
 * Simuler une assurance d’emprunt [silver]#(possibilité de couverture en cas de maladie ou de décès)#
 
@@ -151,13 +151,11 @@ Pour que l'application soit fonctionnelle et éviter au maximum les risques d'er
 
 * Certaines informations seront obligatoires pour la création d'un nouveau client comme un nom et un éventuel numéro (identifiant unique)
 * Certaines informations seront obligatoires pour la création d'un nouveau compte comme un numéro (identifiant unique)
-* Un débit ne peut pas être un montant négatif et ne peut pas dépasser le découvert autorisé du compte source
-* Un crédit ne peut pas être un montant négatif
-* Un virement ne peut pas être un montant négatif et ne peut pas dépasser le découvert autorisé du compte source
-* Un prélèvement automatique ne peut pas être un montant négatif et ne peut dépasser le découvert autorisé du compte source
-////
-* Débit exceptionnel [red]#(manque de précision)#
-////
+* Un débit ne peut pas être d'un montant négatif et ne peut pas dépasser le solde du compte source sauf dans le cas d'un débit exceptionnel
+* Un crédit ne peut pas être d'un montant négatif
+* Un virement ne peut pas être d'un montant négatif et et ne peut pas dépasser le solde du compte source sauf dans le cas d'un débit exceptionnel
+* Un prélèvement automatique ne peut pas être d'un montant négatif et ne peut dépasser le solde du compte source sauf dans le cas d'un débit exceptionnel
+* Un débit exceptionnel ne peut pas être d'un montant négatif ne doit pas enfreindre le découvert autorisé sur le compte source
 
 
 === 3. Contraintes juridiques :
