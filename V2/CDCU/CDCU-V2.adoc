@@ -1,4 +1,4 @@
-= Cahier Des Charges Utilisateur
+= Cahier Des Charges Utilisateur (V2)
 
 ifdef::env-github[]
 :tip-caption: :bulb:
@@ -72,7 +72,7 @@ Les chefs d'agence sont des guichetiers avec des droits d'admininistrateur. Ils 
 
 
 
-== IV. Description fonctionnelle des besoins actuels :
+== IV. Description fonctionnelle des besoins actuels (V2) :
 
 [.text-justify]
 La mission de notre équipe dans ce projet est de développer la version existante de l'application, en y ajoutant les fonctionnalités listées ci-dessous pour les utilisateurs guichetiers et chefs d'agence.
