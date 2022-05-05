@@ -155,7 +155,7 @@ Pour que l'application soit fonctionnelle et éviter au maximum les risques d'er
 * Un crédit ne peut pas être d'un montant négatif
 * Un virement ne peut pas être d'un montant négatif et et ne peut pas dépasser le solde du compte source sauf dans le cas d'un débit exceptionnel
 * Un prélèvement automatique ne peut pas être d'un montant négatif et ne peut dépasser le solde du compte source sauf dans le cas d'un débit exceptionnel
-* Un débit exceptionnel ne peut pas être d'un montant négatif ne doit pas enfreindre le découvert autorisé sur le compte source
+* Un débit exceptionnel ne peut pas être d'un montant négatif et ne doit pas enfreindre le découvert autorisé sur le compte source
 
 
 === 3. Contraintes juridiques :
