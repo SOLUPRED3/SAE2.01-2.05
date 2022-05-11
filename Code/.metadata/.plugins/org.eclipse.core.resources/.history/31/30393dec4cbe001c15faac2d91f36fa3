@@ -1,0 +1,10 @@
+package blackjack.view;
+
+
+import javafx.stage.Stage;
+
+public class SceneCasinoControl implements Initializable {
+
+	
+
+}

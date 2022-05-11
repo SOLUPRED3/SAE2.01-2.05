@@ -1,0 +1,81 @@
+package blackjack;
+/**
+ * 
+ */
+
+
+import java.io.IOException;
+import java.nio.file.Paths;
+import blackjack.view.BlackJackControl;
+import javafx.application.Application;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+
+/**
+ * @author Falsimagne
+ *
+ */
+public class Blackjack extends Application {	
+	private BorderPane rootPane;
+	private Stage primaryStage ; 
+	
+	private final IntegerProperty valuer = new SimpleIntegerProperty(0);
+	private final IntegerProperty valuer2 = new SimpleIntegerProperty(0);
+
+	@Override
+	public void start(Stage Stage) throws Exception {
+		this.primaryStage = Stage ; 
+		this.rootPane = new BorderPane() ; 
+		
+		Scene scene = new Scene(rootPane) ; 
+		primaryStage.setTitle("Blackjack") ;
+		primaryStage.setScene(scene) ; 
+		primaryStage.setResizable(false);
+		loadBlackJackApp();
+		
+		primaryStage.show();
+
+	}
+		
+	public void loadBlackJackApp() {
+		try {
+			FXMLLoader loader = new FXMLLoader() ; 
+			loader.setLocation(Blackjack.class.getResource("view/blackjackFX.fxml"));
+			
+			BorderPane vueBlackJack = loader.load(); 
+			this.rootPane.setCenter(vueBlackJack) ;
+			
+			BlackJackControl ctrl = loader.getController() ;
+			ctrl.setFenetrePrincipale(primaryStage) ;
+			ctrl.setSlider(valuer);
+			ctrl.setSlider2(valuer2);
+			ctrl.startNewGame();
+			ctrl.setDialogStage(this.primaryStage) ;
+			ctrl.activerMediaPlayer();
+			ctrl.startNewGame() ; 
+			
+ 			
+		}catch(IOException e) {
+			System.out.println("Ressource FXML non disponible : blackjackFX.fxml");
+			System.exit(1) ;
+		}
+	}
+	
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		launch(args) ; 
+	}
+
+}

@@ -1,0 +1,4 @@
+.BorderPane{
+	-fx-background-image:url('table.png') ; 
+	-fx-background-size:cover ;
+}

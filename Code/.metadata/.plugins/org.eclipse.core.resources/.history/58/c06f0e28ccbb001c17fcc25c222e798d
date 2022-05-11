@@ -1,0 +1,32 @@
+/**
+ * 
+ */
+
+
+import javafx.application.Application;
+import javafx.stage.Stage;
+
+/**
+ * @author falsimagne
+ *
+ */
+public class Blackjack extends Application {
+	private BorderPane rootPane;
+	private Stage rootPane ; 
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		this.rootPane = primaryStage ; 
+		this.
+
+	}
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

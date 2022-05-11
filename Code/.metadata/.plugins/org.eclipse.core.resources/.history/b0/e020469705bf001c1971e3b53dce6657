@@ -1,0 +1,804 @@
+/**
+ * 
+ */
+package blackjack.view;
+
+
+import java.net.URL;
+import java.nio.file.Paths;
+import java.util.Optional;
+import java.util.ResourceBundle;
+
+import blackjack.Blackjack;
+import blackjack.om.BlackBot;
+import blackjack.om.EtatBlackBot;
+import blackjack.om.Joueur;
+import blackjack.om.MainBlackjack;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.IntegerProperty;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
+import javafx.stage.Stage;
+import javafx.util.converter.NumberStringConverter;
+
+/**
+ * @author falsimagne
+ *
+ */
+public class BlackJackControl implements Initializable{
+	
+	
+	 /* Initialisation des attributs graphiques : */
+	
+	/**************
+	 * CONTAINERS *
+	 **************/
+	@FXML 
+	private Pane paneLeft ; 
+	@FXML
+	private Pane paneControl ; 
+	@FXML
+	private Pane paneRight ; 
+	@FXML
+	private VBox vBox ;
+	@FXML
+	private MenuItem menuMedia ;
+	
+	/**************
+	 *  ListView  *
+	 **************/
+	@FXML
+	private ListView<String> listeJoueur1;
+	
+	@FXML
+	private ListView<String> listeCroupier ; 
+	
+	@FXML
+	private ListView<String> listeJoueur2 ; 
+
+	
+	/*************
+	 *   Label   *
+	 *************/
+	
+	@FXML 
+	private Label labelCroupier ; 
+	@FXML
+	private Label titleWindow ; 
+	@FXML
+	private Label labelMoney1 ; 
+	@FXML
+	private Label labelMoney2 ; 
+	@FXML
+	private Label labelCroupierScore ;
+	@FXML
+	private Label labelPlayer1Score ;
+	@FXML
+	private Label labelPlayer2Score ; 
+	@FXML
+	private Label labelJoueur1 ; 
+	@FXML
+	private Label labelJoueur2 ; 
+
+	@FXML
+	private TextField zoneTexte;
+	@FXML
+	private TextField zoneTexte2;
+	
+	/*************
+	 *   Button  *
+	 *************/
+	
+	@FXML 
+	private Button butMise ;
+	@FXML 
+	private Button butMise2 ;
+	@FXML
+	private Button butLaisser ; 
+	@FXML
+	private Button ButLaisser2 ;
+	@FXML
+	private Button butPrendre ; 
+	@FXML
+	private Button butPrendre1 ;
+	@FXML
+	private Button btnRejouer ;
+	
+	/*************
+	 *   Logics   *
+	 *************/ 
+	private BlackBot blackBot ; 
+	private IntegerProperty intProp ;
+	private IntegerProperty intProp2;
+	private Stage fenetrePrincipale = null ; 
+	
+	@FXML
+	private Slider miseSlider;
+	
+	@FXML
+	private Slider miseSlider2 ;
+	
+	Joueur Joueur1 = new Joueur("Falsimagne", 0) ; 
+	Joueur Joueur2 = new Joueur("Joueur2", 0) ;
+	
+	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		
+	}
+	
+	public void setFenetrePrincipale(Stage fenetrePrincipale) {
+		this.fenetrePrincipale = fenetrePrincipale;
+	}
+
+
+								/*************
+								 *  SetLists *
+								 *************/ 
+	/*
+	 * Méthode qui permet d'ajouter la main du joueur à la listeJoueur1
+	 */
+	public void setListeJoueur1(MainBlackjack main) {
+		for (int i = 0 ; i < main.getNbCartes(); i++) {
+			this.listeJoueur1.getItems().add(main.getCarte(i).getNomComptet());
+		}
+	}
+	/*
+	 * Méthode qui permet d'ajouter la main du joueur à la listeJoueur2
+	 */
+	public void setListeJoueur2(MainBlackjack main) {
+		for (int i = 0 ; i < main.getNbCartes(); i++) {
+			this.listeJoueur2.getItems().add(main.getCarte(i).getNomComptet());
+		}
+	}
+	
+	/*
+	 * Méthode qui permet d'ajouter la main du joueur à la listeCroupier
+	 */
+	public void setListeCroupier(MainBlackjack main) {
+		for (int i = 0 ; i < main.getNbCartes(); i++) {
+			this.listeCroupier.getItems().add(main.getCarte(i).getNomComptet());
+		}
+	}
+	
+	/*
+	 * Méthode permettant de vider le contenu des différentes viewlist.
+	 */
+	private void clearList() {
+		this.listeCroupier.getItems().clear();
+		this.listeJoueur1.getItems().clear();
+		this.listeJoueur2.getItems().clear();
+	}
+	
+									/*************
+									 *   Games   *
+									 *************/	
+	
+	/*
+	 * Méthode qui permet de démarrer une nouvelle partie 
+	 */
+	@FXML
+	public void startNewGame() {
+		
+		// Initialisation du jeu
+		
+		clearList();
+		
+		this.Joueur1.setMoney(1000);
+		this.Joueur2.setMoney(1000);
+		
+		this.blackBot = new BlackBot(2) ;
+		
+		this.Joueur1.setHand(this.blackBot.getMainJoueurs(0));
+		this.Joueur2.setHand(this.blackBot.getMainJoueurs(1));
+		
+		this.miseSlider.setMin(0);
+		this.miseSlider.setMax(this.Joueur1.money());
+		
+		this.miseSlider2.setMin(0);
+		this.miseSlider2.setMax(this.Joueur2.money());
+		
+		EtatMise();
+		updateMoneyPlayer1() ;
+		updateMoneyPlayer2();
+		croupierUpdateScoreMessage();
+	}
+	
+	/*
+	 * Méthode qui permet de gérer le bon déroulement de la suite du jeu en commançant un nouveau tour.
+	 */
+	public void startNewGame2() {
+		clearList();
+		EtatMise();
+		updateMoneyPlayer1() ;
+		updateMoneyPlayer2();
+		this.Joueur1.setHand(this.blackBot.getMainJoueurs(0));
+		this.Joueur2.setHand(this.blackBot.getMainJoueurs(1));
+		playerUpdateScoreMessage(Joueur1, labelPlayer1Score);
+		playerUpdateScoreMessage(Joueur2, labelPlayer2Score);
+		croupierUpdateScoreMessage();
+	}
+	
+	/*
+	 * Initialisation du slider qui concerne le joueur 1.
+	 */
+	public void setSlider(IntegerProperty intPropert) {
+		this.intProp = intPropert ;
+		Bindings.bindBidirectional(zoneTexte.textProperty(), intProp, new NumberStringConverter());
+		miseSlider.valueProperty().bindBidirectional(intProp);
+	}
+	
+	
+	
+	/*
+	 * Initialisation du slider qui concerne le joueur 1.
+	 */
+	public void setSlider2(IntegerProperty intPropert2) {
+		this.intProp2 = intPropert2 ;
+		Bindings.bindBidirectional(zoneTexte2.textProperty(), intProp2, new NumberStringConverter());
+		miseSlider2.valueProperty().bindBidirectional(intProp2);
+	}
+	
+	/*
+	 * Relance une partie depuis le début
+	 */
+	@FXML
+	private void resetGame() {
+		this.blackBot.relancerPartie();
+		startNewGame2() ;
+		clearList();
+		
+		// Saisie Mise : 
+		
+		croupierUpdateScoreMessage();
+		playerUpdateScoreMessage(Joueur1, labelPlayer1Score);
+		playerUpdateScoreMessage(Joueur2, labelPlayer2Score);
+		Joueur1.setHand(blackBot.getMainJoueurs(0)) ;
+		Joueur2.setHand(blackBot.getMainJoueurs(1)) ;
+	}
+	
+	/*
+	 * Permet de rejouer quand aucun des deux joueurs n'a misé.
+	 */
+	private void resetButtonCheck() {
+		if(this.blackBot.getFinJoueurs(0) && this.blackBot.getFinJoueurs(1)) {
+			this.btnRejouer.setDisable(false);
+		}
+	}
+	
+										/*************
+										 *   Mises   *
+		
+										 *************/
+	/*
+	 * Action réalisée quand on clique sur le bouton mise1 
+	 */
+	@FXML
+	public void clickOnMise() {
+		int mise = this.intProp.get(); 
+		this.blackBot.miser(0, mise);
+		this.Joueur1.setMiseCourante(mise);
+		if(mise > 0) {
+			listeJoueur1.getItems().add("Vous avez misé : " + this.intProp.get()) ;
+		}
+		else {
+			this.blackBot.getFinJoueurs(0) ;
+			listeJoueur1.getItems().add("Vous ne participez pas à la partie.") ;
+		}
+		checkMise1() ;
+		EtatMise1() ;
+	}
+	
+	/*
+	 * Méthode qui gère l'état de la première phase de mise 
+	 */
+	public void EtatMise() {
+		if(this.blackBot.getEtat() == EtatBlackBot.MISE) {
+			this.butMise.setDisable(false);
+			this.zoneTexte.setDisable(false);
+			this.miseSlider.setDisable(false) ;
+			this.miseSlider2.setDisable(true);
+			this.butMise2.setDisable(true);
+			this.zoneTexte2.setDisable(true);
+			this.butPrendre.setDisable(true);
+			this.butLaisser.setDisable(true);
+			this.butPrendre1.setDisable(true);
+			this.ButLaisser2.setDisable(true);
+			this.btnRejouer.setDisable(true);
+		}
+	}
+	
+	/*
+	 * Méthode qui gère l'état de la deuxième phase de mise 
+	 */
+	public void EtatMise1() {
+		if(this.blackBot.getEtat() == EtatBlackBot.MISE && !this.blackBot.getFinJoueurs(1)) {
+			this.butMise.setDisable(true);
+			this.butMise2.setDisable(false);
+			this.zoneTexte2.setDisable(false);
+			this.miseSlider2.setDisable(false) ;
+			this.miseSlider.setDisable(true);
+		}
+	}
+	
+	
+	
+	/*
+	 * Méthode qui gère la désactivation des boutons de mise. 
+	 */
+	public void checkMise1() { 
+			this.butMise.setDisable(true);
+			this.zoneTexte.setDisable(true);
+			this.miseSlider.setDisable(false) ;
+	}
+	
+	/*
+	 * Méthode qui gère la désactivation des boutons de mise. 
+	 */
+	public void checkMise2AndEtat() {
+		if(this.Joueur2.getMiseCourante() !=0) {
+			this.butMise2.setDisable(true);
+			this.miseSlider2.setDisable(false) ;
+			this.zoneTexte2.setDisable(true);
+			this.butMise.setDisable(true);
+			this.zoneTexte.setDisable(true);
+			blackBot.distribuer();
+		}
+		else if(this.Joueur1.getMiseCourante() !=0) {
+			this.butMise.setDisable(true);
+			this.zoneTexte.setDisable(true);
+			this.miseSlider.setDisable(false) ;
+			this.butMise2.setDisable(true);
+			this.zoneTexte2.setDisable(true);
+			blackBot.distribuer();
+		}
+		else {
+			this.miseSlider.setDisable(true) ;
+			this.miseSlider2.setDisable(true) ;
+			this.blackBot.getFinJoueurs(0) ; 
+			this.blackBot.getFinJoueurs(1) ;
+			this.butMise2.setDisable(true);
+			this.zoneTexte2.setDisable(true);
+		}
+		
+		
+		/* Mise a jour des cartes : */
+		
+		if(this.blackBot.getMainJoueurs(0).getNbCartes() !=0 || this.blackBot.getMainJoueurs(1).getNbCartes() !=0) {
+			listeCroupier.getItems().add(this.blackBot.getMainBanque().getCarte(0).getNomComptet()) ;
+		}
+		
+		
+		if(this.blackBot.getMainJoueurs(0).getNbCartes() !=0) {
+			listeJoueur1.getItems().add(this.blackBot.getMainJoueurs(0).getCarte(0).getNomComptet()) ;
+			listeJoueur1.getItems().add(this.blackBot.getMainJoueurs(0).getCarte(1).getNomComptet()) ;
+		}
+		else if(this.blackBot.getMainJoueurs(1).getNbCartes() !=0) {
+			listeJoueur2.getItems().add(this.blackBot.getMainJoueurs(1).getCarte(0).getNomComptet());
+			listeJoueur2.getItems().add(this.blackBot.getMainJoueurs(1).getCarte(1).getNomComptet());
+		}
+		
+		playerUpdateScoreMessage(Joueur1, labelPlayer1Score);
+		playerUpdateScoreMessage(Joueur2, labelPlayer2Score);
+		croupierUpdateScoreMessage();
+		EtatJeu();
+	}
+	
+	/*
+	 * Méthode qui permet l'action quand on clique sur le deuxième bouton de mise.
+	 */
+	@FXML
+	public void clickOnMise2() {
+		int mise = this.intProp2.get(); 
+		this.blackBot.miser(1, mise) ; 
+		this.Joueur2.setMiseCourante(mise);
+		if(mise > 0) {
+			listeJoueur2.getItems().add("Vous avez misé : " + this.intProp2.get()) ;
+		}
+		else {
+			this.blackBot.getFinJoueurs(1) ;
+			listeJoueur2.getItems().add("Vous ne participez pas à la partie.") ;
+		}
+		checkMise2AndEtat() ;
+	}
+					
+									/*************
+									 *    Jeu    *
+			
+									 *************/
+	/*
+	 * Gère le premier état de jeu.
+	 */
+	public void EtatJeu() {
+		if(this.blackBot.getEtat() == EtatBlackBot.JEU && !this.blackBot.getFinJoueurs(0)) {
+			this.butPrendre.setDisable(false);
+			this.butLaisser.setDisable(false);
+			this.miseSlider.setDisable(true);
+			this.miseSlider2.setDisable(true);
+			this.ButLaisser2.setDisable(true);
+			this.butPrendre1.setDisable(true) ;
+			this.btnRejouer.setDisable(true);
+		}
+		else if(this.blackBot.getEtat() == EtatBlackBot.JEU && !this.blackBot.getFinJoueurs(1)  && this.blackBot.getFinJoueurs(0)) {
+			this.butPrendre.setDisable(true);
+			this.butLaisser.setDisable(true);
+			this.miseSlider.setDisable(true);
+			this.miseSlider2.setDisable(true);
+			this.butPrendre1.setDisable(false);
+			this.ButLaisser2.setDisable(false);
+			this.btnRejouer.setDisable(true);
+		}
+		else if(this.blackBot.getEtat() == EtatBlackBot.JEU && this.blackBot.getFinJoueurs(1)  && !this.blackBot.getFinJoueurs(0)){
+			this.butPrendre.setDisable(false);
+			this.butLaisser.setDisable(false);
+			this.miseSlider2.setDisable(true);
+			this.miseSlider.setDisable(true);
+			this.butMise2.setDisable(true);
+			this.butPrendre1.setDisable(true);
+			this.ButLaisser2.setDisable(true);
+			this.btnRejouer.setDisable(true);
+		}
+		else {
+			checkNoMise();
+		}
+		
+	}
+	
+	/*
+	 * Gère le clic sur le bouton prendre.
+	 */
+	@FXML
+	private void clickOnPrendre1() {
+		playerPrendre1();
+		playerUpdateScoreMessage(Joueur1, labelPlayer1Score);
+	}
+	
+	/*
+	 * Gère le clic sur le bouton prendre.
+	 */
+	@FXML
+	private void clickOnPrendre2() {
+		playerPrendre2();
+		playerUpdateScoreMessage(Joueur2, labelPlayer2Score);
+	}
+	
+	/*
+	 * Permet de gérer les gains et le tirage.
+	 */
+	private void playerPrendre1() {
+		if(this.blackBot.getMainJoueurs(0).getScore() <= 21 && !this.blackBot.getFinJoueurs(0)) {
+			this.blackBot.tirer(0);
+			this.listeJoueur1.getItems().add(this.blackBot.getMainJoueurs(0).getCarte(this.blackBot.getMainJoueurs(0).getNbCartes()-1).getNomComptet()) ;
+		}
+		else {
+			checkPrendre1() ;
+		} 
+		
+		if(this.blackBot.getFinJoueurs(1) && this.blackBot.getMainJoueurs(0).getScore() > 21) {
+			checkPrendre1();
+			EtatJeu();
+			this.btnRejouer.setDisable(false);
+			playerUpdateScoreMessage(Joueur1, labelPlayer1Score);
+			updateMoneyPlayer1();
+			affichageGagnant();
+			updateMainCroupier();
+		}
+		else if(this.blackBot.getMainJoueurs(0).getScore() > 21) {
+			checkPrendre1();
+			EtatJeu() ;
+			playerUpdateScoreMessage(Joueur1, labelPlayer1Score);
+		}
+		
+	}
+	
+	/*
+	 * Permet de gérer les gains et le tirage.
+	 */
+	private void playerPrendre2() {
+		if(this.blackBot.getMainJoueurs(1).getScore() <= 21 && !this.blackBot.getFinJoueurs(1)) {
+			this.blackBot.tirer(1);
+			this.listeJoueur2.getItems().add(this.blackBot.getMainJoueurs(1).getCarte(this.blackBot.getMainJoueurs(1).getNbCartes()-1).getNomComptet()) ;
+		}
+		else {
+			checkPrendre2() ;
+		} 
+		
+		if(this.blackBot.getMainJoueurs(1).getScore() > 21) {
+			checkPrendre2();
+			resetButtonCheck();
+			playerUpdateScoreMessage(Joueur2, labelPlayer2Score);
+			updateMoneyPlayer1();
+			updateMoneyPlayer2();
+			updateSlider1();
+			updateSlider2();
+			alertCheckMoney();
+			affichageGagnant();
+			updateMainCroupier();
+		}
+	
+	}
+	
+	/*
+	 * Gère la désactivation des bons boutons 
+	 */
+	private void checkPrendre1() {
+		if(this.blackBot.getFinJoueurs(0)) {
+			this.butPrendre.setDisable(true);
+			this.butLaisser.setDisable(true);
+		}
+	}
+	
+	/*
+	 * Gère la désactivation des bons boutons 
+	 */
+	private void checkPrendre2() {
+		if(this.blackBot.getFinJoueurs(1)) {
+			this.butPrendre1.setDisable(true);
+			this.ButLaisser2.setDisable(true);
+			croupierUpdateScoreMessage();
+		}
+	}
+	
+	
+	/*
+	 * Permet de gérer les gains et le fait de ne pas reprendre de carte.
+	 */
+	@FXML
+	private void laisser1() {
+		this.butLaisser.setDisable(true);
+		this.butPrendre.setDisable(true);
+		this.blackBot.terminer(0);
+		EtatJeu() ;
+		this.btnRejouer.setDisable(false);
+		
+		if(this.Joueur2.getMiseCourante() == 0) {
+			updateMainCroupier();
+			updateMoneyPlayer1();
+		}
+		
+	}
+	
+	/*
+	 * Permet de gérer les gains et le fait de ne pas reprendre de carte.
+	 */
+	@FXML
+	private void laisser2() {
+		this.butPrendre1.setDisable(true) ;
+		this.ButLaisser2.setDisable(true);
+		this.blackBot.terminer(1);
+		EtatJeu() ;
+		resetButtonCheck();
+		croupierUpdateScoreMessage() ;
+		updateMainCroupier();
+		updateMoneyPlayer1();
+		updateMoneyPlayer2() ;
+		updateSlider1();
+		updateSlider2();
+		alertCheckMoney();
+	}
+	
+	/*
+	 * Ouverture d'une boite de dialogue quand un des deux joueurs n'a plus d'argent.
+	 */
+	private void alertCheckMoney(){
+		if(this.Joueur1.money() ==0 || this.Joueur2.money() == 0) {
+			Alert dialog = new Alert(AlertType.WARNING) ;
+			dialog.setTitle("Fin de la partie.");
+			dialog.setHeaderText("Voulez-vous commencer une nouvelle partie ? ");
+			
+			dialog.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO) ; 
+			
+			final Optional<ButtonType> response = dialog.showAndWait() ; 
+			
+			if(response.orElse(null) == ButtonType.YES) {
+				startNewGame();
+			}
+			else {
+				this.fenetrePrincipale.close();
+			}
+		}
+	}
+	
+	/*
+	 * Permet de gérer le fait qu'aucun joueur n'ait misé 
+	 */
+	private void checkNoMise() {
+		if(this.Joueur1.getMiseCourante() ==0 && this.Joueur2.getMiseCourante() == 0) {
+			Alert alert = new Alert(AlertType.INFORMATION) ; 
+			alert.setTitle("Aucune mise.");
+			alert.setHeaderText("Vous quittez la table, aucune mise n'a été réalisée. Voulez-vous quitter le jeu ? ");
+		
+			alert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO) ; 
+			final Optional<ButtonType> response = alert.showAndWait() ; 
+		
+			if(response.orElse(null) == ButtonType.YES) {
+				this.fenetrePrincipale.close();
+			}
+			else {
+				startNewGame2();
+			}
+		}
+	}
+	
+	/*
+	 * Permet de quitter la fenêtre de jeu.
+	 */
+	@FXML
+	private void actionQuitGame() {
+		Alert alert = new Alert(AlertType.INFORMATION) ; 
+		alert.setTitle("Quitter.");
+		alert.setHeaderText("Voulez-vous quitter le jeu ? ");
+	
+		alert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO) ; 
+		final Optional<ButtonType> response = alert.showAndWait() ; 
+	
+		if(response.orElse(null) == ButtonType.YES) {
+			this.fenetrePrincipale.close();
+		}
+		else {
+			
+		}
+	}
+	
+	/*
+	 * Affichage des règles dans une boite de dialogue.
+	 */
+	@FXML
+	private void actionApropos() {
+		Alert about = new Alert(AlertType.INFORMATION) ; 
+		about.setTitle("Règles du jeu.");
+		about.setHeaderText("Voici la présentation du BlackJack.");
+		about.initOwner(fenetrePrincipale);
+		
+		WebView webView = new WebView() ;
+		WebEngine webEngine = webView.getEngine() ; 
+		
+		webView.setPrefSize(400, 400);
+		webEngine.load(Blackjack.class.getResource("ressources/regles.html").toString());
+		
+		about.getDialogPane().setContent(webView) ; 
+		about.showAndWait() ; 
+	}
+	
+	
+									/*************
+									 *   Update  *
+									 *************/
+	
+	/*
+	 * Update du slider1
+	 */
+	private void updateSlider1() {
+		this.miseSlider.setMin(0);
+		this.miseSlider.setMax(this.Joueur1.money());
+	}
+	
+	
+	/*
+	 * Affiche le gagnant dans la viewList
+	 */
+	private void affichageGagnant() {
+		Alert dialog = new Alert(AlertType.INFORMATION) ; 
+		dialog.setHeaderText("Grand gagnant : ");
+		if(this.blackBot.getGainJoueurs(0) > 0) {
+			dialog.setContentText(this.labelJoueur1.getText());
+			dialog.showAndWait() ;
+		}
+		else if(this.blackBot.getGainJoueurs(1) > 0) {
+			dialog.setContentText(this.labelJoueur2.getText());
+			dialog.showAndWait() ;
+		}
+		else if(this.blackBot.getGainJoueurs(0) == 0  && this.blackBot.getGainJoueurs(1) == 0) {
+			dialog.setContentText(this.labelCroupier.getText());
+			dialog.showAndWait() ;
+		}
+		
+	}
+	
+	/*
+	 * Update du slider2
+	 */
+	private void updateSlider2() {
+		this.miseSlider2.setMin(0);
+		this.miseSlider2.setMax(this.Joueur2.money());
+	}
+	
+	/*
+	 * Met à jour le score du croupier.
+	 */
+	private void croupierUpdateScoreMessage() {
+		this.labelCroupierScore.setText("Score" + ": " + this.blackBot.getMainBanque().getScore());
+	}
+	
+	/*
+	 * Met à jour la main du croupier.
+	 */
+	private void updateMainCroupier() {
+		for(int i = 0 ; i < this.blackBot.getMainBanque().getNbCartes() ; i++) {
+			this.listeCroupier.getItems().add(this.blackBot.getMainBanque().getCarte(i).getNomComptet());
+		}
+	}
+	
+	/*
+	 * Met à jour le score du joueur.
+	 */
+	private void playerUpdateScoreMessage(Joueur joueur, Label label) {
+		label.setText("Score" + ": " + joueur.hand().getScore());
+	}
+	
+	/*
+	 * Met à jour l'argent du premier joueur.
+	 */
+	private void updateMoneyPlayer1() {
+		if(this.blackBot.getEtat() == EtatBlackBot.GAIN) {
+			this.Joueur1.setMoney(this.Joueur1.money() - this.Joueur1.getMiseCourante() + this.blackBot.getGainJoueurs(0));
+		}
+		this.labelMoney1.setText("Monnaie" + ": " + this.Joueur1.money());
+	}
+	
+	/*
+	 * Met à jour l'argent deuxième joueur.
+	 */
+	private void updateMoneyPlayer2() {
+		if(this.blackBot.getEtat() == EtatBlackBot.GAIN) {
+			this.Joueur2.setMoney(this.Joueur2.money() - this.Joueur2.getMiseCourante() + this.blackBot.getGainJoueurs(1));
+		}
+		this.labelMoney2.setText("Monnaie" + ": " + this.Joueur2.money());
+	}
+	
+	static AudioClip currentMusic; 
+	
+	/*
+	 * Permet d'activer la musique 
+	 */
+	@FXML
+	public void activerMediaPlayer() {
+		String music = "src/blackjack/ressources/13-casino-jazz.mp3" ;
+		
+		currentMusic = new AudioClip(Paths.get(music).toUri().toString()) ; 
+		currentMusic.setCycleCount(AudioClip.INDEFINITE);
+		currentMusic.play() ;
+		this.menuMedia.setDisable(true);
+	}
+	/*
+	 * Désactive la musique.
+	 */
+	@FXML
+	public void desactiverMediaPlayer() {
+		currentMusic.stop();
+		this.menuMedia.setDisable(false);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+
+}

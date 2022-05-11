@@ -1,0 +1,42 @@
+package blackjack.om;
+/**
+ * 
+ */
+
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+
+/**
+ * @author falsimagne
+ *
+ */
+public class Blackjack extends Application {
+	
+	private BorderPane rootPane;
+	private Stage primaryStage ; 
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		this.primaryStage = primaryStage ; 
+		this.rootPane = new BorderPane() ; 
+		
+		Scene scene = new Scene(rootPane) ; 
+		scene.getStylesheets().add(Blackjack.class.getResource("style.css").toExternalForm());
+		primaryStage.setTitle("Blackjack") ;
+		primaryStage.setScene(scene) ; 
+		
+		primaryStage.show();
+
+	}
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		launch(args) ; 
+	}
+
+}
