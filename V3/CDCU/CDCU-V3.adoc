@@ -78,7 +78,7 @@ mais aussi à quelques autres qui lui sont spécifiques.#
 
 
 
-== IV. Description fonctionnelle des besoins actuels : 
+== IV. Description fonctionnelle des besoins actuels :
 
 [.text-justify]
 La mission de notre équipe dans ce projet est de développer la version existante
