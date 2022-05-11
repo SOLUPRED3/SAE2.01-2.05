@@ -11,43 +11,41 @@ ifdef::env-github[]
 endif::[]
 
 
-Équipe 4A01 : +
+Équipe *4A01* : +
 Maxime DOURLENT, Thomas FALSIMAGNE, Tilian HURÉ
 
 
-[.text-justify]
+
 == I. Contexte général
-Pour s’adapter aux exigences d’instantanéité de leurs clients, les banques françaises ont accentué leurs efforts de restructuration et de développement dans le digital.
-Cela se traduit principalement par des investissements majeurs dans la modernisation
-des outils de bureautique des guichetiers, mais aussi dans la robotisation des tâches qui peuvent être automatisées. +
+
+[.text-justify]
+Pour s’adapter aux exigences d’instantanéité de leurs clients, les banques françaises ont accentué leurs efforts de restructuration et de développement dans le digital. Cela se traduit principalement par des investissements majeurs dans la modernisation des outils de bureautique des guichetiers, mais aussi dans la robotisation des tâches pouvant être automatisées. +
  +
- C'est notamment le cas de DailyBank, une banque qui souhaite développer son application de gestion de comptes clients
- pour remplacer plusieurs des ses outils devenus obsolètes. +
- +
+C'est notamment le cas de DailyBank, une banque souhaitant développer son application de gestion de comptes clients pour remplacer plusieurs des ses outils devenus obsolètes.
 
 
 
 == II. Objectifs du projet
+
 [.text-justify]
-L'objectif de ce projet est de permettre à DailyBank de bénéficier d'une application de gestion de comptes bancaires de dépôt pour ses clients, afin de remplacer plusieurs outils obsolètes et restructurer certains services bancaires. +
- +
+L'objectif de ce projet est de permettre à DailyBank de bénéficier d'une application de gestion de comptes bancaires de dépôt pour ses clients, afin de remplacer plusieurs outils obsolètes et restructurer certains services bancaires.
 
 
 
 == III. Version existante (V0)
+
 [.text-justify]
-La version existante de l'application offre déjà un interface homme-machine, une base de données, ainsi qu'une partie du code implémentant les fonctionnalités déjà présentes.
-Il est possible d'interagir en tant que deux types d'utilisateurs : guichetier et chef d'agence.
+La version existante de l'application offre déjà un interface homme-machine, une base de données, ainsi qu'une partie du code implémentant les fonctionnalités déjà présentes. Il est possible d'interagir en tant que deux types d'utilisateurs : guichetier et chef d'agence.
 
 
 === 1. Les guichetiers :
+
 [.text-justify]
-Les guichetiers sont les utilisateur qui utilisent le plus fréquemment l'application.
-Leur rôle dans l'organisation consiste à gérer les clients ainsi que leurs comptes. +
+Les guichetiers sont les principaux utilisateurs de l'application. Leur rôle dans l'organisation consiste à gérer les clients ainsi que leurs comptes. +
  +
 *Les guichetiers peuvent :*
 
-* Modifier les informations client
+* Modifier les informations d'un client
 * Créer un nouveau client
 * Consulter un compte
 * Débiter un compte
@@ -56,9 +54,7 @@ Leur rôle dans l'organisation consiste à gérer les clients ainsi que leurs co
 === 2. Les chefs d'agence :
 
 [.text-justify]
-Les chefs d'agence interviennent en tant qu'administrateur sur l'application.
-Leur rôle dans l'organisation consiste davantage à gérer les employés guichetiers et les autres chefs d'agence, mais il peuvent également intervenir
-dans la gestion des clients et de leurs comptes. +
+Les chefs d'agence interviennent en tant qu'administrateur sur l'application. Leur rôle dans l'organisation consiste davantage à gérer les employés guichetiers et les autres chefs d'agence, mais ils peuvent également intervenir dans la gestion des clients et de leurs comptes. +
  +
 *Les chefs d'agence peuvent :*
 
@@ -71,9 +67,7 @@ image::images/uc0.svg[UC-V0]
 [NOTE]
 ====
 [.text-justify]
-[red]#Le chef d'agence est un guichetier avec des droits d'administration supplémentaires.
-Il peut ainsi accèder à toutes les fonctionnalités dont dispose un guichetier,
-mais aussi à quelques autres qui lui sont spécifiques.#
+Les chefs d'agence sont des guichetiers avec des droits d'admininistrateur. Ils peuvent donc accéder à toutes les fonctionnalités des utilisateurs guichetiers, en plus de celles qui leur sont spécifiques.
 ====
 
 
@@ -81,9 +75,7 @@ mais aussi à quelques autres qui lui sont spécifiques.#
 == IV. Description fonctionnelle des besoins actuels :
 
 [.text-justify]
-La mission de notre équipe dans ce projet est de développer la version existante
-de l'application, en y ajoutant les fonctionnalités qui sont énoncées ci-dessous,
-pour le guichetier et le chef d'agence.
+La mission de notre équipe dans ce projet est de développer la version existante de l'application, en y ajoutant les fonctionnalités listées ci-dessous pour les utilisateurs guichetiers et chefs d'agence.
 
 
 === 1. Fonctionnalités pour les utilisateurs guichetiers :
@@ -93,14 +85,14 @@ pour le guichetier et le chef d'agence.
 * Clôturer un compte
 * Générer un relevé mensuel d’un compte en PDF
 * _Gérer*_ les prélèvements automatiques
+* *BONUS*: Visualiser l'historique des opérations effectuées [silver]#(débits, crédits et virements)#
 
 
 === 2. Fonctionnalités pour les utilisateurs chefs d'agence :
 * _Gérer*_ les employés [silver]#(guichetiers et autres chefs d’agence)#
-* Effectuer un débit exceptionnel [red]#(manque de précision)#
+* Effectuer un débit exceptionnel [silver]#(débit en cas de solde insuffisante, en fonction d'un découvert autorisé)#
 * Simuler un emprunt
 * Simuler une assurance d’emprunt [silver]#(possibilité de couverture en cas de maladie ou de décès)#
-* V3 TODO (fonctionnalités choisies)
 
 [NOTE]
 ====
@@ -109,15 +101,22 @@ _Gérer_ désigne la possibilité de créer, consulter, modifier et supprimer de
 ====
 
 
-=== 3. Fonctionnalités "batch" :
+=== 3. Fonctionnalités "Batch" :
+
 [.text-justify]
-[red]#Il devra être possible de réaliser certains traitements via l'intermédiaire de
-fichiers système "batch" (Windows).# +
- +
+Il devra également être possible d'exécuter certaines fonctionnalités de l'application par l'intermédiaire d'un traitement "Batch".
+
+[NOTE]
+====
+[.text-justify]
+Batch est un langage de commande Windows permettant un traitement par lots, soit l'exécution de plusieurs commandes DOS à la suite, en lançant simplement un fichier système.
+====
+
 *Fonctionnalités exécutables :*
 
 * Générer les relevés mensuels en PDF
 * Exécuter les prélèvements automatiques
+
 
 === 4. Diagramme des cas d'utilisation actuel :
 image::images/uc3.svg[UC-V3]
@@ -125,20 +124,14 @@ image::images/uc3.svg[UC-V3]
 
 
 == V. Contraintes
-
 [.text-justify]
-[red]#Pour développer l'application dans son intégralité,
-plusieurs contraintes devront être respectées, qu'elles soient techniques, fonctionnelles, organisationnelles ou juridiques.#
-Une bonne organisation de notre équipe sera également requise pour mener à bien le projet.
+Pour développer l'application dans son intégralité, plusieurs contraintes devront être respectées, qu'elles soient techniques, fonctionnelles, organisationnelles ou juridiques. Une bonne organisation de notre équipe sera également requise pour mener à bien le projet.
 
 
 === 1. Contraintes techniques :
 
 [.text-justify]
-[red]#Le développement de l'application présente certaines contraintes techniques devant être respectées.
-En effet, il faudra que nous les prenions en compte, que ce soit
-pour l'utilisation finale de l'application mais aussi pour les maintenances futures,
-qui seront probablement réalisées par d'autres développeurs.# +
+Le développement de l'application présente principalement des contraintes techniques devant être respectées à la fois pour l'utilisation finale de cette dernière, mais aussi pour ses futures maintenances qui seront probablement réalisées par d'autres développeurs. +
  +
 *Contraintes :*
 
@@ -152,68 +145,51 @@ qui seront probablement réalisées par d'autres développeurs.# +
 === 2. Contraintes fonctionnelles :
 
 [.text-justify]
-[red]#Pour que l'application soit fonctionnelle# et pour éviter au maximum les risques d'erreurs ou de mal-fonctionnement,
-certaines fonctionnalités devront respecter des contraintes particulières. +
+Pour que l'application soit fonctionnelle et éviter au maximum les risques d'erreurs ou de mal-fonctionnement, certaines fonctionnalités devront respecter des contraintes particulières. +
  +
 *Contraintes :*
 
-* Certaines informations seront obligatores pour la création d'un nouveau client comme un nom et un éventuel numéro (identifiant unique)
+* Certaines informations seront obligatoires pour la création d'un nouveau client comme un nom et un éventuel numéro (identifiant unique)
 * Certaines informations seront obligatoires pour la création d'un nouveau compte comme un numéro (identifiant unique)
-* Un débit ne peut être d'un montant négatif
-* Un crédit ne peut être d'un montant négatif
-* Un viremment ne peut être d'un montant négatif
-////
-* Un relevé mensuel doit au moins contenir l'adresse et le nom de la banque et du client concernés, le type, la date et le montant de chaque opération effectuée sur chaque compte, ainsi que les soldes de ces derniers
-////
-* Un prélèvement automatique ne peut être d'un montant négatif
-////
-* Débit exceptionnel [red]#(manque de précision)#
-* Simuler emprunt
-* Simuler une assurance d'emprunt
-////
+* Un débit ne peut pas être d'un montant négatif et ne peut pas dépasser le solde du compte source sauf dans le cas d'un débit exceptionnel
+* Un crédit ne peut pas être d'un montant négatif
+* Un virement ne peut pas être d'un montant négatif et et ne peut pas dépasser le solde du compte source sauf dans le cas d'un débit exceptionnel
+* Un prélèvement automatique ne peut pas être d'un montant négatif et ne peut dépasser le solde du compte source sauf dans le cas d'un débit exceptionnel
+* Un débit exceptionnel ne peut pas être d'un montant négatif et ne doit pas enfreindre le découvert autorisé sur le compte source
 
 
 === 3. Contraintes juridiques :
 
 [.text-justify]
-[red]#DailyBank doit veiller à ne pas enfreindre la loi avec son application.
-En effet, cette dernière, comme toutes les applications liées à la gestion de données personnelles,
-doit respecter certaines lois.
-Par exemple, en ce qui concerne la confidentialité et la gestion des informations relatives aux clients et à leurs comptes,
-elle est soumise à une certaine législation.
-Nous pouvons — car c'est aujourd'hui la principale loi qui régit la protection des données en Europe —
-citer le RGPD (Règlement Général sur la Protection des Données).
-Effectivement, c'est un enjeu fondamental pour tout le secteur bancaire qui est fortement concerné par
-le respect de celui-ci.
-Pour les acteurs de ce secteur, comme DailyBank, cela est essentiel premièrement pour ce qui touche à la pérennité de leur activité.
-Mais c'est également leur image et la relation de confiance qu'ils entretiennent avec leurs clients qui est en jeu.
-Toutefois, il est à noter que notre projet, se déroulant dans un périmètre scolaire, ne suivra probablement pas ce qui vient d'être énoncé ci-dessus.#
+La banque DailyBank doit veiller à ne pas enfreindre la loi avec son application. +
+Il est pensable que cette dernière, comme toutes les applications liées à la gestion de données personnelles,
+soit soumise à une certaine législation, notamment en ce qui concerne la confidentialité et la gestion des informations relatives aux clients et à leurs comptes. Nous pouvons notamment citer le RGPD (Règlement Général sur la Protection des Données) qui est un enjeu fondamental pour tout le secteur bancaire, étant aujourd'hui la principale loi régissant la protection des données en Europe. Ce règlement est essentiel pour la pérennité des acteurs de ce secteur, comme DailyBank, mais également pour l'image et la relation de confiance qu'ils entretiennent avec leurs clients. +
+Cependant, notre projet se déroulant dans un périmètre scolaire, la majorité de ces contraintes ne pourront probablement pas être appliquées.
 
 
 === 4. Contraintes organisationnelles :
 
 [.text-justify]
-Tout d'abord, notre équipe doit développer le projet en respectant les échéances avec une organisation rigoureuse.
-Il faudra pour cela utiliser des outils adaptés et fournir tous les fichiers et documents nécessaires à
-l'utilisation finale de l'application et à son développement dans le futur. +
+Pour mener à bien ce projet, notre équipe devra respecter les échéances et avoir une organisation rigoureuse. Pour cela, il faudra utiliser des outils adaptés et fournir tous les fichiers et documents nécessaires à l’utilisation finale de l’application et à son développement dans le futur. +
  +
 *Contraintes :*
 
 * Échéances : fin de la semaine du 06/06 au 12/06 2022
 * Outils collaboratifs :
-** GitHub [silver]#(planification des tâches et dépot de tous les fichiers et documents élaborés)#
+** GitHub [silver]#(planification des tâches et dépôt de tous les fichiers et documents élaborés)#
 ** Discord [silver]#(communication et travail en distanciel)#
 * Outils de développement :
-** Eclipse [silver]#(IDE)# avec l'environnement Java 8 et le module Java FX
+** Eclipse [silver]#(IDE)# avec l'environnement Java 8 et les modules Java FX et Visual SNI
 ** SQL-Developper et DBeaver [silver]#(SGBDR)#
 ** SceneBuilder [silver]#(structuration d'IHM)#
-** Atom [silver]#(réalisation des documents complémentaires en Asciidoc)#
+** Atom et Asciidoc [silver]#(documents complémentaires)#
+** Visual Paradigm Online [silver]#(diagrammes des cas d'utilisation)#
 ** Project Libre [silver]#(diagramme de Gantt)#
 * Livrables attendus :
 ** Diagramme de Gantt [silver]#(planification et répartition des tâches)#
 ** Cahier des charges [silver]#(modalités du projet)#
 ** Fichier exécutable de l'application au format JAR
 ** Code source de l'application
-** Documentation technique [silver]#(pour une ré-utilisation externe à notre équipe du code source)#
+** Documentation technique [silver]#(ré-utilisation externe à notre équipe du code source)#
 ** Documentation utilisateur [silver]#(description de l'installation et du fonctionnement de l'application pour ses utilisateurs)#
 ** Cahier de tests [silver]#(démonstration du bon fonctionnement de l'application)#
