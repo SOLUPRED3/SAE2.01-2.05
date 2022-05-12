@@ -58,7 +58,60 @@ public class AccessCompteCourant {
 
 		return alResult;
 	}
+	
+	/**
+	 * Enregistre un compte avec ses différentes valeurs en paramètres.
+	 *
+	 * @param pfIdNumCli id du client pour lequel nous créons le compte 
+	 * @param pfDebitAutorise débit autorisé pour le client 
+	 * @param pfSolde solde du client 
+	 * @param pfEstCloture état du compte 
+	 * @throws DataAccessException
+	 * @throws DatabaseConnexionException
+	 * @throws RowNotFoundOrTooManyRowsException 
+	 */
+	public void enregistrerCompte(int pfIdNumCli, int pfDebitAutorise, double pfSolde, String pfEstCloture)
+			throws DataAccessException, DatabaseConnexionException, RowNotFoundOrTooManyRowsException {
 
+		try {
+			Connection con = LogToDatabase.getConnexion();
+			
+			String query = "INSERT INTO COMPTECOURANT VALUES (" + "seq_id_client.NEXTVAL" + " ," + "?" + ", " + "?" + 
+			", " + "?" + ", " + "?" + ")";
+			
+			PreparedStatement pst = con.prepareStatement(query);
+			
+
+			System.out.println(pfIdNumCli);
+			System.out.println(pfDebitAutorise);
+			System.out.println(pfSolde);
+			System.out.println(pfEstCloture);
+
+			pst.setInt(1, pfDebitAutorise) ;
+			pst.setDouble(2, pfSolde) ; 
+			pst.setInt(3, pfIdNumCli) ; 
+			pst.setString(4, pfEstCloture) ; 
+			
+			int result = pst.executeUpdate();
+			
+			System.err.println(result);
+			if (result != 1) {
+			        con.rollback();
+			        throw new RowNotFoundOrTooManyRowsException(Table.Client, Order.INSERT,
+			                        "Insert anormal (insert de moins ou plus d'une ligne)", null, result);
+			} else {
+			    con.commit();
+			}
+			
+			System.err.println(query);
+			pst.close();
+			
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.CompteCourant, Order.SELECT, "Erreur accès", e);
+		}
+
+	}
+	
 	/**
 	 * Recherche d'un CompteCourant à partir de son id (idNumCompte).
 	 *
@@ -157,4 +210,6 @@ public class AccessCompteCourant {
 			throw new DataAccessException(Table.CompteCourant, Order.UPDATE, "Erreur accès", e);
 		}
 	}
+	
+	
 }
