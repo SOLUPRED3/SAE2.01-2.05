@@ -32,7 +32,8 @@ La mission de notre équipe consiste à développer une application existante «
 2/4	Copier coller du sujet. Il faut contextualiser davantage !
 4/4  V0	Ok
 3,5/4	Il faut prioriser les fonctionnalités à dévélopper. Pour plus de lisibilité, on peut faire un UC par version ou encore par domaine de gestion (gestion des comptes, gestion de scrédits …)
-4/4 contraintes	TB
+4/4 contraintes	TB +
+Certains éléments n'apparaissent pas sur la preview de GitHUb, [red]#il serait préférable de revoir le document au format HTML.#
 	
 15/20	
 
