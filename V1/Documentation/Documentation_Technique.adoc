@@ -4,9 +4,9 @@ v1.0, 2022-04-21
 
 == Présentation de l'application : 
 
-L'application DailyBank destinée à être utilisée par une agence bancaire. Elle doit permettre de gérer des comptes bancaires de dépôt de clients préalablement créés. 
+L'application DailyBank est destinée à être utilisée par une agence bancaire. Elle doit permettre de gérer des comptes bancaires de dépôt de clients préalablement créés. 
 
-Elle devra donc en conséquence permettre de créditer, débiter un compte soit par virement, c'est à dire un échange d'argent entre deux comptes distincts mais domiciliés dans le réseau bancaire, soit par une personne physique se présentant devant son guichet.
+Elle devra en conséquence permettre de créditer et débiter un compte soit par virement, c'est à dire un échange d'argent entre deux comptes distincts mais domiciliés dans le réseau bancaire, soit par une personne physique se présentant devant son guichet.
 
 == Architecture : 
 
