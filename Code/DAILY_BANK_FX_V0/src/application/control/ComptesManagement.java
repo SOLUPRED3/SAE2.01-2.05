@@ -1,6 +1,7 @@
 package application.control;
 
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.Random;
 
 import application.DailyBankApp;
@@ -11,7 +12,10 @@ import application.tools.StageManagement;
 import application.view.ComptesManagementController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -68,49 +72,17 @@ public class ComptesManagement {
 		OperationsManagement om = new OperationsManagement(this.primaryStage, this.dbs, this.clientDesComptes, cpt);
 		om.doOperationsManagementDialog();
 	}
-
+	
+	
 	public CompteCourant creerCompte() {
 		CompteCourant compte;
 		AccessCompteCourant accessCompte = new AccessCompteCourant();
-		AccessAgenceBancaire accessAgence = new AccessAgenceBancaire() ;
-		AccessClient accessClient = new AccessClient() ; 
 		CompteEditorPane cep = new CompteEditorPane(this.primaryStage, this.dbs);
 		compte = cep.doCompteEditorDialog(this.clientDesComptes, null, EditionMode.CREATION);
 		System.out.println(compte.toString());  
 		if (compte != null) {
 			try {
 				// Temporaire jusqu'à implémentation
-
-				// TODO : enregistrement du nouveau compte en BDD (la BDD donne de nouvel id
-				// dans "compte")
-				
-
-				/* ------ Peut être utile plus tard --------
-				  
-				 
-				ArrayList<AgenceBancaire> listeAgence = accessAgence.getAgenceBancaires() ; 
-
-				ArrayList<Client> fullClients = new ArrayList<>();
-				
-				for(int i = 0 ; i < listeAgence.size(); i ++) {
-					ArrayList<Client> listeClients = accessClient.getClients(listeAgence.get(i).idAg, 0, null, null) ;
-					fullClients.addAll(listeClients) ; 
-				}
-				
-				ArrayList<CompteCourant> finalComptes = new ArrayList<>() ; 
-				for(int i = 0 ; i < listeAgence.size() ; i++) {
-					for(int j = 0 ; i < fullClients.size() ; i++) {
-						ArrayList<CompteCourant> listeComptes = accessCompte.getCompteCourants(fullClients.get(i).idNumCli) ;
-						finalComptes.addAll(listeComptes) ; 
-					}
-				}
-				
-				for (int i = 0 ; i < finalComptes.size() ; i++) {
-					if(finalComptes.get(i).idNumCompte > compte.idNumCompte) {
-						compte.idNumCompte+=1 ; 
-					}
-				}
-				*/
 				
 				accessCompte.enregistrerCompte(compte.idNumCli, compte.debitAutorise, compte.solde, compte.estCloture);
 				
@@ -133,10 +105,42 @@ public class ComptesManagement {
 		return compte;
 	}
 	
-	public int gen() {
-	    Random r = new Random( System.currentTimeMillis() );
-	    return ((1 + r.nextInt(9)) * 10000 + r.nextInt(10000));
+	
+	
+	public void supprimerCompte() {
+		AccessCompteCourant accessCompte = new AccessCompteCourant();
+		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+		alert.setTitle("Confirmation de la cloturation");
+		alert.setContentText("Êtes-vous certain ? ");
+		
+		alert.getButtonTypes().setAll(ButtonType.YES,ButtonType.NO) ;
+
+		Optional<ButtonType> response = alert.showAndWait() ;
+		
+		if(response.orElse(null) == ButtonType.YES) {
+			try {
+				
+				int numCompte = cmc.getNumCompte() ; 
+				System.out.println(numCompte);
+				accessCompte.supprimerCompte(numCompte);
+			
+			
+			}catch (DatabaseConnexionException e) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
+				ed.doExceptionDialog();
+				this.primaryStage.close();
+			} catch (ApplicationException ae) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
+				ed.doExceptionDialog();
+			}
+			
+		}
+		else if(response.orElse(null) == ButtonType.NO) {
+			System.out.println("On reste encore un peu...") ;
+		}
+		
 	}
+
 	
 	public ArrayList<CompteCourant> getComptesDunClient() {
 		ArrayList<CompteCourant> listeCpt = new ArrayList<>();

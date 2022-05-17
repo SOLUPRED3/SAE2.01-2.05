@@ -63,6 +63,13 @@ public class ComptesManagementController implements Initializable {
 	public void displayDialog() {
 		this.primaryStage.showAndWait();
 	}
+	
+	public int getNumCompte() {
+		int value = lvComptes.getSelectionModel().getSelectedItem().idNumCompte ;
+		//String value = Integer.toString(numCompte) ;
+		return value ; 
+	}
+	
 
 	// Gestion du stage
 	private Object closeWindow(WindowEvent e) {
@@ -109,6 +116,16 @@ public class ComptesManagementController implements Initializable {
 
 	@FXML
 	private void doSupprimerCompte() {
+		this.cm.supprimerCompte() ;
+		this.loadList();
+		
+	}
+	
+	private String getEstCloture() {
+		if(this.lvComptes.getSelectionModel().getSelectedIndex() > 0 && this.lvComptes.getSelectionModel().getSelectedItem().estCloture.equals("N")) {
+			return this.lvComptes.getSelectionModel().getSelectedItem().estCloture ; 
+		}
+		else return "O" ; 
 	}
 
 	@FXML
@@ -118,6 +135,7 @@ public class ComptesManagementController implements Initializable {
 		if (compte != null) {
 			this.olCompteCourant.add(compte);
 		}
+		this.loadList();
 	}
 
 	private void loadList () {
@@ -135,10 +153,14 @@ public class ComptesManagementController implements Initializable {
 		this.btnSupprCompte.setDisable(true);
 
 		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
-		if (selectedIndice >= 0) {
+		if (selectedIndice >= 0 && getEstCloture().equals("O")) {
 			this.btnVoirOpes.setDisable(false);
+			this.btnSupprCompte.setDisable(true);
+			this.btnModifierCompte.setDisable(true);
 		} else {
-			this.btnVoirOpes.setDisable(true);
+			this.btnVoirOpes.setDisable(false);
+			this.btnSupprCompte.setDisable(false);
+			this.btnModifierCompte.setDisable(false);
 		}
 	}
 }

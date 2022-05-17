@@ -112,6 +112,40 @@ public class AccessCompteCourant {
 
 	}
 	
+	public void supprimerCompte(int pfNumCompte)
+			throws DataAccessException, DatabaseConnexionException, RowNotFoundOrTooManyRowsException {
+
+		try {
+			Connection con = LogToDatabase.getConnexion();
+			
+			String query = "UPDATE COMPTECOURANT "+ "SET ESTCLOTURE = 'O', SOLDE = ?" +
+			"WHERE IDNUMCOMPTE = ?" ; 
+			
+			PreparedStatement pst = con.prepareStatement(query);
+			
+			pst.setInt(2, pfNumCompte);
+			pst.setInt(1, 0);
+			
+			int result = pst.executeUpdate();
+			
+			System.err.println(result);
+			if (result != 1) {
+			        con.rollback();
+			        throw new RowNotFoundOrTooManyRowsException(Table.Client, Order.INSERT,
+			                        "Insert anormal (insert de moins ou plus d'une ligne)", null, result);
+			} else {
+			    con.commit();
+			}
+			
+			System.err.println(query);
+			pst.close();
+			
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.CompteCourant, Order.SELECT, "Erreur accès", e);
+		}
+
+	}
+	
 	/**
 	 * Recherche d'un CompteCourant à partir de son id (idNumCompte).
 	 *

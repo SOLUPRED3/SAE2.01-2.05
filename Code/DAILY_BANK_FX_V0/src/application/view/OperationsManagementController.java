@@ -110,6 +110,11 @@ public class OperationsManagementController implements Initializable {
 		// Non implémenté => désactivé
 		this.btnCredit.setDisable(true);
 		this.btnDebit.setDisable(false);
+		
+		if(this.compteConcerne.estCloture.equals("O")) {
+			this.btnCredit.setDisable(true);
+			this.btnDebit.setDisable(true);
+		}
 	}
 
 	private void updateInfoCompteClient() {
