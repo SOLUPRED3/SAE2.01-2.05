@@ -2,40 +2,45 @@
 Thomas Falsimagne, Tilian Hure, Maxime Dourlent
 v1.0, 2022-04-21
 
-== Présentation de l'application : 
+== Présentation de l'application :
 
-L'application DailyBank est destinée à être utilisée par une agence bancaire. Elle doit permettre de gérer des comptes bancaires de dépôt de clients préalablement créés. 
-
+L'application DailyBank est destinée à être utilisée par une agence bancaire. Elle doit permettre de gérer des comptes bancaires de dépôt de clients préalablement créés.
 Elle devra en conséquence permettre de créditer et débiter un compte soit par virement, c'est à dire un échange d'argent entre deux comptes distincts mais domiciliés dans le réseau bancaire, soit par une personne physique se présentant devant son guichet.
 
-== Architecture : 
-
-== Présentation et explication de tous les diagrammes demandés : 
-
-=== Use Case V0 : 
+== Architecture :
 
 image::images/uc0.svg[]
 
-Ici, nous avons le diagramme des cas d'utilisation initial. 
-Nous allons ici expliquer ce qu'il représente et ce qu'il veut décrire. 
+Ici, nous avons le diagramme des cas d'utilisation initial.
+Nous allons ici expliquer ce qu'il représente et ce qu'il veut décrire.
 
-Commençons par décrire les actions du guichetier : 
 
-* le guichetier peut modifier les informations du client. Il peut donc modifier le nom du client, son adresse, etc. 
+== Présentation et explication de tous les diagrammes demandés :
 
+
+Commençons par décrire les actions du guichetier :
+
+* le guichetier peut modifier les informations du client. Il peut donc modifier le nom du client, son adresse, etc.
+
+image::images/modifierInfo.svg[]
 * Il est également possible pour lui de créer un nouveau client.
 
+image::images/creerClient.svg[]
 * Il peut consulter un compte
+
+image::images/consulterCompte.svg[]
 
 * Il peut débiter un compte
 
+image::images/debiterCompte.svg[]
 
-NOTE: Concernant ce que peut faire le chef d'agence, il peut simplement rendre inactif un client.
 
-=== Diagramme de classe V0 : 
+NOTE: Concernant ce que peut faire le chef d'agence, il peut faire tout ce que peut faire un guichetier avec la possibilité de rendre inactif un client.
 
-N'ayant pas le code, il nous est impossible de réaliser le diagramme de classe. 
+=== Diagramme de classe V0 :
 
-== Éléments de code significatifs : 
+N'ayant pas le code, il nous est impossible de réaliser le diagramme de classe.
+
+== Éléments de code significatifs :
 
 Pour la même raison énoncée ci-dessus il nous est impossible d'apporter des éléments dans cette section.
