@@ -2,9 +2,9 @@
 Thomas Falsimagne, Tilian Hure, Maxime Dourlent
 v1.0, 2022-04-21
 
-== Présentation de l'application :
+== I. Présentation de l'application :
 
-=== Use Case Global :
+=== 1. Use Case Global :
 
 image::images/uc0.svg[]
 
@@ -16,15 +16,15 @@ Selon que l'utilisateur soit guichetier ou chef d'agence, il a des droits d'admi
 Un guichetier peut modifier les informations d'un client, créer un nouveau client, consulter un compte et débiter un compte.
 Un chef d'agence peut faire toutes ces actions et peut en plus rendre inactif un client.
 
-=== Diagramme de classe des données global :
+=== II. Diagramme de classe des données global :
 
 image::images/DC0.svg[]
 
 
 
-== Architecture :
+== III. Architecture :
 
-=== Architecture générale
+=== 1. Architecture générale
 
 [.text-justify]
 Pour l'application de la banque DailyBank, l'architecture générale est assez simple.
@@ -36,8 +36,8 @@ Ces postes de travails sont les ordinateurs où travaillent les employés et les
 Concernant la base de données, elle permet de stocker toutes les informations relatives à l'agence bancaire.
 Que ce soit les informations des employés, des clients, des comptes et des opérations.
 
-=== Ressources externes :
-==== Librairies utilisées :
+=== 2. Ressources externes :
+==== 2.1. Librairies utilisées :
 
 [.text-justify]
 Au niveau des librairies, le code de l'application repose sur une librairie qui permet de lier l'application à la base de données. +
@@ -51,18 +51,25 @@ prérequis, simplement une JRE.
 Il faut donc s'assurer que les postes de travail des employés possèdent une JRE 1.8 pour pouvoir faire fonctionner
 le .jar sans encombre.
 
-=== Structuration de l'application :
+=== 4. Structuration de l'application :
 [.text-justify]
 Le code de l'application est structuré en plusieurs packages.
 Les packages Model, View, Controller et Tools.
 [.text-justify]
 Le principe retenu qui a conduit à cette structuration est le MCV pattern.
 
-=== Éléments essentiels :
+[.text-justify]
+Modèle-vue-contrôleur ou MVC est un motif d'architecture logiciel destiné aux interfaces graphiques lancé en 1978 et très populaire pour les applications web. Le motif est composé de trois types de modules ayant trois responsabilités différentes : les modèles, les vues et les contrôleurs.
+
+
+=== 5. Éléments essentiels :
+
+
 [.text-justify]
 Si le code de l'application devait être repris pour être amélioré ou modifié, le développeur devra avoir au préalable
 une JRE version 1.8.
 Il faudra ensuite qu'il ait pour environnement de développement le logiciel Eclipse.
+Il devra également avoir un Workspace configuré en JavaFX avec le logiciel SceneBuilder intégré dans le buildpath.
 
 
 
@@ -82,33 +89,31 @@ Il faudra ensuite qu'il ait pour environnement de développement le logiciel Ecl
 
 
 
+== IV. Description et explication des fonctionnalités implémentées :
 
-== Présentation et explication de tous les diagrammes demandés :
+=== 1. Guichetier
 
+==== 1.1 Modifier info client :
 
-Commençons par décrire les actions du guichetier :
-
-* le guichetier peut modifier les informations du client. Il peut donc modifier le nom du client, son adresse, etc.
+le guichetier peut modifier les informations du client. Il peut donc modifier le nom du client, son adresse, etc.
 
 image::images/modifierInfo.svg[]
-* Il est également possible pour lui de créer un nouveau client.
+
+==== 1.2 Modifier info client :
+
+Il est également possible pour lui de créer un nouveau client.
+
+==== 1.3 Créer un client :
 
 image::images/creerClient.svg[]
-* Il peut consulter un compte
+Il peut consulter un compte
 
+==== 1.4 Consulter un compte :
 image::images/consulterCompte.svg[]
 
-* Il peut débiter un compte
+
+==== 1.5 Débiter un compte :
+
+Il peut débiter un compte
 
 image::images/debiterCompte.svg[]
-
-
-NOTE: Concernant ce que peut faire le chef d'agence, il peut faire tout ce que peut faire un guichetier avec la possibilité de rendre inactif un client.
-
-=== Diagramme de classe V0 :
-
-N'ayant pas le code, il nous est impossible de réaliser le diagramme de classe.
-
-== Éléments de code significatifs :
-
-Pour la même raison énoncée ci-dessus il nous est impossible d'apporter des éléments dans cette section.
