@@ -87,7 +87,7 @@ Le package application correspond à la partie View et la partie Controller avec
 Le package Model correspond à la partie Model du pattern MVC.
 
 . data -> Package qui contient les fichiers représentant les personnes réelles et l'agence bancaire.
-. orm -> Package qui contient les fichiers permettant la liaison à la base de données +
+. orm -> Package qui contient les fichiers permettant la liaison à la base de données et
 contient également le sous-package Exception contenant les fichiers java permettant de gérer les exceptions 
 
 
@@ -102,23 +102,6 @@ Si le code de l'application devait être repris pour être amélioré ou modifi�
 une JRE version 1.8.
 Il faudra ensuite qu'il ait pour environnement de développement le logiciel Eclipse.
 Il devra également avoir un Workspace configuré en JavaFX avec le logiciel SceneBuilder intégré dans le buildpath.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 == IV. Description et explication des fonctionnalités implémentées :
