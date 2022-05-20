@@ -61,7 +61,7 @@ Le principe retenu qui a conduit à cette structuration est le MCV pattern.
 [.text-justify]
 Modèle-vue-contrôleur ou MVC est un motif d'architecture logiciel destiné aux interfaces graphiques lancé en 1978 et très populaire pour les applications web. Le motif est composé de trois types de modules ayant trois responsabilités différentes : les modèles, les vues et les contrôleurs.
 
-==== Aperçu de la structuration de DailyBankApp : 
+==== 3.1 Aperçu de la structuration de DailyBankApp : 
 
 [source]
 ----
@@ -75,7 +75,7 @@ Modèle-vue-contrôleur ou MVC est un motif d'architecture logiciel destiné aux
             └── exception
 ----
 
-==== Package Application : 
+==== 3.2 Package Application : 
 
 Le package application correspond à la partie View et la partie Controller avec ses deux packages "view" et "control" par rapport au pattern MVC. 
 . control --> Fichiers permettant d'afficher les différentes fenêtres. 
