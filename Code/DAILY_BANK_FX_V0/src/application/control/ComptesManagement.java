@@ -30,15 +30,26 @@ import model.orm.exception.DatabaseConnexionException;
 import model.orm.exception.Order;
 import model.orm.exception.Table;
 
+/**
+ * @author falsimagne
+ *
+ */
 public class ComptesManagement {
 
 	private Stage primaryStage;
 	private ComptesManagementController cmc;
 	private DailyBankState dbs;
 	private Client clientDesComptes;
-
+	
+	/*
+	 * Constructueur ComptesManagement
+	 * 
+	 * @param IN : Stage _parentStage 
+	 * @param IN : DailyBankState _dbstate 
+	 * @param IN : Client client 
+	 */
 	public ComptesManagement(Stage _parentStage, DailyBankState _dbstate, Client client) {
-
+		
 		this.clientDesComptes = client;
 		this.dbs = _dbstate;
 		try {
@@ -63,17 +74,28 @@ public class ComptesManagement {
 			e.printStackTrace();
 		}
 	}
-
+	
+	
+	/*
+	 * Procédure qui permet d'afficher la page du compte.
+	 */
 	public void doComptesManagementDialog() {
 		this.cmc.displayDialog();
 	}
-
+	
+	/*
+	 * Procédure qui permet de gérer les opérations d'un client sur un compte.
+	 * @param IN : CompteCourant cpt 
+	 */
 	public void gererOperations(CompteCourant cpt) {
 		OperationsManagement om = new OperationsManagement(this.primaryStage, this.dbs, this.clientDesComptes, cpt);
 		om.doOperationsManagementDialog();
 	}
 	
 	
+	/*
+	 * Fonction qui permet de créer un compte.
+	 */
 	public CompteCourant creerCompte() {
 		CompteCourant compte;
 		AccessCompteCourant accessCompte = new AccessCompteCourant();
@@ -84,7 +106,7 @@ public class ComptesManagement {
 			try {
 				// Temporaire jusqu'à implémentation
 				
-				accessCompte.enregistrerCompte(compte.idNumCli, compte.debitAutorise, compte.solde, compte.estCloture);
+				accessCompte.enregistrerCompte(compte.idNumCli, -compte.debitAutorise, compte.solde, compte.estCloture);
 				
 				
 				// if JAMAIS vrai
@@ -107,11 +129,16 @@ public class ComptesManagement {
 	
 	
 	
-	public void supprimerCompte() {
+	
+	/**
+	 * Procédure qui permet de cloturer un compte et d'enregistrer les modifications dans la base de données.
+	 * 
+	 */
+	public void cloturerCompte() {
 		AccessCompteCourant accessCompte = new AccessCompteCourant();
 		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-		alert.setTitle("Confirmation de la cloturation");
-		alert.setContentText("Êtes-vous certain ? ");
+		alert.setTitle("Confirmation");
+		alert.setContentText("Êtes-vous certain(e) de vouloir clôturer ce compte ? ");
 		
 		alert.getButtonTypes().setAll(ButtonType.YES,ButtonType.NO) ;
 
@@ -122,7 +149,7 @@ public class ComptesManagement {
 				
 				int numCompte = cmc.getNumCompte() ; 
 				System.out.println(numCompte);
-				accessCompte.supprimerCompte(numCompte);
+				accessCompte.cloturerCompte(numCompte);
 			
 			
 			}catch (DatabaseConnexionException e) {
@@ -142,6 +169,11 @@ public class ComptesManagement {
 	}
 
 	
+	/**
+	 * Permet de retourner une ArrayList de comptes d'un client.
+	 * 
+	 * @return ArrayList<CompteCourant>
+	 */
 	public ArrayList<CompteCourant> getComptesDunClient() {
 		ArrayList<CompteCourant> listeCpt = new ArrayList<>();
 

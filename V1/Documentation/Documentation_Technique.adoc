@@ -4,15 +4,83 @@ v1.0, 2022-04-21
 
 == Présentation de l'application :
 
-L'application DailyBank est destinée à être utilisée par une agence bancaire. Elle doit permettre de gérer des comptes bancaires de dépôt de clients préalablement créés.
-Elle devra en conséquence permettre de créditer et débiter un compte soit par virement, c'est à dire un échange d'argent entre deux comptes distincts mais domiciliés dans le réseau bancaire, soit par une personne physique se présentant devant son guichet.
-
-== Architecture :
+=== Use Case Global :
 
 image::images/uc0.svg[]
 
-Ici, nous avons le diagramme des cas d'utilisation initial.
-Nous allons ici expliquer ce qu'il représente et ce qu'il veut décrire.
+[.text-justify]
+Voici le Use Case Global de la V0 de l'application DailyBank.
+Il y a deux types d'utilisateurs, les guichetiers et les chefs d'agence.
+Selon que l'utilisateur soit guichetier ou chef d'agence, il a des droits d'administration qui sont différents.
+[.text-justify]
+Un guichetier peut modifier les informations d'un client, créer un nouveau client, consulter un compte et débiter un compte.
+Un chef d'agence peut faire toutes ces actions et peut en plus rendre inactif un client.
+
+=== Diagramme de classe des données global :
+
+image::images/DC0.svg[]
+
+
+
+== Architecture :
+
+=== Architecture générale
+
+[.text-justify]
+Pour l'application de la banque DailyBank, l'architecture générale est assez simple.
+l'application est basée sur un fonctionnement centralisé, avec des postes de travails
+qui sont directement reliés à une base de données.
+
+[.text-justify]
+Ces postes de travails sont les ordinateurs où travaillent les employés et les chefs d'agence.
+Concernant la base de données, elle permet de stocker toutes les informations relatives à l'agence bancaire.
+Que ce soit les informations des employés, des clients, des comptes et des opérations.
+
+=== Ressources externes :
+==== Librairies utilisées :
+
+[.text-justify]
+Au niveau des librairies, le code de l'application repose sur une librairie qui permet de lier l'application à la base de données. +
+Cette librairie est : *objdbc6.jar*
+
+[.text-justify]
+L'application est généré en .jar, jar qui est de type "ojdbc6" et qui permet de lancer DailyBankApp sans
+prérequis, simplement une JRE.
+
+[.text-justify]
+Il faut donc s'assurer que les postes de travail des employés possèdent une JRE 1.8 pour pouvoir faire fonctionner
+le .jar sans encombre.
+
+=== Structuration de l'application :
+[.text-justify]
+Le code de l'application est structuré en plusieurs packages.
+Les packages Model, View, Controller et Tools.
+[.text-justify]
+Le principe retenu qui a conduit à cette structuration est le MCV pattern.
+
+=== Éléments essentiels :
+[.text-justify]
+Si le code de l'application devait être repris pour être amélioré ou modifié, le développeur devra avoir au préalable
+une JRE version 1.8.
+Il faudra ensuite qu'il ait pour environnement de développement le logiciel Eclipse.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 == Présentation et explication de tous les diagrammes demandés :

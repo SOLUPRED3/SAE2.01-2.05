@@ -91,7 +91,8 @@ public class DailyBankMainFrame extends Application {
 			System.exit(-1);
 		}
 	}
-
+	
+	
 	public static void runApp() {
 		Application.launch();
 	}
@@ -139,5 +140,10 @@ public class DailyBankMainFrame extends Application {
 	public void gestionClients() {
 		ClientsManagement cm = new ClientsManagement(this.primaryStage, this.dbs);
 		cm.doClientManagementDialog();
+	}
+	
+	public void gestionEmployes() {
+		EmployesManagement cm = new EmployesManagement(this.primaryStage, this.dbs);
+		cm.doEmployeManagementDialog();
 	}
 }
