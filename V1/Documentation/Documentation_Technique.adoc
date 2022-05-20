@@ -79,9 +79,16 @@ Modèle-vue-contrôleur ou MVC est un motif d'architecture logiciel destiné aux
 
 Le package application correspond à la partie View et la partie Controller avec ses deux packages "view" et "control" par rapport au pattern MVC.
 
-. control -> Fichiers permettant d'afficher les différentes fenêtres. 
-. tools -> Permet de gérer certaines parties du code.
-. view -> Package contenant les controllers des différentes fenêtres avec les fichiers fxml correspondants. 
+. control -> Contient les fichiers permettant d'afficher les différentes fenêtres. 
+. tools -> Contient les fichiers permettant de gérer certaines parties du code.
+. view -> Contient les controllers des différentes fenêtres avec les fichiers fxml correspondants. 
+
+==== 3.3 Package Model : 
+Le package Model correspond à la partie Model du pattern MVC.
+
+. data -> Package qui contient les fichiers représentant les personnes réelles et l'agence bancaire.
+. orm -> Package qui contient les fichiers permettant la liaison à la base de données +
+contient également le sous-package Exception contenant les fichiers java permettant de gérer les exceptions 
 
 
 
