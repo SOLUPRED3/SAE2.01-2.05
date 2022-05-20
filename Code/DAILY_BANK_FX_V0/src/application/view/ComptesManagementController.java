@@ -128,24 +128,12 @@ public class ComptesManagementController implements Initializable {
 	 * Procédure qui permet de clôturer un compte en appuyant sur le bouton.
 	 */
 	@FXML
-<<<<<<< HEAD
-<<<<<<< HEAD
 	private void doCloturerCompte() {
 		this.cm.cloturerCompte() ;
 		this.loadList();
-		
-=======
-	private void doSupprimerCompte() {
-		this.cm.supprimerCompte() ;
-		this.loadList();		
->>>>>>> 988a6be7dc6bef29bb600fed5d98dd7fdd3d32ca
-=======
-	private void doSupprimerCompte() {
-		this.cm.supprimerCompte() ;
-		this.loadList();		
->>>>>>> 988a6be7dc6bef29bb600fed5d98dd7fdd3d32ca
 	}
 	
+
 	/*
 	 * Fonction qui permet de savoir si le compte sélectionné sur la viewlist est clôturé ou non.
 	 */
@@ -155,17 +143,10 @@ public class ComptesManagementController implements Initializable {
 		}
 		else return "O" ; 
 	}
-
-<<<<<<< HEAD
-<<<<<<< HEAD
 	
 	/*
 	 * Permet d'appeler la fonction creerCompte() en appuyant sur le boutons "Créer Compte".
 	 */
-=======
->>>>>>> 988a6be7dc6bef29bb600fed5d98dd7fdd3d32ca
-=======
->>>>>>> 988a6be7dc6bef29bb600fed5d98dd7fdd3d32ca
 	@FXML
 	private void doNouveauCompte() {
 		CompteCourant compte;

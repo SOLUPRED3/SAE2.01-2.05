@@ -106,7 +106,7 @@ public class ComptesManagement {
 			try {
 				// Temporaire jusqu'à implémentation
 				
-				accessCompte.enregistrerCompte(compte.idNumCli, compte.debitAutorise, compte.solde, compte.estCloture);
+				accessCompte.enregistrerCompte(compte.idNumCli, -compte.debitAutorise, compte.solde, compte.estCloture);
 				
 				
 				// if JAMAIS vrai
