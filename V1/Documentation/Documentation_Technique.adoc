@@ -40,11 +40,11 @@ Que ce soit les informations des employés, des clients, des comptes et des opé
 ==== 2.1. Librairies utilisées :
 
 [.text-justify]
-Au niveau des librairies, le code de l'application repose sur une librairie qui permet de lier l'application à la base de données. +
+Au niveau des librairies, le code de l'application repose sur une seule librairie qui permet de lier l'application à la base de données. +
 Cette librairie est : *objdbc6.jar*
 
 [.text-justify]
-L'application est généré en .jar, jar qui est de type "ojdbc6" et qui permet de lancer DailyBankApp sans
+L'application est généré en .jar, ce qui permet de lancer DailyBankApp sans
 prérequis, simplement une JRE.
 
 [.text-justify]
@@ -61,6 +61,8 @@ Le principe retenu qui a conduit à cette structuration est le MCV pattern.
 [.text-justify]
 Modèle-vue-contrôleur ou MVC est un motif d'architecture logiciel destiné aux interfaces graphiques lancé en 1978 et très populaire pour les applications web. Le motif est composé de trois types de modules ayant trois responsabilités différentes : les modèles, les vues et les contrôleurs.
 
+==== Aperçu de la structuration de DailyBankApp : 
+
 [source]
 ----
 ├── application
@@ -72,6 +74,17 @@ Modèle-vue-contrôleur ou MVC est un motif d'architecture logiciel destiné aux
         └── orm
             └── exception
 ----
+
+==== Package Application : 
+
+Le package application correspond à la partie View et la partie Controller avec ses deux packages "view" et "control" par rapport au pattern MVC. 
+. control --> Fichiers permettant d'afficher les différentes fenêtres. 
+. tools --> Permet de gérer certaines parties du code.
+. view --> Package contenant les controllers des différentes fenêtres avec les fichiers fxml correspondants. 
+
+
+
+
 
 === 4. Éléments essentiels :
 
