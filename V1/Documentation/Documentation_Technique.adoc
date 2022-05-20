@@ -58,20 +58,13 @@ Les packages Model, View, Controller et Tools.
 [.text-justify]
 Le principe retenu qui a conduit à cette structuration est le MCV pattern.
 
-`src
-    ├── application
-    │   ├── control
-    │   ├── tools
-    │   └── view
-    └── model
-        ├── data
-        └── orm
-            └── exception
-`
+
+
 
 [.text-justify]
 Modèle-vue-contrôleur ou MVC est un motif d'architecture logiciel destiné aux interfaces graphiques lancé en 1978 et très populaire pour les applications web. Le motif est composé de trois types de modules ayant trois responsabilités différentes : les modèles, les vues et les contrôleurs.
 
+image::images/structure.svg[]
 
 === 4. Éléments essentiels :
 
