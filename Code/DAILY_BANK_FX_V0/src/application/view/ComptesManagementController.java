@@ -128,10 +128,16 @@ public class ComptesManagementController implements Initializable {
 	 * Procédure qui permet de clôturer un compte en appuyant sur le bouton.
 	 */
 	@FXML
+<<<<<<< HEAD
 	private void doCloturerCompte() {
 		this.cm.cloturerCompte() ;
 		this.loadList();
 		
+=======
+	private void doSupprimerCompte() {
+		this.cm.supprimerCompte() ;
+		this.loadList();		
+>>>>>>> 988a6be7dc6bef29bb600fed5d98dd7fdd3d32ca
 	}
 	
 	/*
@@ -144,10 +150,13 @@ public class ComptesManagementController implements Initializable {
 		else return "O" ; 
 	}
 
+<<<<<<< HEAD
 	
 	/*
 	 * Permet d'appeler la fonction creerCompte() en appuyant sur le boutons "Créer Compte".
 	 */
+=======
+>>>>>>> 988a6be7dc6bef29bb600fed5d98dd7fdd3d32ca
 	@FXML
 	private void doNouveauCompte() {
 		CompteCourant compte;
@@ -155,7 +164,7 @@ public class ComptesManagementController implements Initializable {
 		if (compte != null) {
 			this.olCompteCourant.add(compte);
 			this.loadList();
-		}
+		}		
 	}
 	
 	/*
@@ -174,26 +183,25 @@ public class ComptesManagementController implements Initializable {
 	 * Procédure qui permet de gérer les boutons en fonction des situations.
 	 */
 	private void validateComponentState() {
-		this.btnModifierCompte.setDisable(true);
-		this.btnSupprCompte.setDisable(true);
+        this.btnModifierCompte.setDisable(true);
+        this.btnSupprCompte.setDisable(true);
 
-		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
-		if(selectedIndice >=0) {
-			if (getEstCloture().equals("O")) {
-				this.btnVoirOpes.setDisable(false);
-				this.btnSupprCompte.setDisable(true);
-				this.btnModifierCompte.setDisable(true);
-			} else {
-				this.btnVoirOpes.setDisable(false);
-				this.btnSupprCompte.setDisable(false);
-				this.btnModifierCompte.setDisable(false);
-			}
-		}
-		else {
-			this.btnVoirOpes.setDisable(true);
-			this.btnSupprCompte.setDisable(true);
-			this.btnModifierCompte.setDisable(true);
-		}
-		
-	}
+        int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
+        if(selectedIndice >=0) {
+            if (getEstCloture().equals("O")) {
+                this.btnVoirOpes.setDisable(false);
+                this.btnSupprCompte.setDisable(true);
+                this.btnModifierCompte.setDisable(true);
+            } else {
+                this.btnVoirOpes.setDisable(false);
+                this.btnSupprCompte.setDisable(false);
+                this.btnModifierCompte.setDisable(false);
+            }
+        }
+        else {
+            this.btnVoirOpes.setDisable(true);
+            this.btnSupprCompte.setDisable(true);
+            this.btnModifierCompte.setDisable(true);
+        }        
+    }
 }
