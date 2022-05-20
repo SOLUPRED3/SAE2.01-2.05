@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="88px" preserveAspectRatio="none" style="width:320px;height:88px;background:#FFFFFF;" version="1.1" viewBox="0 0 320 88" width="320px" zoomAndPan="magnify"><defs/><g><g id="elem_fonctionnalite"><ellipse cx="228.0998" cy="44.22" fill="#F1F1F1" rx="86.5998" ry="19.72" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="134" x="161.0998" y="47.0666">Gérer les employés</text></g><!--MD5=[ff8250f90b990ced6bd2564acf1d7da5]
+entity chef--><g id="elem_chef"><ellipse cx="56" cy="22" fill="#F1F1F1" rx="16" ry="16" style="stroke:#181818;stroke-width:1.5;"/><path d="M56,42 C60,42 63,42 67,38 C75,38 83,46 83,54 L83,58 C83,62 79,66 75,66 L37,66 C33,66 29,62 29,58 L29,54 C29,46 37,38 45,38 C49,42 52,42 56,42 " fill="#F1F1F1" style="stroke:#181818;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100" x="6" y="80.4951">Chef d'agence</text></g><!--MD5=[c6eb4afcfd67f5cfac6f524e8f815556]
+link chef to fonctionnalite--><g id="link_chef_fonctionnalite"><path d="M106.05,44 C116.06,44 126.07,44 136.07,44 " fill="none" id="chef-to-fonctionnalite" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="141.3,44,132.3,40,136.3,44,132.3,48,141.3,44" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[ba33f9203b35bd55923087f5cce1f6a1]
+@startuml
+skinparam actorStyle awesome
+
+usecase fonctionnalite as "Gérer les employés"
+
+actor chef as "Chef d'agence"
+
+chef -> fonctionnalite
+@enduml
+
+PlantUML version 1.2022.4(Sat Apr 09 13:29:17 UTC 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

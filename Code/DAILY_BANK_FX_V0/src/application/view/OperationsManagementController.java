@@ -103,18 +103,18 @@ public class OperationsManagementController implements Initializable {
 	}
 
 	@FXML
-	private void doAutre() {
+	private void doAutre() { //Viremments
+		Operation op = this.om.enregistrerDebit();
+		if (op != null) {
+			this.updateInfoCompteClient();
+			this.validateComponentState();
+		}
 	}
 
 	private void validateComponentState() {
 		// Non implémenté => désactivé
 		this.btnCredit.setDisable(true);
 		this.btnDebit.setDisable(false);
-		
-		if(this.compteConcerne.estCloture.equals("O")) {
-			this.btnCredit.setDisable(true);
-			this.btnDebit.setDisable(true);
-		}
 	}
 
 	private void updateInfoCompteClient() {

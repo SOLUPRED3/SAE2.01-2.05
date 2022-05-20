@@ -49,11 +49,14 @@ public class OperationEditorPaneController implements Initializable {
 	public Operation displayDialog(CompteCourant cpte, CategorieOperation mode) {
 		this.categorieOperation = mode;
 		this.compteEdite = cpte;
+		
+		String info;
+		ObservableList<String> list;
 
 		switch (mode) {
 		case DEBIT:
 
-			String info = "Cpt. : " + this.compteEdite.idNumCompte + "  "
+			info = "Cpt. : " + this.compteEdite.idNumCompte + "  "
 					+ String.format(Locale.ENGLISH, "%12.02f", this.compteEdite.solde) + "  /  "
 					+ String.format(Locale.ENGLISH, "%8d", this.compteEdite.debitAutorise);
 			this.lblMessage.setText(info);
@@ -61,7 +64,7 @@ public class OperationEditorPaneController implements Initializable {
 			this.btnOk.setText("Effectuer Débit");
 			this.btnCancel.setText("Annuler débit");
 
-			ObservableList<String> list = FXCollections.observableArrayList();
+			list = FXCollections.observableArrayList();
 
 			for (String tyOp : ConstantesIHM.OPERATIONS_DEBIT_GUICHET) {
 				list.add(tyOp);
@@ -75,6 +78,28 @@ public class OperationEditorPaneController implements Initializable {
 					AlertType.ERROR);
 			return null;
 		// break;
+		case VIREMENT:
+			
+			info = "Cpt. : " + this.compteEdite.idNumCompte + "  "
+					+ String.format(Locale.ENGLISH, "%12.02f", this.compteEdite.solde) + "  /  "
+					+ String.format(Locale.ENGLISH, "%8d", this.compteEdite.debitAutorise);
+			this.lblMessage.setText(info);
+			
+			this.lblNoCompte.setVisible(true);
+			this.txtNoCompte.setVisible(true);
+
+			this.btnOk.setText("Effectuer virement");
+			this.btnCancel.setText("Annuler virement");
+
+			list = FXCollections.observableArrayList();
+
+			for (String tyOp : ConstantesIHM.OPERATIONS_DEBIT_GUICHET) {
+				list.add(tyOp);
+			}
+
+			this.cbTypeOpe.setItems(list);
+			this.cbTypeOpe.getSelectionModel().select(0);
+			break;			
 		}
 
 		// Paramétrages spécifiques pour les chefs d'agences
@@ -102,9 +127,13 @@ public class OperationEditorPaneController implements Initializable {
 	@FXML
 	private Label lblMontant;
 	@FXML
+	private Label lblNoCompte;
+	@FXML
 	private ComboBox<String> cbTypeOpe;
 	@FXML
 	private TextField txtMontant;
+	@FXML
+	private TextField txtNoCompte;
 	@FXML
 	private Button btnOk;
 	@FXML
@@ -123,6 +152,7 @@ public class OperationEditorPaneController implements Initializable {
 	@FXML
 	private void doAjouter() {
 		switch (this.categorieOperation) {
+		case VIREMENT:
 		case DEBIT:
 			// règles de validation d'un débit :
 			// - le montant doit être un nombre valide
