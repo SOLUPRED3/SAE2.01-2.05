@@ -78,7 +78,8 @@ public class ComptesManagement {
 		CompteCourant compte;
 		AccessCompteCourant accessCompte = new AccessCompteCourant();
 		CompteEditorPane cep = new CompteEditorPane(this.primaryStage, this.dbs);
-		compte = cep.doCompteEditorDialog(this.clientDesComptes, null, EditionMode.CREATION); 
+		compte = cep.doCompteEditorDialog(this.clientDesComptes, null, EditionMode.CREATION);
+		System.out.println(compte.toString());  
 		if (compte != null) {
 			try {
 				// Temporaire jusqu'à implémentation
@@ -109,8 +110,8 @@ public class ComptesManagement {
 	public void supprimerCompte() {
 		AccessCompteCourant accessCompte = new AccessCompteCourant();
 		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-		alert.setTitle("Confirmation de la cloturation");
-		alert.setContentText("Êtes-vous certain ? ");
+		alert.setTitle("Confirmation");
+		alert.setContentText("Êtes-vous certain(e) de vouloir clôturer ce compte ? ");
 		
 		alert.getButtonTypes().setAll(ButtonType.YES,ButtonType.NO) ;
 
