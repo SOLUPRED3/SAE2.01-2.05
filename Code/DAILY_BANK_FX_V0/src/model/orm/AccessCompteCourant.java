@@ -112,7 +112,7 @@ public class AccessCompteCourant {
 
 	}
 	
-	public void supprimerCompte(int pfNumCompte)
+	public void cloturerCompte(int pfNumCompte)
 			throws DataAccessException, DatabaseConnexionException, RowNotFoundOrTooManyRowsException {
 
 		try {

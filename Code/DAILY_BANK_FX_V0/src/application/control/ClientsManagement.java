@@ -51,7 +51,12 @@ public class ClientsManagement {
 	public void doClientManagementDialog() {
 		this.cmc.displayDialog();
 	}
-
+	
+	/*
+	 * Fonction qui permet de retourner un client avec ses informations modifiées.
+	 * @param IN Client c 
+	 * @return Client.
+	 */
 	public Client modifierClient(Client c) {
 		ClientEditorPane cep = new ClientEditorPane(this.primaryStage, this.dbs);
 		Client result = cep.doClientEditorDialog(c, EditionMode.MODIFICATION);
@@ -73,6 +78,10 @@ public class ClientsManagement {
 		return result;
 	}
 
+	/*
+	 * Fonction qui permet de créer un nouveau client.
+	 * @return Client 
+	 */
 	public Client nouveauClient() {
 		Client client;
 		ClientEditorPane cep = new ClientEditorPane(this.primaryStage, this.dbs);
@@ -95,12 +104,24 @@ public class ClientsManagement {
 		}
 		return client;
 	}
-
+	
+	/*
+	 * Procédure qui permet de gérer le compte d'un client 
+	 * @param IN Client c 
+	 */
 	public void gererComptesClient(Client c) {
 		ComptesManagement cm = new ComptesManagement(this.primaryStage, this.dbs, c);
 		cm.doComptesManagementDialog();
 	}
-
+	
+	/*
+	 * Fonction qui permet de retourner ume ArrayList contenant les comptes d'un client.
+	 * @param IN int _numComptes
+	 * @param IN String _debutNom
+	 * @param IN String _debutPrenom 
+	 * 
+	 * @return ArrayList<Client>
+	 */
 	public ArrayList<Client> getlisteComptes(int _numCompte, String _debutNom, String _debutPrenom) {
 		ArrayList<Client> listeCli = new ArrayList<>();
 		try {

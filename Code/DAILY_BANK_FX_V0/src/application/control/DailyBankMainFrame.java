@@ -91,7 +91,8 @@ public class DailyBankMainFrame extends Application {
 			System.exit(-1);
 		}
 	}
-
+	
+	
 	public static void runApp() {
 		Application.launch();
 	}

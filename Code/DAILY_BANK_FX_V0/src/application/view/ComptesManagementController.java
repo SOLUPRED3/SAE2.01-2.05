@@ -93,12 +93,18 @@ public class ComptesManagementController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	}
-
+	
+	/*
+	 * Permet de fermer la page en appuyant sur le bouton annuler.
+	 */
 	@FXML
 	private void doCancel() {
 		this.primaryStage.close();
 	}
-
+	
+	/*
+	 * Procédure qui permet d'appeler la fonction pour voir les opérations.
+	 */
 	@FXML
 	private void doVoirOperations() {
 		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
@@ -109,18 +115,28 @@ public class ComptesManagementController implements Initializable {
 		this.loadList();
 		this.validateComponentState();
 	}
-
+	
+	/*
+	 * Procédure qui permet de modifier un compte.
+	 */
 	@FXML
 	private void doModifierCompte() {
 	}
-
+	
+	
+	/*
+	 * Procédure qui permet de clôturer un compte en appuyant sur le bouton.
+	 */
 	@FXML
-	private void doSupprimerCompte() {
-		this.cm.supprimerCompte() ;
+	private void doCloturerCompte() {
+		this.cm.cloturerCompte() ;
 		this.loadList();
 		
 	}
 	
+	/*
+	 * Fonction qui permet de savoir si le compte sélectionné sur la viewlist est clôturé ou non.
+	 */
 	private String getEstCloture() {
 		if(this.lvComptes.getSelectionModel().getSelectedIndex() >= 0 && this.lvComptes.getSelectionModel().getSelectedItem().estCloture.equals("N")) {
 			return this.lvComptes.getSelectionModel().getSelectedItem().estCloture ; 
@@ -129,6 +145,9 @@ public class ComptesManagementController implements Initializable {
 	}
 
 	
+	/*
+	 * Permet d'appeler la fonction creerCompte() en appuyant sur le boutons "Créer Compte".
+	 */
 	@FXML
 	private void doNouveauCompte() {
 		CompteCourant compte;
@@ -138,7 +157,10 @@ public class ComptesManagementController implements Initializable {
 			this.loadList();
 		}
 	}
-
+	
+	/*
+	 * Procédure qui permet de régénérer la viewlist.
+	 */
 	private void loadList () {
 		ArrayList<CompteCourant> listeCpt;
 		listeCpt = this.cm.getComptesDunClient();
@@ -147,7 +169,10 @@ public class ComptesManagementController implements Initializable {
 			this.olCompteCourant.add(co);
 		}
 	}
-
+	
+	/*
+	 * Procédure qui permet de gérer les boutons en fonction des situations.
+	 */
 	private void validateComponentState() {
 		this.btnModifierCompte.setDisable(true);
 		this.btnSupprCompte.setDisable(true);

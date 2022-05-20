@@ -61,7 +61,10 @@ public class OperationsManagement {
 	public void doOperationsManagementDialog() {
 		this.omc.displayDialog();
 	}
-
+	
+	/*
+	 * Fonction qui permet d'enregistrer un débit dans la base de données.
+	 */
 	public Operation enregistrerDebit() {
 
 		OperationEditorPane oep = new OperationEditorPane(this.primaryStage, this.dbs);
@@ -85,7 +88,12 @@ public class OperationsManagement {
 		}
 		return op;
 	}
-
+	
+	/*
+	 * Fonction qui permet de retourner les opérations et le solde d'un compte.
+	 * 
+	 * @return PairsOfValue<CompteCourant, ArrayList<Operation>> 
+	 */
 	public PairsOfValue<CompteCourant, ArrayList<Operation>>  operationsEtSoldeDunCompte() {
 		ArrayList<Operation> listeOP = new ArrayList<>();
 
