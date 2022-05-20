@@ -156,6 +156,28 @@ public class AccessOperation {
 			throw new DataAccessException(Table.Operation, Order.INSERT, "Erreur accès", e);
 		}
 	}
+	
+	public void insertCredit(int idNumCompte, double montant, String typeOp) 
+			throws DatabaseConnexionException, DataAccessException {
+		try {
+			Connection con = LogToDatabase.getConnexion();
+			CallableStatement call;
+
+			String q = "{call Crediter (?, ?, ?)}";
+			// les ? correspondent aux paramètres : cf. déf procédure (4 paramètres)
+			call = con.prepareCall(q);
+			// Paramètres in
+			call.setInt(1, idNumCompte);
+			// 1 -> valeur du premier paramètre, cf. déf procédure
+			call.setDouble(2, montant);
+			call.setString(3, typeOp);
+
+			call.execute();
+
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.Operation, Order.INSERT, "Erreur accès", e);
+		}		
+	}
 
 	/**
 	 * Fonction utilitaire qui retourne un ordre sql "to_date" pour mettre une date
