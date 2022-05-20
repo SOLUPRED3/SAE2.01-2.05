@@ -79,9 +79,9 @@ Modèle-vue-contrôleur ou MVC est un motif d'architecture logiciel destiné aux
 
 Le package application correspond à la partie View et la partie Controller avec ses deux packages "view" et "control" par rapport au pattern MVC.
 
-. control --> Fichiers permettant d'afficher les différentes fenêtres. 
-. tools --> Permet de gérer certaines parties du code.
-. view --> Package contenant les controllers des différentes fenêtres avec les fichiers fxml correspondants. 
+. control -> Fichiers permettant d'afficher les différentes fenêtres. 
+. tools -> Permet de gérer certaines parties du code.
+. view -> Package contenant les controllers des différentes fenêtres avec les fichiers fxml correspondants. 
 
 
 
