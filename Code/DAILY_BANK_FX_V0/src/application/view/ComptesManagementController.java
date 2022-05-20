@@ -117,8 +117,7 @@ public class ComptesManagementController implements Initializable {
 	@FXML
 	private void doSupprimerCompte() {
 		this.cm.supprimerCompte() ;
-		this.loadList();
-		
+		this.loadList();		
 	}
 	
 	private String getEstCloture() {
@@ -128,7 +127,6 @@ public class ComptesManagementController implements Initializable {
 		else return "O" ; 
 	}
 
-	
 	@FXML
 	private void doNouveauCompte() {
 		CompteCourant compte;
@@ -136,7 +134,7 @@ public class ComptesManagementController implements Initializable {
 		if (compte != null) {
 			this.olCompteCourant.add(compte);
 			this.loadList();
-		}
+		}		
 	}
 
 	private void loadList () {
@@ -149,26 +147,25 @@ public class ComptesManagementController implements Initializable {
 	}
 
 	private void validateComponentState() {
-		this.btnModifierCompte.setDisable(true);
-		this.btnSupprCompte.setDisable(true);
+        this.btnModifierCompte.setDisable(true);
+        this.btnSupprCompte.setDisable(true);
 
-		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
-		if(selectedIndice >=0) {
-			if (getEstCloture().equals("O")) {
-				this.btnVoirOpes.setDisable(false);
-				this.btnSupprCompte.setDisable(true);
-				this.btnModifierCompte.setDisable(true);
-			} else {
-				this.btnVoirOpes.setDisable(false);
-				this.btnSupprCompte.setDisable(false);
-				this.btnModifierCompte.setDisable(false);
-			}
-		}
-		else {
-			this.btnVoirOpes.setDisable(true);
-			this.btnSupprCompte.setDisable(true);
-			this.btnModifierCompte.setDisable(true);
-		}
-		
-	}
+        int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
+        if(selectedIndice >=0) {
+            if (getEstCloture().equals("O")) {
+                this.btnVoirOpes.setDisable(false);
+                this.btnSupprCompte.setDisable(true);
+                this.btnModifierCompte.setDisable(true);
+            } else {
+                this.btnVoirOpes.setDisable(false);
+                this.btnSupprCompte.setDisable(false);
+                this.btnModifierCompte.setDisable(false);
+            }
+        }
+        else {
+            this.btnVoirOpes.setDisable(true);
+            this.btnSupprCompte.setDisable(true);
+            this.btnModifierCompte.setDisable(true);
+        }        
+    }
 }
