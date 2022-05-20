@@ -129,10 +129,16 @@ public class ComptesManagementController implements Initializable {
 	 */
 	@FXML
 <<<<<<< HEAD
+<<<<<<< HEAD
 	private void doCloturerCompte() {
 		this.cm.cloturerCompte() ;
 		this.loadList();
 		
+=======
+	private void doSupprimerCompte() {
+		this.cm.supprimerCompte() ;
+		this.loadList();		
+>>>>>>> 988a6be7dc6bef29bb600fed5d98dd7fdd3d32ca
 =======
 	private void doSupprimerCompte() {
 		this.cm.supprimerCompte() ;
@@ -151,10 +157,13 @@ public class ComptesManagementController implements Initializable {
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	
 	/*
 	 * Permet d'appeler la fonction creerCompte() en appuyant sur le boutons "Créer Compte".
 	 */
+=======
+>>>>>>> 988a6be7dc6bef29bb600fed5d98dd7fdd3d32ca
 =======
 >>>>>>> 988a6be7dc6bef29bb600fed5d98dd7fdd3d32ca
 	@FXML
