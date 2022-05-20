@@ -78,8 +78,7 @@ public class ComptesManagement {
 		CompteCourant compte;
 		AccessCompteCourant accessCompte = new AccessCompteCourant();
 		CompteEditorPane cep = new CompteEditorPane(this.primaryStage, this.dbs);
-		compte = cep.doCompteEditorDialog(this.clientDesComptes, null, EditionMode.CREATION);
-		System.out.println(compte.toString());  
+		compte = cep.doCompteEditorDialog(this.clientDesComptes, null, EditionMode.CREATION); 
 		if (compte != null) {
 			try {
 				// Temporaire jusqu'à implémentation

@@ -122,20 +122,21 @@ public class ComptesManagementController implements Initializable {
 	}
 	
 	private String getEstCloture() {
-		if(this.lvComptes.getSelectionModel().getSelectedIndex() > 0 && this.lvComptes.getSelectionModel().getSelectedItem().estCloture.equals("N")) {
+		if(this.lvComptes.getSelectionModel().getSelectedIndex() >= 0 && this.lvComptes.getSelectionModel().getSelectedItem().estCloture.equals("N")) {
 			return this.lvComptes.getSelectionModel().getSelectedItem().estCloture ; 
 		}
 		else return "O" ; 
 	}
 
+	
 	@FXML
 	private void doNouveauCompte() {
 		CompteCourant compte;
 		compte = this.cm.creerCompte();
 		if (compte != null) {
 			this.olCompteCourant.add(compte);
+			this.loadList();
 		}
-		this.loadList();
 	}
 
 	private void loadList () {
@@ -148,19 +149,26 @@ public class ComptesManagementController implements Initializable {
 	}
 
 	private void validateComponentState() {
-		// Non implémenté => désactivé
 		this.btnModifierCompte.setDisable(true);
 		this.btnSupprCompte.setDisable(true);
 
 		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
-		if (selectedIndice >= 0 && getEstCloture().equals("O")) {
-			this.btnVoirOpes.setDisable(false);
+		if(selectedIndice >=0) {
+			if (getEstCloture().equals("O")) {
+				this.btnVoirOpes.setDisable(false);
+				this.btnSupprCompte.setDisable(true);
+				this.btnModifierCompte.setDisable(true);
+			} else {
+				this.btnVoirOpes.setDisable(false);
+				this.btnSupprCompte.setDisable(false);
+				this.btnModifierCompte.setDisable(false);
+			}
+		}
+		else {
+			this.btnVoirOpes.setDisable(true);
 			this.btnSupprCompte.setDisable(true);
 			this.btnModifierCompte.setDisable(true);
-		} else {
-			this.btnVoirOpes.setDisable(false);
-			this.btnSupprCompte.setDisable(false);
-			this.btnModifierCompte.setDisable(false);
 		}
+		
 	}
 }

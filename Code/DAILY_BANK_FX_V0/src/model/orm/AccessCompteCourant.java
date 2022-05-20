@@ -125,7 +125,6 @@ public class AccessCompteCourant {
 			
 			pst.setInt(2, pfNumCompte);
 			pst.setInt(1, 0);
-			
 			int result = pst.executeUpdate();
 			
 			System.err.println(result);
