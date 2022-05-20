@@ -51,7 +51,7 @@ prérequis, simplement une JRE.
 Il faut donc s'assurer que les postes de travail des employés possèdent une JRE 1.8 pour pouvoir faire fonctionner
 le .jar sans encombre.
 
-=== 4. Structuration de l'application :
+=== 3. Structuration de l'application :
 [.text-justify]
 Le code de l'application est structuré en plusieurs packages.
 Les packages Model, View, Controller et Tools.
@@ -62,7 +62,7 @@ Le principe retenu qui a conduit à cette structuration est le MCV pattern.
 Modèle-vue-contrôleur ou MVC est un motif d'architecture logiciel destiné aux interfaces graphiques lancé en 1978 et très populaire pour les applications web. Le motif est composé de trois types de modules ayant trois responsabilités différentes : les modèles, les vues et les contrôleurs.
 
 
-=== 5. Éléments essentiels :
+=== 4. Éléments essentiels :
 
 
 [.text-justify]
