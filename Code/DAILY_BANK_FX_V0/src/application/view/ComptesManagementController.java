@@ -173,12 +173,9 @@ public class ComptesManagementController implements Initializable {
 	 * Procédure qui permet de gérer les boutons en fonction des situations.
 	 */
 	private void validateComponentState() {
-        this.btnModifierCompte.setDisable(true);
-        this.btnSupprCompte.setDisable(true);
-
         int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
-        if(selectedIndice >=0) {
-            if (getEstCloture().equals("O")) {
+        if(selectedIndice >= 0) {
+            if (this.getEstCloture().equals("O")) {
                 this.btnVoirOpes.setDisable(false);
                 this.btnSupprCompte.setDisable(true);
                 this.btnModifierCompte.setDisable(true);

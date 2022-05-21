@@ -78,6 +78,8 @@ public class OperationsManagementController implements Initializable {
 	private Button btnDebit;
 	@FXML
 	private Button btnCredit;
+	@FXML
+	private Button btnVirement;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -109,7 +111,7 @@ public class OperationsManagementController implements Initializable {
 
 	@FXML
 	private void doAutre() { //Viremments
-		Operation op = this.om.enregistrerDebit();
+		Operation op = this.om.enregistrerVirement();
 		if (op != null) {
 			this.updateInfoCompteClient();
 			this.validateComponentState();
@@ -117,9 +119,16 @@ public class OperationsManagementController implements Initializable {
 	}
 
 	private void validateComponentState() {
-		// Non implémenté => désactivé
-		this.btnCredit.setDisable(false);
-		this.btnDebit.setDisable(false);
+		// Non implémenté => désactivé		
+        if (this.compteConcerne.estCloture.equals("O")) {
+        	this.btnCredit.setDisable(true);
+    		this.btnDebit.setDisable(true);
+    		this.btnVirement.setDisable(true);
+        } else {
+        	this.btnCredit.setDisable(false);
+    		this.btnDebit.setDisable(false);
+    		this.btnVirement.setDisable(false);
+        }
 	}
 
 	private void updateInfoCompteClient() {
@@ -138,8 +147,8 @@ public class OperationsManagementController implements Initializable {
 		this.lblInfosClient.setText(info);
 
 		info = "Cpt. : " + this.compteConcerne.idNumCompte + "  "
-				+ String.format(Locale.ENGLISH, "%12.02f", this.compteConcerne.solde) + "  /  "
-				+ String.format(Locale.ENGLISH, "%8d", this.compteConcerne.debitAutorise);
+				+ String.format(Locale.ENGLISH, "%.02f", this.compteConcerne.solde) + "  /  "
+				+ String.format(Locale.ENGLISH, "%d", this.compteConcerne.debitAutorise);
 		this.lblInfosCompte.setText(info);
 
 		this.olOperation.clear();

@@ -53,7 +53,7 @@ public class EmployeEditorPaneController implements Initializable {
 
 		this.em = mode;
 		if (employe == null) {
-			this.employeEdite = new Employe(0, "", "", "", "", "", this.dbs.getEmpAct().idAg);
+			this.employeEdite = new Employe(0, "", "", "", "", "", this.dbs.getEmpAct().idAg, "N");
 		} else {
 			this.employeEdite = new Employe(employe);
 		}
@@ -103,10 +103,10 @@ public class EmployeEditorPaneController implements Initializable {
 		this.txtLogin.setText(this.employeEdite.login);
 		this.txtMotPasse.setText(this.employeEdite.motPasse);
 		
-		if (this.employeEdite.droitsAccess.equals("guichetier")) {
+		if (this.employeEdite.droitsAccess.equals(ConstantesIHM.AGENCE_GUICHETIER)) {
 			this.rbGuichetier.setSelected(true);
 			this.rbChefAgence.setSelected(false);
-		} else if (this.employeEdite.droitsAccess.equals("chefAgence")) {
+		} else if (this.employeEdite.droitsAccess.equals(ConstantesIHM.AGENCE_CHEF)) {
 			this.rbGuichetier.setSelected(false);
 			this.rbChefAgence.setSelected(true);
 		}
@@ -187,9 +187,9 @@ public class EmployeEditorPaneController implements Initializable {
 		this.employeEdite.login = this.txtLogin.getText().trim();
 		this.employeEdite.motPasse = this.txtMotPasse.getText().trim();
 		if (this.rbGuichetier.isSelected()) {
-			this.employeEdite.droitsAccess = "guichetier";
+			this.employeEdite.droitsAccess = ConstantesIHM.AGENCE_GUICHETIER;
 		} else {
-			this.employeEdite.droitsAccess = "chefAgence";
+			this.employeEdite.droitsAccess = ConstantesIHM.AGENCE_CHEF;
 		}
 
 		if (this.employeEdite.nom.isEmpty()) {

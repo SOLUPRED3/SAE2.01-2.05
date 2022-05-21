@@ -59,7 +59,7 @@
                   <Insets right="20.0" />
                </GridPane.margin>
             </Label>
-            <Label alignment="CENTER_RIGHT" layoutX="21.0" layoutY="163.0" maxWidth="1.7976931348623157E308" text="Droits d'accès" GridPane.rowIndex="3">
+            <Label alignment="CENTER_RIGHT" disable="true" layoutX="21.0" layoutY="163.0" maxWidth="1.7976931348623157E308" text="Droits d'accès" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
@@ -81,7 +81,7 @@
             <TextField fx:id="txtMotPasse" layoutX="171.0" layoutY="163.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <HBox alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <children>
-                  <RadioButton fx:id="rbGuichetier" mnemonicParsing="false" text="Guichetier">
+                  <RadioButton fx:id="rbGuichetier" disable="true" mnemonicParsing="false" text="Guichetier">
                      <padding>
                         <Insets right="20.0" />
                      </padding>
@@ -89,7 +89,7 @@
                         <ToggleGroup fx:id="droitsAccesGroup" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="rbChefAgence" layoutX="131.0" layoutY="17.0" mnemonicParsing="false" text="Chef d'agence" toggleGroup="$droitsAccesGroup" />
+                  <RadioButton fx:id="rbChefAgence" disable="true" layoutX="131.0" layoutY="17.0" mnemonicParsing="false" text="Chef d'agence" toggleGroup="$droitsAccesGroup" />
                </children>
             </HBox>
          </children>
