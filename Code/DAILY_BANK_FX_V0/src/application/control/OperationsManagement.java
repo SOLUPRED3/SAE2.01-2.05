@@ -66,15 +66,12 @@ public class OperationsManagement {
 	 * Fonction qui permet d'enregistrer un débit dans la base de données.
 	 */
 	public Operation enregistrerDebit() {
-
 		OperationEditorPane oep = new OperationEditorPane(this.primaryStage, this.dbs);
 		Operation op = oep.doOperationEditorDialog(this.compteConcerne, CategorieOperation.DEBIT);
 		if (op != null) {
 			try {
 				AccessOperation ao = new AccessOperation();
-
 				ao.insertDebit(this.compteConcerne.idNumCompte, op.montant, op.idTypeOp);
-
 			} catch (DatabaseConnexionException e) {
 				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
 				ed.doExceptionDialog();
@@ -99,6 +96,36 @@ public class OperationsManagement {
 			try {
 				AccessOperation ao = new AccessOperation();
 				ao.insertCredit(this.compteConcerne.idNumCompte, op.montant, op.idTypeOp);
+			} catch (DatabaseConnexionException e) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
+				ed.doExceptionDialog();
+				this.primaryStage.close();
+				op = null;
+			} catch (ApplicationException ae) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
+				ed.doExceptionDialog();
+				op = null;
+			}
+		}
+		return op;
+	}
+	
+	/*
+	 * Fonction qui permet d'enregistrer un virement de compte à compte dans la base de données.
+	 */
+	public Operation enregistrerVirement() {
+		OperationEditorPane oep = new OperationEditorPane(this.primaryStage, this.dbs);
+		Operation op = oep.doOperationEditorDialog(this.compteConcerne, CategorieOperation.VIREMENT);		
+		int idCompteDest = oep.getDestinationID(CategorieOperation.VIREMENT);		
+		if (op != null) {
+			try {
+				AccessOperation ao = new AccessOperation();				
+				if (idCompteDest > -1) {
+					ao.insertDebit(this.compteConcerne.idNumCompte, op.montant, op.idTypeOp);
+					ao.insertCredit(idCompteDest, op.montant, op.idTypeOp);
+				} else {
+					throw new ApplicationException(null, null, "Compte de destination \""+idCompteDest+"\"inexistant !", null);
+				}
 
 			} catch (DatabaseConnexionException e) {
 				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
