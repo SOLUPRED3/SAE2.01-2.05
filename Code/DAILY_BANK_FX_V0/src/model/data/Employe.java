@@ -3,12 +3,12 @@ package model.data;
 public class Employe {
 
 	public int idEmploye;
-	public String nom, prenom, droitsAccess;
+	public String nom, prenom, droitsAccess, estInactif;
 	public String login, motPasse;
 
 	public int idAg;
 
-	public Employe(int idEmploye, String nom, String prenom, String droitsAccess, String login, String motPasse, int idAg) {
+	public Employe(int idEmploye, String nom, String prenom, String droitsAccess, String login, String motPasse, int idAg, String estInactif) {
 		super();
 		this.idEmploye = idEmploye;
 		this.nom = nom;
@@ -17,14 +17,15 @@ public class Employe {
 		this.login = login;
 		this.motPasse = motPasse;
 		this.idAg = idAg;
+		this.estInactif = estInactif;
 	}
 
 	public Employe(Employe e) {
-		this(e.idEmploye, e.nom, e.prenom, e.droitsAccess, e.login, e.motPasse, e.idAg);
+		this(e.idEmploye, e.nom, e.prenom, e.droitsAccess, e.login, e.motPasse, e.idAg, e.estInactif);
 	}
 
 	public Employe() {
-		this(-1000, null, null, null, null, null, -1000);
+		this(-1000, null, null, null, null, null, -1000, "N");
 	}
 
 	@Override

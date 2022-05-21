@@ -28,8 +28,8 @@ public class CompteCourant {
 
 	@Override
 	public String toString() {
-		String s = "" + String.format("%05d", this.idNumCompte) + " : Solde=" + String.format("%12.02f", this.solde)
-				+ "  ,  Découvert Autorise=" + String.format("%8d", this.debitAutorise);
+		String s = "" + String.format("%05d", this.idNumCompte) + " : Solde= " + String.format("%.02f", this.solde)
+				+ "  ;  Découvert Autorise= " + String.format("%d", this.debitAutorise);
 		if (this.estCloture == null) {
 			s = s + " (Cloture)";
 		} else {
