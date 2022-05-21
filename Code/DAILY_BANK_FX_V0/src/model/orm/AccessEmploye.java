@@ -53,9 +53,10 @@ public class AccessEmploye {
 				String loginTROUVE = rs.getString("login");
 				String motPasseTROUVE = rs.getString("motPasse");
 				int idAgEmploye = rs.getInt("idAg");
+				String estInactif = rs.getString("estInactif");
 
 				employeTrouve = new Employe(idEmployeTrouve, nom, prenom, droitsAccess, loginTROUVE, motPasseTROUVE,
-						idAgEmploye);
+						idAgEmploye, estInactif);
 			} else {
 				rs.close();
 				pst.close();
@@ -93,7 +94,7 @@ public class AccessEmploye {
 			Connection con = LogToDatabase.getConnexion();
 
 			String query = "INSERT INTO EMPLOYE VALUES (" + "seq_id_employe.NEXTVAL" + ", " + "?" + ", " + "?" + ", "
-					+ "?" + ", " + "?" + ", " + "?" + ", " + "?)";
+					+ "?" + ", " + "?" + ", " + "?" + ", " + "?" + ", " + "?)";
 			PreparedStatement pst = con.prepareStatement(query);
 			pst.setString(1, employe.nom);
 			pst.setString(2, employe.prenom);
@@ -101,6 +102,7 @@ public class AccessEmploye {
 			pst.setString(4, employe.login);
 			pst.setString(5, employe.motPasse);
 			pst.setInt(6, employe.idAg);
+			pst.setString(7, employe.estInactif);
 
 			System.err.println(query);
 
@@ -146,7 +148,7 @@ public class AccessEmploye {
 			Connection con = LogToDatabase.getConnexion();
 
 			String query = "UPDATE EMPLOYE SET " + "nom = " + "? , " + "prenom = " + "? , " + "droitsAccess = "
-					+ "? , " + "login = " + "? , " + "motPasse = " + "? " + " " + "WHERE idEmploye = ? ";
+					+ "? , " + "login = " + "? , " + "motPasse = " + "? , " + "estInactif = " + "?" + " " + "WHERE idEmploye = ? ";
 
 			PreparedStatement pst = con.prepareStatement(query);
 			pst.setString(1, employe.nom);
@@ -155,6 +157,7 @@ public class AccessEmploye {
 			pst.setString(4, employe.login);
 			pst.setString(5, employe.motPasse);
 			pst.setInt(6, employe.idEmploye);
+			pst.setString(7, employe.estInactif);
 
 			System.err.println(query);
 
@@ -230,9 +233,11 @@ public class AccessEmploye {
 				String motPasse = rs.getString("motPasse");
 				motPasse = (motPasse == null ? "" : motPasse);
 				int idAgEmp = rs.getInt("idAg");
+				String estInactif = rs.getString("estInactif");
+				estInactif = (estInactif == null ? "" : estInactif);
 
 				alResult.add(
-						new Employe(idNumEmp, nom, prenom, droitsAccess, login, motPasse, idAgEmp));
+						new Employe(idNumEmp, nom, prenom, droitsAccess, login, motPasse, idAgEmp, estInactif));
 			}
 			rs.close();
 			pst.close();
