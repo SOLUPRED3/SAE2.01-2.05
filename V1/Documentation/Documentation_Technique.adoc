@@ -118,7 +118,17 @@ le guichetier peut modifier les informations du client. Il peut donc modifier le
 ===== Use case correspondant :
 image::images/modifierInfo.svg[]
 
-==== Partie du diagramme de classe correspondante : 
+==== Partie du diagramme de classe correspondante :
+
+image::images/modifierClientDC.png[]
+
+==== Aperçu des principales fonctionnalités : 
+
+==== Classes impliquées, dans quels packages : 
+
+==== Éléments essentiels : 
+
+==== Extraits de code significatifs : 
 
 
 
