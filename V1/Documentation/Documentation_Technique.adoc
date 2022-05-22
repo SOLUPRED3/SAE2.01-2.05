@@ -122,25 +122,29 @@ image::images/modifierInfo.svg[]
 
 image::images/modifierClientDC.png[]
 
+Ici, cette partie du diagramme de classe est en lecture, nous ne modifions et ne rajoutons rien de plus.
+
 ==== Aperçu des principales fonctionnalités : 
 
 Pour ce qui est des fonctionnalités concernant la modification des informations d'un client, merci de bien vouloir vous référer à la documentation utilisateur.
 
 ==== Classes impliquées, dans quels packages : 
 
-Application/Control -> ClientsManagement.java, ClientEditorPane.java
+. Application/Control -> ClientsManagement.java, ClientEditorPane.java
 
-Application/View -> ClientEditorPaneController.java, ClientManagementController.java
+. Application/View -> ClientEditorPaneController.java, ClientManagementController.java
 
-Application/Model -> Client.java 
+. Application/Model -> Client.java 
 
 ==== Éléments essentiels : 
 
+La fonction essentiel au niveau de la modification des informations d'un client est la fonction modifierClient(Client c), qui se trouve dans ClientsManagement.java + 
+C'est elle qui permet de retourner un client modifié et de l'enregistrer dans la base de données.
 
 
 ==== Extraits de code significatifs : 
 
-
+Il n'y a, ici, aucune partie dans le code qui ait vraiment le mérite d'être signalées.
 
 
 ==== 1.2 Créer un client :
