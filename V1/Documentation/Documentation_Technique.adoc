@@ -138,13 +138,13 @@ Pour ce qui est des fonctionnalités concernant la modification des informations
 
 ==== Éléments essentiels : 
 
-La fonction essentiel au niveau de la modification des informations d'un client est la fonction modifierClient(Client c), qui se trouve dans ClientsManagement.java + 
+La fonction essentielle au niveau de la modification des informations d'un client est la fonction modifierClient(Client c), qui se trouve dans ClientsManagement.java + 
 C'est elle qui permet de retourner un client modifié et de l'enregistrer dans la base de données.
 
 
 ==== Extraits de code significatifs : 
 
-Il n'y a, ici, aucune partie dans le code qui ait vraiment le mérite d'être signalées.
+Il n'y a, ici, aucune partie dans le code qui ait vraiment le mérite d'être signalée.
 
 
 ==== 1.2 Créer un client :
