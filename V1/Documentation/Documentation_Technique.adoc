@@ -43,6 +43,8 @@ Que ce soit les informations des employés, des clients, des comptes et des opé
 Au niveau des librairies, le code de l'application repose sur une seule librairie qui permet de lier l'application à la base de données. +
 Cette librairie est : *objdbc6.jar*
 
+==== 2.2 Exportation de l'application : 
+
 [.text-justify]
 L'application est généré en .jar, ce qui permet de lancer DailyBankApp sans
 prérequis, simplement une JRE.
@@ -53,15 +55,18 @@ le .jar sans encombre.
 
 === 3. Structuration de l'application :
 [.text-justify]
+
+==== 3.1 Pattern retenu pour la structuration du code : 
+
 Le code de l'application est structuré en plusieurs packages.
 Les packages Model, View, Controller et Tools.
 [.text-justify]
-Le principe retenu qui a conduit à cette structuration est le MCV pattern.
+Le principe qui nous a permis de structurer le code de cette manière est le MCV pattern.
 
 [.text-justify]
 Modèle-vue-contrôleur ou MVC est un motif d'architecture logiciel destiné aux interfaces graphiques lancé en 1978 et très populaire pour les applications web. Le motif est composé de trois types de modules ayant trois responsabilités différentes : les modèles, les vues et les contrôleurs.
 
-==== 3.1 Aperçu de la structuration de DailyBankApp : 
+==== 3.2 Aperçu de la structuration de DailyBankApp : 
 
 [source]
 ----
@@ -90,19 +95,15 @@ Le package Model correspond à la partie Model du pattern MVC.
 . orm -> Package qui contient les fichiers permettant la liaison à la base de données et
 contient également le sous-package Exception contenant les fichiers java permettant de gérer les exceptions 
 
-
-
-
-
 === 4. Éléments essentiels :
 
+==== 4.1 Prérequis pour le développeur :
 
 [.text-justify]
 Si le code de l'application devait être repris pour être amélioré ou modifié, le développeur devra avoir au préalable
 une JRE version 1.8.
 Il faudra ensuite qu'il ait pour environnement de développement le logiciel Eclipse.
 Il devra également avoir un Workspace configuré en JavaFX avec le logiciel SceneBuilder intégré dans le buildpath.
-
 
 == IV. Description et explication des fonctionnalités implémentées :
 
