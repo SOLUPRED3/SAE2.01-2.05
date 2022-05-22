@@ -129,7 +129,9 @@ Pour ce qui est des fonctionnalités concernant la modification des informations
 ==== Classes impliquées, dans quels packages : 
 
 Application/Control -> ClientsManagement.java, ClientEditorPane.java
+
 Application/View -> ClientEditorPaneController.java, ClientManagementController.java
+
 Application/Model -> Client.java 
 
 ==== Éléments essentiels : 
