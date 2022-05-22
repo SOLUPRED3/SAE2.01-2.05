@@ -124,9 +124,17 @@ image::images/modifierClientDC.png[]
 
 ==== Aperçu des principales fonctionnalités : 
 
+Pour ce qui est des fonctionnalités concernant la modification des informations d'un client, merci de bien vouloir vous référer à la documentation utilisateur.
+
 ==== Classes impliquées, dans quels packages : 
 
+Application/Control -> ClientsManagement.java, ClientEditorPane.java
+Application/View -> ClientEditorPaneController.java, ClientManagementController.java
+Application/Model -> Client.java 
+
 ==== Éléments essentiels : 
+
+
 
 ==== Extraits de code significatifs : 
 
