@@ -102,7 +102,9 @@ contient également le sous-package Exception contenant les fichiers java permet
 [.text-justify]
 Si le code de l'application devait être repris pour être amélioré ou modifié, le développeur devra avoir au préalable
 une JRE version 1.8.
+[.text-justify]
 Il faudra ensuite qu'il ait pour environnement de développement le logiciel Eclipse.
+[.text-justify]
 Il devra également avoir un Workspace configuré en JavaFX avec le logiciel SceneBuilder intégré dans le buildpath.
 
 == IV. Description et explication des fonctionnalités implémentées :
