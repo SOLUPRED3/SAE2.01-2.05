@@ -156,8 +156,8 @@ public class AccessEmploye {
 			pst.setString(3, employe.droitsAccess);
 			pst.setString(4, employe.login);
 			pst.setString(5, employe.motPasse);
-			pst.setInt(6, employe.idEmploye);
-			pst.setString(7, employe.estInactif);
+			pst.setString(6, employe.estInactif);
+			pst.setInt(7, employe.idEmploye);			
 
 			System.err.println(query);
 
