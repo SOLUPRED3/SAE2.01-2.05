@@ -1,5 +1,7 @@
 package model.data;
 
+import application.tools.ConstantesIHM;
+
 public class Employe {
 
 	public int idEmploye;
@@ -25,7 +27,7 @@ public class Employe {
 	}
 
 	public Employe() {
-		this(-1000, null, null, null, null, null, -1000, "N");
+		this(-1000, null, null, null, null, null, -1000, ConstantesIHM.EMPLOYE_ACTIF);
 	}
 
 	@Override
