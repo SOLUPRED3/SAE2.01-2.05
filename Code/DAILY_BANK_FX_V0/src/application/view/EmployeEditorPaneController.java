@@ -67,6 +67,8 @@ public class EmployeEditorPaneController implements Initializable {
 			this.txtMotPasse.setDisable(false);
 			this.rbGuichetier.setSelected(true);
 			this.rbChefAgence.setSelected(false);
+			this.rbActif.setSelected(true);
+			this.rbInactif.setSelected(false);
 			this.lblMessage.setText("Informations sur le nouvel employé");
 			this.butOk.setText("Ajouter");
 			this.butCancel.setText("Annuler");
@@ -79,9 +81,27 @@ public class EmployeEditorPaneController implements Initializable {
 			this.txtMotPasse.setDisable(false);
 			this.rbGuichetier.setSelected(true);
 			this.rbChefAgence.setSelected(false);
+			this.rbActif.setSelected(true);
+			this.rbInactif.setSelected(false);
 			this.lblMessage.setText("Informations employé");
 			this.butOk.setText("Modifier");
 			this.butCancel.setText("Annuler");
+			break;
+		case VISUALISATION:
+			this.txtIdEmp.setDisable(true);
+			this.txtNom.setDisable(true);
+			this.txtPrenom.setDisable(true);
+			this.rbGuichetier.setDisable(true);
+			this.rbChefAgence.setDisable(true);
+			this.txtLogin.setDisable(true);
+			this.txtMotPasse.setDisable(true);
+			this.rbActif.setDisable(true);
+			this.rbInactif.setDisable(true);
+			this.rbActif.setSelected(true);
+			this.rbInactif.setSelected(false);
+			this.butOk.setVisible(false);
+			this.lblMessage.setText("Informations employé");
+			this.butCancel.setText("Fermer");
 			break;
 		case SUPPRESSION:
 			// ce mode n'est pas utilisé pour les Clients :
@@ -105,10 +125,13 @@ public class EmployeEditorPaneController implements Initializable {
 		
 		if (this.employeEdite.droitsAccess.equals(ConstantesIHM.AGENCE_GUICHETIER)) {
 			this.rbGuichetier.setSelected(true);
-			this.rbChefAgence.setSelected(false);
 		} else if (this.employeEdite.droitsAccess.equals(ConstantesIHM.AGENCE_CHEF)) {
 			this.rbGuichetier.setSelected(false);
-			this.rbChefAgence.setSelected(true);
+		}
+		if (ConstantesIHM.estInactif(this.employeEdite)) {
+			this.rbInactif.setSelected(true);
+		} else {
+			this.rbInactif.setSelected(false);
 		}
 
 		this.employeResult = null;
@@ -142,7 +165,13 @@ public class EmployeEditorPaneController implements Initializable {
 	@FXML
 	private RadioButton rbChefAgence;
 	@FXML
+	private RadioButton rbActif;
+	@FXML
+	private RadioButton rbInactif;
+	@FXML
 	private ToggleGroup droitsAccesGroup;
+	@FXML
+	private ToggleGroup actifInactif2;
 	@FXML
 	private Button butOk;
 	@FXML
@@ -190,6 +219,11 @@ public class EmployeEditorPaneController implements Initializable {
 			this.employeEdite.droitsAccess = ConstantesIHM.AGENCE_GUICHETIER;
 		} else {
 			this.employeEdite.droitsAccess = ConstantesIHM.AGENCE_CHEF;
+		}
+		if (this.rbActif.isSelected()) {
+			this.employeEdite.estInactif = ConstantesIHM.EMPLOYE_ACTIF;
+		} else {
+			this.employeEdite.estInactif = ConstantesIHM.EMPLOYE_INACTIF;
 		}
 
 		if (this.employeEdite.nom.isEmpty()) {

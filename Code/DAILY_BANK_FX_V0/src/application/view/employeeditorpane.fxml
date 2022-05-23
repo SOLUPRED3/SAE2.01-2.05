@@ -36,6 +36,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <BorderPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -79,7 +80,25 @@
             <TextField fx:id="txtPrenom" layoutX="171.0" layoutY="58.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="txtLogin" layoutX="171.0" layoutY="128.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <TextField fx:id="txtMotPasse" layoutX="171.0" layoutY="163.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <HBox alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="Employé actif ?" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin>
+            </Label>
+            <HBox alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <children>
+                  <RadioButton fx:id="rbActif" contentDisplay="CENTER" mnemonicParsing="false" text="Actif">
+                     <padding>
+                        <Insets right="20.0" />
+                     </padding>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="actifInactif2" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="rbInactif" contentDisplay="CENTER" mnemonicParsing="false" text="Inactif" toggleGroup="$actifInactif2" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" fillHeight="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <children>
                   <RadioButton fx:id="rbGuichetier" disable="true" mnemonicParsing="false" text="Guichetier">
                      <padding>

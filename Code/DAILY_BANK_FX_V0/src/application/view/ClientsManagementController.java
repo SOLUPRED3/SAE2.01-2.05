@@ -70,7 +70,7 @@ public class ClientsManagementController implements Initializable {
 	@FXML
 	private ListView<Client> lvClients;
 	@FXML
-	private Button btnDesactClient;
+	private Button btnVoirClient;
 	@FXML
 	private Button btnModifClient;
 	@FXML
@@ -154,7 +154,11 @@ public class ClientsManagementController implements Initializable {
 	}
 
 	@FXML
-	private void doDesactiverClient() {
+	private void doVoirClient() {
+		int selectedIndice = this.lvClients.getSelectionModel().getSelectedIndex();
+		if (selectedIndice >= 0) {
+			this.cm.voirClient(this.olc.get(selectedIndice));
+		}
 	}
 
 	@FXML
@@ -171,9 +175,11 @@ public class ClientsManagementController implements Initializable {
 		if (selectedIndice >= 0) {
 			this.btnModifClient.setDisable(false);
 			this.btnComptesClient.setDisable(false);
+			this.btnVoirClient.setDisable(false);
 		} else {
 			this.btnModifClient.setDisable(true);
 			this.btnComptesClient.setDisable(true);
+			this.btnVoirClient.setDisable(true);
 		}
 	}
 }

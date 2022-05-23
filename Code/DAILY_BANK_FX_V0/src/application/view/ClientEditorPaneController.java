@@ -77,6 +77,21 @@ public class ClientEditorPaneController implements Initializable {
 			this.butOk.setText("Ajouter");
 			this.butCancel.setText("Annuler");
 			break;
+		case VISUALISATION:
+			this.txtIdcli.setDisable(true);
+			this.txtNom.setDisable(true);
+			this.txtPrenom.setDisable(true);
+			this.txtTel.setDisable(true);
+			this.txtMail.setDisable(true);
+			this.txtAdr.setDisable(true);
+			this.rbActif.setDisable(true);
+			this.rbInactif.setDisable(true);
+			this.rbActif.setSelected(true);
+			this.rbInactif.setSelected(false);
+			this.butOk.setVisible(false);
+			this.lblMessage.setText("Informations client");
+			this.butCancel.setText("Fermer");
+			break;
 		case MODIFICATION:
 			this.txtIdcli.setDisable(true);
 			this.txtNom.setDisable(false);
@@ -106,6 +121,7 @@ public class ClientEditorPaneController implements Initializable {
 			ed.doExceptionDialog();
 
 			break;
+			
 		}
 		// Paramétrages spécifiques pour les chefs d'agences
 		if (ConstantesIHM.isAdmin(this.dbs.getEmpAct())) {

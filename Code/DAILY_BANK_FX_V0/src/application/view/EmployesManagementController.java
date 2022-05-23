@@ -72,7 +72,7 @@ public class EmployesManagementController implements Initializable {
 	@FXML
 	private ListView<Employe> lvEmployes;
 	@FXML
-	private Button btnDesactEmploye;
+	private Button btnVoirEmploye;
 	@FXML
 	private Button btnModifEmploye;
 
@@ -142,7 +142,11 @@ public class EmployesManagementController implements Initializable {
 	}
 
 	@FXML
-	private void doDesactiverEmploye() {
+	private void doVoirEmploye() {
+		int selectedIndice = this.lvEmployes.getSelectionModel().getSelectedIndex();
+		if (selectedIndice >= 0) {
+			this.em.voirEmploye(this.ole.get(selectedIndice));
+		}
 	}
 
 	@FXML
@@ -155,13 +159,13 @@ public class EmployesManagementController implements Initializable {
 	}
 
 	private void validateComponentState() {
-		// Non implémenté => désactivé
-		this.btnDesactEmploye.setDisable(true);
 		int selectedIndice = this.lvEmployes.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
 			this.btnModifEmploye.setDisable(false);
+			this.btnVoirEmploye.setDisable(false);
 		} else {
 			this.btnModifEmploye.setDisable(true);
+			this.btnVoirEmploye.setDisable(true);
 		}
 	}
 }
