@@ -7,6 +7,8 @@ public class ConstantesIHM {
 
 	public static final String CLIENT_INACTIF = "O";
 	public static final String CLIENT_ACTIF = "N";
+	public static final String EMPLOYE_INACTIF = "O";
+	public static final String EMPLOYE_ACTIF = "N";
 
 	public static final String AGENCE_CHEF = "chefAgence";
 	public static final String AGENCE_GUICHETIER = "guichetier";
@@ -39,6 +41,14 @@ public class ConstantesIHM {
 
 	public static boolean estInactif(Client c) {
 		return c.estInactif.equals(ConstantesIHM.CLIENT_INACTIF);
+	}
+	
+	public static boolean estActif(Employe e) {
+		return e.estInactif.equals(ConstantesIHM.EMPLOYE_ACTIF);
+	}
+
+	public static boolean estInactif(Employe e) {
+		return e.estInactif.equals(ConstantesIHM.EMPLOYE_INACTIF);
 	}
 
 }
