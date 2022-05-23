@@ -75,6 +75,11 @@ public class EmployesManagement {
 		}
 		return result;
 	}
+	
+	public void voirEmploye(Employe e) {
+		EmployeEditorPane eep = new EmployeEditorPane(this.primaryStage, this.dbs);
+		eep.doEmployeEditorDialog(e, EditionMode.VISUALISATION);
+	}
 
 	public Employe nouvelEmploye() {
 		Employe employe;

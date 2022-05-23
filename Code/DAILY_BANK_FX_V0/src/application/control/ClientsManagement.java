@@ -77,6 +77,11 @@ public class ClientsManagement {
 		}
 		return result;
 	}
+	
+	public void voirClient(Client c) {
+		ClientEditorPane cep = new ClientEditorPane(this.primaryStage, this.dbs);
+		cep.doClientEditorDialog(c, EditionMode.VISUALISATION);
+	}
 
 	/*
 	 * Fonction qui permet de créer un nouveau client.
