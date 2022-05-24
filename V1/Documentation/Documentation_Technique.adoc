@@ -295,3 +295,22 @@ Pour ce qui est des fonctionnalités concernant la modification des informations
 
 [.text-justify]
 La classe Operation.java est très importante également.
+
+
+=== 2. Chef d'agence : 
+
+==== 1.1 Rendre inactif un client :
+
+===== Use case correspondant :
+
+image::images/rendreInactif.svg[alt]
+
+==== Aperçu des principales fonctionnalités : 
+
+
+
+==== Classes impliquées, dans quels packages :
+
+
+
+==== Éléments essentiels : 
