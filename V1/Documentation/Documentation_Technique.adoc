@@ -121,6 +121,7 @@ image::images/modifierInfo.svg[]
 ==== Partie du diagramme de classe correspondante :
 
 image::images/modifierClientDC.png[]
+
 [.text-justify]
 Ici, cette partie du diagramme de classe est en lecture, nous ne modifions et ne rajoutons rien de plus.
 
@@ -132,7 +133,8 @@ Pour ce qui est des fonctionnalités concernant la modification des informations
 
 . Application/Control -> ClientsManagement.java, ClientEditorPane.java
 
-. Application/View -> ClientEditorPaneController.java, ClientManagementController.java
+. Application/View -> ClientEditorPaneController.java, ClientManagementController.java, 
+clientseditorpane.fxml, clientsmanagement.fxml
 
 . Application/Model -> Client.java 
 
@@ -141,6 +143,8 @@ Pour ce qui est des fonctionnalités concernant la modification des informations
 La fonction essentielle au niveau de la modification des informations d'un client est la fonction modifierClient(Client c), qui se trouve dans ClientsManagement.java + 
 C'est elle qui permet de retourner un client modifié et de l'enregistrer dans la base de données.
 
+[.text-justify]
+De plus, la classe Client.java se trouvant dans la le package /Application/Model est très importante également.
 
 ==== 1.2 Créer un client :
 
@@ -165,7 +169,7 @@ Pour ce qui est des fonctionnalités concernant la modification des informations
 
 . Application/Control -> ClientsManagement.java, ClientEditorPane.java
 
-. Application/View -> ClientEditorPaneController.java, ClientManagementController.java
+. Application/View -> ClientEditorPaneController.java, ClientManagementController.java, clientseditorpane.fxml, clientsmanagement.fxml
 
 . Application/Model -> Client.java 
 
@@ -173,6 +177,9 @@ Pour ce qui est des fonctionnalités concernant la modification des informations
 [.text-justify]
 La fonction essentielle au niveau de la création d'un client est la fonction nouveauClient(), qui se trouve dans ClientsManagement.java + 
 C'est elle qui permet de créer un client et de l'enregistrer dans la base de données.
+
+[.text-justify]
+De plus, la classe Client.java se trouvant dans la le package /Application/Model est très importante également.
 
 
 ==== 1.3 Consulter un compte :
@@ -182,6 +189,57 @@ Le guichetier peut également consulter un compte.
 ===== Use case correspondant :
 
 image::images/consulterCompte.svg[]
+
+==== Partie du diagramme de classe correspondante :
+
+image::images/compteCourantDC.png[]
+
+[.text-justify]
+Ici, cette partie du diagramme de classe est en lecture, nous ne modifions et ne rajoutons rien de plus.
+
+
+==== Aperçu des principales fonctionnalités : 
+
+[.text-justify]
+Pour ce qui est des fonctionnalités concernant la modification des informations d'un client, merci de bien vouloir vous référer à la documentation utilisateur.
+
+
+==== Classes impliquées, dans quels packages :
+
+. Application/Control -> ComptesManagement.java, CompteEditorPane.java
+
+. Application/View -> ComptesEditorPaneController.java, ComptesManagementController, clientseditorpane.fxml, clientsmanagement.fxml
+
+. Application/Model -> CompteCourant.java
+
+
+==== Éléments essentiels : 
+
+[.text-justify]
+L'élément essentiel en ce qui concerne la consultation d'un compte, est le controller CompteEditorPaneController.java, qui se trouve dans /Application/Control car
+C'est lui qui permet de gérer la fenêtre où le guichetier consulte les comptes.
+
+[.text-justify]
+De plus, la classe CompteCourant.java se trouvant dans la le package /Application/Model est très importante également.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ==== 1.4 Débiter un compte :
