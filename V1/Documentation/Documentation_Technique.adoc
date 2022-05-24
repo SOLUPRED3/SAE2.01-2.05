@@ -121,11 +121,11 @@ image::images/modifierInfo.svg[]
 ==== Partie du diagramme de classe correspondante :
 
 image::images/modifierClientDC.png[]
-
+[.text-justify]
 Ici, cette partie du diagramme de classe est en lecture, nous ne modifions et ne rajoutons rien de plus.
 
 ==== Aperçu des principales fonctionnalités : 
-
+[.text-justify]
 Pour ce qui est des fonctionnalités concernant la modification des informations d'un client, merci de bien vouloir vous référer à la documentation utilisateur.
 
 ==== Classes impliquées, dans quels packages : 
@@ -137,14 +137,9 @@ Pour ce qui est des fonctionnalités concernant la modification des informations
 . Application/Model -> Client.java 
 
 ==== Éléments essentiels : 
-
+[.text-justify]
 La fonction essentielle au niveau de la modification des informations d'un client est la fonction modifierClient(Client c), qui se trouve dans ClientsManagement.java + 
 C'est elle qui permet de retourner un client modifié et de l'enregistrer dans la base de données.
-
-
-==== Extraits de code significatifs : 
-
-Il n'y a, ici, aucune partie dans le code qui ait vraiment le mérite d'être signalée.
 
 
 ==== 1.2 Créer un client :
@@ -154,6 +149,30 @@ Il est également possible pour lui de créer un nouveau client.
 ===== Use case correspondant :
 image::images/creerClient.svg[]
 
+==== Partie du diagramme de classe correspondante :
+
+image::images/modifierClientDC.png[]
+
+Ici, cette partie du diagramme de classe est en lecture, nous ne modifions et ne rajoutons rien de plus.
+
+
+==== Aperçu des principales fonctionnalités : 
+[.text-justify]
+Pour ce qui est des fonctionnalités concernant la modification des informations d'un client, merci de bien vouloir vous référer à la documentation utilisateur.
+
+
+==== Classes impliquées, dans quels packages : 
+
+. Application/Control -> ClientsManagement.java, ClientEditorPane.java
+
+. Application/View -> ClientEditorPaneController.java, ClientManagementController.java
+
+. Application/Model -> Client.java 
+
+==== Éléments essentiels : 
+[.text-justify]
+La fonction essentielle au niveau de la création d'un client est la fonction nouveauClient(), qui se trouve dans ClientsManagement.java + 
+C'est elle qui permet de créer un client et de l'enregistrer dans la base de données.
 
 
 ==== 1.3 Consulter un compte :
