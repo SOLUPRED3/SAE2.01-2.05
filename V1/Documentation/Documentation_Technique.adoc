@@ -1,7 +1,7 @@
 = Documentation technique V0 :
 Thomas Falsimagne, Tilian Hure, Maxime Dourlent
 v1.0, 2022-04-21
-
+:toc: 
 == I. Présentation de l'application :
 
 === 1. Use Case Global :
@@ -136,15 +136,25 @@ Pour ce qui est des fonctionnalités concernant la modification des informations
 . Application/View -> ClientEditorPaneController.java, ClientManagementController.java, 
 clientseditorpane.fxml, clientsmanagement.fxml
 
-. Application/Model -> Client.java 
+. Application/Model/data -> Client.java
+
+. Application/Model/orm -> AccessClient.java
 
 ==== Éléments essentiels : 
-[.text-justify]
-La fonction essentielle au niveau de la modification des informations d'un client est la fonction modifierClient(Client c), qui se trouve dans ClientsManagement.java + 
-C'est elle qui permet de retourner un client modifié et de l'enregistrer dans la base de données.
+
+===== Fonctions : 
 
 [.text-justify]
-De plus, la classe Client.java se trouvant dans la le package /Application/Model est très importante également.
+. modifierClient(Client c) -> ClientsManagement.java
+. updateClient(Client client) -> AccessClient.java 
+. doAjouter() -> ClientEditorPaneController.java
+. displayDialog(Client client, EditionMode mode) -> ClientEditorPaneController.java
+. doModifierClient() -> ClientManagementController.java
+
+===== Classes :
+
+[.text-justify]
+La classe Client.java est très importante également.
 
 ==== 1.2 Créer un client :
 
@@ -171,15 +181,24 @@ Pour ce qui est des fonctionnalités concernant la modification des informations
 
 . Application/View -> ClientEditorPaneController.java, ClientManagementController.java, clientseditorpane.fxml, clientsmanagement.fxml
 
-. Application/Model -> Client.java 
+. Application/Model/data -> Client.java 
+
+. Application/Model/orm -> AccessClient.java
 
 ==== Éléments essentiels : 
-[.text-justify]
-La fonction essentielle au niveau de la création d'un client est la fonction nouveauClient(), qui se trouve dans ClientsManagement.java + 
-C'est elle qui permet de créer un client et de l'enregistrer dans la base de données.
+
+===== Fonctions : 
 
 [.text-justify]
-De plus, la classe Client.java se trouvant dans la le package /Application/Model est très importante également.
+. insertClient(Client client) -> AccessClient.java
+. nouveauClient() -> ClientManagement.java
+. doAjouter() -> ClientEditorPaneController.java
+. displayDialog(Client client, EditionMode mode) -> ClientEditorPaneController.java
+
+===== Classes :
+
+[.text-justify]
+La classe Client.java est très importante également.
 
 
 ==== 1.3 Consulter un compte :
@@ -208,38 +227,28 @@ Pour ce qui est des fonctionnalités concernant la modification des informations
 
 . Application/Control -> ComptesManagement.java, CompteEditorPane.java
 
-. Application/View -> ComptesEditorPaneController.java, ComptesManagementController, clientseditorpane.fxml, clientsmanagement.fxml
+. Application/View -> ComptesEditorPaneController.java, ComptesManagementController.java, clientseditorpane.fxml, clientsmanagement.fxml
 
-. Application/Model -> CompteCourant.java
+. Application/Model/Data -> CompteCourant.java
+
+. Application/Model/orm -> AccessCompteCourant.java
 
 
 ==== Éléments essentiels : 
 
-[.text-justify]
-L'élément essentiel en ce qui concerne la consultation d'un compte, est le controller CompteEditorPaneController.java, qui se trouve dans /Application/Control car
-C'est lui qui permet de gérer la fenêtre où le guichetier consulte les comptes.
+===== Fonctions : 
 
 [.text-justify]
-De plus, la classe CompteCourant.java se trouvant dans la le package /Application/Model est très importante également.
+. loadList() -> ComptesManagementController.java
+. getCompteCourants(int idNumCli) -> AccessCompteCourant.java
+. getCompteCourant(int idNumCompte) -> AccessCompteCourant.java
+. displayDialog(Client client, CompteCourant cpte, EditionMode mode) -> CompteEditorPaneController.java
+. getComptesDunClient() -> ComptesManagement.java
 
+===== Classes :
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+[.text-justify]
+La classe CompteCourant.java est très importante également.
 
 
 ==== 1.4 Débiter un compte :
@@ -248,3 +257,41 @@ Il peut débiter un compte
 
 ===== Use case correspondant :
 image::images/debiterCompte.svg[]
+
+==== Partie du diagramme de classe correspondante :
+
+image::images/débitCompte.png[]
+
+[.text-justify]
+Ici, cette partie du diagramme de classe est en lecture, nous ne modifions et ne rajoutons rien de plus.
+
+
+==== Aperçu des principales fonctionnalités : 
+
+[.text-justify]
+Pour ce qui est des fonctionnalités concernant la modification des informations d'un client, merci de bien vouloir vous référer à la documentation utilisateur.
+
+
+==== Classes impliquées, dans quels packages :
+
+. Application/Control -> OperationManagement.java, OperationEditorPane.java
+
+. Application/View -> OperationEditorPaneController.java, OperationManagementController.java, operationeditorpane.fxml, operationmanagement.fxml
+
+. Application/Model -> CompteCourant.java, Operation.java, TypeOperation.java
+
+. Application/Model/orm -> AccessCompteCourant.java
+
+
+==== Éléments essentiels : 
+
+[.text-justify]
+. doDebit() dans OperationManagementController.java 
+. doAjouter() dans OperationEditorPaneController.java
+. enregistrerDebit() dans OperationManagement.java
+. insertDebit() -> dans AccessOperation.java
+. getTypeOperation() -> AccessTypeOperation.java
+. updateInfoCompteClient() -> OperationManagementController.java
+
+[.text-justify]
+La classe Operation.java est très importante également.
