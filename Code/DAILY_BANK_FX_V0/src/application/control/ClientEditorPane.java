@@ -18,6 +18,11 @@ public class ClientEditorPane {
 	private Stage primaryStage;
 	private ClientEditorPaneController cepc;
 
+	/**
+	 * Constructeur qui initialise la page d'édition des clients.
+	 * @param _parentStage
+	 * @param _dbstate
+	 */
 	public ClientEditorPane(Stage _parentStage, DailyBankState _dbstate) {
 
 		try {
@@ -43,6 +48,12 @@ public class ClientEditorPane {
 		}
 	}
 
+	/**
+	 * Fonction qui lance la page d'édition d'un client et renvoie le client édité.
+	 * @param client
+	 * @param em
+	 * @return
+	 */
 	public Client doClientEditorDialog(Client client, EditionMode em) {
 		return this.cepc.displayDialog(client, em);
 	}

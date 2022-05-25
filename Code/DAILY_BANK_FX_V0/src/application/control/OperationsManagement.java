@@ -29,6 +29,13 @@ public class OperationsManagement {
 	private Client clientDuCompte;
 	private CompteCourant compteConcerne;
 
+	/**
+	 * Constructeur qui initialise la page de gestion des opérations.
+	 * @param _parentStage
+	 * @param _dbstate
+	 * @param client
+	 * @param compte
+	 */
 	public OperationsManagement(Stage _parentStage, DailyBankState _dbstate, Client client, CompteCourant compte) {
 
 		this.clientDuCompte = client;
@@ -58,12 +65,16 @@ public class OperationsManagement {
 		}
 	}
 
+	/**
+	 * Procédure qui lance la page de gestion des opérations
+	 */
 	public void doOperationsManagementDialog() {
 		this.omc.displayDialog();
 	}
-	
-	/*
+
+	/**
 	 * Fonction qui permet d'enregistrer un débit dans la base de données.
+	 * @return
 	 */
 	public Operation enregistrerDebit() {
 		OperationEditorPane oep = new OperationEditorPane(this.primaryStage, this.dbs);
@@ -85,9 +96,10 @@ public class OperationsManagement {
 		}
 		return op;
 	}
-	
-	/*
+
+	/**
 	 * Fonction qui permet d'enregistrer un crédit dans la base de données.
+	 * @return
 	 */
 	public Operation enregistrerCredit() {
 		OperationEditorPane oep = new OperationEditorPane(this.primaryStage, this.dbs);
@@ -109,9 +121,10 @@ public class OperationsManagement {
 		}
 		return op;
 	}
-	
-	/*
+
+	/**
 	 * Fonction qui permet d'enregistrer un virement de compte à compte dans la base de données.
+	 * @return
 	 */
 	public Operation enregistrerVirement() {
 		OperationEditorPane oep = new OperationEditorPane(this.primaryStage, this.dbs);
@@ -141,10 +154,9 @@ public class OperationsManagement {
 		return op;
 	}
 
-	/*
+	/**
 	 * Fonction qui permet de retourner les opérations et le solde d'un compte.
-	 * 
-	 * @return PairsOfValue<CompteCourant, ArrayList<Operation>> 
+	 * @return
 	 */
 	public PairsOfValue<CompteCourant, ArrayList<Operation>>  operationsEtSoldeDunCompte() {
 		ArrayList<Operation> listeOP = new ArrayList<>();

@@ -18,6 +18,11 @@ public class OperationEditorPane {
 	private Stage primaryStage;
 	private OperationEditorPaneController oepc;
 
+	/**
+	 * Constructeur qui initialise la page d'éditions des opérations.
+	 * @param _parentStage
+	 * @param _dbstate
+	 */
 	public OperationEditorPane(Stage _parentStage, DailyBankState _dbstate) {
 
 		try {
@@ -44,10 +49,21 @@ public class OperationEditorPane {
 		}
 	}
 
+	/**
+	 * Fonction qui retourne une opération qui est en train d'être éditée et lance en même temps la page permettant l'édition des opérations.
+	 * @param cpte
+	 * @param cm
+	 * @return
+	 */
 	public Operation doOperationEditorDialog(CompteCourant cpte, CategorieOperation cm) {
 		return this.oepc.displayDialog(cpte, cm);
 	}
-	
+
+	/**
+	 * Fonction qui retourne l'ID de destination d'une opération. != -1 si ID existe
+	 * @param cm
+	 * @return
+	 */
 	public int getDestinationID(CategorieOperation cm) {
 		if (cm == CategorieOperation.VIREMENT) {
 			return this.oepc.getDestinationID();

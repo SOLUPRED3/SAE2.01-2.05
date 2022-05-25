@@ -26,6 +26,11 @@ public class EmployesManagement {
 	private DailyBankState dbs;
 	private EmployesManagementController emc;
 
+	/**
+	 * Constructeur qui initialise la page de gestion des employés.
+	 * @param _parentStage
+	 * @param _dbstate
+	 */
 	public EmployesManagement(Stage _parentStage, DailyBankState _dbstate) {
 		this.dbs = _dbstate;
 		try {
@@ -51,10 +56,18 @@ public class EmployesManagement {
 		}
 	}
 
+	/**
+	 * Procédure qui permet de lancer la page de gestion des employés.
+	 */
 	public void doEmployeManagementDialog() {
 		this.emc.displayDialog();
 	}
 
+	/**
+	 * Fonction qui retourne un employé avec ses informations modifiées, et enregistre celles-ci dans la base de données.
+	 * @param emp
+	 * @return
+	 */
 	public Employe modifierEmploye(Employe emp) {
 		EmployeEditorPane eep = new EmployeEditorPane(this.primaryStage, this.dbs);
 		Employe result = eep.doEmployeEditorDialog(emp, EditionMode.MODIFICATION);
@@ -75,12 +88,20 @@ public class EmployesManagement {
 		}
 		return result;
 	}
-	
+
+	/**
+	 * Procédure qui permet de voir les informations d'un employé.
+	 * @param e
+	 */
 	public void voirEmploye(Employe e) {
 		EmployeEditorPane eep = new EmployeEditorPane(this.primaryStage, this.dbs);
 		eep.doEmployeEditorDialog(e, EditionMode.VISUALISATION);
 	}
 
+	/**
+	 * Fonction qui permet de créer un employé.
+	 * @return
+	 */
 	public Employe nouvelEmploye() {
 		Employe employe;
 		EmployeEditorPane eep = new EmployeEditorPane(this.primaryStage, this.dbs);
@@ -104,6 +125,13 @@ public class EmployesManagement {
 		return employe;
 	}
 
+	/**
+	 * Fonction qui retourne l'ArrayList de tout les comptes d'un employé.
+	 * @param _numCompte
+	 * @param _debutNom
+	 * @param _debutPrenom
+	 * @return
+	 */
 	public ArrayList<Employe> getlisteComptes(int _numCompte, String _debutNom, String _debutPrenom) {
 		ArrayList<Employe> listeEmp = new ArrayList<>();
 		try {

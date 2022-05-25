@@ -20,6 +20,11 @@ public class EmployeEditorPane {
 	private Stage primaryStage;
 	private EmployeEditorPaneController eepc;
 
+	/**
+	 * Constructeur qui initialise la page d'édition des employés.
+	 * @param _parentStage
+	 * @param _dbstate
+	 */
 	public EmployeEditorPane(Stage _parentStage, DailyBankState _dbstate) {
 
 		try {
@@ -45,6 +50,12 @@ public class EmployeEditorPane {
 		}
 	}
 
+	/**
+	 * Fonction qui lance la page d'édition des employés et retourne l'employé édité.
+	 * @param employe
+	 * @param em
+	 * @return
+	 */
 	public Employe doEmployeEditorDialog(Employe employe, EditionMode em) {
 		return this.eepc.displayDialog(employe, em);
 	}

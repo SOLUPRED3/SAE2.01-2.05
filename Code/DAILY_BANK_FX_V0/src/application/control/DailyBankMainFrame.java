@@ -21,7 +21,11 @@ public class DailyBankMainFrame extends Application {
 	private DailyBankState dbs;
 	private Stage primaryStage;
 
-	
+
+	/**
+	 * Procédure qui initialise la page principale de l'application.
+	 * @param primaryStage
+	 */
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
@@ -86,15 +90,17 @@ public class DailyBankMainFrame extends Application {
 			System.exit(-1);
 		}
 	}
-	
-	
+
+	/**
+	 * Procédure qui permet de lancer l'application.
+	 */
 	public static void runApp() {
 		Application.launch();
 	}
 
 	
 	/**
-	 * Ferme la connexion avec la base de données.
+	 * Procédure qui déconnecte le client de la base de données.
 	 */
 	public void disconnect() {
 		this.dbs.setAgAct(null);
@@ -110,7 +116,7 @@ public class DailyBankMainFrame extends Application {
 
 	
 	/**
-	 * Gére la connexion en tant qu'employé.
+	 * Procédure qui gère la connexion en tant qu'employé.
 	 */
 	public void login() {
 		LoginDialog ld = new LoginDialog(this.primaryStage, this.dbs);
@@ -142,7 +148,7 @@ public class DailyBankMainFrame extends Application {
 	
 
 	/**
-	 * Ouvre le gestionnaire de clients.
+	 * Procédure qui permet d'ouvrir le gestionnaire de clients.
 	 */
 	public void gestionClients() {
 		ClientsManagement cm = new ClientsManagement(this.primaryStage, this.dbs);
@@ -151,7 +157,7 @@ public class DailyBankMainFrame extends Application {
 	
 	
 	/**
-	 * Ouvre le gestionnaire d'employés.
+	 * Procédure qui permet d'ouvrir le gestionnaire d'employés.
 	 */
 	public void gestionEmployes() {
 		EmployesManagement cm = new EmployesManagement(this.primaryStage, this.dbs);

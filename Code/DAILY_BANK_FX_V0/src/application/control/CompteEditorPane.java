@@ -18,6 +18,11 @@ public class CompteEditorPane {
 	private Stage primaryStage;
 	private CompteEditorPaneController cepc;
 
+	/**
+	 * Constructeur qui initialise la page d'édition des comptes.
+	 * @param _parentStage
+	 * @param _dbstate
+	 */
 	public CompteEditorPane(Stage _parentStage, DailyBankState _dbstate) {
 
 		try {
@@ -43,6 +48,13 @@ public class CompteEditorPane {
 		}
 	}
 
+	/**
+	 * Fonction qui lance la page d'édition des comptes et retourne le compte en train d'être édité.
+	 * @param client
+	 * @param cpte
+	 * @param em
+	 * @return
+	 */
 	public CompteCourant doCompteEditorDialog(Client client, CompteCourant cpte, EditionMode em) {
 		return this.cepc.displayDialog(client, cpte, em);
 	}

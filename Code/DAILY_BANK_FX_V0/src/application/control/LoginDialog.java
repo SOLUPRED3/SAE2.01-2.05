@@ -20,6 +20,11 @@ public class LoginDialog {
 	private DailyBankState dbs;
 	private LoginDialogController ldc;
 
+	/**
+	 * Constructeur qui initialise la page de connexion à l'application.
+	 * @param _parentStage
+	 * @param _dbstate
+	 */
 	public LoginDialog(Stage _parentStage, DailyBankState _dbstate) {
 		this.dbs = _dbstate;
 		try {
@@ -45,10 +50,20 @@ public class LoginDialog {
 		}
 	}
 
+	/**
+	 * Procédure qui lance la page de connexion à l'application.
+	 */
 	public void doLoginDialog() {
 		this.ldc.displayDialog();
 	}
 
+	/**
+	 * Fonction qui cherche l'employé dans la base de données selon son login, le retourne si ses informations de connexion
+	 * sont bonnes.
+	 * @param login
+	 * @param password
+	 * @return
+	 */
 	public Employe chercherParLogin(String login, String password) {
 		Employe employe = null;
 		try {

@@ -40,13 +40,12 @@ public class ComptesManagement {
 	private ComptesManagementController cmc;
 	private DailyBankState dbs;
 	private Client clientDesComptes;
-	
-	/*
-	 * Constructueur ComptesManagement
-	 * 
-	 * @param IN : Stage _parentStage 
-	 * @param IN : DailyBankState _dbstate 
-	 * @param IN : Client client 
+
+	/**
+	 * Constructueur de ComptesManagement
+	 * @param _parentStage
+	 * @param _dbstate
+	 * @param client
 	 */
 	public ComptesManagement(Stage _parentStage, DailyBankState _dbstate, Client client) {
 		
@@ -74,27 +73,27 @@ public class ComptesManagement {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	/*
+
+
+	/**
 	 * Procédure qui permet d'afficher la page du compte.
 	 */
 	public void doComptesManagementDialog() {
 		this.cmc.displayDialog();
 	}
-	
-	/*
+
+	/**
 	 * Procédure qui permet de gérer les opérations d'un client sur un compte.
-	 * @param IN : CompteCourant cpt 
+	 * @param cpt
 	 */
 	public void gererOperations(CompteCourant cpt) {
 		OperationsManagement om = new OperationsManagement(this.primaryStage, this.dbs, this.clientDesComptes, cpt);
 		om.doOperationsManagementDialog();
 	}
-	
-	
-	/*
-	 * Fonction qui permet de créer un compte.
+
+	/**
+	 * Fonction qui permet de créer un compte et de l'enregistrer en base de données.
+	 * @return
 	 */
 	public CompteCourant creerCompte() {
 		CompteCourant compte;
@@ -125,12 +124,11 @@ public class ComptesManagement {
 			}
 		}
 		return compte;
-	}	
-	
-	
+	}
+
+
 	/**
-	 * Procédure qui permet de cloturer un compte et d'enregistrer les modifications dans la base de données.
-	 * 
+	 * Procédure qui permet de clôturer un compte et d'enregistrer les modifications dans la base de données.
 	 */
 	public void cloturerCompte() {
 		AccessCompteCourant accessCompte = new AccessCompteCourant();
@@ -147,11 +145,10 @@ public class ComptesManagement {
 			ed.doExceptionDialog();
 		}
 	}
-	
+
 	/**
-	 * Permet de retourner une ArrayList de comptes d'un client.
-	 * 
-	 * @return ArrayList<CompteCourant>
+	 * Fonction qui retourne une ArrayList contenant les comptes d'un client.
+	 * @return
 	 */
 	public ArrayList<CompteCourant> getComptesDunClient() {
 		ArrayList<CompteCourant> listeCpt = new ArrayList<>();

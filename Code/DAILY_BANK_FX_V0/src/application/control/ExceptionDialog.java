@@ -16,6 +16,12 @@ public class ExceptionDialog {
 	private Stage primaryStage;
 	private ExceptionDialogController edc;
 
+	/**
+	 * Constructeur qui initialise la page permettant d'afficher une exception à l'écran.
+	 * @param _parentStage
+	 * @param _dbstate
+	 * @param ae
+	 */
 	public ExceptionDialog(Stage _parentStage, DailyBankState _dbstate, ApplicationException ae) {
 
 		try {
@@ -41,6 +47,9 @@ public class ExceptionDialog {
 		}
 	}
 
+	/**
+	 * Procédure qui permet de lancer la page qui gère les exceptions à l'écran.
+	 */
 	public void doExceptionDialog() {
 		this.edc.displayDialog();
 	}

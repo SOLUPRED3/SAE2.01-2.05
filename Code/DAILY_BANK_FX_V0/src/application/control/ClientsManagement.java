@@ -23,6 +23,11 @@ public class ClientsManagement {
 	private DailyBankState dbs;
 	private ClientsManagementController cmc;
 
+	/**
+	 * Constructeur qui initialise la page de gestion des clients.
+	 * @param _parentStage
+	 * @param _dbstate
+	 */
 	public ClientsManagement(Stage _parentStage, DailyBankState _dbstate) {
 		this.dbs = _dbstate;
 		try {
@@ -48,14 +53,17 @@ public class ClientsManagement {
 		}
 	}
 
+	/**
+	 * Procédure qui permet de lancer la page de gestion des clients.
+	 */
 	public void doClientManagementDialog() {
 		this.cmc.displayDialog();
 	}
-	
-	/*
+
+	/**
 	 * Fonction qui permet de retourner un client avec ses informations modifiées.
-	 * @param IN Client c 
-	 * @return Client.
+	 * @param c
+	 * @return
 	 */
 	public Client modifierClient(Client c) {
 		ClientEditorPane cep = new ClientEditorPane(this.primaryStage, this.dbs);
@@ -77,15 +85,19 @@ public class ClientsManagement {
 		}
 		return result;
 	}
-	
+
+	/**
+	 * Procédure qui permet de voir les informations d'un client.
+	 * @param c
+	 */
 	public void voirClient(Client c) {
 		ClientEditorPane cep = new ClientEditorPane(this.primaryStage, this.dbs);
 		cep.doClientEditorDialog(c, EditionMode.VISUALISATION);
 	}
 
-	/*
+	/**
 	 * Fonction qui permet de créer un nouveau client.
-	 * @return Client 
+	 * @return
 	 */
 	public Client nouveauClient() {
 		Client client;
@@ -109,23 +121,22 @@ public class ClientsManagement {
 		}
 		return client;
 	}
-	
-	/*
-	 * Procédure qui permet de gérer le compte d'un client 
-	 * @param IN Client c 
+
+	/**
+	 * Procédure qui permet de gérer le compte d'un client
+	 * @param c
 	 */
 	public void gererComptesClient(Client c) {
 		ComptesManagement cm = new ComptesManagement(this.primaryStage, this.dbs, c);
 		cm.doComptesManagementDialog();
 	}
-	
-	/*
+
+	/**
 	 * Fonction qui permet de retourner ume ArrayList contenant les comptes d'un client.
-	 * @param IN int _numComptes
-	 * @param IN String _debutNom
-	 * @param IN String _debutPrenom 
-	 * 
-	 * @return ArrayList<Client>
+	 * @param _numCompte
+	 * @param _debutNom
+	 * @param _debutPrenom
+	 * @return
 	 */
 	public ArrayList<Client> getlisteComptes(int _numCompte, String _debutNom, String _debutPrenom) {
 		ArrayList<Client> listeCli = new ArrayList<>();
