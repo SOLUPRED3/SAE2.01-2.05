@@ -1,11 +1,12 @@
 package application.view;
 
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
 import application.DailyBankState;
 import application.control.ClientsManagement;
+import application.tools.ConstantesIHM;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -17,6 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
+
 
 public class ClientsManagementController implements Initializable {
 
@@ -30,6 +32,7 @@ public class ClientsManagementController implements Initializable {
 	// Données de la fenêtre
 	private ObservableList<Client> olc;
 
+	
 	// Manipulation de la fenêtre
 	public void initContext(Stage _primaryStage, ClientsManagement _cm, DailyBankState _dbstate) {
 		this.cm = _cm;
@@ -38,9 +41,9 @@ public class ClientsManagementController implements Initializable {
 		this.configure();
 	}
 
+	
 	private void configure() {
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
-
 		this.olc = FXCollections.observableArrayList();
 		this.lvClients.setItems(this.olc);
 		this.lvClients.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
@@ -49,10 +52,12 @@ public class ClientsManagementController implements Initializable {
 		this.validateComponentState();
 	}
 
+	
 	public void displayDialog() {
 		this.primaryStage.showAndWait();
 	}
 
+	
 	// Gestion du stage
 	private Object closeWindow(WindowEvent e) {
 		this.doCancel();
@@ -60,6 +65,7 @@ public class ClientsManagementController implements Initializable {
 		return null;
 	}
 
+	
 	// Attributs de la scene + actions
 	@FXML
 	private TextField txtNum;
@@ -76,15 +82,18 @@ public class ClientsManagementController implements Initializable {
 	@FXML
 	private Button btnComptesClient;
 
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	}
 
+	
 	@FXML
 	private void doCancel() {
 		this.primaryStage.close();
 	}
 
+	
 	@FXML
 	private void doRechercher() {
 		int numCompte;
@@ -127,10 +136,14 @@ public class ClientsManagementController implements Initializable {
 		for (Client cli : listeCli) {
 			this.olc.add(cli);
 		}
-
+		
 		this.validateComponentState();
 	}
+	
 
+	/**
+	 * Ouvre le gestionnaire des comptes d'un client.
+	 */
 	@FXML
 	private void doComptesClient() {
 		int selectedIndice = this.lvClients.getSelectionModel().getSelectedIndex();
@@ -139,10 +152,13 @@ public class ClientsManagementController implements Initializable {
 			this.cm.gererComptesClient(client);
 		}
 	}
+	
 
+	/**
+	 * Modifie un client.
+	 */
 	@FXML
 	private void doModifierClient() {
-
 		int selectedIndice = this.lvClients.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
 			Client cliMod = this.olc.get(selectedIndice);
@@ -152,7 +168,11 @@ public class ClientsManagementController implements Initializable {
 			}
 		}
 	}
+	
 
+	/**
+	 * Montre en lecture seule les informations d'un client.
+	 */
 	@FXML
 	private void doVoirClient() {
 		int selectedIndice = this.lvClients.getSelectionModel().getSelectedIndex();
@@ -161,6 +181,10 @@ public class ClientsManagementController implements Initializable {
 		}
 	}
 
+	
+	/**
+	 * Ajoute un nouveau client
+	 */
 	@FXML
 	private void doNouveauClient() {
 		Client client;
@@ -169,11 +193,19 @@ public class ClientsManagementController implements Initializable {
 			this.olc.add(client);
 		}
 	}
+	
 
+	/**
+	 * Gére les boutons en fonction des situations.
+	 **/
 	private void validateComponentState() {
 		int selectedIndice = this.lvClients.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
-			this.btnModifClient.setDisable(false);
+			if (!ConstantesIHM.estInactif(this.lvClients.getSelectionModel().getSelectedItem())) {
+				this.btnModifClient.setDisable(false);
+			} else {
+				this.btnModifClient.setDisable(true);
+			}
 			this.btnComptesClient.setDisable(false);
 			this.btnVoirClient.setDisable(false);
 		} else {
@@ -182,4 +214,5 @@ public class ClientsManagementController implements Initializable {
 			this.btnVoirClient.setDisable(true);
 		}
 	}
+	
 }

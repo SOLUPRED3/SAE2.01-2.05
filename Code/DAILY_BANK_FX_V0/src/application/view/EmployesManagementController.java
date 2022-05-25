@@ -1,12 +1,12 @@
 package application.view;
 
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
 import application.DailyBankState;
-import application.control.ClientsManagement;
 import application.control.EmployesManagement;
+import application.tools.ConstantesIHM;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -17,8 +17,8 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import model.data.Client;
 import model.data.Employe;
+
 
 public class EmployesManagementController implements Initializable {
 
@@ -32,6 +32,7 @@ public class EmployesManagementController implements Initializable {
 	// Données de la fenêtre
 	private ObservableList<Employe> ole;
 
+	
 	// Manipulation de la fenêtre
 	public void initContext(Stage _primaryStage, EmployesManagement _em, DailyBankState _dbstate) {
 		this.em = _em;
@@ -40,9 +41,9 @@ public class EmployesManagementController implements Initializable {
 		this.configure();
 	}
 
+	
 	private void configure() {
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
-
 		this.ole = FXCollections.observableArrayList();
 		this.lvEmployes.setItems(this.ole);
 		this.lvEmployes.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
@@ -50,10 +51,12 @@ public class EmployesManagementController implements Initializable {
 		this.lvEmployes.getSelectionModel().selectedItemProperty().addListener(e -> this.validateComponentState());
 		this.validateComponentState();
 	}
+	
 
 	public void displayDialog() {
 		this.primaryStage.showAndWait();
 	}
+	
 
 	// Gestion du stage
 	private Object closeWindow(WindowEvent e) {
@@ -61,6 +64,7 @@ public class EmployesManagementController implements Initializable {
 		e.consume();
 		return null;
 	}
+	
 
 	// Attributs de la scene + actions
 	@FXML
@@ -76,15 +80,24 @@ public class EmployesManagementController implements Initializable {
 	@FXML
 	private Button btnModifEmploye;
 
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	}
 
+	
+	/**
+	 * Annule la création/modification d'un employé et ferme la fenêtre.
+	 */
 	@FXML
 	private void doCancel() {
 		this.primaryStage.close();
 	}
 
+	
+	/**
+	 * Recherche des employés dans la base de données et les affiches sur l'interface.
+	 */
 	@FXML
 	private void doRechercher() {
 		int numCompte;
@@ -127,10 +140,13 @@ public class EmployesManagementController implements Initializable {
 
 		this.validateComponentState();
 	}
+	
 
+	/**
+	 * Modifie un employé.
+	 */
 	@FXML
 	private void doModifierEmploye() {
-
 		int selectedIndice = this.lvEmployes.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
 			Employe empMod = this.ole.get(selectedIndice);
@@ -140,7 +156,11 @@ public class EmployesManagementController implements Initializable {
 			}
 		}
 	}
+	
 
+	/**
+	 * Montre en lecture seule les informations d'un employé.
+	 */
 	@FXML
 	private void doVoirEmploye() {
 		int selectedIndice = this.lvEmployes.getSelectionModel().getSelectedIndex();
@@ -149,6 +169,10 @@ public class EmployesManagementController implements Initializable {
 		}
 	}
 
+	
+	/**
+	 * Ajoute un nouvel employé.
+	 */
 	@FXML
 	private void doNouvelEmploye() {
 		Employe employe;
@@ -158,14 +182,23 @@ public class EmployesManagementController implements Initializable {
 		}
 	}
 
+	
+	/**
+	 * Gere les boutons en fonction des situations.
+	 **/
 	private void validateComponentState() {
 		int selectedIndice = this.lvEmployes.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
-			this.btnModifEmploye.setDisable(false);
+			if (!ConstantesIHM.estInactif(this.lvEmployes.getSelectionModel().getSelectedItem())) {
+				this.btnModifEmploye.setDisable(false);
+			} else {
+				this.btnModifEmploye.setDisable(true);
+			}
 			this.btnVoirEmploye.setDisable(false);
 		} else {
 			this.btnModifEmploye.setDisable(true);
 			this.btnVoirEmploye.setDisable(true);
 		}
 	}
+	
 }

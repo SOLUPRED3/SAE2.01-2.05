@@ -1,16 +1,19 @@
 package application.view;
 
+
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
-
 import application.DailyBankState;
 import application.control.ComptesManagement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
@@ -18,6 +21,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
 import model.data.CompteCourant;
+
 
 public class ComptesManagementController implements Initializable {
 
@@ -32,6 +36,7 @@ public class ComptesManagementController implements Initializable {
 	private Client clientDesComptes;
 	private ObservableList<CompteCourant> olCompteCourant;
 
+	
 	// Manipulation de la fenêtre
 	public void initContext(Stage _primaryStage, ComptesManagement _cm, DailyBankState _dbstate, Client client) {
 		this.cm = _cm;
@@ -41,11 +46,10 @@ public class ComptesManagementController implements Initializable {
 		this.configure();
 	}
 
+	
 	private void configure() {
 		String info;
-
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
-
 		this.olCompteCourant = FXCollections.observableArrayList();
 		this.lvComptes.setItems(this.olCompteCourant);
 		this.lvComptes.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
@@ -59,11 +63,16 @@ public class ComptesManagementController implements Initializable {
 		this.loadList();
 		this.validateComponentState();
 	}
+	
 
 	public void displayDialog() {
 		this.primaryStage.showAndWait();
 	}
 	
+	
+	/**
+	 * @return le numéro du compte sélectionné.
+	 */
 	public int getNumCompte() {
 		int value = lvComptes.getSelectionModel().getSelectedItem().idNumCompte ;
 		//String value = Integer.toString(numCompte) ;
@@ -77,6 +86,7 @@ public class ComptesManagementController implements Initializable {
 		e.consume();
 		return null;
 	}
+	
 
 	// Attributs de la scene + actions
 	@FXML
@@ -89,21 +99,25 @@ public class ComptesManagementController implements Initializable {
 	private Button btnModifierCompte;
 	@FXML
 	private Button btnSupprCompte;
+	@FXML
+	private Button btnAjoutCompte;
 
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	}
 	
-	/*
-	 * Permet de fermer la page en appuyant sur le bouton annuler.
+	
+	/**
+	 * Annule la création/modification d'un employé et ferme la fenêtre.
 	 */
 	@FXML
 	private void doCancel() {
 		this.primaryStage.close();
 	}
 	
-	/*
-	 * Procédure qui permet d'appeler la fonction pour voir les opérations.
+	/**
+	 * Appelle la fonction pour voir les opérations.
 	 */
 	@FXML
 	private void doVoirOperations() {
@@ -116,36 +130,56 @@ public class ComptesManagementController implements Initializable {
 		this.validateComponentState();
 	}
 	
-	/*
-	 * Procédure qui permet de modifier un compte.
+	/**
+	 * Modifie un compte.
 	 */
 	@FXML
 	private void doModifierCompte() {
 	}
 	
 	
-	/*
-	 * Procédure qui permet de clôturer un compte en appuyant sur le bouton.
+	/**
+	 * Vérifie et clôture un compte.
 	 */
 	@FXML
 	private void doCloturerCompte() {
-		this.cm.cloturerCompte() ;
-		this.loadList();
+		CompteCourant compte = this.lvComptes.getSelectionModel().getSelectedItem();
+        if(compte.solde == 0) {
+			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+			alert.setTitle("Confirmation");
+			alert.setContentText("Êtes-vous certain(e) de vouloir clôturer ce compte ? ");
+			
+			alert.getButtonTypes().setAll(ButtonType.YES,ButtonType.NO);	
+			Optional<ButtonType> response = alert.showAndWait();
+			
+			if (response.orElse(null) == ButtonType.YES) {
+				this.cm.cloturerCompte() ;
+				this.loadList();
+			} else if(response.orElse(null) == ButtonType.NO) {
+				System.out.println("On reste encore un peu...");
+			}
+        } else {
+        	Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setTitle("Erreur");
+			alert.setContentText("Ce compte ne peut pas être clôturé car son solde n'est pas nul.");
+			alert.showAndWait();
+        }
 	}
 	
 
-	/*
-	 * Fonction qui permet de savoir si le compte sélectionné sur la viewlist est clôturé ou non.
+	/**
+	 * @return true si le compte sélectionné est clôturé, sinon false
 	 */
-	private String getEstCloture() {
+	private boolean estCloture() {
 		if(this.lvComptes.getSelectionModel().getSelectedIndex() >= 0 && this.lvComptes.getSelectionModel().getSelectedItem().estCloture.equals("N")) {
-			return this.lvComptes.getSelectionModel().getSelectedItem().estCloture ; 
+			return false; //this.lvComptes.getSelectionModel().getSelectedItem().estCloture; 
 		}
-		else return "O" ; 
+		return true;
 	}
 	
-	/*
-	 * Permet d'appeler la fonction creerCompte() en appuyant sur le boutons "Créer Compte".
+	
+	/**
+	 * Créé un compte.
 	 */
 	@FXML
 	private void doNouveauCompte() {
@@ -157,8 +191,9 @@ public class ComptesManagementController implements Initializable {
 		}		
 	}
 	
-	/*
-	 * Procédure qui permet de régénérer la viewlist.
+	
+	/**
+	 * Recharge la ViewList de comptes. 
 	 */
 	private void loadList () {
 		ArrayList<CompteCourant> listeCpt;
@@ -169,26 +204,34 @@ public class ComptesManagementController implements Initializable {
 		}
 	}
 	
-	/*
-	 * Procédure qui permet de gérer les boutons en fonction des situations.
+	
+	/**
+	 * Gére les boutons en fonction des situations.
 	 */
-	private void validateComponentState() {
+	private void validateComponentState() {		
         int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
-        if(selectedIndice >= 0) {
-            if (this.getEstCloture().equals("O")) {
-                this.btnVoirOpes.setDisable(false);
-                this.btnSupprCompte.setDisable(true);
-                this.btnModifierCompte.setDisable(true);
-            } else {
-                this.btnVoirOpes.setDisable(false);
+        if (!this.estCloture()) {
+        	if (selectedIndice >= 0) {
+        		this.btnVoirOpes.setDisable(false);
                 this.btnSupprCompte.setDisable(false);
                 this.btnModifierCompte.setDisable(false);
-            }
-        }
-        else {
-            this.btnVoirOpes.setDisable(true);
-            this.btnSupprCompte.setDisable(true);
+        	} else {
+        		this.btnVoirOpes.setDisable(true);
+                this.btnSupprCompte.setDisable(true);
+                this.btnModifierCompte.setDisable(true);                
+        	}
+        	this.btnAjoutCompte.setDisable(false);
+        } else {
+        	if (selectedIndice >= 0) {
+        		this.btnVoirOpes.setDisable(false);                
+        	} else {
+        		this.btnVoirOpes.setDisable(true);
+        	}
+        	this.btnSupprCompte.setDisable(true);
             this.btnModifierCompte.setDisable(true);
-        }        
-    }
+            this.btnAjoutCompte.setDisable(true);
+        }
+        this.btnModifierCompte.setDisable(true); //TOMODIF
+	}
+	
 }

@@ -84,11 +84,9 @@ public class DailyBankMainFrameController implements Initializable {
 
 	@FXML
 	private void doQuit() {
-
-		this.actionQuitterBD();
-
 		if (AlertUtilities.confirmYesCancel(this.primaryStage, "Confirmation quitter",
 				"Êtes-vous certain(e) de vouloir quitter l'application ?", null, AlertType.CONFIRMATION)) {
+			this.actionQuitterBD();
 			this.primaryStage.close();
 		}
 	}

@@ -39,7 +39,7 @@
       </HBox>
    </bottom>
    <center>
-      <VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" styleClass="borderlight" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" fillWidth="false" maxWidth="1.7976931348623157E308" styleClass="borderlight" BorderPane.alignment="CENTER">
          <children>
             <GridPane fx:id="gpCenterPane" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="471.0">
               <columnConstraints>
@@ -55,10 +55,16 @@
                         <Insets right="20.0" />
                      </GridPane.margin>
                   </Label>
-                  <TextField fx:id="txtNoCompte" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="269.0" GridPane.columnIndex="1" />
+                  <TextField fx:id="txtNoCompte" maxWidth="1.7976931348623157E308" minHeight="30.0" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </GridPane.margin></TextField>
                </children>
+               <padding>
+                  <Insets bottom="20.0" top="20.0" />
+               </padding>
             </GridPane>
-            <GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+            <GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="120.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="190.0" minWidth="10.0" percentWidth="0.0" prefWidth="190.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="303.0" minWidth="10.0" prefWidth="278.0" />
@@ -73,16 +79,19 @@
                         <Insets right="20.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label fx:id="lblMontant" alignment="CENTER_RIGHT" layoutX="21.0" layoutY="41.0" maxWidth="1.7976931348623157E308" text="Montant" GridPane.rowIndex="1">
+                  <Label fx:id="lblMontant" alignment="CENTER_RIGHT" layoutX="21.0" layoutY="41.0" maxWidth="1.7976931348623157E308" prefHeight="0.0" prefWidth="170.0" text="Montant" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets right="20.0" />
                      </GridPane.margin>
                   </Label>
-                  <ComboBox fx:id="cbTypeOpe" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1">
+                  <ComboBox fx:id="cbTypeOpe" maxWidth="1.7976931348623157E308" minHeight="30.0" GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin></ComboBox>
-                  <TextField fx:id="txtMontant" layoutX="171.0" layoutY="23.0" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="txtMontant" layoutX="171.0" layoutY="23.0" maxWidth="1.7976931348623157E308" minHeight="30.0" prefWidth="278.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin></TextField>
                </children>
             </GridPane>
          </children>
