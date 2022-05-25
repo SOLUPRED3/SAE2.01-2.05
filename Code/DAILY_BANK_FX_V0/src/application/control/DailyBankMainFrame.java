@@ -1,5 +1,6 @@
 package application.control;
 
+
 import application.DailyBankApp;
 import application.DailyBankState;
 import application.view.DailyBankMainFrameController;
@@ -14,16 +15,16 @@ import model.orm.LogToDatabase;
 import model.orm.exception.ApplicationException;
 import model.orm.exception.DatabaseConnexionException;
 
+
 public class DailyBankMainFrame extends Application {
 
 	private DailyBankState dbs;
 	private Stage primaryStage;
 
+	
 	@Override
 	public void start(Stage primaryStage) {
-
 		this.primaryStage = primaryStage;
-
 		try {
 			this.dbs = new DailyBankState();
 			this.dbs.setAgAct(null);
@@ -39,12 +40,9 @@ public class DailyBankMainFrame extends Application {
 
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Fenêtre Principale");
-
-			/*
-			// En mise au point :
+			
 			// Forcer une connexion existante pour rentrer dans l'appli en mode connecté
-
-			try {
+			/*try {
 				Employe e;
 				AccessEmploye ae = new AccessEmploye();
 
@@ -78,14 +76,11 @@ public class DailyBankMainFrame extends Application {
 					ExceptionDialog ed = new ExceptionDialog(primaryStage, this.dbs, e);
 					ed.doExceptionDialog();
 				}
-			}
-			*/
+			}*/			
 
 			DailyBankMainFrameController dbmc = loader.getController();
 			dbmc.initContext(primaryStage, this, this.dbs);
-
 			dbmc.displayDialog();
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.exit(-1);
@@ -97,6 +92,10 @@ public class DailyBankMainFrame extends Application {
 		Application.launch();
 	}
 
+	
+	/**
+	 * Ferme la connexion avec la base de données.
+	 */
 	public void disconnect() {
 		this.dbs.setAgAct(null);
 		this.dbs.setEmpAct(null);
@@ -109,6 +108,10 @@ public class DailyBankMainFrame extends Application {
 		}
 	}
 
+	
+	/**
+	 * Gére la connexion en tant qu'employé.
+	 */
 	public void login() {
 		LoginDialog ld = new LoginDialog(this.primaryStage, this.dbs);
 		ld.doLoginDialog();
@@ -136,14 +139,23 @@ public class DailyBankMainFrame extends Application {
 			}
 		}
 	}
+	
 
+	/**
+	 * Ouvre le gestionnaire de clients.
+	 */
 	public void gestionClients() {
 		ClientsManagement cm = new ClientsManagement(this.primaryStage, this.dbs);
 		cm.doClientManagementDialog();
 	}
 	
+	
+	/**
+	 * Ouvre le gestionnaire d'employés.
+	 */
 	public void gestionEmployes() {
 		EmployesManagement cm = new EmployesManagement(this.primaryStage, this.dbs);
 		cm.doEmployeManagementDialog();
 	}
+	
 }

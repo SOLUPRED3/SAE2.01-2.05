@@ -125,9 +125,7 @@ public class ComptesManagement {
 			}
 		}
 		return compte;
-	}
-	
-	
+	}	
 	
 	
 	/**
@@ -136,38 +134,19 @@ public class ComptesManagement {
 	 */
 	public void cloturerCompte() {
 		AccessCompteCourant accessCompte = new AccessCompteCourant();
-		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-		alert.setTitle("Confirmation");
-		alert.setContentText("Êtes-vous certain(e) de vouloir clôturer ce compte ? ");
-		
-		alert.getButtonTypes().setAll(ButtonType.YES,ButtonType.NO) ;
-
-		Optional<ButtonType> response = alert.showAndWait() ;
-		
-		if(response.orElse(null) == ButtonType.YES) {
-			try {
-				
-				int numCompte = cmc.getNumCompte() ; 
-				System.out.println(numCompte);
-				accessCompte.cloturerCompte(numCompte);
-			
-			
-			}catch (DatabaseConnexionException e) {
-				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
-				ed.doExceptionDialog();
-				this.primaryStage.close();
-			} catch (ApplicationException ae) {
-				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
-				ed.doExceptionDialog();
-			}
-			
+		try {
+			int numCompte = cmc.getNumCompte();
+			System.out.println(numCompte);
+			accessCompte.cloturerCompte(numCompte);		
+		} catch (DatabaseConnexionException e) {
+			ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
+			ed.doExceptionDialog();
+			this.primaryStage.close();
+		} catch (ApplicationException ae) {
+			ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
+			ed.doExceptionDialog();
 		}
-		else if(response.orElse(null) == ButtonType.NO) {
-			System.out.println("On reste encore un peu...") ;
-		}
-		
 	}
-
 	
 	/**
 	 * Permet de retourner une ArrayList de comptes d'un client.
