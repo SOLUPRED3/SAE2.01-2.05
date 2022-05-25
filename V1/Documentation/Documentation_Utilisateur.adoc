@@ -8,32 +8,42 @@ v1.0, 2022-04-21
 [.text-justify]
 == Présentation générale, rôle de l'application : 
 
-L'application, doit permettre de gérer des comptes bancaires de dépôt de clients préalablement créés. Elle devra donc en conséquence permettre de créditer, débiter un compte soit par virement, c'est à dire un échange d'argent entre deux comptes distincts mais domiciliés dans le réseau bancaire, soit par une personne physique se présentant devant son guichet.
+Tout d'abord, notre travail aura été de concevoir une application pour la banque DailyBank, fonctionnelle et optimisée.
+
+DailyBankApp a été conçue pour permettre aux guichetiers et aux chefs d'agence de gérer des comptes bancaires de dépôt de clients préalablement créés. Elle permet donc de créditer et débiter un compte, soit par virement, c'est à dire un échange d'argent entre deux comptes distincts mais domiciliés dans le réseau bancaire, soit par une personne physique se présentant devant son guichet.
 
 [.text-justify]
 == Installation et utilisation :
 [.text-justify]
-Concernant l'installation de l'application et son utilisation, vous allez avoir besoin de certains prérequis. 
+Concernant l'installation de l'application et son utilisation, l'utilisateur aura besoin de certains prérequis.
 
-En effet, il sera indispensable de disposer d'un environnement d'exécution Java en version 8 pour pouvoir exécuter l'application.
+En effet, il sera indispensable de disposer d'un environnement d'exécution Java en version 8 (JRE 1.8), pour pouvoir exécuter l'application.
 
-Cette version devra être installée et configurée dans le terminal, avec jenvsur Mac et Linux ou une alternative sur Windows. 
+Référence : https://www.java.com/fr/download/manual.jsp
 
-Une fois que la configuration est prête, il vous faudra installer l'application qui sera un fichier .jar exécutable. +
-Pour l'exécuter, il vous faudra aller dans le terminal et taper la commande : 
+Cette version devra être installée et configurée dans le terminal, par exemple avec jenv sur Mac et Linux, ou une alternative sur Windows.
+
+Référence : https://www.jenv.be/
+
+Une fois la configuration terminée, il vous faudra installer l'application qui sera un fichier .jar exécutable. +
+
+Pour l'exécuter, il vous faudra aller dans le terminal et exécuter la commande :
 
 	java - jar DailyBank.jar 
 
 
 [.text-justify]
-== Fonctionnement : 
+== Fonctionnement de DailyBankApp :
 
-Au niveau de cette première version, quelques fonctionnalités sont disponibles mais beaucoup sont manquantes. Pour celles qui sont déjà implémentées, nous allons décrire leurs fonctionnement.
+==== Connexion à l'application :
 
-Premièrement, en ce qui concerne le guichetier, il est possible pour lui de modifier les informations du client. En effet, en appuyant sur le bouton adéquat, il peut modifier les champs qui correspondent à l'adresse, au numéro de téléphone, etc... 
+L'utilisateur se trouvera à l'ouverture de l'application, en face de cette fenêtre :
 
-Ensuite, il peut également, en appuyant sur le bouton "Nouveau client" créer un nouveau client. Il est également possible pour lui de cliquer sur la un compte qui est présent dans liste disposée devant lui et d'en consulter les informations. Le bouton qui est relatif à cette action est le bouton "Consulter". Pour terminer la description relative au guichetier, il est également possible pour lui de débiter un compte en réalisant la même action que précédemment, à la seule différence qu'il doit ici cliquer sur le bouton "Débiter".
+image:images/DocumentationUser/login.png[]
 
-Quant au chef d'agence, la seule action qu'il est possible pour lui de faire à l'heure actuelle est de rendre inactif un client, cette action est disponible avec le bouton "Rendre inactif".
+Il lui suffira d'appuyer sur le bouton "Connexion" et de rentrer ses informations de connexion pour pouvoir accéder à l'application.
+
+
+
 
 == Résultats produits avec jeux d'essai commentés :
