@@ -1,9 +1,9 @@
 package application.view;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import java.util.regex.Pattern;
 
+import java.net.URL;
+import java.util.Optional;
+import java.util.ResourceBundle;
 import application.DailyBankState;
 import application.control.ExceptionDialog;
 import application.tools.AlertUtilities;
@@ -12,18 +12,20 @@ import application.tools.EditionMode;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import model.data.Client;
 import model.data.Employe;
 import model.orm.exception.ApplicationException;
 import model.orm.exception.Order;
 import model.orm.exception.Table;
+
 
 public class EmployeEditorPaneController implements Initializable {
 
@@ -38,6 +40,7 @@ public class EmployeEditorPaneController implements Initializable {
 	private EditionMode em;
 	private Employe employeResult;
 
+	
 	// Manipulation de la fenêtre
 	public void initContext(Stage _primaryStage, DailyBankState _dbstate) {
 		this.primaryStage = _primaryStage;
@@ -45,12 +48,13 @@ public class EmployeEditorPaneController implements Initializable {
 		this.configure();
 	}
 
+	
 	private void configure() {
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
 	}
 
+	
 	public Employe displayDialog(Employe employe, EditionMode mode) {
-
 		this.em = mode;
 		if (employe == null) {
 			this.employeEdite = new Employe(0, "", "", "", "", "", this.dbs.getEmpAct().idAg, "N");
@@ -59,6 +63,7 @@ public class EmployeEditorPaneController implements Initializable {
 		}
 		this.employeResult = null;
 		switch (mode) {
+		
 		case CREATION:
 			this.txtIdEmp.setDisable(true);
 			this.txtNom.setDisable(false);
@@ -69,10 +74,18 @@ public class EmployeEditorPaneController implements Initializable {
 			this.rbChefAgence.setSelected(false);
 			this.rbActif.setSelected(true);
 			this.rbInactif.setSelected(false);
+			if (!ConstantesIHM.estInactif(this.employeEdite)) {
+				this.rbActif.setDisable(false);
+				this.rbInactif.setDisable(false);
+			} else {
+				this.rbActif.setDisable(true);
+				this.rbInactif.setDisable(true);
+			}
 			this.lblMessage.setText("Informations sur le nouvel employé");
 			this.butOk.setText("Ajouter");
 			this.butCancel.setText("Annuler");
 			break;
+			
 		case MODIFICATION:
 			this.txtIdEmp.setDisable(true);
 			this.txtNom.setDisable(false);
@@ -83,10 +96,18 @@ public class EmployeEditorPaneController implements Initializable {
 			this.rbChefAgence.setSelected(false);
 			this.rbActif.setSelected(true);
 			this.rbInactif.setSelected(false);
+			if (!ConstantesIHM.estInactif(this.employeEdite)) {
+				this.rbActif.setDisable(false);
+				this.rbInactif.setDisable(false);
+			} else {
+				this.rbActif.setDisable(true);
+				this.rbInactif.setDisable(true);
+			}
 			this.lblMessage.setText("Informations employé");
 			this.butOk.setText("Modifier");
 			this.butCancel.setText("Annuler");
 			break;
+			
 		case VISUALISATION:
 			this.txtIdEmp.setDisable(true);
 			this.txtNom.setDisable(true);
@@ -103,6 +124,7 @@ public class EmployeEditorPaneController implements Initializable {
 			this.lblMessage.setText("Informations employé");
 			this.butCancel.setText("Fermer");
 			break;
+			
 		case SUPPRESSION:
 			// ce mode n'est pas utilisé pour les Clients :
 			// la suppression d'un client n'existe pas il faut que le chef d'agence
@@ -112,10 +134,12 @@ public class EmployeEditorPaneController implements Initializable {
 			ed.doExceptionDialog();
 			break;
 		}
+		
 		// Paramétrages spécifiques pour les chefs d'agences
 		if (ConstantesIHM.isAdmin(this.dbs.getEmpAct())) {
 			// rien pour l'instant
 		}
+		
 		// initialisation du contenu des champs
 		this.txtIdEmp.setText("" + this.employeEdite.idEmploye);
 		this.txtNom.setText(this.employeEdite.nom);
@@ -135,11 +159,11 @@ public class EmployeEditorPaneController implements Initializable {
 		}
 
 		this.employeResult = null;
-
 		this.primaryStage.showAndWait();
 		return this.employeResult;
 	}
 
+	
 	// Gestion du stage
 	private Object closeWindow(WindowEvent e) {
 		this.doCancel();
@@ -147,6 +171,7 @@ public class EmployeEditorPaneController implements Initializable {
 		return null;
 	}
 
+	
 	// Attributs de la scene + actions
 	@FXML
 	private Label lblMessage;
@@ -177,16 +202,25 @@ public class EmployeEditorPaneController implements Initializable {
 	@FXML
 	private Button butCancel;
 
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	}
 
+	
+	/**
+	 * Annule la création/modification d'un employé et ferme la fenêtre.
+	 */
 	@FXML
 	private void doCancel() {
 		this.employeResult = null;
 		this.primaryStage.close();
 	}
 
+	
+	/**
+	 * Confirme l'ajoute/modification d'un employé.
+	 */
 	@FXML
 	private void doAjouter() {
 		switch (this.em) {
@@ -207,9 +241,12 @@ public class EmployeEditorPaneController implements Initializable {
 			this.primaryStage.close();
 			break;
 		}
-
 	}
+	
 
+	/**
+	 * @return true si tous les champs d'ajout/modification sont correctes, sinon false.
+	 */
 	private boolean isSaisieValide() {
 		this.employeEdite.nom = this.txtNom.getText().trim();
 		this.employeEdite.prenom = this.txtPrenom.getText().trim();
@@ -220,10 +257,19 @@ public class EmployeEditorPaneController implements Initializable {
 		} else {
 			this.employeEdite.droitsAccess = ConstantesIHM.AGENCE_CHEF;
 		}
-		if (this.rbActif.isSelected()) {
-			this.employeEdite.estInactif = ConstantesIHM.EMPLOYE_ACTIF;
+		if (this.rbInactif.isSelected()) {			
+
+			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+			alert.setTitle("Confirmation");
+			alert.setContentText("Êtes-vous certain(e) de rendre inactif ce client ?\nTous ses comptes seront clôturés.\n(Il s'agit d'une action irréversible)");			
+			alert.getButtonTypes().setAll(ButtonType.YES,ButtonType.NO);
+			Optional<ButtonType> response = alert.showAndWait();
+			
+			if(response.orElse(null) == ButtonType.YES) {
+				this.employeEdite.estInactif = ConstantesIHM.EMPLOYE_INACTIF;
+			}
 		} else {
-			this.employeEdite.estInactif = ConstantesIHM.EMPLOYE_INACTIF;
+			this.employeEdite.estInactif = ConstantesIHM.EMPLOYE_ACTIF;
 		}
 
 		if (this.employeEdite.nom.isEmpty()) {

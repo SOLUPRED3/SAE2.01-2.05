@@ -68,8 +68,6 @@ public class OperationEditorPaneController implements Initializable {
 			this.btnOk.setText("Effectuer Débit");
 			this.btnCancel.setText("Annuler débit");
 			
-			/*this.gpCenterPane.getChildren().remove(0);
-			this.gpCenterPane.getChildren().remove(4);*/
 			((VBox) this.gpCenterPane.getParent()).getChildren().remove(gpCenterPane);
 			
 
@@ -86,6 +84,8 @@ public class OperationEditorPaneController implements Initializable {
 			info = "Cpt. : " + this.compteEdite.idNumCompte + "  "
 					+ String.format(Locale.ENGLISH, "%12.02f", this.compteEdite.solde);
 			this.lblMessage.setText(info);
+			
+			((VBox) this.gpCenterPane.getParent()).getChildren().remove(gpCenterPane);
 
 			this.btnOk.setText("Effectuer Crédit");
 			this.btnCancel.setText("Annuler Crédit");
