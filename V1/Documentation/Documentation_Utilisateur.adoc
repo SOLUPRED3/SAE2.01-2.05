@@ -41,7 +41,15 @@ L'utilisateur se trouvera à l'ouverture de l'application, en face de cette fen�
 
 image:images/DocumentationUser/login.png[]
 
-Il lui suffira d'appuyer sur le bouton "Connexion" et de rentrer ses informations de connexion pour pouvoir accéder à l'application.
+Il lui suffit d'appuyer sur le bouton connexion pour voir apparaître la page de connexion.
+
+image:images/DocumentationUser/connexionPage.png[]
+
+Après avoir rentré ses informations de connexion, l'utilisateur se verra amené sur cette page :
+
+image:images/DocumentationUser/mainPage.png[]
+
+Vous voilà connecté à l'application DailyBank, bravo !
 
 
 
