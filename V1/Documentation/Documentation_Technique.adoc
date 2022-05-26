@@ -36,7 +36,7 @@ Les *chefs d'agence* sont des "super" guichetiers comparables à des administrat
 
 === 2. Diagramme de classe :
 
-image::images/dc0.svg[DC0]
+image::images/DC0.svg[DC0]
 
 [.text-justify]
 Toutes les données manipulées par l'application sont stockées dans une base de données externes. Elles sont structurées de la manière suivante :
