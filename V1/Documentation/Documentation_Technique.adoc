@@ -392,7 +392,7 @@ image::images/rendreInactif.svg[]
 
 ==== Partie du diagramme de classe correspondante :
 
-image::images/creerClient.png[]
+image::images/modifierClientDC.png[]
 
 [.text-justify]
 Cette partie du diagramme de classe est mise-à-jour, certaines données sont modifiées dans la base de données.
