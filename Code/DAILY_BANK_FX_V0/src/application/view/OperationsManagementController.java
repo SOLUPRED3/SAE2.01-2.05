@@ -1,10 +1,10 @@
 package application.view;
 
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.ResourceBundle;
-
 import application.DailyBankState;
 import application.control.OperationsManagement;
 import application.tools.NoSelectionModel;
@@ -22,6 +22,7 @@ import model.data.Client;
 import model.data.CompteCourant;
 import model.data.Operation;
 
+
 public class OperationsManagementController implements Initializable {
 
 	// Etat application
@@ -36,6 +37,7 @@ public class OperationsManagementController implements Initializable {
 	private CompteCourant compteConcerne;
 	private ObservableList<Operation> olOperation;
 
+	
 	// Manipulation de la fenêtre
 	public void initContext(Stage _primaryStage, OperationsManagement _om, DailyBankState _dbstate, Client client, CompteCourant compte) {
 		this.primaryStage = _primaryStage;
@@ -46,9 +48,9 @@ public class OperationsManagementController implements Initializable {
 		this.configure();
 	}
 
+	
 	private void configure() {
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
-
 		this.olOperation = FXCollections.observableArrayList();
 		this.lvOperations.setItems(this.olOperation);
 		this.lvOperations.setSelectionModel(new NoSelectionModel<Operation>());
@@ -56,10 +58,12 @@ public class OperationsManagementController implements Initializable {
 		this.validateComponentState();
 	}
 
+	
 	public void displayDialog() {
 		this.primaryStage.showAndWait();
 	}
 
+	
 	// Gestion du stage
 	private Object closeWindow(WindowEvent e) {
 		this.doCancel();
@@ -67,6 +71,7 @@ public class OperationsManagementController implements Initializable {
 		return null;
 	}
 
+	
 	// Attributs de la scene + actions
 	@FXML
 	private Label lblInfosClient;
@@ -81,25 +86,37 @@ public class OperationsManagementController implements Initializable {
 	@FXML
 	private Button btnVirement;
 
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	}
 
+	
+	/**
+	 * Annule la création/modification d'un employé et ferme la fenêtre.
+	 */
 	@FXML
 	private void doCancel() {
 		this.primaryStage.close();
 	}
 
+	
+	/**
+	 * Ouvre un dialogue pour enregistrer un débit.
+	 */
 	@FXML
 	private void doDebit() {
-
 		Operation op = this.om.enregistrerDebit();
 		if (op != null) {
 			this.updateInfoCompteClient();
 			this.validateComponentState();
 		}
 	}
+	
 
+	/**
+	 * Ouvre un dialogue pour enregistrer un crédit.
+	 */
 	@FXML
 	private void doCredit() {
 		Operation op = this.om.enregistrerCredit();
@@ -109,6 +126,10 @@ public class OperationsManagementController implements Initializable {
 		}
 	}
 
+	
+	/**
+	 * Ouvre un dialogue pour enregistrer un virement de compte à compte.
+	 */
 	@FXML
 	private void doAutre() { //Viremments
 		Operation op = this.om.enregistrerVirement();
@@ -118,8 +139,11 @@ public class OperationsManagementController implements Initializable {
 		}
 	}
 
-	private void validateComponentState() {
-		// Non implémenté => désactivé		
+	
+	/**
+	 * Gére les boutons en fonction des situations.
+	 **/
+	private void validateComponentState() {	
         if (this.compteConcerne.estCloture.equals("O")) {
         	this.btnCredit.setDisable(true);
     		this.btnDebit.setDisable(true);
@@ -131,10 +155,12 @@ public class OperationsManagementController implements Initializable {
         }
 	}
 
+	
+	/**
+	 * Met à jour les informations d'un compte.
+	 */
 	private void updateInfoCompteClient() {
-
 		PairsOfValue<CompteCourant, ArrayList<Operation>> opesEtCompte;
-
 		opesEtCompte = this.om.operationsEtSoldeDunCompte();
 
 		ArrayList<Operation> listeOP;
@@ -158,4 +184,5 @@ public class OperationsManagementController implements Initializable {
 
 		this.validateComponentState();
 	}
+	
 }

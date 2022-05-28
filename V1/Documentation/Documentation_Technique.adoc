@@ -1,49 +1,98 @@
-= Documentation technique V0 :
+= Documentation technique (V0)
+
+
 Thomas Falsimagne, Tilian Hure, Maxime Dourlent
 v1.0, 2022-04-21
-:toc: 
-== I. Présentation de l'application :
-
-=== 1. Use Case Global :
-
-image::images/uc0.svg[]
-
-[.text-justify]
-Voici le Use Case Global de la V0 de l'application DailyBank.
-Il y a deux types d'utilisateurs, les guichetiers et les chefs d'agence.
-Selon que l'utilisateur soit guichetier ou chef d'agence, il a des droits d'administration qui sont différents.
-[.text-justify]
-Un guichetier peut modifier les informations d'un client, créer un nouveau client, consulter un compte et débiter un compte.
-Un chef d'agence peut faire toutes ces actions et peut en plus rendre inactif un client.
-
-=== II. Diagramme de classe des données global :
-
-image::images/DC0.svg[]
+:toc:
 
 
 
-== III. Architecture :
-
-=== 1. Architecture générale
+== I. Présentation de l'application
 
 [.text-justify]
-Pour l'application de la banque DailyBank, l'architecture générale est assez simple.
-l'application est basée sur un fonctionnement centralisé, avec des postes de travails
-qui sont directement reliés à une base de données.
+L'application DailyBank est destinée à être utilisée par certains employés d'une agence bancaire. Elle permet de gérer des clients, leurs comptes bancaires de dépôt avec leurs opérations, mais aussi des employés tels des guichetiers et des chefs d'agence.
+
+=== 1. Les utilisateurs :
 
 [.text-justify]
-Ces postes de travails sont les ordinateurs où travaillent les employés et les chefs d'agence.
-Concernant la base de données, elle permet de stocker toutes les informations relatives à l'agence bancaire.
-Que ce soit les informations des employés, des clients, des comptes et des opérations.
+L'application peut être utilisée par deux types d'utilisateurs : les guichetiers et les chefs d'agence.
+
+image::images/uc0.svg[UC0]
+
+{empty} +
+Les *guichetiers* sont les principaux types d'utilisateurs, ils peuvent :
+
+* Créer un nouveau client
+* Modifier les informations d'un client
+* Consulter les comptes d'un client et leurs opérations
+* Débiter le compte d'un client
+
+{empty} +
+[.text-justify]
+Les *chefs d'agence* sont des "super" guichetiers comparables à des administrateurs. Ils peuvent accèder à toutes les mêmes fonctionnalités que les guichetiers, plus :
+
+* Rendre inactif un client
+
+
+=== 2. Diagramme de classe :
+
+image::images/DC0.svg[DC0]
+
+[.text-justify]
+Toutes les données manipulées par l'application sont stockées dans une base de données externes. Elles sont structurées de la manière suivante :
+
+* Une *AgenceBancaire* possède des employés, des clients, et gère des comptes courants
+* Un *Employe* peut être un guichetier ou un chef d'agence
+* Un *Client* possède des comptes courants
+* Une *CompteCourant* est composé d'opérations
+* Une *Operation* possède un type d'opération
+
+
+[NOTE]
+====
+[.text-justify]
+Une agence ne peut avoir qu'un seul chef d'agence. Ce dernier peut gérer les clients et les autres employés (guichetiers) de son agence. Il est également le seul à pouvoir rendre un client ou un employé inactif.
+
+{empty} +
+
+[.text-justify]
+Les comptes bancaires ne peuvent être clôturés que si leur solde est nulle. Les comptes clôturés ne peuvent plus subir aucune opération mais ces dernières restent tout de même visualisables.
+
+{empty} +
+
+[.text-justify]
+Les clients ne peuvent être rendus inactifs que si tous leurs comptes sont clôturés. Les clients inactifs ne peuvent plus être modifiés mais restent tout de même visualisables.
+
+{empty} +
+
+[.text-justify]
+Les employés inactifs ne peuvent plus être modifiés mais restent tout de même visualisables. Il n'est plus possible de se connecter à l'application avec leurs identifiants.
+====
+
+
+
+== II. Architecture
+
+=== 1. Architecture générale :
+
+[.text-justify]
+Pour l'application de la banque DailyBank, l'architecture générale est assez simple. Elle est basée sur un fonctionnement centralisé, avec des postes de travails qui sont directement reliés à une base de données.
+
+[.text-justify]
+Ces postes de travails sont les ordinateurs où travaillent les employés et les chefs d'agence. Concernant la base de données, elle permet de stocker toutes les informations relatives à l'agence bancaire. Que ce soit les informations des employés, des clients, des comptes et des opérations.
+
+
+{empty} +
 
 === 2. Ressources externes :
+
 ==== 2.1. Librairies utilisées :
 
 [.text-justify]
-Au niveau des librairies, le code de l'application repose sur une seule librairie qui permet de lier l'application à la base de données. +
-Cette librairie est : *objdbc6.jar*
+Au niveau des librairies, le code de l'application repose sur une seule librairie qui permet de lier l'application à la base de données. Cette librairie est : *objdbc6.jar*
 
-==== 2.2 Exportation de l'application : 
+
+==== 2.2 Exportation de l'application :
 
 [.text-justify]
 L'application est généré en .jar, ce qui permet de lancer DailyBankApp sans
@@ -53,20 +102,21 @@ prérequis, simplement une JRE.
 Il faut donc s'assurer que les postes de travail des employés possèdent une JRE 1.8 pour pouvoir faire fonctionner
 le .jar sans encombre.
 
+
+{empty} +
+
 === 3. Structuration de l'application :
-[.text-justify]
 
-==== 3.1 Principe retenu pour la structuration du code : 
+==== 3.1 Principe retenu pour la structuration du code :
 
-Le code de l'application est structuré en plusieurs packages.
-Les packages Model, View, Controller et Tools.
 [.text-justify]
-Le principe qui nous a permis de structurer le code de cette manière est le MCV pattern.
+Le code de l'application est structuré en plusieurs packages. Les packages Model, View, Controller et Tools. Le principe qui nous a permis de structurer le code de cette manière est le MCV pattern.
 
 [.text-justify]
 Modèle-vue-contrôleur ou MVC est un motif d'architecture logiciel destiné aux interfaces graphiques lancé en 1978 et très populaire pour les applications web. Le motif est composé de trois types de modules ayant trois responsabilités différentes : les modèles, les vues et les contrôleurs.
 
-==== 3.2 Aperçu de la structuration de DailyBankApp : 
+
+==== 3.2 Aperçu :
 
 [source]
 ----
@@ -80,114 +130,134 @@ Modèle-vue-contrôleur ou MVC est un motif d'architecture logiciel destiné aux
             └── exception
 ----
 
-==== 3.2 Package Application : 
 
+===== Package Application :
+
+[.text-justify]
 Le package application correspond à la partie View et la partie Controller avec ses deux packages "view" et "control" par rapport au pattern MVC.
 
-. control -> Package qui contient les fichiers permettant d'afficher les différentes fenêtres. 
-. tools -> Package qui contient les fichiers permettant de gérer certaines parties du code.
-. view -> Package qui contient les controllers des différentes fenêtres avec les fichiers fxml correspondants. 
+*Principaux sous-packages :*
 
-==== 3.3 Package Model : 
+. *control* -> Fichiers permettant d'afficher les différentes fenêtres.
+. *tools* -> Fichiers permettant de gérer certaines parties du code.
+. *view* -> Controllers des différentes vues (fenêtres) avec les fichiers fxml correspondants.
+
+
+===== Package Model :
 Le package Model correspond à la partie Model du pattern MVC.
 
-. data -> Package qui contient les fichiers représentant les personnes réelles et l'agence bancaire.
-. orm -> Package qui contient les fichiers permettant la liaison à la base de données et
-contient également le sous-package Exception contenant les fichiers java permettant de gérer les exceptions 
+*Principaux sous-packages :*
+
+. *data* -> Fichiers représentant les personnes réelles et l'agence bancaire.
+. *orm* -> Fichiers permettant la liaison à la base de données et contient également le sous-package Exception contenant les fichiers java permettant de gérer les exceptions
+
+
+{empty} +
 
 === 4. Éléments essentiels :
 
 ==== 4.1 Prérequis pour le développeur :
 
 [.text-justify]
-Si le code de l'application devait être repris pour être amélioré ou modifié, le développeur devra avoir au préalable
-une JRE version 1.8.
-[.text-justify]
-Il faudra ensuite qu'il ait pour environnement de développement le logiciel Eclipse.
-[.text-justify]
-Il devra également avoir un Workspace configuré en JavaFX avec le logiciel SceneBuilder intégré dans le buildpath.
+Si le code de l'application devait être repris pour être amélioré ou modifié, le développeur devra avoir au préalable une JRE version 1.8. [red]#Il faudra ensuite qu'il ait pour environnement de développement le logiciel Eclipse. Il devra également avoir un Workspace configuré avec JavaFX et le logiciel SceneBuilder intégré dans le buildpath.#
 
-== IV. Description et explication des fonctionnalités implémentées :
+
+
+== IV. Description et explication des fonctionnalités implémentées
 
 === 1. Guichetier
 
 ==== 1.1 Modifier info client :
 
-le guichetier peut modifier les informations du client. Il peut donc modifier le nom du client, son adresse, etc.
+[.text-justify]
+Un guichetier peut modifier les informations d'un client (son nom, son prénom, son adresse, etc).
+
 
 ===== Use case correspondant :
+
 image::images/modifierInfo.svg[]
 
-==== Partie du diagramme de classe correspondante :
+
+===== Partie du diagramme de classe correspondante :
 
 image::images/modifierClientDC.png[]
 
 [.text-justify]
-Ici, cette partie du diagramme de classe est en lecture, nous ne modifions et ne rajoutons rien de plus.
+Cette partie du diagramme de classe est en mise-à-jour, certaines données sont modifiées dans la base de donnée.
 
-==== Aperçu des principales fonctionnalités : 
+
+==== Aperçu des principales fonctionnalités :
+
 [.text-justify]
-Pour ce qui est des fonctionnalités concernant la modification des informations d'un client, merci de bien vouloir vous référer à la documentation utilisateur.
+[red]#Pour ce qui est des fonctionnalités concernant la modification des informations d'un client, merci de bien vouloir vous référer à la documentation utilisateur.#
 
-==== Classes impliquées, dans quels packages : 
+
+==== Classes et packages impliqués :
 
 . Application/Control -> ClientsManagement.java, ClientEditorPane.java
 
-. Application/View -> ClientEditorPaneController.java, ClientManagementController.java, 
-clientseditorpane.fxml, clientsmanagement.fxml
+. Application/View -> ClientEditorPaneController.java, ClientManagementController.java,
+clienteditorpane.fxml, clientsmanagement.fxml
 
 . Application/Model/data -> Client.java
 
 . Application/Model/orm -> AccessClient.java
 
-==== Éléments essentiels : 
 
-===== Fonctions : 
+==== Éléments essentiels :
+
+===== Fonctions :
 
 [.text-justify]
 . modifierClient(Client c) -> ClientsManagement.java
-. updateClient(Client client) -> AccessClient.java 
+. updateClient(Client client) -> AccessClient.java
 . doAjouter() -> ClientEditorPaneController.java
 . displayDialog(Client client, EditionMode mode) -> ClientEditorPaneController.java
 . doModifierClient() -> ClientManagementController.java
 
+
 ===== Classes :
 
 [.text-justify]
-La classe Client.java est très importante également.
+La classe Client.java est importante car principalement utilisée pour modéliser des clients sous forme d'objets manipulables dans le code.
+
+
+{empty} +
 
 ==== 1.2 Créer un client :
 
-Il est également possible pour lui de créer un nouveau client.
+Un guichetier peut créer un nouveau client.
 
 ===== Use case correspondant :
 image::images/creerClient.svg[]
+
 
 ==== Partie du diagramme de classe correspondante :
 
 image::images/modifierClientDC.png[]
 
-Ici, cette partie du diagramme de classe est en lecture, nous ne modifions et ne rajoutons rien de plus.
-
-
-==== Aperçu des principales fonctionnalités : 
 [.text-justify]
-Pour ce qui est des fonctionnalités concernant la modification des informations d'un client, merci de bien vouloir vous référer à la documentation utilisateur.
+Cette partie du diagramme de classe est en mise-à-jour, certaines données sont ajoutées dans la base de données.
 
 
-==== Classes impliquées, dans quels packages : 
+==== Aperçu des principales fonctionnalités :
+[.text-justify]
+[red]#Pour ce qui est des fonctionnalités concernant la modification des informations d'un client, merci de bien vouloir vous référer à la documentation utilisateur.#
+
+
+==== Classes et packages impliqués :
 
 . Application/Control -> ClientsManagement.java, ClientEditorPane.java
 
-. Application/View -> ClientEditorPaneController.java, ClientManagementController.java, clientseditorpane.fxml, clientsmanagement.fxml
+. Application/View -> ClientEditorPaneController.java, ClientManagementController.java, clienteditorpane.fxml, clientsmanagement.fxml
 
-. Application/Model/data -> Client.java 
+. Application/Model/data -> Client.java
 
 . Application/Model/orm -> AccessClient.java
 
-==== Éléments essentiels : 
+==== Éléments essentiels :
 
-===== Fonctions : 
+===== Fonctions :
 
 [.text-justify]
 . insertClient(Client client) -> AccessClient.java
@@ -198,45 +268,49 @@ Pour ce qui est des fonctionnalités concernant la modification des informations
 ===== Classes :
 
 [.text-justify]
-La classe Client.java est très importante également.
+La classe Client.java est importante car principalement utilisée pour modéliser des clients sous forme d'objets manipulables dans le code.
 
+
+{empty} +
 
 ==== 1.3 Consulter un compte :
 
-Le guichetier peut également consulter un compte.
+Un guichetier peut consulter un compte bancaire.
+
 
 ===== Use case correspondant :
 
 image::images/consulterCompte.svg[]
+
 
 ==== Partie du diagramme de classe correspondante :
 
 image::images/compteCourantDC.png[]
 
 [.text-justify]
-Ici, cette partie du diagramme de classe est en lecture, nous ne modifions et ne rajoutons rien de plus.
+Cette partie du diagramme de classe est lecture, aucune données n'est modifiée, ajoutée ou supprimée dans la base de données.
 
 
-==== Aperçu des principales fonctionnalités : 
+==== Aperçu des principales fonctionnalités :
 
 [.text-justify]
 Pour ce qui est des fonctionnalités concernant la modification des informations d'un client, merci de bien vouloir vous référer à la documentation utilisateur.
 
 
-==== Classes impliquées, dans quels packages :
+==== Classes et packages impliqués :
 
 . Application/Control -> ComptesManagement.java, CompteEditorPane.java
 
-. Application/View -> ComptesEditorPaneController.java, ComptesManagementController.java, clientseditorpane.fxml, clientsmanagement.fxml
+. Application/View -> CompteEditorPaneController.java, ComptesManagementController.java, clienteditorpane.fxml, clientsmanagement.fxml
 
 . Application/Model/Data -> CompteCourant.java
 
 . Application/Model/orm -> AccessCompteCourant.java
 
 
-==== Éléments essentiels : 
+==== Éléments essentiels :
 
-===== Fonctions : 
+===== Fonctions :
 
 [.text-justify]
 . loadList() -> ComptesManagementController.java
@@ -248,31 +322,36 @@ Pour ce qui est des fonctionnalités concernant la modification des informations
 ===== Classes :
 
 [.text-justify]
-La classe CompteCourant.java est très importante également.
+La classe CompteCourant.java est importante car principalement utilisée pour modéliser des comptes bancaires sous forme d'objets manipulables dans le code.
 
+
+{empty} +
 
 ==== 1.4 Débiter un compte :
 
-Il peut débiter un compte
+Un guichetier peut débiter un compte bancaire.
+
 
 ===== Use case correspondant :
+
 image::images/debiterCompte.svg[]
+
 
 ==== Partie du diagramme de classe correspondante :
 
 image::images/débitCompte.png[]
 
 [.text-justify]
-Ici, cette partie du diagramme de classe est en lecture, nous ne modifions et ne rajoutons rien de plus.
+Les parties *CompteCourant* et *TypeOperation* du diagramme de classe sont en lecture, aucune données n'est modifiée, ajoutée ou supprimée de la base de données. La partie *Operation* est en mise-à-jour, certaines données sont ajoutées à la base de donneés.
 
 
-==== Aperçu des principales fonctionnalités : 
+==== Aperçu des principales fonctionnalités :
 
 [.text-justify]
-Pour ce qui est des fonctionnalités concernant la modification des informations d'un client, merci de bien vouloir vous référer à la documentation utilisateur.
+[red]#Pour ce qui est des fonctionnalités concernant la modification des informations d'un client, merci de bien vouloir vous référer à la documentation utilisateur.#
 
 
-==== Classes impliquées, dans quels packages :
+==== Classes et packages impliqués :
 
 . Application/Control -> OperationManagement.java, OperationEditorPane.java
 
@@ -283,10 +362,10 @@ Pour ce qui est des fonctionnalités concernant la modification des informations
 . Application/Model/orm -> AccessCompteCourant.java
 
 
-==== Éléments essentiels : 
+==== Éléments essentiels :
 
 [.text-justify]
-. doDebit() dans OperationManagementController.java 
+. doDebit() dans OperationManagementController.java
 . doAjouter() dans OperationEditorPaneController.java
 . enregistrerDebit() dans OperationManagement.java
 . insertDebit() -> dans AccessOperation.java
@@ -294,23 +373,52 @@ Pour ce qui est des fonctionnalités concernant la modification des informations
 . updateInfoCompteClient() -> OperationManagementController.java
 
 [.text-justify]
-La classe Operation.java est très importante également.
+La classe Operation.java est importante car principalement utilisée pour modéliser des opérations de débit, de crédit ou de virement sous forme d'objets manipulables dans le code.
 
 
-=== 2. Chef d'agence : 
+{empty} +
 
-==== 1.1 Rendre inactif un client :
+=== 2. Chef d'agence :
+
+==== 2.1 Rendre inactif un client :
+
+Un chef d'agence peut rendre inactif un client.
+
 
 ===== Use case correspondant :
 
-image::images/rendreInactif.svg[alt]
-
-==== Aperçu des principales fonctionnalités : 
+image::images/rendreInactif.svg[]
 
 
+==== Partie du diagramme de classe correspondante :
 
-==== Classes impliquées, dans quels packages :
+image::images/modifierClientDC.png[]
+
+[.text-justify]
+Cette partie du diagramme de classe est mise-à-jour, certaines données sont modifiées dans la base de données.
 
 
+==== Aperçu des principales fonctionnalités :
 
-==== Éléments essentiels : 
+[.text-justify]
+[red]#Pour ce qui est des fonctionnalités concernant la modification des informations d'un client, merci de bien vouloir vous référer à la documentation utilisateur.#
+
+
+==== Classes et packages impliqués :
+
+. Application/Control -> ClientsManagement.java, ClientEditorPane.java
+
+. Application/View -> ClientEditorPaneController.java, ClientManagementController.java, clienteditorpane.fxml, clientsmanagement.fxml
+
+. Application/Model/data -> Client.java
+
+. Application/Model/orm -> AccessClient.java
+
+
+==== Éléments essentiels :
+
+[.text-justify]
+. doRendreInactif() dans ClientEditorPaneController.java
+
+[.text-justify]
+La classe Client.java est importante car principalement utilisée pour modéliser des clients sous forme d'objets manipulables dans le code.

@@ -19,7 +19,9 @@ La mission de notre équipe consiste à développer une application existante «
 == Livrables
 
 -> https://github.com/IUT-Blagnac/sae2022-bank-4a01/blob/5e62a0e8f568162115cfc3c16f0f7e3d8b0a4068/V2/CDCU/CDCU-V2.adoc[CDCU-V2 final] +
--> https://github.com/IUT-Blagnac/sae2022-bank-4a01/blob/3a9b8e8b0956c5ca600859445465cb318c49c946/V3/CDCU/CDCU-V3.adoc[CDCU-V3 final]
+-> https://github.com/IUT-Blagnac/sae2022-bank-4a01/blob/3a9b8e8b0956c5ca600859445465cb318c49c946/V3/CDCU/CDCU-V3.adoc[CDCU-V3 final] +
+-> https://github.com/IUT-Blagnac/sae2022-bank-4a01/blob/main/V3/Gantt/Gantt-V3.pdf[Gantt-V3 prévisionnel final] +
+-> https://github.com/IUT-Blagnac/sae2022-bank-4a01/tree/main/V1/Code/src[Code-V1]
 
 [cols="1,2,2,5",options=header]
 |===

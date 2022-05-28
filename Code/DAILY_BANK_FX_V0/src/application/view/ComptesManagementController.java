@@ -116,6 +116,7 @@ public class ComptesManagementController implements Initializable {
 		this.primaryStage.close();
 	}
 	
+	
 	/**
 	 * Appelle la fonction pour voir les opérations.
 	 */
@@ -129,6 +130,7 @@ public class ComptesManagementController implements Initializable {
 		this.loadList();
 		this.validateComponentState();
 	}
+	
 	
 	/**
 	 * Modifie un compte.
