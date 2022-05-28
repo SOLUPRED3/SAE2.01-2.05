@@ -202,26 +202,24 @@ public class EmployeEditorPaneController implements Initializable {
 	@FXML
 	private Button butCancel;
 
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	}
 
-	
+	@FXML
 	/**
 	 * Annule la création/modification d'un employé et ferme la fenêtre.
 	 */
-	@FXML
 	private void doCancel() {
 		this.employeResult = null;
 		this.primaryStage.close();
 	}
 
-	
+	@FXML
 	/**
 	 * Confirme l'ajoute/modification d'un employé.
 	 */
-	@FXML
 	private void doAjouter() {
 		switch (this.em) {
 		case CREATION:
@@ -242,10 +240,11 @@ public class EmployeEditorPaneController implements Initializable {
 			break;
 		}
 	}
-	
+
 
 	/**
-	 * @return true si tous les champs d'ajout/modification sont correctes, sinon false.
+	 * Permet de retourner si toutes les informations de saisies sont valides.
+	 * @return : true si tous les champs d'ajout/modification sont correctes, sinon false.
 	 */
 	private boolean isSaisieValide() {
 		this.employeEdite.nom = this.txtNom.getText().trim();

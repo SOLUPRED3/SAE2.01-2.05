@@ -135,7 +135,7 @@ public class ComptesManagement {
 		try {
 			int numCompte = cmc.getNumCompte();
 			System.out.println(numCompte);
-			accessCompte.cloturerCompte(numCompte);		
+			accessCompte.cloturerCompte(numCompte);
 		} catch (DatabaseConnexionException e) {
 			ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
 			ed.doExceptionDialog();
@@ -144,6 +144,32 @@ public class ComptesManagement {
 			ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
 			ed.doExceptionDialog();
 		}
+	}
+
+	/**
+	 * Fonction qui permet de retourner un compte avec ses informations modifiées.
+	 * @param c
+	 * @return
+	 */
+	public CompteCourant modifierCompte(Client Cl, CompteCourant c) {
+		CompteEditorPane cep = new CompteEditorPane(this.primaryStage, this.dbs);
+		CompteCourant result = cep.doCompteEditorDialog(Cl, c, EditionMode.MODIFICATION);
+		if (result != null) {
+			try {
+				AccessCompteCourant ac = new AccessCompteCourant();
+				ac.updateCompteCourant(result);
+			} catch (DatabaseConnexionException e) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
+				ed.doExceptionDialog();
+				result = null;
+				this.primaryStage.close();
+			} catch (ApplicationException ae) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
+				ed.doExceptionDialog();
+				result = null;
+			}
+		}
+		return result;
 	}
 
 	/**

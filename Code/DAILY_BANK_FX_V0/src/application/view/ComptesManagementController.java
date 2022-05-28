@@ -135,7 +135,16 @@ public class ComptesManagementController implements Initializable {
 	 */
 	@FXML
 	private void doModifierCompte() {
-	}
+			int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
+			if (selectedIndice >= 0) {
+				Client clientCompte = clientDesComptes ;
+				CompteCourant compte = this.olCompteCourant.get(selectedIndice);
+				CompteCourant result = this.cm.modifierCompte(clientCompte, compte) ;
+				if (result != null) {
+					this.olCompteCourant.set(selectedIndice, result);
+				}
+			}
+		}
 	
 	
 	/**
@@ -164,6 +173,7 @@ public class ComptesManagementController implements Initializable {
 			alert.setContentText("Ce compte ne peut pas être clôturé car son solde n'est pas nul.");
 			alert.showAndWait();
         }
+
 	}
 	
 
@@ -208,30 +218,28 @@ public class ComptesManagementController implements Initializable {
 	/**
 	 * Gére les boutons en fonction des situations.
 	 */
-	private void validateComponentState() {		
-        int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
-        if (!this.estCloture()) {
-        	if (selectedIndice >= 0) {
-        		this.btnVoirOpes.setDisable(false);
-                this.btnSupprCompte.setDisable(false);
-                this.btnModifierCompte.setDisable(false);
-        	} else {
-        		this.btnVoirOpes.setDisable(true);
-                this.btnSupprCompte.setDisable(true);
-                this.btnModifierCompte.setDisable(true);                
-        	}
-        	this.btnAjoutCompte.setDisable(false);
-        } else {
-        	if (selectedIndice >= 0) {
-        		this.btnVoirOpes.setDisable(false);                
-        	} else {
-        		this.btnVoirOpes.setDisable(true);
-        	}
-        	this.btnSupprCompte.setDisable(true);
-            this.btnModifierCompte.setDisable(true);
-            this.btnAjoutCompte.setDisable(true);
-        }
-        this.btnModifierCompte.setDisable(true); //TOMODIF
+	private void validateComponentState() {
+		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
+		if (!this.estCloture()) {
+			if (selectedIndice >= 0) {
+				this.btnVoirOpes.setDisable(false);
+				this.btnSupprCompte.setDisable(false);
+				this.btnModifierCompte.setDisable(false);
+			} else {
+				this.btnVoirOpes.setDisable(true);
+				this.btnSupprCompte.setDisable(true);
+				this.btnModifierCompte.setDisable(true);
+			}
+			this.btnAjoutCompte.setDisable(false);
+		} else {
+			if (selectedIndice >= 0) {
+				this.btnVoirOpes.setDisable(false);
+			} else {
+				this.btnVoirOpes.setDisable(true);
+			}
+			this.btnSupprCompte.setDisable(true);
+			this.btnModifierCompte.setDisable(true);
+			this.btnAjoutCompte.setDisable(true);
+		}
 	}
-	
 }
