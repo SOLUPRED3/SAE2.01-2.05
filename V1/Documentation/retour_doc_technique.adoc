@@ -40,7 +40,9 @@ Cas d’utilisation à développer dans la Version 1 :
  - Créer un compte
  - Effectuer un virement de compte à compte d’un même client
  - Clôturer un compte
- ---
+ 
+ 
 === Chef d’Agence :
+
   Gérer (CRUD) les employés (guichetier et chef d’agence)
 (*) CRUD : Create Read Update Delete Cas
