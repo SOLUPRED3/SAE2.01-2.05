@@ -28,7 +28,8 @@ Les *guichetiers* sont les principaux types d'utilisateurs, ils peuvent :
 
 {empty} +
 [.text-justify]
-Les *chefs d'agence* sont des "super" guichetiers comparables à des administrateurs. Ils peuvent accèder à toutes les mêmes fonctionnalités que les guichetiers, plus :
+Les *chefs d'agence* sont des "super" guichetiers comparables à des administrateurs. +
+Ils peuvent accèder à toutes les mêmes fonctionnalités que les guichetiers, plus :
 
 * Rendre inactif un client
 
