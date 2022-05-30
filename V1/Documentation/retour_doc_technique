@@ -1,0 +1,39 @@
+= Documentations technique
+
+
+== Eléments obligatoires
+   • Page de garde
+    • Sommaire
+    • Présentation de l'Application
+    • Répartition des fonctionnalités par programmeur (Une section qui décrit le partage du travail)
+
+
+== Forme :
+
+Pas de sommaire
+Toutes les figures doivent avoir un numéro et un titre.
+
+
+== contenu
+=== Ressources externes :
+Il faut indiquer , l’utilisation de java fx …
+Il faut donc s’assurer que les postes de travail des employés possèdent une JRE 1.8 pour pouvoir faire fonctionner le .jar sans encombre. 
+Voir comment lancer dans le bon environnement → IHM
+
+=== Rendre un client inactif 
+y a-t-il des prérequis ? Par exemple tous ces comptes sont clôtures…
+
+
+Ok pour la doc V0 mais je ne trouve pas la doc v1
+
+== description de la V1
+Pas développée rappel :
+Cas d’utilisation à développer dans la Version 1 :
+Guichetier :
+ Créditer/débiter un compte
+ Créer un compte
+ Effectuer un virement de compte à compte d’un même client
+ Clôturer un compte
+Chef d’Agence :
+ Gérer (CRUD) les employés (guichetier et chef d’agence)
+(*) CRUD : Create Read Update Delete Cas
