@@ -14,6 +14,10 @@ Pas de sommaire
 Toutes les figures doivent avoir un numéro et un titre.
 
 
+== Répartition du travail
+Répartition des fonctionnalités par programmeur (Une section qui décrit le partage du travail)
+Je ne l'ai pas vu ...
+
 == contenu
 === Ressources externes :
 Il faut indiquer , l’utilisation de java fx …
@@ -29,11 +33,14 @@ Ok pour la doc V0 mais je ne trouve pas la doc v1
 == description de la V1
 Pas développée rappel :
 Cas d’utilisation à développer dans la Version 1 :
-Guichetier :
- Créditer/débiter un compte
- Créer un compte
- Effectuer un virement de compte à compte d’un même client
- Clôturer un compte
-Chef d’Agence :
- Gérer (CRUD) les employés (guichetier et chef d’agence)
+
+=== Guichetier :
+----
+ - Créditer/débiter un compte
+ - Créer un compte
+ - Effectuer un virement de compte à compte d’un même client
+ - Clôturer un compte
+ ---
+=== Chef d’Agence :
+  Gérer (CRUD) les employés (guichetier et chef d’agence)
 (*) CRUD : Create Read Update Delete Cas
