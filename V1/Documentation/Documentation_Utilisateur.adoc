@@ -1,9 +1,10 @@
 = Documentation utilisateur V0 :
-Thomas Falsimagne, Tilian Hure, Maxime Dourlent
-v1.0, 2022-04-21
-
 :toc:
 :numbered:
+
+*_Thomas Falsimagne, Tilian Hure, Maxime Dourlent_*
+
+
 
 [.text-justify]
 == Présentation générale, rôle de l'application : 
