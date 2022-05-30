@@ -1,0 +1,39 @@
+Cahier de recette <|°_°|>
+=========================
+:toc:
+:toc-title: Sommaire
+
+:Entreprise: DailyBank
+:Equipe: Dourlent Maxime, Tilian Huré, Thomas Falsimagne
+
+Crée pour : {entreprise} +
+Crée par : {equipe}
+
+
+== 1 - Introduction
+
+=== Objet
+
+Ceci est un objet, fait pas chier
+
+== 2 - Pre-Requis
+
+Pre-requis à la con
+
+=== Elément à tester
+
+Les fonctionnalités listés dans la documentation technique
+
+=== Environnement de test
+
+Sur PC wesh
+
+== 3 - Cas de test
+
+=== Test 1
+=== Test 2
+=== Test 3
+=== Test 4
+=== Test 5
+=== Test 6
+=== Test 7
