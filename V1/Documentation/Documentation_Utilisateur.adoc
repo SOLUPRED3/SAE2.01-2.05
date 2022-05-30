@@ -10,7 +10,7 @@ v1.0, 2022-04-21
 
 Tout d'abord, notre travail aura été de concevoir une application pour la banque DailyBank, fonctionnelle et optimisée.
 
-DailyBankApp a été conçue pour permettre aux guichetiers et aux chefs d'agence de gérer des comptes bancaires de dépôt de clients préalablement créés. Elle permet donc de créditer et débiter un compte, soit par virement, c'est à dire un échange d'argent entre deux comptes distincts mais domiciliés dans le réseau bancaire, soit par une personne physique se présentant devant son guichet.
+DailyBankApp a été conçue pour permettre aux guichetiers et aux chefs d'agence de gérer des comptes bancaires de dépôt de clients préalablement créés. Elle permet donc de créditer et débiter un compte, soit par virement, c'est-à-dire un échange d'argent entre deux comptes distincts, mais domiciliés dans le réseau bancaire, soit par une personne physique se présentant devant son guichet.
 
 [.text-justify]
 == Installation et utilisation :
@@ -21,7 +21,7 @@ En effet, il sera indispensable de disposer d'un environnement d'exécution Java
 
 Référence : https://www.java.com/fr/download/manual.jsp
 
-Cette version devra être installée et configurée dans le terminal, par exemple avec jenv sur Mac et Linux, ou une alternative sur Windows.
+Cette version devra être installée et configurée dans le terminal, par exemple avec *jenv* sur Mac et Linux, ou une alternative sur Windows.
 
 Référence : https://www.jenv.be/
 
@@ -35,21 +35,162 @@ Pour l'exécuter, il vous faudra aller dans le terminal et exécuter la commande
 [.text-justify]
 == Fonctionnement de DailyBankApp :
 
-==== Connexion à l'application :
-
-L'utilisateur se trouvera à l'ouverture de l'application, en face de cette fenêtre :
+=== Connexion à l'application :
+[.text-justify]
+Vous vous trouverez, à l'ouverture de l'application, face à cette fenêtre.
 
 image:images/DocumentationUser/login.png[]
-
-Il lui suffit d'appuyer sur le bouton connexion pour voir apparaître la page de connexion.
+[.text-justify]
+Il vous suffit d'appuyer sur le bouton connexion pour voir apparaître la page de connexion.
 
 image:images/DocumentationUser/connexionPage.png[]
-
-Après avoir rentré ses informations de connexion, l'utilisateur se verra amené sur cette page :
+[.text-justify]
+Après avoir rentré vos informations de connexion, vous serez amené sur cette page :
 
 image:images/DocumentationUser/mainPage.png[]
-
+[.text-justify]
 Vous voilà connecté à l'application DailyBank, bravo !
+
+=== Déconnexion de l'application :
+[.text-justify]
+Si vous souhaitez vous déconnecter de l'application, il vous suffit d'appuyer sur le bouton "Déconnexion", présent sur la page principale.
+
+=== Gestion des clients :
+
+image:images/DocumentationUser/gestionC1.png[]
+[.text-justify]
+Si vous souhaitez gérer les clients de votre agence, il vous faut cliquer sur le bouton "Clients", que vous voyez ci-dessus.
+
+image:images/DocumentationUser/gestionC2.png[]
+[.text-justify]
+Vous arriverez ainsi sur cet onglet, qui vous permettra de faire toutes sortes d'actions.
+
+=== Créer un client :
+
+image:images/DocumentationUser/gestionC2.png[]
+
+Pour pouvoir créer un client, il vous faut cliquer sur le bouton "Nouveau Client", situé en bas à droite de votre fenêtre.
+
+image:images/DocumentationUser/gestionC3.png[]
+
+Vous verrez s'afficher cette interface vous permettant de créer le client souhaité. Entrez les informations voulues et cliquer sur "Ajouter" pour confirmer.
+
+=== Rechercher un client :
+
+image:images/DocumentationUser/gestionC2.png[]
+[.text-justify]
+À votre arrivée sur l'onglet de gestion du client, vous trouverez un onglet vide, comme ceci.
+[.text-justify]
+Si vous souhaitez rechercher un client en particulier, vous pourrez vous servir des deux zones de saisies situées en haut de la fenêtre. Si vous souhaitez simplement rechercher tous les clients présents dans l'agence, il vous suffit d'appuyer sur le bouton "Rechercher".
+
+image:images/DocumentationUser/gestionC4.png[]
+[.text-justify]
+Voici une recherche sans spécifications.
+
+image:images/DocumentationUser/gestionC5.png[]
+[.text-justify]
+Voici une recherche avec spécifications.
+
+=== Modifier les informations d'un client :
+
+image:images/DocumentationUser/gestionC6.png[]
+[.text-justify]
+Si vous souhaitez modifier les informations d'un client,
+il vous faut cliquer sur le bouton "Modifier client", situé dans la barre d'outils à droite de la fenêtre.
+
+image:images/DocumentationUser/gestionC7.png[]
+[.text-justify]
+Vous verrez s'afficher cet onglet, il vous suffira de modifier les informations voulues et de les confirmer en appuyant sur "Modifier".
+
+=== Consulter les comptes d'un client :
+
+image:images/DocumentationUser/gestionC6.png[]
+[.text-justify]
+Si vous souhaitez consulter les comptes d'un client, appuyez simplement sur le bouton "Comptes client"
+
+image:images/DocumentationUser/consC1.png[]
+[.text-justify]
+Vous vous trouverez face à cet onglet qui vous affiche les informations des différents comptes d'un client.
+
+=== Consulter les opérations d'un compte :
+
+image:images/DocumentationUser/consC2.png[]
+[.text-justify]
+En cliquant sur le compte voulu, il vous est possible de voir les opérations réalisées sur celui-ci, qu'il soit clôturé ou non. Pour cela, cliquez sur le bouton "Voir opérations".
+
+image:images/DocumentationUser/consC3.png[]
+[.text-justify]
+Vous pouvez ainsi consulter les différentes opérations réalisées avec le compte d'un client.
+
+===== Créditer un compte client :
+
+image:images/DocumentationUser/consC4.png[]
+[.text-justify]
+Si le compte que vous souhaitez créditer est noté comme ouvert (inscrit ainsi entre parenthèses sur la ligne du compte), alors cela est possible. À contrario, s'il est inscrit sur la ligne qu'il est clôturé, alors ce ne sera pas possible.
+
+image:images/DocumentationUser/cr1.png[]
+
+Ici, le compte est ouvert, il est donc possible de réaliser des opérations sur celui-ci.
+
+Si vous souhaitez créditer le compte, appuyez sur "Enregistrer Crédit".
+
+image:images/DocumentationUser/cr2.png[]
+
+Ici, vous aurez le choix, vous pourrez choisir le type d'opération en cliquant sur "Dépôt Espèces" (opération par défaut) et inscrire un montant. Pour confirmer le crédit, appuyez sur "Effectuer Crédit", sinon, appuyez sur "Annuler Crédit".
+
+===== Débiter un compte client :
+
+image:images/DocumentationUser/consC4.png[]
+[.text-justify]
+Si le compte que vous souhaitez débiter est noté comme ouvert (inscrit ainsi entre parenthèses sur la ligne du compte), alors cela est possible. À contrario, s'il est inscrit sur la ligne qu'il est clôturé, alors ce ne sera pas possible.
+
+Ici, le compte est ouvert, il est donc possible de réaliser des opérations sur celui-ci.
+
+Si vous souhaitez créditer le compte, appuyez sur "Enregistrer Débit".
+
+image:images/DocumentationUser/db1.png[]
+
+Ici, vous aurez le choix, vous pourrez choisir le type d'opération en cliquant sur "Retrait Espèces" (opération par défaut) et inscrire un montant. Pour confirmer le débit, appuyez sur "Effectuer Débit", sinon, appuyez sur "Annuler Débit".
+
+===== Effectuer un virement depuis un compte client :
+
+image:images/DocumentationUser/consC4.png[]
+[.text-justify]
+Si le compte que vous souhaitez débiter est noté comme ouvert (inscrit ainsi entre parenthèses sur la ligne du compte), alors cela est possible. À contrario, s'il est inscrit sur la ligne qu'il est clôturé, alors ce ne sera pas possible.
+
+Ici, le compte est ouvert, il est donc possible de réaliser des opérations sur celui-ci.
+
+Si vous souhaitez créditer le compte, appuyez sur "Enregistrer Virement".
+
+image:images/DocumentationUser/vr1.png[]
+
+Ici, il vous faut rentrer le n° de compte de destination et le montant que vous souhaitez virer depuis le compte client. Pour confirmer le virement, appuyez sur "Effectuer Virement", sinon, appuyez sur "Annuler Virement".
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
