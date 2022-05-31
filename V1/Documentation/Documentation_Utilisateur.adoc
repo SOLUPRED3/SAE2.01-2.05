@@ -103,7 +103,7 @@ image:images/DocumentationUser/gestionC7.png[]
 [.text-justify]
 Vous verrez s'afficher cet onglet, il vous suffira de modifier les informations voulues et de les confirmer en appuyant sur "Modifier".
 
-=== Gestion des comptes clients :
+=== Gestion des comptes bancaires :
 
 image:images/DocumentationUser/gestionC6.png[]
 [.text-justify]
