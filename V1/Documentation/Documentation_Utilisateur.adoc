@@ -66,7 +66,7 @@ image:images/DocumentationUser/gestionC2.png[]
 [.text-justify]
 Vous arriverez ainsi sur cet onglet, qui vous permettra de faire toutes sortes d'actions.
 
-=== Créer un client :
+==== Créer un client :
 
 image:images/DocumentationUser/gestionC2.png[]
 
@@ -76,7 +76,7 @@ image:images/DocumentationUser/gestionC3.png[]
 
 Vous verrez s'afficher cette interface vous permettant de créer le client souhaité. Entrez les informations voulues et cliquer sur "Ajouter" pour confirmer.
 
-=== Rechercher un client :
+==== Rechercher un client :
 
 image:images/DocumentationUser/gestionC2.png[]
 [.text-justify]
@@ -92,7 +92,7 @@ image:images/DocumentationUser/gestionC5.png[]
 [.text-justify]
 Voici une recherche avec spécifications.
 
-=== Modifier les informations d'un client :
+==== Modifier les informations d'un client :
 
 image:images/DocumentationUser/gestionC6.png[]
 [.text-justify]
@@ -103,7 +103,7 @@ image:images/DocumentationUser/gestionC7.png[]
 [.text-justify]
 Vous verrez s'afficher cet onglet, il vous suffira de modifier les informations voulues et de les confirmer en appuyant sur "Modifier".
 
-=== Consulter les comptes d'un client :
+=== Gestion des comptes clients :
 
 image:images/DocumentationUser/gestionC6.png[]
 [.text-justify]
@@ -113,7 +113,7 @@ image:images/DocumentationUser/consC1.png[]
 [.text-justify]
 Vous vous trouverez face à cet onglet qui vous affiche les informations des différents comptes d'un client.
 
-=== Consulter les opérations d'un compte :
+==== Consulter les opérations d'un compte :
 
 image:images/DocumentationUser/consC2.png[]
 [.text-justify]
@@ -123,7 +123,7 @@ image:images/DocumentationUser/consC3.png[]
 [.text-justify]
 Vous pouvez ainsi consulter les différentes opérations réalisées avec le compte d'un client.
 
-=== Créditer un compte client :
+==== Créditer un compte client :
 
 image:images/DocumentationUser/consC4.png[]
 [.text-justify]
@@ -139,7 +139,7 @@ image:images/DocumentationUser/cr2.png[]
 
 Ici, vous aurez le choix, vous pourrez choisir le type d'opération en cliquant sur "Dépôt Espèces" (opération par défaut) et inscrire un montant. Pour confirmer le crédit, appuyez sur "Effectuer Crédit", sinon, appuyez sur "Annuler Crédit".
 
-=== Débiter un compte client :
+==== Débiter un compte client :
 
 image:images/DocumentationUser/consC4.png[]
 [.text-justify]
@@ -153,7 +153,7 @@ image:images/DocumentationUser/db1.png[]
 
 Ici, vous aurez le choix, vous pourrez choisir le type d'opération en cliquant sur "Retrait Espèces" (opération par défaut) et inscrire un montant. Pour confirmer le débit, appuyez sur "Effectuer Débit", sinon, appuyez sur "Annuler Débit".
 
-=== Effectuer un virement depuis un compte client :
+==== Effectuer un virement depuis un compte client :
 
 image:images/DocumentationUser/consC4.png[]
 [.text-justify]
