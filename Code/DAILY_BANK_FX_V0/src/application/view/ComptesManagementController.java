@@ -21,6 +21,10 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
 import model.data.CompteCourant;
+import model.orm.AccessClient;
+import model.orm.exception.DataAccessException;
+import model.orm.exception.DatabaseConnexionException;
+import model.orm.exception.RowNotFoundOrTooManyRowsException;
 
 
 public class ComptesManagementController implements Initializable {
@@ -188,6 +192,32 @@ public class ComptesManagementController implements Initializable {
 		}
 		return true;
 	}
+
+	private boolean clientInactif() {
+		AccessClient ac = new AccessClient() ;
+		boolean valide = true ;
+		try {
+			if(this.lvComptes.getSelectionModel().getSelectedIndex() >= 0){
+				Client client = ac.getClient(this.lvComptes.getSelectionModel().getSelectedItem().idNumCli) ;
+				System.out.println("Client sélectionné");
+				if(client.estInactif == "O"){
+					valide = true ;
+				}
+				else{
+					valide = false ;
+				}
+			}
+		} catch (RowNotFoundOrTooManyRowsException e) {
+			e.printStackTrace();
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+		} catch (DatabaseConnexionException e) {
+			e.printStackTrace();
+		}
+		System.out.println(valide);
+		return valide;
+
+	}
 	
 	
 	/**
@@ -235,12 +265,17 @@ public class ComptesManagementController implements Initializable {
 			this.btnAjoutCompte.setDisable(false);
 		} else {
 			if (selectedIndice >= 0) {
-				this.btnVoirOpes.setDisable(false);
+				this.btnVoirOpes.setDisable(false) ;
 			} else {
-				this.btnVoirOpes.setDisable(true);
+				this.btnVoirOpes.setDisable(true) ;
 			}
-			this.btnSupprCompte.setDisable(true);
-			this.btnModifierCompte.setDisable(true);
+			this.btnSupprCompte.setDisable(true) ;
+			this.btnModifierCompte.setDisable(true) ;
 		}
+
+		if(this.clientInactif()){
+			this.btnAjoutCompte.setDisable(true) ;
+		}
+		else this.btnAjoutCompte.setDisable(false) ;
 	}
 }
