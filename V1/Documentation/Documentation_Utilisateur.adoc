@@ -144,13 +144,13 @@ Ici, vous aurez le choix, vous pourrez choisir le type d'opération en cliquant 
 image:images/DocumentationUser/consC4.png[]
 [.text-justify]
 Si le compte que vous souhaitez débiter est noté comme ouvert (inscrit ainsi entre parenthèses sur la ligne du compte), alors cela est possible. À contrario, s'il est inscrit sur la ligne qu'il est clôturé, alors ce ne sera pas possible.
-
+[.text-justify]
 Ici, le compte est ouvert, il est donc possible de réaliser des opérations sur celui-ci.
-
+[.text-justify]
 Si vous souhaitez créditer le compte, appuyez sur "Enregistrer Débit".
 
 image:images/DocumentationUser/db1.png[]
-
+[.text-justify]
 Ici, vous aurez le choix, vous pourrez choisir le type d'opération en cliquant sur "Retrait Espèces" (opération par défaut) et inscrire un montant. Pour confirmer le débit, appuyez sur "Effectuer Débit", sinon, appuyez sur "Annuler Débit".
 
 ==== Effectuer un virement depuis un compte client :
@@ -158,28 +158,29 @@ Ici, vous aurez le choix, vous pourrez choisir le type d'opération en cliquant 
 image:images/DocumentationUser/consC4.png[]
 [.text-justify]
 Si le compte que vous souhaitez débiter est noté comme ouvert (inscrit ainsi entre parenthèses sur la ligne du compte), alors cela est possible. À contrario, s'il est inscrit sur la ligne qu'il est clôturé, alors ce ne sera pas possible.
-
+[.text-justify]
 Ici, le compte est ouvert, il est donc possible de réaliser des opérations sur celui-ci.
-
+[.text-justify]
 Si vous souhaitez créditer le compte, appuyez sur "Enregistrer Virement".
 
 image:images/DocumentationUser/vr1.png[]
-
+[.text-justify]
 Ici, il vous faut rentrer le n° de compte de destination et le montant que vous souhaitez virer depuis le compte client. Pour confirmer le virement, appuyez sur "Effectuer Virement", sinon, appuyez sur "Annuler Virement".
 
+==== Clôturer un compte bancaire :
+[.text-justify]
+Si vous souhaitez clôturer un compte bancaire, il vous faut tout d'abord aller sur l'onglet de gestion des comptes.
 
+image:images/DocumentationUser/cl1.png[]
+[.text-justify]
 
+image:images/DocumentationUser/cl2.png[]
+[.text-justify]
+Ensuite, en choisissant un compte, vous aurez la possibilité de le clôturer avec le bouton "Clôturer compte". Il faut au préalable que celui-ci soit "Ouvert" (noté entre parenthèses), et que son solde soit nul, sinon un message d'erreur sera affiché.
 
+image:images/DocumentationUser/cl3.png[]
 
-
-
-
-
-
-
-
-
-
+Ici, si vous voulez clôturer le compte bancaire, cliquez sur le bouton "Yes", sinon cliquez sur le bouton "No".
 
 
 

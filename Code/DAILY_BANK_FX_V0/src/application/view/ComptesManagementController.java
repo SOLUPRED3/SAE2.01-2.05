@@ -241,7 +241,6 @@ public class ComptesManagementController implements Initializable {
 			}
 			this.btnSupprCompte.setDisable(true);
 			this.btnModifierCompte.setDisable(true);
-			this.btnAjoutCompte.setDisable(true);
 		}
 	}
 }
