@@ -195,5 +195,4 @@ Ici, il vous faut rentrer le n° de compte de destination et le montant que vous
 
 
 
-
 == Résultats produits avec jeux d'essai commentés :
