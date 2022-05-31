@@ -123,7 +123,7 @@ image:images/DocumentationUser/consC3.png[]
 [.text-justify]
 Vous pouvez ainsi consulter les différentes opérations réalisées avec le compte d'un client.
 
-==== Créditer un compte client :
+=== Créditer un compte client :
 
 image:images/DocumentationUser/consC4.png[]
 [.text-justify]
@@ -139,7 +139,7 @@ image:images/DocumentationUser/cr2.png[]
 
 Ici, vous aurez le choix, vous pourrez choisir le type d'opération en cliquant sur "Dépôt Espèces" (opération par défaut) et inscrire un montant. Pour confirmer le crédit, appuyez sur "Effectuer Crédit", sinon, appuyez sur "Annuler Crédit".
 
-==== Débiter un compte client :
+=== Débiter un compte client :
 
 image:images/DocumentationUser/consC4.png[]
 [.text-justify]
@@ -153,7 +153,7 @@ image:images/DocumentationUser/db1.png[]
 
 Ici, vous aurez le choix, vous pourrez choisir le type d'opération en cliquant sur "Retrait Espèces" (opération par défaut) et inscrire un montant. Pour confirmer le débit, appuyez sur "Effectuer Débit", sinon, appuyez sur "Annuler Débit".
 
-==== Effectuer un virement depuis un compte client :
+=== Effectuer un virement depuis un compte client :
 
 image:images/DocumentationUser/consC4.png[]
 [.text-justify]
