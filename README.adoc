@@ -47,7 +47,7 @@ La mission de notre équipe consiste à développer une application existante «
 |         | Recette V1  |             | 
 |         | Suivi projet|   | 
 | 22/05   | Gantt V2  à jour    |       | 
-|         | Doc. Util. V1 |         |         
+|         | Doc. Util. V1 |         |     retard livraison V1    
 |         | Doc. Tec. V1 |       https://github.com/IUT-Blagnac/sae2022-bank-4a01/blob/main/V1/Documentation/retour_doc_technique.adoc       |     
 |         | Code V1     |                     | 
 |         | Recette V1 |    Pas trouvé                           | 
