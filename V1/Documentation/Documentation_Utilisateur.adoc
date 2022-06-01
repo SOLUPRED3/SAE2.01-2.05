@@ -118,7 +118,7 @@ image:images/DocumentationUser/gestionC5.png[]
 [.text-justify]
 Il vous est possible de visualiser les informations d'un client même inactif. Pour cela, sélectionnez dans la liste des clients de l'agence, celui à visualiser, puis cliquez sur le bouton "Voir client".
 
-image:images/DocumentationUser/vc.png TODO
+image:images/DocumentationUser/vc1.png TODO
 
 
 ==== 2.4 Modifier les informations d'un client :
@@ -171,31 +171,31 @@ Pour accéder aux fonctionnalités suivante vous devez être connecté à l'appl
 [.text-justify]
 Si vous souhaitez gérer les employés de votre agence, il vous faut cliquer sur le bouton "Employés", que vous voyez ci-dessous :
 
-image:images/DocumentationUser/gestionE1.png[]
+image:images/DocumentationUser/rEmp1.png[]
 
 [.text-justify]
 Vous arriverez ainsi sur cet onglet, qui vous permettra de faire toutes sortes d'actions concernant les employés :
 
-image:images/DocumentationUser/gestionE2.png[]
+image:images/DocumentationUser/rEmp2.png[]
 
 
 ==== 3.1 Créer un employé :
 [.text-justify]
 Pour pouvoir créer un employé, il vous faut cliquer sur le bouton "Nouvel employé", situé en bas à droite de la fenêtre.
 
-image:images/DocumentationUser/gestionE2.png[]
+image:images/DocumentationUser/rEmp2.png[]
 
 [.text-justify]
 Vous verrez s'afficher cette interface vous permettant de créer l'employé souhaité. Entrez les informations voulues puis cliquer sur "Ajouter" pour confirmer (tous les champs doivent être complétés).
 
-image:images/DocumentationUser/gestionE3.png[]
+image:images/DocumentationUser/rEmp3.png[]
 
 
 ==== 3.2 Rechercher un employé :
 [.text-justify]
 À votre arrivée sur l'onglet de gestion de l'employé, vous trouverez un onglet vide, comme ceci :
 
-image:images/DocumentationUser/gestionE2.png[]
+image:images/DocumentationUser/rEmp2.png[]
 
 [.text-justify]
 Si vous souhaitez rechercher un employé en particulier, vous pourrez vous servir des deux zones de saisies situées en haut de la fenêtre. Si vous souhaitez simplement afficher tous les employés présents dans l'agence, il vous suffit d'appuyer directement sur le bouton "Rechercher".
@@ -203,31 +203,31 @@ Si vous souhaitez rechercher un employé en particulier, vous pourrez vous servi
 [.text-justify]
 Voici une recherche sans spécifications :
 
-image:images/DocumentationUser/gestionE4.png[]
+image:images/DocumentationUser/rEmp4.png[]
 
 [.text-justify]
 Voici une recherche avec spécifications :
 
-image:images/DocumentationUser/gestionE5.png[]
+image:images/DocumentationUser/rEmp5.png[]
 
 
 ==== 3.3 Voir les informations d'un employé :
 [.text-justify]
 Il vous est possible de visualiser les informations d'un employé même inactif. Pour cela, sélectionnez dans la liste des employés de l'agence, celui à visualiser, puis cliquez sur le bouton "Voir employé".
 
-image:images/DocumentationUser/vc.png TODO
+image:images/DocumentationUser/vc1.png TODO
 
 
 ==== 3.4 Modifier les informations d'un employé :
 [.text-justify]
 Si vous souhaitez modifier les informations d'un employé, il vous faut d'abord sélectionner dans la liste des employés de l'agence, celui à modifier, puis cliquer sur le bouton "Modifier employé" situé dans la barre d'outils à droite de la fenêtre.
 
-image:images/DocumentationUser/gestionE6.png[]
+image:images/DocumentationUser/rEmp6.png[]
 
 [.text-justify]
 Vous verrez s'afficher cet onglet, il vous suffira de modifier les informations voulues et de les confirmer en appuyant sur "Modifier" :
 
-image:images/DocumentationUser/gestionE7.png[]
+image:images/DocumentationUser/rEmp7.png[]
 
 
 ==== 3.5 Rendre inactif un employé :
