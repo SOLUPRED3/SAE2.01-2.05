@@ -244,7 +244,7 @@ image:images/DocumentationUser/rendInac2.png[]
 
 {empty} +
 
-=== 3. Gestion des comptes bancaires :
+=== 4. Gestion des comptes bancaires :
 [.text-justify]
 Si vous souhaitez consulter les comptes d'un client, sélectionnez d'abord un client dans la fenêtre de gestion des clients, puis appuyez simplement sur le bouton "Comptes client".
 
@@ -256,7 +256,7 @@ Vous vous trouverez face à cet onglet qui vous affiche les informations des dif
 image:images/DocumentationUser/consC1.png[]
 
 
-==== 3.1 Consulter les opérations d'un compte :
+==== 4.1 Consulter les opérations d'un compte :
 [.text-justify]
 Il vous est possible de voir les opérations réalisées sur le compte bancaire d'un client, même une fois clôturé. Pour cela, sélectionnez le compte bancaire souhaité dans la liste des comptes d'un client, puis cliquez sur le bouton "Voir opérations".
 
@@ -276,7 +276,7 @@ image:images/DocumentationUser/consC4.png[]
 Ici, le compte est ouvert, il est donc possible d'y réaliser des opérations.
 
 
-==== 3.2 Créditer un compte client :
+==== 4.2 Créditer un compte client :
 Si vous souhaitez créditer le compte bancaire d'un client, appuyez sur "Enregistrer crédit" dans la fenêtre de gestion des opérations d'un compte bancaire d'un client.
 
 image:images/DocumentationUser/cr1.png[]
@@ -286,7 +286,7 @@ Sur la fenêtre qui s'ouvrira, il vous sera possible de choisir le type d'opéra
 image:images/DocumentationUser/cr2.png[]
 
 
-==== 3.3 Débiter un compte client :
+==== 4.3 Débiter un compte client :
 Si vous souhaitez débiter le compte bancaire d'un client, appuyez sur "Enregistrer débit" dans la fenêtre de gestion des opérations d'un compte bancaire d'un client.
 
 image:images/DocumentationUser/db1.png[]
@@ -294,7 +294,7 @@ image:images/DocumentationUser/db1.png[]
 Sur la fenêtre qui s'ouvrira, il vous sera possible de choisir le type d'opération de débit en cliquant sur "Retrait Espèce" (opération par défaut) et en saisissant un montant. Pour confirmer le débit, appuyez sur "Effectuer débit".
 
 
-==== 3.4 Effectuer un virement de compte à compte :
+==== 4.4 Effectuer un virement de compte à compte :
 Si vous souhaitez réaliser un virement de compte à compte appuyez sur "Enregistrer virement" dans la fenêtre de gestion des opérations d'un compte bancaire d'un client.
 
 image:images/DocumentationUser/vr1.png[]
@@ -302,7 +302,7 @@ image:images/DocumentationUser/vr1.png[]
 Sur la fenêtre qui s'ouvrira, il vous faudra choisir le compte de destination et à saisir un montant. Pour confirmer le virement, appuyez sur "Effectuer virement".
 
 
-==== 3.5 Clôturer un compte bancaire :
+==== 4.5 Clôturer un compte bancaire :
 [.text-justify]
 Si vous souhaitez clôturer un compte bancaire, il vous faut d'abord sélectionner le compte souhaité dans la liste des comptes d'un client.
 
