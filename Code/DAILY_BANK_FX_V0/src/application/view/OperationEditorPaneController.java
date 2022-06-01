@@ -2,6 +2,7 @@ package application.view;
 
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import application.DailyBankState;
@@ -67,7 +68,7 @@ public class OperationEditorPaneController implements Initializable {
 					+ String.format(Locale.ENGLISH, "%12.02f", this.compteEdite.solde) + "  /  "
 					+ String.format(Locale.ENGLISH, "%8d", this.compteEdite.debitAutorise);
 			this.lblMessage.setText(info);
-			this.btnOk.setText("Effectuer Débit");
+			this.btnOk.setText("Effectuer débit");
 			this.btnCancel.setText("Annuler débit");			
 			((VBox) this.gpCenterPane.getParent()).getChildren().remove(gpCenterPane);			
 
@@ -86,8 +87,8 @@ public class OperationEditorPaneController implements Initializable {
 					+ String.format(Locale.ENGLISH, "%12.02f", this.compteEdite.solde);
 			this.lblMessage.setText(info);			
 			((VBox) this.gpCenterPane.getParent()).getChildren().remove(gpCenterPane);
-			this.btnOk.setText("Effectuer Crédit");
-			this.btnCancel.setText("Annuler Crédit");
+			this.btnOk.setText("Effectuer crédit");
+			this.btnCancel.setText("Annuler crédit");
 
 			list = FXCollections.observableArrayList();
 
@@ -100,13 +101,12 @@ public class OperationEditorPaneController implements Initializable {
 			break;
 			
 		case VIREMENT:
-			
 			info = "Cpt. : " + this.compteEdite.idNumCompte + "  "
 					+ String.format(Locale.ENGLISH, "%12.02f", this.compteEdite.solde) + "  /  "
 					+ String.format(Locale.ENGLISH, "%8d", this.compteEdite.debitAutorise);
 			this.lblMessage.setText(info);			
 			this.lblNoCompte.setVisible(true);
-			this.txtNoCompte.setVisible(true);
+			this.cbNoCompte.setVisible(true);
 			this.btnOk.setText("Effectuer virement");
 			this.btnCancel.setText("Annuler virement");
 
@@ -118,6 +118,23 @@ public class OperationEditorPaneController implements Initializable {
 
 			this.cbTypeOpe.setItems(list);
 			this.cbTypeOpe.getSelectionModel().select(0);
+			
+			ObservableList<String> listeComptes = FXCollections.observableArrayList();
+			ArrayList<CompteCourant> alComptes = this.getComptesCourants();			
+						
+			for (CompteCourant compte: alComptes) {
+				if (compte.estCloture.equals("N") && compte.idNumCompte != this.compteEdite.idNumCompte) {
+					listeComptes.add(""+compte.idNumCompte);
+				}
+			}
+			
+			if (listeComptes.size() == 0) {
+				System.out.println("ERREUR");
+				return null;
+			}
+			
+			this.cbNoCompte.setItems(listeComptes);
+			this.cbNoCompte.getSelectionModel().select(0);
 			break;	
 		}
 
@@ -155,7 +172,7 @@ public class OperationEditorPaneController implements Initializable {
 	@FXML
 	private TextField txtMontant;
 	@FXML
-	private TextField txtNoCompte;
+	private ComboBox<String> cbNoCompte;
 	@FXML
 	private Button btnOk;
 	@FXML
@@ -184,26 +201,16 @@ public class OperationEditorPaneController implements Initializable {
 	private void doAjouter() {
 		switch (this.categorieOperation) {
 		case VIREMENT:
-			this.txtNoCompte.getStyleClass().remove("borderred");
-			this.lblNoCompte.getStyleClass().remove("borderred");
-			this.lblMessage.getStyleClass().remove("borderred");
+		case DEBIT:
+			// règles de validation d'un débit :
+			// - le montant doit être un nombre valide
+			// - et si l'utilisateur n'est pas chef d'agence,
+			// - le débit ne doit pas amener le compte en dessous de son découvert autorisé
 			this.txtMontant.getStyleClass().remove("borderred");
 			this.lblMontant.getStyleClass().remove("borderred");
 			this.lblMessage.getStyleClass().remove("borderred");
-			double montant;			
-			
-			if (!this.compteExiste(this.getDestinationID())) {
-				String info = "Compte inexistant ! - Cpt. : " + this.compteEdite.idNumCompte + "  "
-						+ String.format(Locale.ENGLISH, "%.02f", this.compteEdite.solde) + "  /  "
-						+ String.format(Locale.ENGLISH, "%d", this.compteEdite.debitAutorise);
-				this.lblMessage.setText(info);
-				this.txtNoCompte.getStyleClass().add("borderred");
-				this.lblNoCompte.getStyleClass().add("borderred");
-				this.lblMessage.getStyleClass().add("borderred");
-				this.txtNoCompte.requestFocus();
-				return;
-			}
-			
+			double montant;
+
 			String info = "Cpt. : " + this.compteEdite.idNumCompte + "  "
 					+ String.format(Locale.ENGLISH, "%.02f", this.compteEdite.solde) + "  /  "
 					+ String.format(Locale.ENGLISH, "%d", this.compteEdite.debitAutorise);
@@ -237,48 +244,6 @@ public class OperationEditorPaneController implements Initializable {
 			this.primaryStage.close();
 			break;
 			
-		case DEBIT:
-			// règles de validation d'un débit :
-			// - le montant doit être un nombre valide
-			// - et si l'utilisateur n'est pas chef d'agence,
-			// - le débit ne doit pas amener le compte en dessous de son découvert autorisé
-			this.txtMontant.getStyleClass().remove("borderred");
-			this.lblMontant.getStyleClass().remove("borderred");
-			this.lblMessage.getStyleClass().remove("borderred");
-
-			info = "Cpt. : " + this.compteEdite.idNumCompte + "  "
-					+ String.format(Locale.ENGLISH, "%.02f", this.compteEdite.solde) + "  /  "
-					+ String.format(Locale.ENGLISH, "%d", this.compteEdite.debitAutorise);
-			this.lblMessage.setText(info);
-
-			try {
-				montant = Double.parseDouble(this.txtMontant.getText().trim());
-				if (montant <= 0)
-					throw new NumberFormatException();
-			} catch (NumberFormatException nfe) {
-				this.txtMontant.getStyleClass().add("borderred");
-				this.lblMontant.getStyleClass().add("borderred");
-				this.txtMontant.requestFocus();
-				return;
-			}
-			
-			if (this.compteEdite.solde - montant < this.compteEdite.debitAutorise) {
-				info = "Dépassement du découvert ! - Cpt. : " + this.compteEdite.idNumCompte + "  "
-						+ String.format(Locale.ENGLISH, "%.02f", this.compteEdite.solde) + "  /  "
-						+ String.format(Locale.ENGLISH, "%d", this.compteEdite.debitAutorise);
-				this.lblMessage.setText(info);
-				this.txtMontant.getStyleClass().add("borderred");
-				this.lblMontant.getStyleClass().add("borderred");
-				this.lblMessage.getStyleClass().add("borderred");
-				this.txtMontant.requestFocus();
-				return;
-			}
-			
-			typeOp = this.cbTypeOpe.getValue();
-			this.operationResultat = new Operation(-1, montant, null, null, this.compteEdite.idNumCli, typeOp);
-			this.primaryStage.close();
-			break;
-			
 		case CREDIT:
 			// règles de validation d'un cédit :
 			// - le montant doit être un nombre valide
@@ -305,26 +270,24 @@ public class OperationEditorPaneController implements Initializable {
 			String typeOpC = this.cbTypeOpe.getValue();
 			this.operationResultat = new Operation(-1, montantC, null, null, this.compteEdite.idNumCli, typeOpC);
 			this.primaryStage.close();
-			break;			
+			break;	
 		}
 	}
 	
 	
 	/**
-	 * Vérifie si un compte existe dans la base de données.
-	 * @param idNumCompte : numéro du compte
-	 * @return true si le compte existe, sinon false
+	 * @return un ArrayList des comptes du client édité, vide si pas de comptes.
 	 */
-	private boolean compteExiste(int idNumCompte) {
+	private ArrayList<CompteCourant> getComptesCourants() {
 		AccessCompteCourant ac = new AccessCompteCourant();
-		boolean verif = false;
+		ArrayList<CompteCourant> alComptes = new ArrayList<CompteCourant>();
 		try {
-			verif = (ac.getCompteCourant(idNumCompte) != null);
+			alComptes = ac.getCompteCourants(this.compteEdite.idNumCli);
 		} catch (ApplicationException ae) {
 			ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
 			ed.doExceptionDialog();
 		}
-		return verif;
+		return alComptes;
 	}
 	
 	
@@ -334,7 +297,7 @@ public class OperationEditorPaneController implements Initializable {
 	public int getDestinationID() {
 		if (this.categorieOperation == CategorieOperation.VIREMENT) {
 			try {
-				return Integer.valueOf(this.txtNoCompte.getText());
+				return Integer.valueOf(this.cbNoCompte.getSelectionModel().getSelectedItem());
 			} catch (NumberFormatException e) {
 				System.out.println("Fatal error: prerare for self-destruct");
 			}
