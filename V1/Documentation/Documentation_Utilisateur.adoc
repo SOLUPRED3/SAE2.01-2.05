@@ -272,6 +272,14 @@ image:images/DocumentationUser/rEmp6.png[]
 
 
 
+== Rendre inactif un client :
+
+
+image:images/DocumentationUser/rendInac1.png[]
+image:images/DocumentationUser/rendInac2.png[]
+
+
+
 
 
 
