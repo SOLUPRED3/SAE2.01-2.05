@@ -118,15 +118,15 @@ public class CompteEditorPaneController implements Initializable {
 	private Object focusDecouvert(ObservableValue<? extends Boolean> txtField, boolean oldPropertyValue,
 			boolean newPropertyValue) {
 		if (oldPropertyValue) {
-			try {
-				int val;
+			int val = this.compteEdite.debitAutorise;
+			try {				
 				val = Integer.parseInt(this.txtDecAutorise.getText().trim());
 				if (val < 0) {
 					throw new NumberFormatException();
 				}
 				this.compteEdite.debitAutorise = val;
 			} catch (NumberFormatException nfe) {
-				this.txtDecAutorise.setText("" + this.compteEdite.debitAutorise);
+				this.txtDecAutorise.setText("" + -val);
 			}
 		}
 		return null;
@@ -210,24 +210,25 @@ public class CompteEditorPaneController implements Initializable {
 
 	
 	private boolean isSaisieValide() {
-		if (this.compteEdite.solde < 0){
-			if( -this.compteEdite.debitAutorise > this.compteEdite.solde) {
-				Alert alert = new Alert(AlertType.WARNING);
-				alert.setTitle("Violation des règles");
-				alert.setHeaderText("Changement du découvert impossible !");
-				alert.showAndWait();
-				return false;
-			}
-		}
-
-		if (this.compteEdite.debitAutorise < 0) {
+		this.compteEdite.debitAutorise = Integer.valueOf(this.txtDecAutorise.getText());
+		this.compteEdite.solde = Double.valueOf(this.txtSolde.getText());
+		
+		/*if (this.compteEdite.debitAutorise < 0) {
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.setTitle("Violation des règles");
 			alert.setHeaderText("Changement du découvert impossible, le montant doit être positif ou nul !");
-			alert.getButtonTypes().setAll(ButtonType.OK);
-			Optional<ButtonType> response = alert.showAndWait();
+			alert.showAndWait();
 			return false;
-		 }
+		 }*/
+		
+		if (this.compteEdite.solde < 0 && -Math.abs(this.compteEdite.debitAutorise) > this.compteEdite.solde) {
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Violation des règles");
+			alert.setHeaderText("Changement du découvert impossible !");
+			alert.showAndWait();
+			return false;
+		}
+		
 		return true;
 	}
 	
