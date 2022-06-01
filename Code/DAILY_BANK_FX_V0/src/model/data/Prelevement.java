@@ -1,2 +1,4 @@
-package model.data;public class Prelevement {
+package model.data;
+
+public class Prelevement {
 }

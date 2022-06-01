@@ -105,6 +105,8 @@ public class ComptesManagementController implements Initializable {
 	private Button btnSupprCompte;
 	@FXML
 	private Button btnAjoutCompte;
+	@FXML
+	private Button btnVoirPrelevement;
 
 	
 	@Override
@@ -134,7 +136,17 @@ public class ComptesManagementController implements Initializable {
 		this.loadList();
 		this.validateComponentState();
 	}
-	
+
+	@FXML
+	private void doVoirPrelevement(){
+		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
+		if (selectedIndice >= 0) {
+			CompteCourant cpt = this.olCompteCourant.get(selectedIndice);
+			this.cm.gererPrelevement(cpt);
+		}
+		this.loadList();
+		this.validateComponentState();
+	}
 	
 	/**
 	 * Modifie un compte.

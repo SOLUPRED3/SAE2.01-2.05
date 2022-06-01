@@ -194,4 +194,9 @@ public class ComptesManagement {
 		}
 		return listeCpt;
 	}
+
+	public void gererPrelevement(CompteCourant cpt) {
+		PrelevementManagement pm = new PrelevementManagement(this.primaryStage, this.dbs, this.clientDesComptes, cpt);
+		pm.doPrelevementManagementDialog();
+	}
 }
