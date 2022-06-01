@@ -1,9 +1,39 @@
 = Documentation technique (V0)
+:toc:
 
 Thomas Falsimagne, Tilian Hure, Maxime Dourlent +
 *V0* - xx/xx/2022
 
-:toc:
+
+.Répartition des tâches et état d'avancement
+[options="header,footer"]
+|=======================
+|version|user     |use case   |cas...                 |   Maxime DOURLENT | Thomas FALSIMAGNE  |   Tilian HURÉ
+|1    |Chef d'Agence    |CRUD employé  |C| | |F
+|1    |Chef d'Agence    |CRUD employé  |R| | |F
+|1    |Chef d'Agence    |CRUD employé  |U| | |F
+|1    |Chef d'Agence    |CRUD employé  |D| | |F
+|1    |Guichetier     | Compte | Créer| |F |
+|1    |Guichetier     | Compte | Créditer/Débiter|F | |
+|1    |Guichetier     | Compte | Effectuer un virement| | |F
+|1    |Guichetier     | Compte | Clôturer| |F |
+|2    |Chef d'Agence     | Compte | Débit exceptionnel|| |
+|2    |Chef d'Agence     | Emprunt | Simuler emprunt|| |
+|2    |Chef d'Agence     | Emprunt | Simuler assurance|| |
+|2    |Guichetier     | Compte | Relevé PDF|| |
+|2    |Guichetier     | CRUD Prélèvement | C||D |
+|2    |Guichetier     | CRUD Prélèvement | R||D |
+|2    |Guichetier     | CRUD Prélèvement | U||D |
+|2    |Guichetier     | CRUD Prélèvement | D||D |
+|3    |Bach     | Prélèvement automatiques | || |
+|3    |Bach     | Relevé mensuels | || |
+|=======================
+
+[.text-justify]
+Chaque étudiant doit mettre son nom sur une des colonnes étudiant.
+Dans sa colonne il doit remplir la ligne correspondant à une partie qu'il a développé en indiquant F pour "fonctionnel" ou D pour "en développement".
+
+{empty} +
 
 
 
@@ -147,7 +177,13 @@ Le package Model correspond à la partie Model du pattern MVC.
 === 4. Éléments essentiels :
 ==== 4.1 Prérequis pour le développeur :
 [.text-justify]
-Si le code de l'application devait être repris pour être amélioré ou modifié, le développeur devra avoir au préalable une JRE version 1.8. [red]#Il faudra ensuite qu'il ait pour environnement de développement le logiciel Eclipse. Il devra également avoir un Workspace configuré avec JavaFX et le logiciel SceneBuilder intégré dans le buildpath.#
+Si le code de l'application devait être repris pour être amélioré ou modifié, le développeur devra avoir au préalable une *JRE version 1.8*. Il faudra ensuite qu'il ait un environnement de développement adapté pour cette version de Java et un Workspace configuré avec *Java FX* et potentiellement le logiciel *SceneBuilder* pour modifier les fichiers FXML.
+
+[.text-justify]
+L'application utilise une *base de données Oracle-SQL* dont le code de déploiement est fourni avec le code source de l'application. Ce dernier pourra être exécuté dans le cas où une autre base de données serait utilisée mais il faudra mettre certaines données à jour dans le code source de l'application qu'il sera nécessaire de regénérer par la suite.
+
+[.text-justify]
+Ces données concernent la classe "LogToDatabase.java" du sous-package "orm" du package "model". Les ligne 19 à 24 qui devront être modifiées afin de renseigner les nouvelles données de connexion à la base de données utilisée.
 
 
 
