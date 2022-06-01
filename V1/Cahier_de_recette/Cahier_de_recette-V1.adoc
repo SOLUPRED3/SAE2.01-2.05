@@ -6,8 +6,8 @@ Cahier de recette <|°_°|>
 :Entreprise: DailyBank
 :Equipe: Dourlent Maxime, Tilian Huré, Thomas Falsimagne
 
-Crée pour : {entreprise} +
-Crée par : {equipe}
+Créée pour : {entreprise} +
+Créée par : {equipe}
 
 
 == 1 - Introduction
