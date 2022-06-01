@@ -118,7 +118,7 @@ image:images/DocumentationUser/gestionC5.png[]
 [.text-justify]
 Il vous est possible de visualiser les informations d'un client même inactif. Pour cela, sélectionnez dans la liste des clients de l'agence, celui à visualiser, puis cliquez sur le bouton "Voir client".
 
-image:images/DocumentationUser/vr1.png
+image:images/DocumentationUser/vr1.png[]
 
 
 ==== 2.4 Modifier les informations d'un client :
