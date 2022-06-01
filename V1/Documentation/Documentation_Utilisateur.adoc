@@ -232,7 +232,7 @@ image:images/DocumentationUser/rEmp5.png[]
 [.text-justify]
 Si vous souhaitez rendre inactif un employé, il vous faut ouvrir la fenêtre de modification après avoir sélectionné l'employé souhaité dans la liste des employés de l'agence, puis cocher la case "Inactif" en bas de la fenêtre.
 
-image:images/DocumentationUser/inactifEmplCheck.png[]
+image:images/inactifEmplCheck.png[]
 
 [.text-justify]
 Confirmer en suite la modification pour rendre le client inactif de manière permanente.
