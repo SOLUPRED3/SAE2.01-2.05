@@ -7,6 +7,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 import application.DailyBankState;
 import application.control.ExceptionDialog;
+import application.tools.AlertUtilities;
 import application.tools.CategorieOperation;
 import application.tools.ConstantesIHM;
 import javafx.collections.FXCollections;
@@ -17,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -129,7 +131,8 @@ public class OperationEditorPaneController implements Initializable {
 			}
 			
 			if (listeComptes.size() == 0) {
-				System.out.println("ERREUR");
+				AlertUtilities.showAlert(this.primaryStage, "Erreur", "Ce client n'a pas suffisement de comptes pour pouvoir effectuer un virement.",
+						null, AlertType.ERROR);
 				return null;
 			}
 			
@@ -299,7 +302,7 @@ public class OperationEditorPaneController implements Initializable {
 			try {
 				return Integer.valueOf(this.cbNoCompte.getSelectionModel().getSelectedItem());
 			} catch (NumberFormatException e) {
-				System.out.println("Fatal error: prerare for self-destruct");
+				//System.out.println("Fatal error: prerare for self-destruct");
 			}
 		}
 		return -1;

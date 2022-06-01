@@ -21,10 +21,6 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
 import model.data.CompteCourant;
-import model.orm.AccessClient;
-import model.orm.exception.DataAccessException;
-import model.orm.exception.DatabaseConnexionException;
-import model.orm.exception.RowNotFoundOrTooManyRowsException;
 
 
 public class ComptesManagementController implements Initializable {
@@ -141,6 +137,15 @@ public class ComptesManagementController implements Initializable {
 	 */
 	@FXML
 	private void doModifierCompte() {
+		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
+		if (selectedIndice >= 0) {
+			Client clientCompte = clientDesComptes ;
+			CompteCourant compte = this.olCompteCourant.get(selectedIndice);
+			CompteCourant result = this.cm.modifierCompte(clientCompte, compte) ;
+			if (result != null) {
+				this.olCompteCourant.set(selectedIndice, result);
+			}
+		}
 	}
 	
 	
@@ -170,6 +175,7 @@ public class ComptesManagementController implements Initializable {
 			alert.setContentText("Ce compte ne peut pas être clôturé car son solde n'est pas nul.");
 			alert.showAndWait();
         }
+
 	}
 	
 
@@ -178,11 +184,11 @@ public class ComptesManagementController implements Initializable {
 	 */
 	private boolean estCloture() {
 		if(this.lvComptes.getSelectionModel().getSelectedIndex() >= 0 && this.lvComptes.getSelectionModel().getSelectedItem().estCloture.equals("N")) {
-			return false; //this.lvComptes.getSelectionModel().getSelectedItem().estCloture; 
+			return false; 
 		}
 		return true;
 	}
-	
+
 	
 	/**
 	 * @return true si le client à qui appartient le compte sélectionné est ianctif, sinon false
@@ -248,7 +254,5 @@ public class ComptesManagementController implements Initializable {
 		} else {
 			this.btnAjoutCompte.setDisable(false);
 		}
-        this.btnModifierCompte.setDisable(true); //TOMODIF
 	}
-	
 }

@@ -1,11 +1,11 @@
 package application.view;
 
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
-
 import application.DailyBankState;
 import application.control.ExceptionDialog;
 import application.tools.AlertUtilities;
@@ -32,6 +32,7 @@ import model.orm.exception.DatabaseConnexionException;
 import model.orm.exception.Order;
 import model.orm.exception.Table;
 
+
 public class ClientEditorPaneController implements Initializable {
 
 	// Etat application
@@ -45,6 +46,7 @@ public class ClientEditorPaneController implements Initializable {
 	private EditionMode em;
 	private Client clientResult;
 
+	
 	// Manipulation de la fenêtre
 	public void initContext(Stage _primaryStage, DailyBankState _dbstate) {
 		this.primaryStage = _primaryStage;
@@ -52,10 +54,12 @@ public class ClientEditorPaneController implements Initializable {
 		this.configure();
 	}
 
+	
 	private void configure() {
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
 	}
 
+	
 	public Client displayDialog(Client client, EditionMode mode) {
 		this.em = mode;
 		if (client == null) {
@@ -286,7 +290,7 @@ public class ClientEditorPaneController implements Initializable {
 
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 			alert.setTitle("Confirmation");
-			alert.setContentText("Êtes-vous certain(e) de rendre inactif ce client ?\nTous ses comptes seront clôturés.\n(Il s'agit d'une action irréversible)");			
+			alert.setContentText("Êtes-vous certain(e) de vouloir rendre ce client inactif ?\nTous ses comptes seront clôturés.\n(Il s'agit d'une action irréversible)");			
 			alert.getButtonTypes().setAll(ButtonType.YES,ButtonType.NO);
 			Optional<ButtonType> response = alert.showAndWait();
 			
