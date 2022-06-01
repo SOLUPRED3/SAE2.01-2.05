@@ -4,8 +4,9 @@
 Thomas Falsimagne, Tilian Hure, Maxime Dourlent +
 *V0* - xx/xx/2022
 
+{empty} +
 
-.Répartition des tâches et état d'avancement
+*Répartition des tâches et état d'avancement*
 [options="header,footer"]
 |=======================
 |version|user     |use case   |cas...                 |   Maxime DOURLENT | Thomas FALSIMAGNE  |   Tilian HURÉ
