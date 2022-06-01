@@ -137,6 +137,15 @@ public class ComptesManagementController implements Initializable {
 	 */
 	@FXML
 	private void doModifierCompte() {
+		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
+		if (selectedIndice >= 0) {
+			Client clientCompte = clientDesComptes ;
+			CompteCourant compte = this.olCompteCourant.get(selectedIndice);
+			CompteCourant result = this.cm.modifierCompte(clientCompte, compte) ;
+			if (result != null) {
+				this.olCompteCourant.set(selectedIndice, result);
+			}
+		}
 	}
 	
 	
@@ -166,6 +175,7 @@ public class ComptesManagementController implements Initializable {
 			alert.setContentText("Ce compte ne peut pas être clôturé car son solde n'est pas nul.");
 			alert.showAndWait();
         }
+
 	}
 	
 
@@ -174,9 +184,17 @@ public class ComptesManagementController implements Initializable {
 	 */
 	private boolean estCloture() {
 		if(this.lvComptes.getSelectionModel().getSelectedIndex() >= 0 && this.lvComptes.getSelectionModel().getSelectedItem().estCloture.equals("N")) {
-			return false; //this.lvComptes.getSelectionModel().getSelectedItem().estCloture; 
+			return false; 
 		}
 		return true;
+	}
+
+	
+	/**
+	 * @return true si le client à qui appartient le compte sélectionné est ianctif, sinon false
+	 */
+	private boolean clientInactif() {
+		return this.clientDesComptes.estInactif.equals("O");
 	}
 	
 	
@@ -222,7 +240,6 @@ public class ComptesManagementController implements Initializable {
                 this.btnSupprCompte.setDisable(true);
                 this.btnModifierCompte.setDisable(true);                
         	}
-        	this.btnAjoutCompte.setDisable(false);
         } else {
         	if (selectedIndice >= 0) {
         		this.btnVoirOpes.setDisable(false);                
@@ -231,8 +248,11 @@ public class ComptesManagementController implements Initializable {
         	}
         	this.btnSupprCompte.setDisable(true);
             this.btnModifierCompte.setDisable(true);
-            this.btnAjoutCompte.setDisable(false);
-        }
-    }
-	
+        }        
+        if (this.clientInactif()) {
+			this.btnAjoutCompte.setDisable(true);
+		} else {
+			this.btnAjoutCompte.setDisable(false);
+		}
+	}
 }

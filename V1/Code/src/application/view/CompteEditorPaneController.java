@@ -2,6 +2,7 @@ package application.view;
 
 import java.net.URL;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import application.DailyBankState;
@@ -11,14 +12,13 @@ import application.tools.EditionMode;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
 import model.data.CompteCourant;
+import model.orm.exception.ManagementRuleViolation;
 
 public class CompteEditorPaneController implements Initializable {
 
@@ -71,10 +71,12 @@ public class CompteEditorPaneController implements Initializable {
 			this.btnCancel.setText("Annuler");
 			break;
 		case MODIFICATION:
-			AlertUtilities.showAlert(this.primaryStage, "Non implémenté", "Modif de compte n'est pas implémenté", null,
-					AlertType.ERROR);
-			return null;
-		// break;
+			this.txtDecAutorise.setDisable(false);
+			this.txtSolde.setDisable(true);
+			this.lblMessage.setText("Modification du compte");
+			this.btnOk.setText("Modifier");
+			this.btnCancel.setText("Annuler");
+			break;
 		case SUPPRESSION:
 			AlertUtilities.showAlert(this.primaryStage, "Non implémenté", "Suppression de compte n'est pas implémenté",
 					null, AlertType.ERROR);
@@ -196,10 +198,25 @@ public class CompteEditorPaneController implements Initializable {
 	}
 
 	private boolean isSaisieValide() {
-		if (this.compteEdite.debitAutorise < 0) {
+		boolean valide = true ;
+
+		if(this.compteEdite.solde < 0){
+			if( -this.compteEdite.debitAutorise > this.compteEdite.solde) {
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("Violation des règles");
+				alert.setHeaderText("Changement du découvert impossible");
+				alert.getButtonTypes().setAll(ButtonType.OK);
+				Optional<ButtonType> response = alert.showAndWait();
+
+				valide = false;
+			}
+		}
+
+		if(this.compteEdite.debitAutorise < 0) {
 			this.compteEdite = new CompteCourant(this.compteEdite.idNumCompte, -this.compteEdite.debitAutorise, 
 					this.compteEdite.solde, this.compteEdite.estCloture, this.compteEdite.idNumCli);
-		}
-		return true;
+			valide = true ;
+		 }
+		return valide;
 	}
 }

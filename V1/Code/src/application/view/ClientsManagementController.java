@@ -88,12 +88,18 @@ public class ClientsManagementController implements Initializable {
 	}
 
 	
+	/**
+	 * Annule la création/modification d'un employé et ferme la fenêtre.
+	 */
 	@FXML
 	private void doCancel() {
 		this.primaryStage.close();
 	}
 
-	
+
+	/**
+	 * Recherche des employés dans la base de données et les affiches sur l'interface.
+	 */
 	@FXML
 	private void doRechercher() {
 		int numCompte;

@@ -202,24 +202,26 @@ public class EmployeEditorPaneController implements Initializable {
 	@FXML
 	private Button butCancel;
 
-
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	}
 
-	@FXML
+	
 	/**
 	 * Annule la création/modification d'un employé et ferme la fenêtre.
 	 */
+	@FXML
 	private void doCancel() {
 		this.employeResult = null;
 		this.primaryStage.close();
 	}
 
-	@FXML
+	
 	/**
 	 * Confirme l'ajoute/modification d'un employé.
 	 */
+	@FXML
 	private void doAjouter() {
 		switch (this.em) {
 		case CREATION:
@@ -240,11 +242,10 @@ public class EmployeEditorPaneController implements Initializable {
 			break;
 		}
 	}
-
+	
 
 	/**
-	 * Permet de retourner si toutes les informations de saisies sont valides.
-	 * @return : true si tous les champs d'ajout/modification sont correctes, sinon false.
+	 * @return true si tous les champs d'ajout/modification sont correctes, sinon false.
 	 */
 	private boolean isSaisieValide() {
 		this.employeEdite.nom = this.txtNom.getText().trim();
@@ -272,13 +273,13 @@ public class EmployeEditorPaneController implements Initializable {
 		}
 
 		if (this.employeEdite.nom.isEmpty()) {
-			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Le nom ne doit pas être vide",
+			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Le nom ne doit pas être vide !",
 					AlertType.WARNING);
 			this.txtNom.requestFocus();
 			return false;
 		}
 		if (this.employeEdite.prenom.isEmpty()) {
-			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Le prénom ne doit pas être vide",
+			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Le prénom ne doit pas être vide !",
 					AlertType.WARNING);
 			this.txtPrenom.requestFocus();
 			return false;
@@ -289,21 +290,21 @@ public class EmployeEditorPaneController implements Initializable {
 					AlertType.WARNING);
 			this.txtDroitAccess.requestFocus();
 			return false;
-		}
+		}*/
 
-		if (!(this.employeEdite.login.length() >= 5)) {
-			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Le login n'est pas valable",
+		if (this.employeEdite.login.isEmpty()) {
+			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Le login ne doit pas être vide !",
 					AlertType.WARNING);
 			this.txtLogin.requestFocus();
 			return false;
 		}
 		
-		if (!(this.employeEdite.motPasse.length() >= 5)) {
-			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Le mot de passe n'est pas valable",
+		if (this.employeEdite.motPasse.isEmpty()) {
+			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Le mot de passe ne doit pas être vide !",
 					AlertType.WARNING);
 			this.txtMotPasse.requestFocus();
 			return false;
-		}*/
+		}
 
 		return true;
 	}

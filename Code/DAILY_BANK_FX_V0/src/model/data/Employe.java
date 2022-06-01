@@ -35,7 +35,11 @@ public class Employe {
 		/*return "Employe [idEmploye=" + this.idEmploye + ", nom=" + this.nom + ", prenom=" + this.prenom
 				+ ", droitsAccess=" + this.droitsAccess + ", login=" + this.login + ", motPasse=" + this.motPasse
 				+ ", idAg=" + this.idAg + "]";*/
-		return "[" + this.idEmploye + "]  " + this.nom.toUpperCase() + " " + this.prenom + "(" + this.login + ")";
+		String activite = "Actif";
+		if (this.estInactif.equals("O")) {
+			activite = "Inactif";
+		}
+		return "[" + this.idEmploye + "]  " + this.nom.toUpperCase() + " " + this.prenom + "(" + this.login + ")  (" + activite + ")";
 	}
 
 }
