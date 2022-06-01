@@ -144,7 +144,7 @@ Pour rendre inactif un client, vous devez être connecté à l'application en ta
 [.text-justify]
 Si vous souhaitez rendre inactif un client, il vous faut ouvrir la fenêtre de modification après avoir sélectionné le client souhaité dans la liste des clients de l'agence, puis cocher la case "Inactif" en bas de la fenêtre.
 
-image:images/DocumentationUser/rendInac1.png[]
+image:images/inactifCheck.png[]
 
 [NOTE]
 ====
@@ -154,8 +154,6 @@ Vous ne pouvez désactiver un client que si tous les comptes bancaires de ce der
 
 [.text-justify]
 Confirmer en suite la modification pour rendre le client inactif de manière permanente.
-
-image:images/DocumentationUser/rendInac2.png[]
 
 
 {empty} +
@@ -215,7 +213,7 @@ image:images/DocumentationUser/rEmp2.png[]
 [.text-justify]
 Il vous est possible de visualiser les informations d'un employé même inactif. Pour cela, sélectionnez dans la liste des employés de l'agence, celui à visualiser, puis cliquez sur le bouton "Voir employé".
 
-image:images/DocumentationUser/vc1.png TODO
+image:images/DocumentationUser/voirInfosEmpl.png
 
 
 ==== 3.4 Modifier les informations d'un employé :
@@ -234,12 +232,10 @@ image:images/DocumentationUser/rEmp5.png[]
 [.text-justify]
 Si vous souhaitez rendre inactif un employé, il vous faut ouvrir la fenêtre de modification après avoir sélectionné l'employé souhaité dans la liste des employés de l'agence, puis cocher la case "Inactif" en bas de la fenêtre.
 
-image:images/DocumentationUser/rEmp4.png[]
+image:images/DocumentationUser/inactifEmplCheck.png[]
 
 [.text-justify]
 Confirmer en suite la modification pour rendre le client inactif de manière permanente.
-
-image:images/DocumentationUser/rEmp5.png[]
 
 
 {empty} +
