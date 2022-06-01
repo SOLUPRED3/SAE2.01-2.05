@@ -1,5 +1,4 @@
 = Documentation Utilisateur (V1)
-
 :toc:
 
 Maxime DOURLENT, Thomas FALSIMAGNE et Tilian HURÉ +
