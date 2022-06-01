@@ -23,6 +23,37 @@ La mission de notre équipe consiste à développer une application existante «
 -> https://github.com/IUT-Blagnac/sae2022-bank-4a01/blob/main/V3/Gantt/Gantt-V3.pdf[Gantt-V3 prévisionnel final] +
 -> https://github.com/IUT-Blagnac/sae2022-bank-4a01/tree/main/V1/Code/src[Code-V1]
 
+
+== Répartition des tâches et état d'avancement
+[options="header,footer"]
+|=======================
+|version|user     |use case   |cas...                 |   Maxime DOURLENT | Thomas FALSIMAGNE  |   Tilian HURÉ
+|1    |Chef d'Agence    |CRUD employé  |C| | |F
+|1    |Chef d'Agence    |CRUD employé  |R| | |F
+|1    |Chef d'Agence    |CRUD employé  |U| | |F
+|1    |Chef d'Agence    |CRUD employé  |D| | |F
+|1    |Guichetier     | Compte | Créer| |F |
+|1    |Guichetier     | Compte | Créditer/Débiter|F | |
+|1    |Guichetier     | Compte | Effectuer un virement| | |F
+|1    |Guichetier     | Compte | Clôturer| |F |
+|2    |Chef d'Agence     | Compte | Débit exceptionnel|| |
+|2    |Chef d'Agence     | Emprunt | Simuler emprunt|| |
+|2    |Chef d'Agence     | Emprunt | Simuler assurance|| |
+|2    |Guichetier     | Compte | Relevé PDF|| |
+|2    |Guichetier     | CRUD Prélèvement | C||D |
+|2    |Guichetier     | CRUD Prélèvement | R||D |
+|2    |Guichetier     | CRUD Prélèvement | U||D |
+|2    |Guichetier     | CRUD Prélèvement | D||D |
+|3    |Bach     | Prélèvement automatiques | || |
+|3    |Bach     | Relevé mensuels | || |
+|=======================
+
+[.text-justify]
+Chaque étudiant doit mettre son nom sur une des colonnes étudiant.
+Dans sa colonne il doit remplir la ligne correspondant à une partie qu'il a développé en indiquant F pour "fonctionnel" ou D pour "en développement".
+
+{empty} +
+
 [cols="1,2,2,5",options=header]
 |===
 | Date    | Nom         |  Lien                             | Retour
