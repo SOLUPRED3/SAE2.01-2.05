@@ -1,10 +1,10 @@
 package application.view;
 
+
 import java.net.URL;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
 import application.DailyBankState;
 import application.tools.AlertUtilities;
 import application.tools.ConstantesIHM;
@@ -20,6 +20,7 @@ import model.data.Client;
 import model.data.CompteCourant;
 import model.orm.exception.ManagementRuleViolation;
 
+
 public class CompteEditorPaneController implements Initializable {
 
 	// Etat application
@@ -34,6 +35,7 @@ public class CompteEditorPaneController implements Initializable {
 	private CompteCourant compteEdite;
 	private CompteCourant compteResult;
 
+	
 	// Manipulation de la fenêtre
 	public void initContext(Stage _primaryStage, DailyBankState _dbstate) {
 		this.primaryStage = _primaryStage;
@@ -41,13 +43,14 @@ public class CompteEditorPaneController implements Initializable {
 		this.configure();
 	}
 
+	
 	private void configure() {
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
-
 		this.txtDecAutorise.focusedProperty().addListener((t, o, n) -> this.focusDecouvert(t, o, n));
 		this.txtSolde.focusedProperty().addListener((t, o, n) -> this.focusSolde(t, o, n));
 	}
 
+	
 	public CompteCourant displayDialog(Client client, CompteCourant cpte, EditionMode mode) {
 		this.clientDuCompte = client;
 		this.em = mode;
@@ -70,6 +73,7 @@ public class CompteEditorPaneController implements Initializable {
 			this.btnOk.setText("Ajouter");
 			this.btnCancel.setText("Annuler");
 			break;
+			
 		case MODIFICATION:
 			this.txtDecAutorise.setDisable(false);
 			this.txtSolde.setDisable(true);
@@ -77,6 +81,7 @@ public class CompteEditorPaneController implements Initializable {
 			this.btnOk.setText("Modifier");
 			this.btnCancel.setText("Annuler");
 			break;
+			
 		case SUPPRESSION:
 			AlertUtilities.showAlert(this.primaryStage, "Non implémenté", "Suppression de compte n'est pas implémenté",
 					null, AlertType.ERROR);
@@ -97,11 +102,11 @@ public class CompteEditorPaneController implements Initializable {
 		this.txtSolde.setText(String.format(Locale.ENGLISH, "%.02f", this.compteEdite.solde));
 
 		this.compteResult = null;
-
 		this.primaryStage.showAndWait();
 		return this.compteResult;
 	}
 
+	
 	// Gestion du stage
 	private Object closeWindow(WindowEvent e) {
 		this.doCancel();
@@ -109,6 +114,7 @@ public class CompteEditorPaneController implements Initializable {
 		return null;
 	}
 
+	
 	private Object focusDecouvert(ObservableValue<? extends Boolean> txtField, boolean oldPropertyValue,
 			boolean newPropertyValue) {
 		if (oldPropertyValue) {
@@ -126,6 +132,7 @@ public class CompteEditorPaneController implements Initializable {
 		return null;
 	}
 
+	
 	private Object focusSolde(ObservableValue<? extends Boolean> txtField, boolean oldPropertyValue,
 			boolean newPropertyValue) {
 		if (oldPropertyValue) {
@@ -144,6 +151,7 @@ public class CompteEditorPaneController implements Initializable {
 		return null;
 	}
 
+	
 	// Attributs de la scene + actions
 	@FXML
 	private Label lblMessage;
@@ -164,16 +172,19 @@ public class CompteEditorPaneController implements Initializable {
 	@FXML
 	private Button btnCancel;
 
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	}
 
+	
 	@FXML
 	private void doCancel() {
 		this.compteResult = null;
 		this.primaryStage.close();
 	}
 
+	
 	@FXML
 	private void doAjouter() {
 		switch (this.em) {
@@ -197,26 +208,27 @@ public class CompteEditorPaneController implements Initializable {
 
 	}
 
+	
 	private boolean isSaisieValide() {
-		boolean valide = true ;
-
-		if(this.compteEdite.solde < 0){
+		if (this.compteEdite.solde < 0){
 			if( -this.compteEdite.debitAutorise > this.compteEdite.solde) {
 				Alert alert = new Alert(AlertType.WARNING);
 				alert.setTitle("Violation des règles");
-				alert.setHeaderText("Changement du découvert impossible");
-				alert.getButtonTypes().setAll(ButtonType.OK);
-				Optional<ButtonType> response = alert.showAndWait();
-
-				valide = false;
+				alert.setHeaderText("Changement du découvert impossible !");
+				alert.showAndWait();
+				return false;
 			}
 		}
 
-		if(this.compteEdite.debitAutorise < 0) {
-			this.compteEdite = new CompteCourant(this.compteEdite.idNumCompte, -this.compteEdite.debitAutorise, 
-					this.compteEdite.solde, this.compteEdite.estCloture, this.compteEdite.idNumCli);
-			valide = true ;
+		if (this.compteEdite.debitAutorise < 0) {
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Violation des règles");
+			alert.setHeaderText("Changement du découvert impossible, le montant doit être positif ou nul !");
+			alert.getButtonTypes().setAll(ButtonType.OK);
+			Optional<ButtonType> response = alert.showAndWait();
+			return false;
 		 }
-		return valide;
+		return true;
 	}
+	
 }
