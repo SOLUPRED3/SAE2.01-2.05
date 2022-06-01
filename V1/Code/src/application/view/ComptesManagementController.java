@@ -21,6 +21,10 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
 import model.data.CompteCourant;
+import model.orm.AccessClient;
+import model.orm.exception.DataAccessException;
+import model.orm.exception.DatabaseConnexionException;
+import model.orm.exception.RowNotFoundOrTooManyRowsException;
 
 
 public class ComptesManagementController implements Initializable {
@@ -181,6 +185,14 @@ public class ComptesManagementController implements Initializable {
 	
 	
 	/**
+	 * @return true si le client à qui appartient le compte sélectionné est ianctif, sinon false
+	 */
+	private boolean clientInactif() {
+		return this.clientDesComptes.estInactif.equals("O");
+	}
+	
+	
+	/**
 	 * Créé un compte.
 	 */
 	@FXML
@@ -222,7 +234,6 @@ public class ComptesManagementController implements Initializable {
                 this.btnSupprCompte.setDisable(true);
                 this.btnModifierCompte.setDisable(true);                
         	}
-        	this.btnAjoutCompte.setDisable(false);
         } else {
         	if (selectedIndice >= 0) {
         		this.btnVoirOpes.setDisable(false);                
@@ -231,8 +242,13 @@ public class ComptesManagementController implements Initializable {
         	}
         	this.btnSupprCompte.setDisable(true);
             this.btnModifierCompte.setDisable(true);
-            this.btnAjoutCompte.setDisable(false);
-        }
-    }
+        }        
+        if (this.clientInactif()) {
+			this.btnAjoutCompte.setDisable(true);
+		} else {
+			this.btnAjoutCompte.setDisable(false);
+		}
+        this.btnModifierCompte.setDisable(true); //TOMODIF
+	}
 	
 }
