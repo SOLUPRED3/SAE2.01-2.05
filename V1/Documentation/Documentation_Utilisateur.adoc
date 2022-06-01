@@ -76,6 +76,10 @@ image:images/DocumentationUser/gestionC3.png[]
 
 Vous verrez s'afficher cette interface vous permettant de créer le client souhaité. Entrez les informations voulues et cliquer sur "Ajouter" pour confirmer.
 
+====
+À savoir qu'il faut remplir tous les champs pour que l'ajout soit accepté.
+====
+
 ==== Rechercher un client :
 
 image:images/DocumentationUser/gestionC2.png[]
@@ -102,6 +106,16 @@ il vous faut cliquer sur le bouton "Modifier client", situé dans la barre d'out
 image:images/DocumentationUser/gestionC7.png[]
 [.text-justify]
 Vous verrez s'afficher cet onglet, il vous suffira de modifier les informations voulues et de les confirmer en appuyant sur "Modifier".
+
+==== Voir les informations d'un client :
+
+Pour pouvoir avoir un aperçu des informations d'un client, il vous faut tout d'abord aller sur l'onglet de gestion client. Ensuite, il vous faut le sélectionner, certaines actions seront donc activées.
+
+image:images/DocumentationUser/voirCl.png[]
+
+Ensuite, appuyez sur le bouton "Voir client". Vous aurez un aperçu qui ressemblera à celui-ci.
+
+image:images/DocumentationUser/voirCl1.png[]
 
 === Gestion des comptes bancaires :
 
@@ -179,8 +193,81 @@ image:images/DocumentationUser/cl2.png[]
 Ensuite, en choisissant un compte, vous aurez la possibilité de le clôturer avec le bouton "Clôturer compte". Il faut au préalable que celui-ci soit "Ouvert" (noté entre parenthèses), et que son solde soit nul, sinon un message d'erreur sera affiché.
 
 image:images/DocumentationUser/cl3.png[]
-
+[.text-justify]
 Ici, si vous voulez clôturer le compte bancaire, cliquez sur le bouton "Yes", sinon cliquez sur le bouton "No".
+
+=== Gestion des employés :
+[.text-justify]
+Cette partie est réservée aux chefs d'agence. Pour pouvoir gérer les employés, il vous faut en effet être connecté sous ce statut.
+
+image:images/DocumentationUser/gEmp1.png[]
+[.text-justify]
+Tout d'abord, il vous faut aller sur l'onglet de gestion des employés. Comme sur l'image ci-dessus, cliquez sur le bouton "Gestion", sur le haut de la fenêtre et ensuite sur "Employés".
+
+image:images/DocumentationUser/gEmp2.png[]
+[.text-justify]
+Ici, vous arrivez sur la page de gestion des employés.
+
+==== Créer un employé :
+
+image:images/DocumentationUser/gEmp2.png[]
+
+Pour pouvoir créer un employé, il vous faut cliquer sur le bouton "Nouvel employé", situé en bas à droite de votre fenêtre.
+
+image:images/DocumentationUser/rEmp3.png[]
+
+Vous verrez s'afficher cette interface vous permettant de créer l'employé souhaité. Entrez les informations voulues et cliquer sur "Ajouter" pour confirmer.
+
+====
+À savoir qu'il faut remplir tous les champs pour que l'ajout soit accepté.
+====
+
+
+==== Rechercher un employé :
+
+image:images/DocumentationUser/gEmp2.png[]
+[.text-justify]
+À votre arrivée sur l'onglet de gestion des employés, vous trouverez un onglet vide, comme ceci.
+[.text-justify]
+Si vous souhaitez rechercher un employé en particulier, vous pourrez vous servir des deux zones de saisies situées en haut de la fenêtre. Si vous souhaitez simplement rechercher tous les employés présents dans l'agence, il vous suffit d'appuyer sur le bouton "Rechercher".
+
+image:images/DocumentationUser/rEmp1.png[]
+
+[.text-justify]
+Voici une recherche sans spécifications.
+
+image:images/DocumentationUser/rEmp2.png[]
+[.text-justify]
+Voici une recherche avec spécifications.
+
+
+==== Modifier les informations d'un employé :
+
+image:images/DocumentationUser/gEmp2.png[]
+[.text-justify]
+Si vous souhaitez modifier les informations d'un employé, il vous faut tout d'abord en avoir sélectionné un.
+
+image:images/DocumentationUser/rEmp4.png[]
+
+Ensuite, il vous faut cliquer sur le bouton "Modifier employé", situé dans la barre d'outils à droite de la fenêtre.
+
+image:images/DocumentationUser/rEmp5.png[]
+
+
+[.text-justify]
+Vous verrez s'afficher cet onglet, il vous suffira de modifier les informations voulues et de les confirmer en appuyant sur "Modifier".
+
+==== Voir les informations d'un employé :
+
+Pour pouvoir avoir un aperçu des informations d'un employé, il vous faut tout d'abord aller sur l'onglet de gestion employé. Ensuite, il vous faut le sélectionner, certaines actions seront donc activées.
+
+image:images/DocumentationUser/rEmp4.png[]
+
+Ensuite, appuyez sur le bouton "Voir client". Vous aurez un aperçu qui ressemblera à celui-ci. Cliquez sur le bouton "Fermer" si vous souhaitez quitter l'onglet.
+
+image:images/DocumentationUser/rEmp6.png[]
+
+
 
 
 
