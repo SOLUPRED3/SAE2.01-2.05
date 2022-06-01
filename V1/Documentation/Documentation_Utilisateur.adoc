@@ -267,7 +267,7 @@ Ensuite, appuyez sur le bouton "Voir client". Vous aurez un aperçu qui ressembl
 
 image:images/DocumentationUser/rEmp6.png[]
 
-
+r
 
 
 
