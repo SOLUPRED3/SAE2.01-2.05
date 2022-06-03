@@ -6,34 +6,152 @@ Cahier de recette <|°_°|>
 :Entreprise: DailyBank
 :Equipe: Dourlent Maxime, Tilian Huré, Thomas Falsimagne
 
-Créée pour : {entreprise} +
-Créée par : {equipe}
+Créée pour : *_{entreprise}_* +
+Créée par : *_{equipe}_*
 
 
 == 1 - Introduction
 
 === Objet
 
-Ceci est un objet, fait pas chier
+Ce document à été produit dans le cadre d'un projet d'élaboration d'une application bancaire pour {entreprise}. Ce document spécifie l'ensemble des cas de test de l'application. Ces cas de test sont présentés à partir du chapitre 3.
 
 == 2 - Pre-Requis
 
-Pre-requis à la con
+L'execution des cas de test spécifiés au chapitre suivant requiert :
+
+* Une base de données installée (Référence document technique).
+* L'environnement de test tel que spécifié dans la partie "Environnement de test" de ce document.
+* Les fiches de tests. *A vérifier*
 
 === Elément à tester
 
-Les fonctionnalités listés dans la documentation technique
+Les éléments testés concernent les users cases spécifiés dans la documentation technique.
 
 === Environnement de test
 
-Sur PC wesh
+Ordinateur sous Windows ou OS équivalent.
 
 == 3 - Cas de test
 
-=== Test 1
-=== Test 2
+=== Gestion d'un client
+
+|====
+
+>|Cas de test 3+|Test-01-01
+>|Titre 3+|Création d'un nouveau client
+>|Objectif 3+| Vérifier qu'il est possible de créer un nouveau client
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|Cliquer sur le bouton "Nouveau client". ^|La fenetre de création des clients s'ouvre. ^|OK
+^|2 ^|Compléter les champs spécifiés. ^|Un nouveau client est créé. ^|OK
+
+4+|
+
+4+|Commentaire : --|
+
+|====
+
+|====
+
+>|Cas de test 3+|Test-01-02
+>|Titre 3+|Modification d'un client
+>|Objectif 3+| Vérifier qu'il est possible de modifier un client
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|Cliquer sur le bouton "Modifier client". ^|La fenetre de modification des clients s'ouvre. ^|OK
+^|2 ^|Modifier les champs souhaités. ^|Le client est modifié. ^|OK
+
+4+|
+
+4+|Commentaire : --|
+
+|====
+
+|====
+
+>|Cas de test 3+|Test-01-03
+>|Titre 3+|Inactivation d'un client
+>|Objectif 3+| Vérifier qu'il est possible de rendre un client inactif
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|Sélectionner le bouton pour modifier les informations clients. ^|La page de modification des coordonnées client s’affiche. ^|OK
+^|2 ^|Sélectionner le bouton "Inactif". ^|Le client est rendu inactif. ^|OK
+
+4+|
+
+4+|Commentaire : +
+L'inactivation de clients n'est disponible que pour les administrateurs. +
+Tous les comptes d'un client doivent être vide pour pouvoir l'inactiver.|
+
+|====
+
+=== Gestion d'un compte
+
+|====
+
+>|Cas de test 3+|Test-02-01
+>|Titre 3+|Consultation d'un compte
+>|Objectif 3+| Vérifier qu'il est possible de consulter un compte
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|Sélectionner le bouton "Comptes client". ^|La page des comptes du client s’affiche. ^|OK
+^|2 ^|Sélectionner le bouton "Voir opérations". ^|La page des opérations du compte s’affiche. ^|OK
+
+4+|
+
+4+|Commentaire : --|
+
+|====
+
+|====
+
+>|Cas de test 3+|Test-02-02
+>|Titre 3+|Débiter un compte
+>|Objectif 3+| Vérifier qu'il est possible de débiter un compte
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|Sélectionner le bouton "Comptes client". ^|La page des comptes du client s’affiche. ^|OK
+^|2 ^|Sélectionner le bouton "Voir opérations". ^|La page des opérations du compte s’affiche. ^|OK
+^|3 ^|Sélectionner le bouton "Enregistrer Débit". ^|La page des opérations du compte s’affiche. ^|OK
+^|4 ^|Rentrer un montant dans le champ "Montant". ^|Le débit est enregistré et s'affiche dans la liste des opérations. ^|OK
+
+4+|
+
+4+|Commentaire : --|
+
+|====
+
 === Test 3
 === Test 4
 === Test 5
 === Test 6
-=== Test 7
+=== Template
+
+|====
+
+>|Cas de test 3+|*_num du test_*
+>|Titre 3+|*_nom du test_*
+>|Objectif 3+| *_Objectif du test_*
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|*_Action_* ^|*_Comportement_* ^|*_OK/pas OK_*
+^|2 ^|*_Action_* ^|*_Comportement_* ^|*_OK/pas OK_*
+
+4+|
+
+4+|Commentaire : *_Commentaire_*|
+
+|====
