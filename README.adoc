@@ -75,7 +75,7 @@ Dans sa colonne il doit remplir la ligne correspondant à une partie qu'il a dé
 |         | Code V1     |https://github.com/IUT-Blagnac/sae2022-bank-4a01/tree/main/V1/Code/src[Code-V1]| 
 |         | Recette V1 |    |Pas trouvé
 |         | Gantt V3 à jour   |                      | 
-|         | `jar` projet |https://github.com/IUT-Blagnac/sae2022-bank-4a01/blob/main/V1/Code/DailyBankV1.jar[.jar-V1]|Pas trouvé
+|         | `jar` projet |https://github.com/IUT-Blagnac/sae2022-bank-4a01/blob/main/V1/Code/DailyBankApp.jar[.jar-V1]|Pas trouvé
 | 05/06   | Gantt V3 à Jour  |    |  
 |         | Doc. Util. V2 |         |           
 |         | Doc. Tec. V2 |    |     
