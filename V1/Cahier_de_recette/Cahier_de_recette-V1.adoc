@@ -208,9 +208,6 @@ Tous les comptes d'un client doivent être vide pour pouvoir l'inactiver.|
 
 |====
 
-=== Test 4
-=== Test 5
-=== Test 6
 === Template
 
 |====
