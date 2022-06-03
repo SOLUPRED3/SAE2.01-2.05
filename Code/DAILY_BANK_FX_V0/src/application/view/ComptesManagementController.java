@@ -82,6 +82,7 @@ public class ComptesManagementController implements Initializable {
 	
 
 	// Gestion du stage
+
 	private Object closeWindow(WindowEvent e) {
 		this.doCancel();
 		e.consume();
