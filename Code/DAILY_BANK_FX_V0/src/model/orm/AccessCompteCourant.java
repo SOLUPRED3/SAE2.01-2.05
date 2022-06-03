@@ -1,11 +1,11 @@
 package model.orm;
 
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import model.data.CompteCourant;
 import model.orm.exception.DataAccessException;
 import model.orm.exception.DatabaseConnexionException;
@@ -14,11 +14,13 @@ import model.orm.exception.Order;
 import model.orm.exception.RowNotFoundOrTooManyRowsException;
 import model.orm.exception.Table;
 
+
 public class AccessCompteCourant {
 
-	public AccessCompteCourant() {
-	}
+	
+	public AccessCompteCourant() {}
 
+	
 	/**
 	 * Recherche des CompteCourant d'un client à partir de son id.
 	 *
@@ -59,18 +61,15 @@ public class AccessCompteCourant {
 		return alResult;
 	}
 	
+	
 	/**
 	 * Enregistre un compte avec ses différentes valeurs en paramètres.
-	 *
-	 * @param pfIdNumCli id du client pour lequel nous créons le compte 
-	 * @param pfDebitAutorise débit autorisé pour le client 
-	 * @param pfSolde solde du client 
-	 * @param pfEstCloture état du compte 
+	 * @param pfCompte : compte à enregistrer 
 	 * @throws DataAccessException
 	 * @throws DatabaseConnexionException
 	 * @throws RowNotFoundOrTooManyRowsException 
 	 */
-	public void enregistrerCompte(int pfIdNumCli, int pfDebitAutorise, double pfSolde, String pfEstCloture)
+	public void enregistrerCompte(CompteCourant compte)
 			throws DataAccessException, DatabaseConnexionException, RowNotFoundOrTooManyRowsException {
 
 		try {
@@ -80,17 +79,11 @@ public class AccessCompteCourant {
 			", " + "?" + ", " + "?" + ")";
 			
 			PreparedStatement pst = con.prepareStatement(query);
-			
 
-			System.out.println(pfIdNumCli);
-			System.out.println(pfDebitAutorise);
-			System.out.println(pfSolde);
-			System.out.println(pfEstCloture);
-
-			pst.setInt(1, pfDebitAutorise) ;
-			pst.setDouble(2, pfSolde) ; 
-			pst.setInt(3, pfIdNumCli) ; 
-			pst.setString(4, pfEstCloture) ; 
+			pst.setInt(1, compte.debitAutorise) ;
+			pst.setDouble(2, compte.solde) ; 
+			pst.setInt(3, compte.idNumCli) ; 
+			pst.setString(4, compte.estCloture) ; 
 			
 			int result = pst.executeUpdate();
 			
@@ -109,9 +102,16 @@ public class AccessCompteCourant {
 		} catch (SQLException e) {
 			throw new DataAccessException(Table.CompteCourant, Order.SELECT, "Erreur accès", e);
 		}
-
 	}
 	
+	
+	/**
+	 * Clôture un compte dans la base de données.
+	 * @param pfNumCompte : le numéro du compte à clôturer
+	 * @throws DataAccessException
+	 * @throws DatabaseConnexionException
+	 * @throws RowNotFoundOrTooManyRowsException
+	 */
 	public void cloturerCompte(int pfNumCompte)
 			throws DataAccessException, DatabaseConnexionException, RowNotFoundOrTooManyRowsException {
 
@@ -145,9 +145,9 @@ public class AccessCompteCourant {
 
 	}
 	
+	
 	/**
 	 * Recherche d'un CompteCourant à partir de son id (idNumCompte).
-	 *
 	 * @param idNumCompte id du compte (clé primaire)
 	 * @return Le compte ou null si non trouvé
 	 * @throws RowNotFoundOrTooManyRowsException
@@ -196,6 +196,7 @@ public class AccessCompteCourant {
 		}
 	}
 
+	
 	/**
 	 * Mise à jour d'un CompteCourant.
 	 *
@@ -215,7 +216,7 @@ public class AccessCompteCourant {
 
 			CompteCourant cAvant = this.getCompteCourant(cc.idNumCompte);
 			if (cc.debitAutorise > 0) {
-				cc.debitAutorise = - cc.debitAutorise;
+				cc.debitAutorise = -cc.debitAutorise;
 			}
 			if (cAvant.solde < cc.debitAutorise) {
 				throw new ManagementRuleViolation(Table.CompteCourant, Order.UPDATE,
@@ -243,6 +244,5 @@ public class AccessCompteCourant {
 			throw new DataAccessException(Table.CompteCourant, Order.UPDATE, "Erreur accès", e);
 		}
 	}
-	
 	
 }
