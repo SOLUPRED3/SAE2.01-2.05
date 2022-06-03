@@ -39,6 +39,7 @@ public class ComptesManagement {
 	private Stage primaryStage;
 	private ComptesManagementController cmc;
 	private DailyBankState dbs;
+	private PrelevementManagement pm ;
 	private Client clientDesComptes;
 
 	/**
@@ -67,7 +68,7 @@ public class ComptesManagement {
 			this.primaryStage.setResizable(false);
 
 			this.cmc = loader.getController();
-			this.cmc.initContext(this.primaryStage, this, _dbstate, client);
+			this.cmc.initContext(this.primaryStage, this, this.pm, _dbstate, client);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -124,6 +125,15 @@ public class ComptesManagement {
 			}
 		}
 		return compte;
+	}
+
+	/*
+	 * Procédure qui permet de gérer le prélèvement d'un compte
+	 * @param IN CompteCourant c
+	 */
+	public void gererPrelevement(CompteCourant c) {
+			PrelevementManagement pm = new PrelevementManagement(this.primaryStage, this.dbs, c);
+			pm.doPrelevementManagementDialog();
 	}
 
 

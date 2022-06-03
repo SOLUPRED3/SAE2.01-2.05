@@ -215,7 +215,7 @@ public class AccessCompteCourant {
 
 			CompteCourant cAvant = this.getCompteCourant(cc.idNumCompte);
 			if (cc.debitAutorise > 0) {
-				cc.debitAutorise = -cc.debitAutorise;
+				cc.debitAutorise = - cc.debitAutorise;
 			}
 			if (cAvant.solde < cc.debitAutorise) {
 				throw new ManagementRuleViolation(Table.CompteCourant, Order.UPDATE,

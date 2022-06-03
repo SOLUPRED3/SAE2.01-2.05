@@ -7,6 +7,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import application.DailyBankState;
 import application.control.ComptesManagement;
+import application.control.PrelevementManagement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -28,7 +29,7 @@ public class ComptesManagementController implements Initializable {
 	// Etat application
 	private DailyBankState dbs;
 	private ComptesManagement cm;
-
+	private PrelevementManagement pm ;
 	// Fenêtre physique
 	private Stage primaryStage;
 
@@ -38,7 +39,7 @@ public class ComptesManagementController implements Initializable {
 
 	
 	// Manipulation de la fenêtre
-	public void initContext(Stage _primaryStage, ComptesManagement _cm, DailyBankState _dbstate, Client client) {
+	public void initContext(Stage _primaryStage, ComptesManagement _cm, PrelevementManagement _pm, DailyBankState _dbstate, Client client) {
 		this.cm = _cm;
 		this.primaryStage = _primaryStage;
 		this.dbs = _dbstate;
@@ -101,12 +102,27 @@ public class ComptesManagementController implements Initializable {
 	private Button btnSupprCompte;
 	@FXML
 	private Button btnAjoutCompte;
+	@FXML
+	private Button btnVoirPrelevement;
 
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	}
-	
+
+	/**
+	 * Ouvre le gestionnaire des virements d'un compte.
+	 */
+	@FXML
+	private void doVoirPrelevement() {
+		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
+		if (selectedIndice >= 0) {
+			CompteCourant compte = this.olCompteCourant.get(selectedIndice);
+			if(compte != null){
+				this.cm.gererPrelevement(compte);
+			}
+		}
+	}
 	
 	/**
 	 * Annule la création/modification d'un employé et ferme la fenêtre.
