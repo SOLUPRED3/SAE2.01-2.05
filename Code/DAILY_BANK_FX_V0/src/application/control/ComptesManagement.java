@@ -27,6 +27,7 @@ public class ComptesManagement {
 	private ComptesManagementController cmc;
 	private DailyBankState dbs;
 	private Client clientDesComptes;
+	private PrelevementManagement pm;
 
 	
 	/**
@@ -54,7 +55,7 @@ public class ComptesManagement {
 			this.primaryStage.setResizable(false);
 
 			this.cmc = loader.getController();
-			this.cmc.initContext(this.primaryStage, this, _dbstate, client);
+			this.cmc.initContext(this.primaryStage, this, this.pm, _dbstate, client);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
