@@ -1,55 +1,41 @@
 package application.control;
 
-import java.util.ArrayList;
-import java.util.Optional;
-import java.util.Random;
 
+import java.util.ArrayList;
 import application.DailyBankApp;
 import application.DailyBankState;
-import application.tools.AlertUtilities;
 import application.tools.EditionMode;
 import application.tools.StageManagement;
 import application.view.ComptesManagementController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonBar.ButtonData;
-import javafx.scene.control.ButtonType;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import model.data.AgenceBancaire;
 import model.data.Client;
 import model.data.CompteCourant;
-import model.orm.AccessAgenceBancaire;
-import model.orm.AccessClient;
 import model.orm.AccessCompteCourant;
 import model.orm.exception.ApplicationException;
 import model.orm.exception.DatabaseConnexionException;
 import model.orm.exception.Order;
 import model.orm.exception.Table;
 
-/**
- * @author falsimagne
- *
- */
+
 public class ComptesManagement {
 
 	private Stage primaryStage;
 	private ComptesManagementController cmc;
 	private DailyBankState dbs;
-	private PrelevementManagement pm ;
 	private Client clientDesComptes;
 
+	
 	/**
 	 * Constructueur de ComptesManagement
 	 * @param _parentStage
 	 * @param _dbstate
 	 * @param client
 	 */
-	public ComptesManagement(Stage _parentStage, DailyBankState _dbstate, Client client) {
-		
+	public ComptesManagement(Stage _parentStage, DailyBankState _dbstate, Client client) {		
 		this.clientDesComptes = client;
 		this.dbs = _dbstate;
 		try {
@@ -68,8 +54,7 @@ public class ComptesManagement {
 			this.primaryStage.setResizable(false);
 
 			this.cmc = loader.getController();
-			this.cmc.initContext(this.primaryStage, this, this.pm, _dbstate, client);
-
+			this.cmc.initContext(this.primaryStage, this, _dbstate, client);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -83,18 +68,20 @@ public class ComptesManagement {
 		this.cmc.displayDialog();
 	}
 
+	
 	/**
 	 * Procédure qui permet de gérer les opérations d'un client sur un compte.
-	 * @param cpt
+	 * @param cpt : compte concerné
 	 */
 	public void gererOperations(CompteCourant cpt) {
 		OperationsManagement om = new OperationsManagement(this.primaryStage, this.dbs, this.clientDesComptes, cpt);
 		om.doOperationsManagementDialog();
 	}
 
+	
 	/**
 	 * Fonction qui permet de créer un compte et de l'enregistrer en base de données.
-	 * @return
+	 * @return le compte créé
 	 */
 	public CompteCourant creerCompte() {
 		CompteCourant compte;
@@ -104,10 +91,8 @@ public class ComptesManagement {
 		//System.out.println(compte.toString());  
 		if (compte != null) {
 			try {
-				// Temporaire jusqu'à implémentation
 				
-				accessCompte.enregistrerCompte(compte.idNumCli, -compte.debitAutorise, compte.solde, compte.estCloture);
-				
+				accessCompte.enregistrerCompte(compte);
 				
 				// if JAMAIS vrai
 				// existe pour compiler les catchs dessous
@@ -125,15 +110,6 @@ public class ComptesManagement {
 			}
 		}
 		return compte;
-	}
-
-	/*
-	 * Procédure qui permet de gérer le prélèvement d'un compte
-	 * @param IN CompteCourant c
-	 */
-	public void gererPrelevement(CompteCourant c) {
-			PrelevementManagement pm = new PrelevementManagement(this.primaryStage, this.dbs, c);
-			pm.doPrelevementManagementDialog();
 	}
 
 
@@ -156,14 +132,16 @@ public class ComptesManagement {
 		}
 	}
 
+	
 	/**
 	 * Fonction qui permet de retourner un compte avec ses informations modifiées.
-	 * @param c
-	 * @return
+	 * @param client : client à qui appartient le compte
+	 * @param compte : compte concerné
+	 * @return le compte modifié, null en cas de problème
 	 */
-	public CompteCourant modifierCompte(Client Cl, CompteCourant c) {
+	public CompteCourant modifierCompte(Client client, CompteCourant compte) {
 		CompteEditorPane cep = new CompteEditorPane(this.primaryStage, this.dbs);
-		CompteCourant result = cep.doCompteEditorDialog(Cl, c, EditionMode.MODIFICATION);
+		CompteCourant result = cep.doCompteEditorDialog(client, compte, EditionMode.MODIFICATION);
 		if (result != null) {
 			try {
 				AccessCompteCourant ac = new AccessCompteCourant();
@@ -181,14 +159,13 @@ public class ComptesManagement {
 		}
 		return result;
 	}
+	
 
 	/**
-	 * Fonction qui retourne une ArrayList contenant les comptes d'un client.
-	 * @return
+	 * @return une ArrayList contenant les comptes d'un client, vide si pas de clients
 	 */
 	public ArrayList<CompteCourant> getComptesDunClient() {
 		ArrayList<CompteCourant> listeCpt = new ArrayList<>();
-
 		try {
 			AccessCompteCourant acc = new AccessCompteCourant();
 			listeCpt = acc.getCompteCourants(this.clientDesComptes.idNumCli);
@@ -204,4 +181,5 @@ public class ComptesManagement {
 		}
 		return listeCpt;
 	}
+	
 }
