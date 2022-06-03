@@ -251,16 +251,20 @@ public class ComptesManagementController implements Initializable {
         		this.btnVoirOpes.setDisable(false);
                 this.btnSupprCompte.setDisable(false);
                 this.btnModifierCompte.setDisable(false);
+				this.btnVoirPrelevement.setDisable(false);
         	} else {
         		this.btnVoirOpes.setDisable(true);
                 this.btnSupprCompte.setDisable(true);
-                this.btnModifierCompte.setDisable(true);                
+                this.btnModifierCompte.setDisable(true);
+				this.btnVoirPrelevement.setDisable(true);
         	}
         } else {
         	if (selectedIndice >= 0) {
-        		this.btnVoirOpes.setDisable(false);                
+        		this.btnVoirOpes.setDisable(false);
+				this.btnVoirPrelevement.setDisable(false);
         	} else {
         		this.btnVoirOpes.setDisable(true);
+				this.btnVoirPrelevement.setDisable(true);
         	}
         	this.btnSupprCompte.setDisable(true);
             this.btnModifierCompte.setDisable(true);
