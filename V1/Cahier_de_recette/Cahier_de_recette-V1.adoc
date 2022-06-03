@@ -97,6 +97,24 @@ Tous les comptes d'un client doivent être vide pour pouvoir l'inactiver.|
 |====
 
 >|Cas de test 3+|Test-02-01
+>|Titre 3+|Création d'un compte
+>|Objectif 3+| Vérifier qu'il est possible de créer un compte
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|*_Action_* ^|*_Comportement_* ^|*_OK/pas OK_*
+^|2 ^|*_Action_* ^|*_Comportement_* ^|*_OK/pas OK_*
+
+4+|
+
+4+|Commentaire : *_Commentaire_*|
+
+|====
+
+|====
+
+>|Cas de test 3+|Test-02-02
 >|Titre 3+|Consultation d'un compte
 >|Objectif 3+| Vérifier qu'il est possible de consulter un compte
 
@@ -114,7 +132,7 @@ Tous les comptes d'un client doivent être vide pour pouvoir l'inactiver.|
 
 |====
 
->|Cas de test 3+|Test-02-02
+>|Cas de test 3+|Test-02-03
 >|Titre 3+|Débiter un compte
 >|Objectif 3+| Vérifier qu'il est possible de débiter un compte
 
@@ -132,7 +150,64 @@ Tous les comptes d'un client doivent être vide pour pouvoir l'inactiver.|
 
 |====
 
-=== Test 3
+|====
+
+>|Cas de test 3+|Test-02-04
+>|Titre 3+|Créditer un compte
+>|Objectif 3+| Vérifier qu'il est possible de créditer un compte
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|Sélectionner le bouton "Comptes client". ^|La page des comptes du client s’affiche. ^|OK
+^|2 ^|Sélectionner le bouton "Voir opérations". ^|La page des opérations du compte s’affiche. ^|OK
+^|3 ^|Sélectionner le bouton "Enregistrer crédit". ^|La page des opérations du compte s’affiche. ^|OK
+^|4 ^|Rentrer un montant dans le champ "Montant". ^|Le crédit est enregistré et s'affiche dans la liste des opérations. ^|OK
+
+4+|
+
+4+|Commentaire : --|
+
+|====
+
+|====
+
+>|Cas de test 3+|Test-02-05
+>|Titre 3+|Virement de compte à compte
+>|Objectif 3+| Vérifier qu'il est possible d'effectuer un virement d'un compte à un autre
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|*_Action_* ^|*_Comportement_* ^|*_OK/pas OK_*
+^|2 ^|*_Action_* ^|*_Comportement_* ^|*_OK/pas OK_*
+
+4+|
+
+4+|Commentaire : --|
+
+|====
+
+=== Gestion d'un employé
+
+|====
+
+>|Cas de test 3+|Test-03-01
+>|Titre 3+|Gestion d'un employé
+>|Objectif 3+| Vérifier qu'il est possible de gérer un employé
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|*_Action_* ^|*_Comportement_* ^|*_OK/pas OK_*
+^|2 ^|*_Action_* ^|*_Comportement_* ^|*_OK/pas OK_*
+
+4+|
+
+4+|Commentaire : *_Commentaire_*|
+
+|====
+
 === Test 4
 === Test 5
 === Test 6
