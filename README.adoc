@@ -29,8 +29,8 @@ La mission de notre équipe consiste à développer une application existante «
 |1    |Guichetier     | Compte | Effectuer un virement| | |F
 |1    |Guichetier     | Compte | Clôturer| |F |
 |2    |Chef d'Agence     | Compte | Débit exceptionnel|| |
-|2    |Chef d'Agence     | Emprunt | Simuler emprunt|| |
-|2    |Chef d'Agence     | Emprunt | Simuler assurance|| |
+|2    |Chef d'Agence     | Emprunt | Simuler emprunt|D| |
+|2    |Chef d'Agence     | Emprunt | Simuler assurance|D| |
 |2    |Guichetier     | Compte | Relevé PDF|| |
 |2    |Guichetier     | CRUD Prélèvement | C||D |
 |2    |Guichetier     | CRUD Prélèvement | R||D |
