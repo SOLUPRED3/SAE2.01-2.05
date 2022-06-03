@@ -8,8 +8,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.stage.Stage;
@@ -34,21 +32,10 @@ public class PrelevementManagementController implements Initializable {
     private CompteCourant compteDuClient;
     private ObservableList<Prelevement> olPrelevement;
 
-    // Attributs de la scène :
+    // Données du Stage :
 
     @FXML
     private ListView<Prelevement> lvPrelevement;
-    @FXML
-    private Label lblInfosCompte;
-    @FXML
-    private Button btnVoirHistorique;
-    @FXML
-    private Button btnModifierPrelevement;
-    @FXML
-    private Button btnSupprPrelevement;
-    @FXML
-    private Button btnAjoutPrelevement;
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -59,23 +46,18 @@ public class PrelevementManagementController implements Initializable {
         this.pm = _pm;
         this.primaryStage = _primaryStage;
         this.dbs = _dbstate;
-        this.compteDuClient = compte;
-        this.configure();
+        this.compteDuClient = compteDuClient;
     }
 
    private void configure() {
-        String info;
+        //String info;
         this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
-        this.olPrelevement = FXCollections.observableArrayList();
+        /*this.olPrelevement = FXCollections.observableArrayList();
         this.lvPrelevement.setItems(this.olPrelevement);
         this.lvPrelevement.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         this.lvPrelevement.getFocusModel().focus(-1);
-        this.lvPrelevement.getSelectionModel().selectedItemProperty().addListener(e -> this.validateComponentState());
-        if(this.compteDuClient != null){
-            info = "IDNUMCOMPTE : " + this.compteDuClient.idNumCompte + "  SOLDE : " + this.compteDuClient.solde  + " DÉCOUVERT AUTORISÉ : " + this.compteDuClient.debitAutorise;
-            this.lblInfosCompte.setText(info);
-        }
-       this.validateComponentState();
+        //this.lvPrelevement.getSelectionModel().selectedItemProperty().addListener(e -> this.validateComponentState());
+        */
     }
 
     private Object closeWindow(WindowEvent e) {
@@ -92,62 +74,11 @@ public class PrelevementManagementController implements Initializable {
         this.primaryStage.close();
     }
 
-    /**
-     * @return true si le compte sélectionné est clôturé, sinon false
-     */
-    private boolean compteInactif() {
-        if(this.compteDuClient.estCloture.equals("N")) {
-            return false;
-        }
-        return true;
-    }
-
-    /**
-     * @return true si le compte sélectionné est clôturé, sinon false
-     */
-    private boolean estCloture() {
-        if(this.lvPrelevement.getSelectionModel().getSelectedIndex() >= 0 && this.lvPrelevement.getSelectionModel().getSelectedItem().estCloture.equals("N")) {
-            return false;
-        }
-        return true;
-    }
 
     public void displayDialog() {
         System.out.println(this.primaryStage);
         this.primaryStage.showAndWait();
     }
-
-
-    private void validateComponentState() {
-        int selectedIndice = this.lvPrelevement.getSelectionModel().getSelectedIndex();
-        if (!compteInactif()) {
-            if (selectedIndice >= 0) {
-                this.btnVoirHistorique.setDisable(false);
-                this.btnSupprPrelevement.setDisable(false);
-                this.btnModifierPrelevement.setDisable(false);
-                this.btnAjoutPrelevement.setDisable(false);
-            } else {
-                this.btnVoirHistorique.setDisable(true);
-                this.btnSupprPrelevement.setDisable(true);
-                this.btnModifierPrelevement.setDisable(true);
-                this.btnVoirHistorique.setDisable(true);
-            }
-        } else {
-            if (selectedIndice >= 0) {
-                this.btnVoirHistorique.setDisable(false);
-            } else {
-                this.btnVoirHistorique.setDisable(true);
-            }
-            this.btnSupprPrelevement.setDisable(true);
-            this.btnModifierPrelevement.setDisable(true);
-        }
-        if (this.compteInactif()) {
-            this.btnAjoutPrelevement.setDisable(true);
-        } else {
-            this.btnAjoutPrelevement.setDisable(false);
-        }
-    }
-
 
 
 }
