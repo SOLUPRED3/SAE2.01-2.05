@@ -70,7 +70,7 @@ Dans sa colonne il doit remplir la ligne correspondant à une partie qu'il a dé
 |         | Recette V1  |https://github.com/IUT-Blagnac/sae2022-bank-4a01/blob/main/V1/Cahier_de_recette/Cahier_de_recette-V1.adoc[Cahier de recette-V1]| 
 |         | Suivi projet|   | 
 | 22/05   | Gantt V2  à jour    |       | 
-|         | Doc. Util. V1 |https://github.com/IUT-Blagnac/sae2022-bank-4a01/blob/main/V1/Documentation/Documentation_Utilisateur-V1.adoc[Doc. utilisateur-V1]|     retard livraison V1 *Le fichier étant présent dans le dépôt, le lien n'a juste pas été renseigné (oubli)*
+|         | Doc. Util. V1 |https://github.com/IUT-Blagnac/sae2022-bank-4a01/blob/main/V1/Documentation/Documentation_Utilisateur-V1.adoc[Doc. utilisateur-V1]|     retard livraison V1 *Le fichier étant présent dans le dépôt, le lien n'a juste pas été renseigné (oubli)* Attention le rôle des utilisateurs doit faire l'objet d'un paragraphe pas d'une note. Réduire un peu la taille des screen. Structurer la doc par utilisateur et par domaine : gestion des clients, gestion des crédits ...
 |         | Doc. Tec. V1 |https://github.com/IUT-Blagnac/sae2022-bank-4a01/blob/main/V1/Documentation/Documentation_Technique-V1.adoc[Doc. technique-V1]|https://github.com/IUT-Blagnac/sae2022-bank-4a01/blob/main/V1/Documentation/retour_doc_technique.adoc   
 |         | Code V1     |https://github.com/IUT-Blagnac/sae2022-bank-4a01/tree/main/V1/Code/src[Code-V1]| 
 |         | Recette V1 |    |Pas trouvé
