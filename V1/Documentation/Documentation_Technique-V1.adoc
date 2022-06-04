@@ -1,12 +1,11 @@
-= Documentation technique (V0)
+= Documentation Technique (V1)
 :toc:
 
 Thomas Falsimagne, Tilian Hure, Maxime Dourlent +
-*V0* - xx/xx/2022
+*V1* - xx/xx/2022
 
-{empty} +
 
-*Répartition des tâches et état d'avancement*
+.Répartition des tâches et état d'avancement
 [options="header,footer"]
 |=======================
 |version|user     |use case   |cas...                 |   Maxime DOURLENT | Thomas FALSIMAGNE  |   Tilian HURÉ
@@ -187,6 +186,20 @@ L'application utilise une *base de données Oracle-SQL* dont le code de déploie
 Ces données concernent la classe "LogToDatabase.java" du sous-package "orm" du package "model". Les ligne 19 à 24 qui devront être modifiées afin de renseigner les nouvelles données de connexion à la base de données utilisée.
 
 
+==== 4.2 Lancement de l'application :
+[.text-justify]
+Le poste sur lequel souhaite être lancée l'application avec le fichier "DailyBankApp.jar", devra préalablement disposer d'une JRE versionné en 1.8.
+
+[NOTE]
+====
+[.text-justify]
+Pour toute information concernant l'installation d'une JRE 1.8, merci de bien vouloir vous référer à la *documentation utilisateur*.
+====
+
+[.text-justify]
+Avant d'exécuter le fichier .jar, il sera nécessaire de changer l'environnement Java du poste concerné avec celle précédemment mentionnée, une fois installée. Pour cela, un fichier "SETENV.bat" est fourni avec le code source, permettant de momentanément changer de JRE. Éditez son contenu en remplacant le texte entre guillemets de la première ligne par le chemin de la JRE 1.8 du poste concerné, puis sauvegardez les modifications. Pour lancer l'application, vous n'aurez plus qu'à exécuter le fichier .bat pour changer de JRE, avant de faire de même avec le fichier .jar.
+
+
 
 == IV. Répartition du travail
 [.text-justify]
@@ -205,6 +218,7 @@ La charge de travail concernant le développement de l'application et de ses fon
 *Fonctionnalités développées :*
 
 * Créer un compte
+* Modifier un compte
 * Clôturer un compte
 
 
@@ -221,7 +235,49 @@ La charge de travail concernant le développement de l'application et de ses fon
 
 == IV. Description et explication des fonctionnalités implémentées
 === 1. Fonctionnalités des guichetiers :
-==== 1.1 Modifier les informations d'un client :
+==== 1.1 Créer un client :
+Un guichetier peut créer un nouveau client.
+
+
+===== a) Use case correspondant :
+image::images/creerClient.svg[]
+
+
+===== b) Partie du diagramme de classe correspondante :
+image::images/modifierClientDC.png[]
+
+[.text-justify]
+Cette partie du diagramme de classe est en mise-à-jour, certaines données sont ajoutées dans la base de données.
+
+
+===== c) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant l'ajout ou la modification des informations d'un client, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== d) Classes et packages impliqués :
+. Application/Control -> ClientsManagement.java, ClientEditorPane.java
+. Application/View -> ClientEditorPaneController.java, ClientsManagementController.java, clienteditorpane.fxml, clientsmanagement.fxml
+. Application/Model/data -> Client.java
+. Application/Model/orm -> AccessClient.java
+
+
+===== e) Éléments essentiels :
+====== e.1) Fonctions :
+. insertClient(Client client) -> AccessClient.java
+. nouveauClient() -> ClientsManagement.java
+. doAjouter() -> ClientEditorPaneController.java
+. displayDialog(Client client, EditionMode mode) -> ClientEditorPaneController.java
+
+
+====== e.2) Classes :
+[.text-justify]
+La classe Client.java est importante car principalement utilisée pour modéliser des clients sous forme d'objets manipulables dans le code.
+
+
+{empty} +
+
+==== 1.2 Modifier les informations d'un client :
 [.text-justify]
 Un guichetier peut modifier les informations d'un client (son nom, son prénom, son adresse, etc).
 
@@ -244,7 +300,7 @@ Cette partie du diagramme de classe est en mise-à-jour, certaines données sont
 
 ===== d) Classes et packages impliqués :
 . Application/Control -> ClientsManagement.java, ClientEditorPane.java
-. Application/View -> ClientEditorPaneController.java, ClientManagementController.java, clienteditorpane.fxml, clientsmanagement.fxml
+. Application/View -> ClientEditorPaneController.java, ClientsManagementController.java, clienteditorpane.fxml, clientsmanagement.fxml
 . Application/Model/data -> Client.java
 . Application/Model/orm -> AccessClient.java
 
@@ -255,7 +311,7 @@ Cette partie du diagramme de classe est en mise-à-jour, certaines données sont
 . updateClient(Client client) -> AccessClient.java
 . doAjouter() -> ClientEditorPaneController.java
 . displayDialog(Client client, EditionMode mode) -> ClientEditorPaneController.java
-. doModifierClient() -> ClientManagementController.java
+. doModifierClient() -> ClientsManagementController.java
 
 
 ====== e.2) Classes :
@@ -265,16 +321,58 @@ La classe Client.java est importante car principalement utilisée pour modélise
 
 {empty} +
 
-==== 1.2 Créer un client :
-Un guichetier peut créer un nouveau client.
+==== 1.3 Visualiser les informations d'un client :
+[.text-justify]
+Un guichetier peut visualiser (en lecture seule) les informations d'un client (son nom, son prénom, son adresse, etc).
 
 
 ===== a) Use case correspondant :
-image::images/creerClient.svg[]
+image::images/voirInfo.svg[]
 
 
 ===== b) Partie du diagramme de classe correspondante :
 image::images/modifierClientDC.png[]
+
+[.text-justify]
+Cette partie du diagramme de classe est en lecture, aucune données n'est ajoutée, modifiée ou supprimée dans la base de donnée.
+
+
+===== c) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant l'ajout ou la modification des informations d'un client, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== d) Classes et packages impliqués :
+. Application/Control -> ClientsManagement.java, ClientEditorPane.java
+. Application/View -> ClientEditorPaneController.java, ClientsManagementController.java, clienteditorpane.fxml, clientsmanagement.fxml
+. Application/Model/data -> Client.java
+. Application/Model/orm -> AccessClient.java
+
+
+===== e) Éléments essentiels :
+====== e.1) Fonctions :
+. voirClient(Client client) -> ClientsManagement.java
+. displayDialog(Client client, EditionMode mode) -> ClientEditorPaneController.java
+. doVoirClient() -> ClientsManagementController.java
+
+
+====== e.2) Classes :
+[.text-justify]
+La classe Client.java est importante car principalement utilisée pour modéliser des clients sous forme d'objets manipulables dans le code.
+
+
+{empty} +
+
+==== 1.4 Créer un compte bancaire :
+Un guichetier peut créer un nouveau compte bancaire pour un client.
+
+
+===== a) Use case correspondant :
+image::images/creerCompte.svg[]
+
+
+===== b) Partie du diagramme de classe correspondante :
+image::images/compteCourantDC.png[]
 
 [.text-justify]
 Cette partie du diagramme de classe est en mise-à-jour, certaines données sont ajoutées dans la base de données.
@@ -286,28 +384,77 @@ Cette partie du diagramme de classe est en mise-à-jour, certaines données sont
 
 
 ===== d) Classes et packages impliqués :
-. Application/Control -> ClientsManagement.java, ClientEditorPane.java
-. Application/View -> ClientEditorPaneController.java, ClientManagementController.java, clienteditorpane.fxml, clientsmanagement.fxml
-. Application/Model/data -> Client.java
-. Application/Model/orm -> AccessClient.java
+. Application/Control -> ComptesManagement.java, CompteEditorPane.java
+. Application/View -> CompteEditorPaneController.java, ComptesManagementController.java, compteeditorpane.fxml, comptesmanagement.fxml
+. Application/Model/data -> CompteCourant.java
+. Application/Model/orm -> AccessCompteCourant.java
 
 
 ===== e) Éléments essentiels :
 ====== e.1) Fonctions :
-. insertClient(Client client) -> AccessClient.java
-. nouveauClient() -> ClientManagement.java
-. doAjouter() -> ClientEditorPaneController.java
-. displayDialog(Client client, EditionMode mode) -> ClientEditorPaneController.java
+. enregistrerCompte(Compte compte) -> AccessCompteCourant.java
+. creerCompte() -> ComptesManagement.java
+. doAjouter() -> CompteEditorPaneController.java
+. displayDialog(Client client, Compte cpte, EditionMode mode) -> CompteEditorPaneController.java
 
 
 ====== e.2) Classes :
 [.text-justify]
-La classe Client.java est importante car principalement utilisée pour modéliser des clients sous forme d'objets manipulables dans le code.
+La classe CompteCourant.java est importante car principalement utilisée pour modéliser des comptes bancaires sous forme d'objets manipulables dans le code.
 
 
 {empty} +
 
-==== 1.3 Consulter un compte :
+==== 1.5 Modifier les informations d'un compte bancaire :
+Un guichetier peut modifier un compte bancaire.
+
+
+===== a) Use case correspondant :
+image::images/modifierCompte.svg[]
+
+
+===== b) Partie du diagramme de classe correspondante :
+image::images/compteCourantDC.png[]
+
+[.text-justify]
+Cette partie du diagramme de classe est en mise-à-jour, certaines données sont modifiées dans la base de données.
+
+
+===== c) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant l'ajout ou la modification des informations d'un client, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== d) Classes et packages impliqués :
+. Application/Control -> ComptesManagement.java, CompteEditorPane.java
+. Application/View -> CompteEditorPaneController.java, ComptesManagementController.java, compteeditorpane.fxml, comptesmanagement.fxml
+. Application/Model/data -> CompteCourant.java
+. Application/Model/orm -> AccessCompteCourant.java
+
+
+===== e) Éléments essentiels :
+====== e.1) Fonctions :
+. modifierCompte(Compte compte) -> AccessCompteCourant.java
+. modifierCompte() -> ComptesManagement.java
+. doAjouter() -> CompteEditorPaneController.java
+. displayDialog(Client client, Compte cpte, EditionMode mode) -> CompteEditorPaneController.java
+
+
+====== e.2) Classes :
+[.text-justify]
+La classe CompteCourant.java est importante car principalement utilisée pour modéliser des comptes bancaires sous forme d'objets manipulables dans le code.
+
+
+[NOTE]
+====
+[.text-justify]
+Seul le découvert autorisé d'un compte peut être modifié. Ce dernier peut être élargi, en revanche il ne peut devenir infèrieur au solde du compte concerné si ce dernier est négatif.
+====
+
+
+{empty} +
+
+==== 1.5 Consulter un compte bancaire :
 Un guichetier peut consulter un compte bancaire.
 
 
@@ -351,7 +498,55 @@ La classe CompteCourant.java est importante car principalement utilisée pour mo
 
 {empty} +
 
-==== 1.4 Débiter un compte :
+==== 1.6 Clôturer un compte bancaire :
+Un guichetier peut clôturer un compte bancaire.
+
+
+===== a) Use case correspondant :
+image::images/cloturerCompte.svg[]
+
+
+===== b) Partie du diagramme de classe correspondante :
+image::images/compteCourantDC.png[]
+
+[.text-justify]
+Cette partie du diagramme de classe est en mise-à-jour, certaines données sont modifiées dans la base de données.
+
+
+===== c) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant l'ajout ou la modification des informations d'un client, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== d) Classes et packages impliqués :
+. Application/Control -> ComptesManagement.java, CompteEditorPane.java
+. Application/View -> CompteEditorPaneController.java, ComptesManagementController.java, compteeditorpane.fxml, comptesmanagement.fxml
+. Application/Model/data -> CompteCourant.java
+. Application/Model/orm -> AccessCompteCourant.java
+
+
+===== e) Éléments essentiels :
+====== e.1) Fonctions :
+. cloturerCompte(int idNumCompte) -> AccessCompteCourant.java
+. cloturerCompte() -> ComptesManagement.java
+. doCloturerCompte() -> ComptesManagementController.java
+
+
+====== e.2) Classes :
+[.text-justify]
+La classe CompteCourant.java est importante car principalement utilisée pour modéliser des comptes bancaires sous forme d'objets manipulables dans le code.
+
+
+[NOTE]
+====
+[.text-justify]
+Les comptes bancaires ne peuvent être clôturés que si leur solde est nulle. Les comptes clôturés ne peuvent plus subir aucune opération mais ces dernières restent tout de même visualisables.
+====
+
+
+{empty} +
+
+==== 1.7 Débiter un compte :
 Un guichetier peut débiter un compte bancaire.
 
 
@@ -402,6 +597,110 @@ Un débit doit être d'un motant strictement positif (>0) et ne doit pas enfrein
 
 {empty} +
 
+==== 1.8 Créditer un compte :
+Un guichetier peut créditer un compte bancaire.
+
+
+===== a) Use case correspondant :
+image::images/crediterCompte.svg[]
+
+
+===== b) Partie du diagramme de classe correspondante :
+image::images/débitCompte.png[]
+
+[.text-justify]
+Les parties *CompteCourant* et *TypeOperation* du diagramme de classe sont en lecture, aucune données n'est modifiée, ajoutée ou supprimée de la base de données. La partie *Operation* est en mise-à-jour, certaines données sont ajoutées à la base de donneés.
+
+
+===== c) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant l'enregistrement d'un débit sur un compte bancaire, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== d) Classes et packages impliqués :
+. Application/Control -> OperationManagement.java, OperationEditorPane.java
+. Application/View -> OperationEditorPaneController.java, OperationManagementController.java, operationeditorpane.fxml, operationmanagement.fxml
+. Application/Model -> CompteCourant.java, Operation.java, TypeOperation.java
+. Application/Model/orm -> AccessCompteCourant.java
+
+
+===== e) Éléments essentiels :
+====== e.1) Fonctions :
+. doCredit() -> OperationManagementController.java
+. doAjouter() -> OperationEditorPaneController.java
+. enregistrerCredit() -> OperationManagement.java
+. insertCredit() -> AccessOperation.java
+. getTypeOperation() -> AccessTypeOperation.java
+. updateInfoCompteClient() -> OperationManagementController.java
+
+
+====== e.2) Classes :
+[.text-justify]
+La classe Operation.java est importante car principalement utilisée pour modéliser des opérations de débit, de crédit ou de virement sous forme d'objets manipulables dans le code.
+
+
+[NOTE]
+====
+[.text-justify]
+Un crédit doit être d'un motant strictement positif (>0).
+====
+
+
+{empty} +
+
+==== 1.9 Effectuer un virement de compte à compte :
+Un guichetier peut faire un virement d'un compte bancaire à un autre pour un même client.
+
+
+===== a) Use case correspondant :
+image::images/virementCompte.svg[]
+
+
+===== b) Partie du diagramme de classe correspondante :
+image::images/débitCompte.png[]
+
+[.text-justify]
+Les parties *CompteCourant* et *TypeOperation* du diagramme de classe sont en lecture, aucune données n'est modifiée, ajoutée ou supprimée de la base de données. La partie *Operation* est en mise-à-jour, certaines données sont ajoutées à la base de donneés.
+
+
+===== c) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant l'enregistrement d'un débit sur un compte bancaire, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== d) Classes et packages impliqués :
+. Application/Control -> OperationManagement.java, OperationEditorPane.java
+. Application/View -> OperationEditorPaneController.java, OperationManagementController.java, operationeditorpane.fxml, operationmanagement.fxml
+. Application/Model -> CompteCourant.java, Operation.java, TypeOperation.java
+. Application/Model/orm -> AccessCompteCourant.java
+
+
+===== e) Éléments essentiels :
+====== e.1) Fonctions :
+. doDebit() -> OperationManagementController.java
+. doAjouter() -> OperationEditorPaneController.java
+. enregistrerDebit() -> OperationManagement.java
+. enregistrerCredit() -> OperationManagement.java
+. insertDebit() -> AccessOperation.java
+. insertCredit() -> AccessOperation.java
+. getTypeOperation() -> AccessTypeOperation.java
+. updateInfoCompteClient() -> OperationManagementController.java
+
+
+====== e.2) Classes :
+[.text-justify]
+La classe Operation.java est importante car principalement utilisée pour modéliser des opérations de débit, de crédit ou de virement sous forme d'objets manipulables dans le code.
+
+
+[NOTE]
+====
+[.text-justify]
+Un virement doit être d'un motant strictement positif (>0) et ne doit pas enfreindre le découvert autorisé pour le compte concerné. Il ne peut être effectués que entre des comptes non-clôturés d'un même client.
+====
+
+
+{empty} +
+
 === 2. Fonctionnalités des chefs d'agence :
 ==== 2.1 Rendre inactif un client :
 Un chef d'agence peut rendre inactif un client.
@@ -425,13 +724,18 @@ Cette partie du diagramme de classe est mise-à-jour, certaines données sont mo
 
 ===== d) Classes et packages impliqués :
 . Application/Control -> ClientsManagement.java, ClientEditorPane.java
-. Application/View -> ClientEditorPaneController.java, ClientManagementController.java, clienteditorpane.fxml, clientsmanagement.fxml
+. Application/View -> ClientEditorPaneController.java, ClientsManagementController.java, clienteditorpane.fxml, clientsmanagement.fxml
 . Application/Model/data -> Client.java
 . Application/Model/orm -> AccessClient.java
 
 
 ===== e) Éléments essentiels :
 ====== e.1) Fonctions :
+. modifierClient(Client c) -> ClientsManagement.java
+. updateClient(Client client) -> AccessClient.java
+. doAjouter() -> ClientEditorPaneController.java
+. displayDialog(Client client, EditionMode mode) -> ClientEditorPaneController.java
+. doModifierClient() -> ClientsManagementController.java
 . doRendreInactif() -> ClientEditorPaneController.java
 
 
@@ -444,4 +748,181 @@ La classe Client.java est importante car principalement utilisée pour modélise
 ====
 [.text-justify]
 Les clients ne peuvent être rendus inactifs que si tous leurs comptes sont clôturés (voir la fonctionnalité "Clôturer un compte"). Les clients inactifs ne peuvent plus être modifiés mais restent tout de même visualisables.
+====
+
+
+{empty} +
+
+==== 2.2 Créer un employé :
+Un chef d'agence peut créer un nouvel employé.
+
+
+===== a) Use case correspondant :
+image::images/creerEmploye.svg[]
+
+
+===== b) Partie du diagramme de classe correspondante :
+image::images/modifierEmployeDC.png[]
+
+[.text-justify]
+Cette partie du diagramme de classe est en mise-à-jour, certaines données sont ajoutées dans la base de données.
+
+
+===== c) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant l'ajout ou la modification des informations d'un client, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== d) Classes et packages impliqués :
+. Application/Control -> EmployesManagement.java, EmployeEditorPane.java
+. Application/View -> EmployeEditorPaneController.java, EmployesManagementController.java, employeeditorpane.fxml, employesmanagement.fxml
+. Application/Model/data -> Employe.java
+. Application/Model/orm -> AccessEmploye.java
+
+
+===== e) Éléments essentiels :
+====== e.1) Fonctions :
+. insertEmploye(Employe employe) -> AccessEmploye.java
+. nouvelEmploye() -> EmployesManagement.java
+. doAjouter() -> EmployeEditorPaneController.java
+. displayDialog(Employe employe, EditionMode mode) -> EmployeEditorPaneController.java
+
+
+====== e.2) Classes :
+[.text-justify]
+La classe Employe.java est importante car principalement utilisée pour modéliser des employés sous forme d'objets manipulables dans le code.
+
+
+{empty} +
+
+==== 2.3 Modifier les informations d'un employé :
+[.text-justify]
+Un chef d'agence peut modifier les informations d'un employé (son nom, son prénom, son login, son mot-de-passe, etc).
+
+
+===== a) Use case correspondant :
+image::images/modifierInfoEmploye.svg[]
+
+
+===== b) Partie du diagramme de classe correspondante :
+image::images/modifierEmployeDC.png[]
+
+[.text-justify]
+Cette partie du diagramme de classe est en mise-à-jour, certaines données sont modifiées dans la base de donnée.
+
+
+===== c) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant l'ajout ou la modification des informations d'un client, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== d) Classes et packages impliqués :
+. Application/Control -> EmployesManagement.java, EmployeEditorPane.java
+. Application/View -> EmployeEditorPaneController.java, EmployesManagementController.java, employeeditorpane.fxml, employesmanagement.fxml
+. Application/Model/data -> Employe.java
+. Application/Model/orm -> AccessEmploye.java
+
+
+===== e) Éléments essentiels :
+====== e.1) Fonctions :
+. updateEmploye(Employe employe) -> AccessEmploye.java
+. modifierEmploye() -> EmployesManagement.java
+. doAjouter() -> EmployeEditorPaneController.java
+. displayDialog(Employe employe, EditionMode mode) -> EmployeEditorPaneController.java
+
+
+====== e.2) Classes :
+[.text-justify]
+La classe Employe.java est importante car principalement utilisée pour modéliser des employés sous forme d'objets manipulables dans le code.
+
+
+{empty} +
+
+==== 2.4 Visualiser les informations d'un employé :
+[.text-justify]
+Un chef d'agence peut visualiser (en lecture seule) les informations d'un employé (son nom, son prénom, son login, son mot-de-passe, etc).
+
+
+===== a) Use case correspondant :
+image::images/voirInfoEmploye.svg[]
+
+
+===== b) Partie du diagramme de classe correspondante :
+image::images/modifierEmployeDC.png[]
+
+[.text-justify]
+Cette partie du diagramme de classe est en lecture, aucune données n'est ajoutée, modifiée ou supprimée dans la base de donnée.
+
+
+===== c) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant l'ajout ou la modification des informations d'un client, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== d) Classes et packages impliqués :
+. Application/Control -> EmployesManagement.java, EmployeEditorPane.java
+. Application/View -> EmployeEditorPaneController.java, EmployesManagementController.java, employeeditorpane.fxml, employesmanagement.fxml
+. Application/Model/data -> Employe.java
+. Application/Model/orm -> AccessEmploye.java
+
+
+===== e) Éléments essentiels :
+====== e.1) Fonctions :
+. voirEmploye() -> EmployesManagement.java
+. doVoirEmploye() -> EmployesManagementController.java
+. displayDialog(Employe employe, EditionMode mode) -> EmployeEditorPaneController.java
+
+
+====== e.2) Classes :
+[.text-justify]
+La classe Employe.java est importante car principalement utilisée pour modéliser des employés sous forme d'objets manipulables dans le code.
+
+
+{empty} +
+
+==== 2.5 Rendre inactif un employé :
+Un chef d'agence peut rendre inactif un employé.
+
+
+===== a) Use case correspondant :
+image::images/rendreInactifEmploye.svg[]
+
+
+===== b) Partie du diagramme de classe correspondante :
+image::images/modifierEmployeDC.png[]
+
+[.text-justify]
+Cette partie du diagramme de classe est mise-à-jour, certaines données sont modifiées dans la base de données.
+
+
+===== c) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant la modification, l'ajout, la visualisation et la suppression des informations d'un employé, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== d) Classes et packages impliqués :
+. Application/Control -> EmployesManagement.java, EmployeEditorPane.java
+. Application/View -> EmployeEditorPaneController.java, EmployesManagementController.java, employeeditorpane.fxml, employesmanagement.fxml
+. Application/Model/data -> Employe.java
+. Application/Model/orm -> AccessEmploye.java
+
+
+===== e) Éléments essentiels :
+====== e.1) Fonctions :
+. updateEmploye(Employe employe) -> AccessEmploye.java
+. modifierEmploye() -> EmployesManagement.java
+. doAjouter() -> EmployeEditorPaneController.java
+. displayDialog(Employe employe, EditionMode mode) -> EmployeEditorPaneController.java
+. doRendreInactif() -> ClientEditorPaneController.java
+
+
+====== e.2) Classes :
+[.text-justify]
+La classe Employe.java est importante car principalement utilisée pour modéliser des employés sous forme d'objets manipulables dans le code.
+
+
+[NOTE]
+====
+[.text-justify]
+Les employés inactifs ne peuvent plus être modifiés mais restent tout de même visualisables.
 ====

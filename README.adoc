@@ -29,8 +29,8 @@ La mission de notre équipe consiste à développer une application existante «
 |1    |Guichetier     | Compte | Effectuer un virement| | |F
 |1    |Guichetier     | Compte | Clôturer| |F |
 |2    |Chef d'Agence     | Compte | Débit exceptionnel|| |
-|2    |Chef d'Agence     | Emprunt | Simuler emprunt|| |
-|2    |Chef d'Agence     | Emprunt | Simuler assurance|| |
+|2    |Chef d'Agence     | Emprunt | Simuler emprunt|D| |
+|2    |Chef d'Agence     | Emprunt | Simuler assurance|D| |
 |2    |Guichetier     | Compte | Relevé PDF|| |
 |2    |Guichetier     | CRUD Prélèvement | C||D |
 |2    |Guichetier     | CRUD Prélèvement | R||D |
@@ -70,12 +70,12 @@ Dans sa colonne il doit remplir la ligne correspondant à une partie qu'il a dé
 |         | Recette V1  |https://github.com/IUT-Blagnac/sae2022-bank-4a01/blob/main/V1/Cahier_de_recette/Cahier_de_recette-V1.adoc[Cahier de recette-V1]| 
 |         | Suivi projet|   | 
 | 22/05   | Gantt V2  à jour    |       | 
-|         | Doc. Util. V1 |https://github.com/IUT-Blagnac/sae2022-bank-4a01/blob/main/V1/Documentation/Documentation_Utilisateur-V1.adoc[Doc. utilisateur-V1]|     retard livraison V1 *Le fichier étant présent dans le dépôt, le lien n'a juste pas été renseigné (oubli)*
+|         | Doc. Util. V1 |https://github.com/IUT-Blagnac/sae2022-bank-4a01/blob/main/V1/Documentation/Documentation_Utilisateur-V1.adoc[Doc. utilisateur-V1]|     retard livraison V1 *Le fichier étant présent dans le dépôt, le lien n'a juste pas été renseigné (oubli)* Attention le rôle des utilisateurs doit faire l'objet d'un paragraphe pas d'une note. Réduire un peu la taille des screen. Structurer la doc par utilisateur et par domaine : gestion des clients, gestion des crédits ... N'oubliez pas en entête de préciser de quelle appli il s'agit ... 
 |         | Doc. Tec. V1 |https://github.com/IUT-Blagnac/sae2022-bank-4a01/blob/main/V1/Documentation/Documentation_Technique-V1.adoc[Doc. technique-V1]|https://github.com/IUT-Blagnac/sae2022-bank-4a01/blob/main/V1/Documentation/retour_doc_technique.adoc   
 |         | Code V1     |https://github.com/IUT-Blagnac/sae2022-bank-4a01/tree/main/V1/Code/src[Code-V1]| 
 |         | Recette V1 |    |Pas trouvé
 |         | Gantt V3 à jour   |                      | 
-|         | `jar` projet |https://github.com/IUT-Blagnac/sae2022-bank-4a01/blob/main/V1/Code/DailyBankV1.jar[.jar-V1]|Pas trouvé
+|         | `jar` projet |https://github.com/IUT-Blagnac/sae2022-bank-4a01/blob/main/V1/Code/DailyBankApp.jar[.jar-V1]|Pas trouvé
 | 05/06   | Gantt V3 à Jour  |    |  
 |         | Doc. Util. V2 |         |           
 |         | Doc. Tec. V2 |    |     
