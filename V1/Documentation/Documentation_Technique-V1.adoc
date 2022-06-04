@@ -410,7 +410,7 @@ Un guichetier peut modifier un compte bancaire.
 
 
 ===== a) Use case correspondant :
-image::images/modifierCompte.svg[]
+image::images/modifierCompteUC.svg[]
 
 
 ===== b) Partie du diagramme de classe correspondante :
@@ -602,7 +602,7 @@ Un guichetier peut créditer un compte bancaire.
 
 
 ===== a) Use case correspondant :
-image::images/crediterCompte.svg[]
+image::images/crediterCompteUC.svg[]
 
 
 ===== b) Partie du diagramme de classe correspondante :
@@ -653,7 +653,7 @@ Un guichetier peut faire un virement d'un compte bancaire à un autre pour un m�
 
 
 ===== a) Use case correspondant :
-image::images/virementCompte.svg[]
+image::images/virementUC.svg[]
 
 
 ===== b) Partie du diagramme de classe correspondante :
