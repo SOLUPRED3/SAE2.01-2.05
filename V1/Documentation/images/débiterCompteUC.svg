@@ -7,7 +7,7 @@ link chef to guichetier--><g id="link_chef_guichetier"><path d="M106.1,86.06 C11
 @startuml
 skinparam actorStyle awesome
 
-usecase fonctionnalite as "Débiter compte"
+usecase fonctionnalite as "Créditer compte"
 actor guichetier as "Guichetier"
 actor chef as "Chef d'agence"
 guichetier -> fonctionnalite
