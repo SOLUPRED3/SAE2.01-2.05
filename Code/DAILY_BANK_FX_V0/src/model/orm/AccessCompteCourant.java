@@ -79,8 +79,10 @@ public class AccessCompteCourant {
 			", " + "?" + ", " + "?" + ")";
 			
 			PreparedStatement pst = con.prepareStatement(query);
-
-			pst.setInt(1, compte.debitAutorise) ;
+			if(compte.debitAutorise > 0){
+				pst.setInt(1, - compte.debitAutorise) ;
+			}
+			else pst.setInt(1, compte.debitAutorise) ;
 			pst.setDouble(2, compte.solde) ; 
 			pst.setInt(3, compte.idNumCli) ; 
 			pst.setString(4, compte.estCloture) ; 
