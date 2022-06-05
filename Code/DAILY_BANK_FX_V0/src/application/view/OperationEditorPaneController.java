@@ -14,10 +14,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -71,7 +68,28 @@ public class OperationEditorPaneController implements Initializable {
 					+ String.format(Locale.ENGLISH, "%8d", this.compteEdite.debitAutorise);
 			this.lblMessage.setText(info);
 			this.btnOk.setText("Effectuer débit");
-			this.btnCancel.setText("Annuler débit");			
+			this.btnCancel.setText("Annuler débit");
+
+			// Gestion visibilité :
+
+			this.rBtnYes.setVisible(true);
+			this.rBtnNo.setVisible(true);
+			this.separator.setVisible(true);
+			this.lblDecouvertAutorise.setVisible(true);
+
+			// Chef d'agence ?
+
+			if (ConstantesIHM.isAdmin(this.dbs.getEmpAct())) {
+				this.rBtnYes.setDisable(false);
+				this.lblDecouvertAutorise.setDisable(false);
+				this.rBtnNo.setDisable(false);
+				this.separator.setDisable(false);
+			} else {
+				this.rBtnYes.setDisable(true);
+				this.lblDecouvertAutorise.setDisable(true);
+				this.rBtnNo.setDisable(true);
+				this.separator.setDisable(true);
+			}
 			((VBox) this.gpCenterPane.getParent()).getChildren().remove(gpCenterPane);			
 
 			list = FXCollections.observableArrayList();
@@ -91,6 +109,10 @@ public class OperationEditorPaneController implements Initializable {
 			((VBox) this.gpCenterPane.getParent()).getChildren().remove(gpCenterPane);
 			this.btnOk.setText("Effectuer crédit");
 			this.btnCancel.setText("Annuler crédit");
+			this.rBtnYes.setVisible(false);
+			this.rBtnNo.setVisible(false);
+			this.lblDecouvertAutorise.setVisible(false);
+			this.separator.setVisible(false);
 
 			list = FXCollections.observableArrayList();
 
@@ -111,6 +133,10 @@ public class OperationEditorPaneController implements Initializable {
 			this.cbNoCompte.setVisible(true);
 			this.btnOk.setText("Effectuer virement");
 			this.btnCancel.setText("Annuler virement");
+			this.rBtnYes.setVisible(false);
+			this.rBtnNo.setVisible(false);
+			this.lblDecouvertAutorise.setVisible(false);
+			this.separator.setVisible(false);
 
 			list = FXCollections.observableArrayList();
 
@@ -171,6 +197,8 @@ public class OperationEditorPaneController implements Initializable {
 	@FXML
 	private Label lblNoCompte;
 	@FXML
+	private Label lblDecouvertAutorise;
+	@FXML
 	private ComboBox<String> cbTypeOpe;
 	@FXML
 	private TextField txtMontant;
@@ -180,6 +208,15 @@ public class OperationEditorPaneController implements Initializable {
 	private Button btnOk;
 	@FXML
 	private Button btnCancel;
+	@FXML
+	private RadioButton rBtnYes;
+	@FXML
+	private RadioButton rBtnNo;
+	@FXML
+	private Separator separator;
+
+
+
 
 	
 	@Override
