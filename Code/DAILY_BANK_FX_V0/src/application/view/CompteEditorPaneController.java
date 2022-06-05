@@ -55,7 +55,7 @@ public class CompteEditorPaneController implements Initializable {
 		this.clientDuCompte = client;
 		this.em = mode;
 		if (cpte == null) {
-			this.compteEdite = new CompteCourant(0, 200, 0, "N", this.clientDuCompte.idNumCli);
+			this.compteEdite = new CompteCourant(0, -200, 0, "N", this.clientDuCompte.idNumCli);
 
 		} else {
 			this.compteEdite = new CompteCourant(cpte);
@@ -98,7 +98,7 @@ public class CompteEditorPaneController implements Initializable {
 		this.txtIdclient.setText("" + this.compteEdite.idNumCli);
 		this.txtIdNumCompte.setText("" + this.compteEdite.idNumCompte);
 		this.txtIdAgence.setText("" + this.dbs.getEmpAct().idAg);
-		this.txtDecAutorise.setText("" + -this.compteEdite.debitAutorise);
+		this.txtDecAutorise.setText("" + this.compteEdite.debitAutorise);
 		this.txtSolde.setText(String.format(Locale.ENGLISH, "%.02f", this.compteEdite.solde));
 
 		this.compteResult = null;
