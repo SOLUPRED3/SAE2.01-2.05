@@ -168,12 +168,12 @@ image:images/DocumentationUser/consC1.png[gestionCompte1, 900, 500]
 [.text-justify]
 Il vous est possible de créer un compte bancaire pour un client, pour cela, cliquez sur le bouton "Nouveau compte" dans le gestionnaire des comptes bancaires d'un client.
 
-image:images/DocumentationUser/creerCompte.png[gestionCompte2, 900, 500]
+image:images/DocumentationUser/cl2.png[gestionCompte2, 900, 500]
 
 [.text-justify]
 Saisissez le découvert autorisé ainsi que le solde du nouveau compte (son premier crédit).
 
-image:images/DocumentationUser/consC3.png[créerCompte, 900, 500]
+image:images/DocumentationUser/creerCompte.png[créerCompte, 900, 500]
 
 [NOTE]
 ====
@@ -186,7 +186,7 @@ Il est évident que le solde de départ d'un compte ne peut êter négatif.
 [.text-justify]
 Il vous est possible de modifier le découvert autorisé d'un compte bancaire. Pour cela, cliquez sur le bouton "Modifier compte" dans le gestionnaire des comptes bancaires d'un client.
 
-image:images/DocumentationUser/consC2.png[gestionCompte2, 900, 500]
+image:images/DocumentationUser/cl2.png[gestionCompte2, 900, 500]
 
 [.text-justify]
 Saisissez ensuite le nouveau découvert autorisé.
