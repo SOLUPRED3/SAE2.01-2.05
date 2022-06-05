@@ -273,7 +273,7 @@ Sur la fenêtre qui s'ouvrira, il vous sera possible de choisir le type d'opéra
 ==== 2.3.4 Effectuer un virement de compte à compte :
 Si vous souhaitez réaliser un virement de compte à compte appuyez sur "Enregistrer virement" dans la fenêtre de gestion des opérations d'un compte bancaire d'un client.
 
-image:images/DocumentationUser/vr1.png[virement, 900, 500]
+image:images/DocumentationUser/virementCompte.png[virement, 900, 500]
 
 Sur la fenêtre qui s'ouvrira, il vous faudra choisir le compte de destination et à saisir un montant. Pour confirmer le virement, appuyez sur "Effectuer virement".
 
