@@ -157,7 +157,7 @@ public class OperationEditorPaneController implements Initializable {
 			}
 			
 			if (listeComptes.size() == 0) {
-				AlertUtilities.showAlert(this.primaryStage, "Erreur", "Ce client n'a pas suffisement de comptes pour pouvoir effectuer un virement.",
+				AlertUtilities.showAlert(this.primaryStage, "Erreur", "Ce client n'a pas suffisamment de comptes pour pouvoir effectuer un virement.",
 						null, AlertType.ERROR);
 				return null;
 			}

@@ -5,7 +5,7 @@ public class Prelevement {
     public double montant ;
     public String estCloture;
     private String beneficiaire ;
-    private int idNumCompte ;
+    public int idNumCompte ;
 
 
     public Prelevement(int date, Double montant, String estCloture, int idNumCompte, String beneficiaire){

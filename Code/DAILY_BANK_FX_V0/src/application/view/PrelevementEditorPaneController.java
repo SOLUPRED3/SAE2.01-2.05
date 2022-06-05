@@ -58,7 +58,6 @@ public class PrelevementEditorPaneController implements Initializable {
     public Prelevement displayDialog(CompteCourant compte, Prelevement pl, EditionMode mode) {
         this.compteDuClient = compte;
         this.em = mode;
-        String info;
         ObservableList<String> list;
         if (pl == null) {
             this.prelevementEdit = new Prelevement(0, 0.0, "N", compteDuClient.idNumCompte, "Falsimagne");
@@ -72,8 +71,8 @@ public class PrelevementEditorPaneController implements Initializable {
                 this.beneficiaireTXT.setDisable(false);
                 this.montantTXT.setDisable(false);
                 this.lblMessage.setText("Informations sur le prélèvement");
-                this.btnOk.setText("Ajouter");
-                this.btnCancel.setText("Annuler");
+                this.btnOk.setText("Effectuer prélèvement");
+                this.btnCancel.setText("Annuler prélèvement");
 
                 list = FXCollections.observableArrayList();
                     list.add(ConstantesIHM.TYPE_OP_8);
