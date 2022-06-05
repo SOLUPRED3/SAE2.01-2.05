@@ -60,7 +60,7 @@ public class PrelevementEditorPaneController implements Initializable {
         this.em = mode;
         ObservableList<String> list;
         if (pl == null) {
-            this.prelevementEdit = new Prelevement(0, 0.0, "N", compteDuClient.idNumCompte, "Falsimagne");
+            this.prelevementEdit = new Prelevement(1, 0, 0, compteDuClient.idNumCompte, "Falsimagne");
 
         } else {
             this.prelevementEdit = new Prelevement(pl);
@@ -105,9 +105,6 @@ public class PrelevementEditorPaneController implements Initializable {
             // rien pour l'instant
         }
 
-        // initialisation du contenu des champs
-        this.montantTXT.setText(String.format(Locale.ENGLISH, "%.02f", this.prelevementEdit.montant));
-
         this.prelevementResult = null;
         this.primaryStage.showAndWait();
 
@@ -126,9 +123,9 @@ public class PrelevementEditorPaneController implements Initializable {
     private Object focusMontant(ObservableValue<? extends Boolean> txtField, boolean oldPropertyValue,
                                   boolean newPropertyValue) {
         if (oldPropertyValue) {
-            double val = this.prelevementEdit.montant;
+            int val = this.prelevementEdit.montant;
             try {
-                val = Double.parseDouble(this.montantTXT.getText().trim());
+                val = Integer.parseInt(this.montantTXT.getText().trim());
                 if (val < 0) {
                     throw new NumberFormatException();
                 }
@@ -202,7 +199,7 @@ public class PrelevementEditorPaneController implements Initializable {
 
 
     private boolean isSaisieValide() {
-        this.prelevementEdit.montant = Double.valueOf(this.montantTXT.getText());
+        this.prelevementEdit.montant = Integer.valueOf(this.montantTXT.getText());
 
 		/*if (this.prelevementEdit.debitAutorise < 0) {
 			Alert alert = new Alert(AlertType.WARNING);

@@ -18,6 +18,7 @@ import model.data.Prelevement;
 import oracle.jdbc.proxy.annotation.Pre;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class PrelevementManagementController implements Initializable {
@@ -74,7 +75,7 @@ public class PrelevementManagementController implements Initializable {
         }
        this.validateComponentState();
         this.lvPrelevement.getSelectionModel().selectedItemProperty().addListener(e -> this.validateComponentState());
-
+        this.loadList();
     }
 
     private Object closeWindow(WindowEvent e) {
@@ -100,15 +101,6 @@ public class PrelevementManagementController implements Initializable {
         return true;
     }
 
-    /**
-     * @return true si le compte sélectionné est clôturé, sinon false
-     */
-    private boolean estCloture() {
-        if(this.lvPrelevement.getSelectionModel().getSelectedIndex() >= 0 && this.lvPrelevement.getSelectionModel().getSelectedItem().estCloture.equals("N")) {
-            return false;
-        }
-        return true;
-    }
 
     public void displayDialog() {
         System.out.println(this.primaryStage);
@@ -124,6 +116,19 @@ public class PrelevementManagementController implements Initializable {
         prelevement = this.pm.creerPrelevement();
         if (prelevement != null) {
             this.olPrelevement.add(prelevement);
+            this.loadList();
+        }
+    }
+
+    /**
+     * Recharge la ViewList de comptes.
+     */
+    private void loadList () {
+        ArrayList<Prelevement> listePl;
+        listePl = this.pm.getPrelevementComptes();
+        this.olPrelevement.clear();
+        for (Prelevement pl : listePl) {
+            this.olPrelevement.add(pl);
         }
     }
 
