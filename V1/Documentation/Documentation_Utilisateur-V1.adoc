@@ -168,7 +168,7 @@ image:images/DocumentationUser/consC1.png[gestionCompte1, 900, 500]
 [.text-justify]
 Il vous est possible de créer un compte bancaire pour un client, pour cela, cliquez sur le bouton "Nouveau compte" dans le gestionnaire des comptes bancaires d'un client.
 
-image:images/DocumentationUser/consC2.png[gestionCompte2, 900, 500]
+image:images/DocumentationUser/creerCompte.png[gestionCompte2, 900, 500]
 
 [.text-justify]
 Saisissez le découvert autorisé ainsi que le solde du nouveau compte (son premier crédit).
@@ -191,7 +191,7 @@ image:images/DocumentationUser/consC2.png[gestionCompte2, 900, 500]
 [.text-justify]
 Saisissez ensuite le nouveau découvert autorisé.
 
-image:images/DocumentationUser/consC3.png[modifierCompte, 900, 500]
+image:images/DocumentationUser/modifierCompte.png[modifierCompte, 900, 500]
 
 [NOTE]
 ====
@@ -222,6 +222,7 @@ Pour clôturer un compte vos devez d'abord vous assurer que son solde est nul, s
 
 {empty} +
 
+==== 2.3 Gestion des opérations
 [.text-justify]
 Il vous est possible d'enregistrer des opérations de crédit, de débit et de virement sur le compte bancaire d'un client si ce dernier n'est pas clôturé.
 
@@ -231,7 +232,7 @@ image:images/DocumentationUser/consC4.png[gestionCompte4, 900, 500]
 Ici, le compte est ouvert, il est donc possible d'y réaliser des opérations.
 
 
-===== 2.2.4 Consulter les opérations d'un compte :
+===== 2.3.1 Consulter les opérations d'un compte :
 [.text-justify]
 Il vous est possible de voir les opérations réalisées sur le compte bancaire d'un client, même une fois clôturé. Pour cela, sélectionnez le compte bancaire souhaité dans la liste des comptes d'un client, puis cliquez sur le bouton "Voir opérations".
 
@@ -251,7 +252,7 @@ image:images/DocumentationUser/consC4.png[gestionCompte4, 900, 500]
 Ici, le compte est ouvert, il est donc possible d'y réaliser des opérations.
 
 
-===== 2.2.5 Créditer un compte client :
+===== 2.3.2 Créditer un compte client :
 Si vous souhaitez créditer le compte bancaire d'un client, appuyez sur "Enregistrer crédit" dans la fenêtre de gestion des opérations d'un compte bancaire d'un client.
 
 image:images/DocumentationUser/cr1.png[créditer, 900, 500]
@@ -261,7 +262,7 @@ Sur la fenêtre qui s'ouvrira, il vous sera possible de choisir le type d'opéra
 image:images/DocumentationUser/cr2.png[créditer2, 900, 500]
 
 
-===== 2.2.6 Débiter un compte client :
+===== 2.3.3 Débiter un compte client :
 Si vous souhaitez débiter le compte bancaire d'un client, appuyez sur "Enregistrer débit" dans la fenêtre de gestion des opérations d'un compte bancaire d'un client.
 
 image:images/DocumentationUser/db1.png[débiter, 900, 500]
@@ -269,7 +270,7 @@ image:images/DocumentationUser/db1.png[débiter, 900, 500]
 Sur la fenêtre qui s'ouvrira, il vous sera possible de choisir le type d'opération de débit en cliquant sur "Retrait Espèce" (opération par défaut) et en saisissant un montant. Pour confirmer le débit, appuyez sur "Effectuer débit".
 
 
-==== 3.4 Effectuer un virement de compte à compte :
+==== 2.3.4 Effectuer un virement de compte à compte :
 Si vous souhaitez réaliser un virement de compte à compte appuyez sur "Enregistrer virement" dans la fenêtre de gestion des opérations d'un compte bancaire d'un client.
 
 image:images/DocumentationUser/vr1.png[virement, 900, 500]
@@ -279,8 +280,8 @@ Sur la fenêtre qui s'ouvrira, il vous faudra choisir le compte de destination e
 
 {empty} +
 
-=== 4. Fonctionnalités des chefs d'agence :
-==== 4.1 Gestion des employés :
+=== 3. Fonctionnalités des chefs d'agence :
+==== 3.1 Gestion des employés :
 [.text-justify]
 Pour accéder aux fonctionnalités suivante vous devrez être connecté à l'application en tant que *chef d'agence*.
 
@@ -295,7 +296,7 @@ Vous arriverez ainsi sur cet onglet, qui vous permettra de faire toutes sortes d
 image:images/DocumentationUser/gEmp2.png[gérerEmployé2, 900, 500]
 
 
-===== 4.1.1 Créer un employé :
+===== 3.1.1 Créer un employé :
 [.text-justify]
 Pour pouvoir créer un employé, il vous faut cliquer sur le bouton "Nouvel employé", situé en bas à droite de la fenêtre.
 
@@ -307,7 +308,7 @@ Vous verrez s'afficher cette interface vous permettant de créer l'employé souh
 image:images/DocumentationUser/rEmp3.png[gérerEmployé3, 900, 500]
 
 
-==== 4.1.2 Rechercher un employé :
+==== 3.1.2 Rechercher un employé :
 [.text-justify]
 À votre arrivée sur l'onglet de gestion de l'employé, vous trouverez un onglet vide, comme ceci :
 
@@ -327,14 +328,14 @@ Voici une recherche avec spécifications :
 image:images/DocumentationUser/rEmp2.png[gérerEmployé2, 900, 500]
 
 
-==== 4.1.3 Voir les informations d'un employé :
+==== 3.1.3 Voir les informations d'un employé :
 [.text-justify]
 Il vous est possible de visualiser les informations d'un employé même inactif. Pour cela, sélectionnez dans la liste des employés de l'agence, celui à visualiser, puis cliquez sur le bouton "Voir employé".
 
 image:images/DocumentationUser/voirInfosEmpl.png[voirEmployé, 900, 500]
 
 
-==== 4.1.4 Modifier les informations d'un employé :
+==== 3.1.4 Modifier les informations d'un employé :
 [.text-justify]
 Si vous souhaitez modifier les informations d'un employé, il vous faut d'abord sélectionner dans la liste des employés de l'agence, celui à modifier, puis cliquer sur le bouton "Modifier employé" situé dans la barre d'outils à droite de la fenêtre.
 
@@ -346,7 +347,7 @@ Vous verrez s'afficher cet onglet, il vous suffira de modifier les informations 
 image:images/DocumentationUser/rEmp5.png[gérerEmployé5, 900, 500]
 
 
-==== 4.1.5 Rendre inactif un employé :
+==== 3.1.5 Rendre inactif un employé :
 [.text-justify]
 Si vous souhaitez rendre inactif un employé, il vous faut ouvrir la fenêtre de modification après avoir sélectionné l'employé souhaité dans la liste des employés de l'agence, puis cocher la case "Inactif" en bas de la fenêtre.
 
