@@ -52,6 +52,8 @@ public class PrelevementEditorPaneController implements Initializable {
     private void configure() {
         this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
         this.montantTXT.focusedProperty().addListener((t, o, n) -> this.focusMontant(t, o, n));
+        this.beneficiaireTXT.focusedProperty().addListener((t, o, n) -> this.focusBeneficiaire(t, o, n));
+        this.dateTXT.focusedProperty().addListener((t, o, n) -> this.focusDate(t, o, n));
     }
 
 
@@ -70,6 +72,7 @@ public class PrelevementEditorPaneController implements Initializable {
             case CREATION:
                 this.beneficiaireTXT.setDisable(false);
                 this.montantTXT.setDisable(false);
+                this.dateTXT.setDisable(false);
                 this.lblMessage.setText("Informations sur le prélèvement");
                 this.btnOk.setText("Effectuer prélèvement");
                 this.btnCancel.setText("Annuler prélèvement");
@@ -137,6 +140,37 @@ public class PrelevementEditorPaneController implements Initializable {
         return null;
     }
 
+    private Object focusBeneficiaire(ObservableValue<? extends Boolean> txtField, boolean oldPropertyValue,
+                                boolean newPropertyValue) {
+        if (oldPropertyValue) {
+            String val = this.prelevementEdit.beneficiaire;
+            try {
+                val = this.beneficiaireTXT.getText().trim() ;
+                this.prelevementEdit.beneficiaire = val;
+            } catch (NumberFormatException nfe) {
+                this.beneficiaireTXT.setText("" + val);
+            }
+        }
+        return null;
+    }
+
+    private Object focusDate(ObservableValue<? extends Boolean> txtField, boolean oldPropertyValue,
+                                     boolean newPropertyValue) {
+        if (oldPropertyValue) {
+            int val = this.prelevementEdit.dateReccurence;
+            try {
+                val = Integer.parseInt(this.dateTXT.getText().trim()) ;
+                if (val < 0 || val > 31) {
+                    throw new NumberFormatException();
+                }
+                this.prelevementEdit.dateReccurence = val;
+            } catch (NumberFormatException nfe) {
+                this.dateTXT.setText("" + val);
+            }
+        }
+        return null;
+    }
+
 
 
     // Attributs de la scene + actions
@@ -149,9 +183,7 @@ public class PrelevementEditorPaneController implements Initializable {
     @FXML
     private Label lblMessage;
     @FXML
-    private Label typeOperation;
-    @FXML
-    private DatePicker dateTXT ;
+    private TextField dateTXT ;
     @FXML
     private TextField montantTXT;
     @FXML

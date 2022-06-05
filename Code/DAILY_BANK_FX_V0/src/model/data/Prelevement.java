@@ -1,5 +1,8 @@
 package model.data;
 import javafx.scene.control.DatePicker;
+
+import java.time.LocalDate;
+
 public class Prelevement {
     public int idPrelevement ;
     public int dateReccurence ;
@@ -11,7 +14,7 @@ public class Prelevement {
     public Prelevement(int idP, int date, int montant, int idNumCompte, String beneficiaire){
         super();
         this.idPrelevement = idP;
-        this.dateReccurence = date ;
+        this.dateReccurence = date;
         this.montant = montant ;
         this.idNumCompte = idNumCompte ;
         this.beneficiaire = beneficiaire ;
