@@ -1,4 +1,4 @@
-= Documentation Technique (V1)
+= Documentation Technique - DailyBankApp (V1)
 :toc:
 
 Thomas Falsimagne, Tilian Hure, Maxime Dourlent +
@@ -758,11 +758,11 @@ Un chef d'agence peut créer un nouvel employé.
 
 
 ===== a) Use case correspondant :
-image::images/creerEmploye.svg[]
+image::images/gererEmployeUC.svg[]
 
 
 ===== b) Partie du diagramme de classe correspondante :
-image::images/modifierEmployeDC.png[]
+image::images/employeDC.png[]
 
 [.text-justify]
 Cette partie du diagramme de classe est en mise-à-jour, certaines données sont ajoutées dans la base de données.
@@ -801,11 +801,11 @@ Un chef d'agence peut modifier les informations d'un employé (son nom, son pré
 
 
 ===== a) Use case correspondant :
-image::images/modifierInfoEmploye.svg[]
+image::images/gererEmployeUC.svg[]
 
 
 ===== b) Partie du diagramme de classe correspondante :
-image::images/modifierEmployeDC.png[]
+image::images/employeDC.png[]
 
 [.text-justify]
 Cette partie du diagramme de classe est en mise-à-jour, certaines données sont modifiées dans la base de donnée.
@@ -844,11 +844,11 @@ Un chef d'agence peut visualiser (en lecture seule) les informations d'un employ
 
 
 ===== a) Use case correspondant :
-image::images/voirInfoEmploye.svg[]
+image::images/gererEmployeUC.svg[]
 
 
 ===== b) Partie du diagramme de classe correspondante :
-image::images/modifierEmployeDC.png[]
+image::images/employeDC.png[]
 
 [.text-justify]
 Cette partie du diagramme de classe est en lecture, aucune données n'est ajoutée, modifiée ou supprimée dans la base de donnée.
@@ -885,11 +885,11 @@ Un chef d'agence peut rendre inactif un employé.
 
 
 ===== a) Use case correspondant :
-image::images/rendreInactifEmploye.svg[]
+image::images/gererEmployeUC.svg[]
 
 
 ===== b) Partie du diagramme de classe correspondante :
-image::images/modifierEmployeDC.png[]
+image::images/employeDC.png[]
 
 [.text-justify]
 Cette partie du diagramme de classe est mise-à-jour, certaines données sont modifiées dans la base de données.
