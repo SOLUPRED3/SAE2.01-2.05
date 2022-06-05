@@ -1,25 +1,28 @@
 package model.data;
 import javafx.scene.control.DatePicker;
 public class Prelevement {
-    private DatePicker date ;
-    private double montant ;
+    private int dateReccurence ;
+    public double montant ;
     public String estCloture;
+    private String beneficiaire ;
     private int idNumCompte ;
 
-    public Prelevement(DatePicker date, Double montant, String estCloture, int idNumCompte){
+
+    public Prelevement(int date, Double montant, String estCloture, int idNumCompte, String beneficiaire){
         super();
-        this.date = date ;
+        this.dateReccurence = date ;
         this.montant = montant ;
         this.estCloture = estCloture ;
         this.idNumCompte = idNumCompte ;
+        this.beneficiaire = beneficiaire ;
     }
 
     public Prelevement(Prelevement pl) {
-        this(pl.date, pl.montant, pl.estCloture, pl.idNumCompte);
+        this(pl.dateReccurence, pl.montant, pl.estCloture, pl.idNumCompte, pl.beneficiaire);
     }
 
     public Prelevement() {
-        this(new DatePicker(), 0.0, "N", 0);
+        this(1, 0.0, "N", 0, "Falsimagne");
     }
 
 }

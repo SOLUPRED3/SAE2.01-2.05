@@ -15,6 +15,8 @@ import javafx.stage.WindowEvent;
 import model.data.Client;
 import model.data.CompteCourant;
 import model.data.Prelevement;
+import oracle.jdbc.proxy.annotation.Pre;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -111,6 +113,18 @@ public class PrelevementManagementController implements Initializable {
     public void displayDialog() {
         System.out.println(this.primaryStage);
         this.primaryStage.showAndWait();
+    }
+
+    /**
+     * Créé un compte.
+     */
+    @FXML
+    private void doNouveauPrelevement() {
+        Prelevement prelevement;
+        prelevement = this.pm.creerPrelevement();
+        if (prelevement != null) {
+            this.olPrelevement.add(prelevement);
+        }
     }
 
 

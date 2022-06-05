@@ -2,8 +2,10 @@ package application.control;
 
 import application.DailyBankApp;
 import application.DailyBankState;
+import application.tools.EditionMode;
 import application.tools.StageManagement;
 import application.view.ComptesManagementController;
+import application.view.PrelevementEditorPaneController;
 import application.view.PrelevementManagementController;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,6 +15,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.data.Client;
 import model.data.CompteCourant;
+import model.data.Prelevement;
+import model.orm.AccessCompteCourant;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -55,6 +59,23 @@ public class PrelevementManagement {
             e.printStackTrace();
         }
     }
+
+    public Prelevement creerPrelevement(){
+        Prelevement prelevement;
+        AccessCompteCourant accessCompte = new AccessCompteCourant();
+        PrelevementEditorPane plc = new PrelevementEditorPane(this.primaryStage, this.dbs);
+        prelevement = plc.doCompteEditorDialog(this.compteDuClient, null, EditionMode.CREATION);
+
+
+        try {
+            return new Prelevement();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new Prelevement();
+    }
+
+
 
 
     /**

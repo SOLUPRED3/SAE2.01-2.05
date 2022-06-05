@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="250.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.OperationEditorPaneController">
+<BorderPane prefHeight="250.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.PrelevementEditorPaneController">
     <top>
         <Label fx:id="lblMessage" alignment="CENTER" maxWidth="1.7976931348623157E308" styleClass="borderlight" text="Informations " BorderPane.alignment="CENTER">
             <BorderPane.margin>
@@ -48,15 +48,16 @@
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="314.0" minWidth="10.0" prefWidth="314.0" />
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Label fx:id="lblNoCompte" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="191.0" text="N° IBAN destinataire">
+                        <Label fx:id="beneficiairelbl" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="191.0" text="Bénéficiaire">
                             <GridPane.margin>
                                 <Insets right="20.0" />
                             </GridPane.margin>
                         </Label>
-                        <ComboBox fx:id="cbNoCompte" maxWidth="1.7976931348623157E308" minHeight="36.0" GridPane.columnIndex="1" />
+                  <TextField fx:id="beneficiaireTXT" GridPane.columnIndex="1" />
                     </children>
                     <padding>
                         <Insets bottom="20.0" top="20.0" />
@@ -72,12 +73,12 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="Type d'opération">
+                        <Label fx:id="typeOperation" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="Type d'opération">
                             <GridPane.margin>
                                 <Insets right="20.0" />
                             </GridPane.margin>
                         </Label>
-                        <Label fx:id="lblMontant" alignment="CENTER_RIGHT" layoutX="21.0" layoutY="41.0" maxWidth="1.7976931348623157E308" prefHeight="0.0" prefWidth="170.0" text="Montant" GridPane.rowIndex="1">
+                        <Label fx:id="montantlbl" alignment="CENTER_RIGHT" layoutX="21.0" layoutY="41.0" maxWidth="1.7976931348623157E308" prefHeight="0.0" prefWidth="170.0" text="Montant" GridPane.rowIndex="1">
                             <GridPane.margin>
                                 <Insets right="20.0" />
                             </GridPane.margin>
@@ -86,7 +87,7 @@
                             <GridPane.margin>
                                 <Insets />
                             </GridPane.margin></ComboBox>
-                        <TextField fx:id="txtMontant" layoutX="171.0" layoutY="23.0" maxWidth="1.7976931348623157E308" minHeight="30.0" prefWidth="278.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <TextField fx:id="montantTXT" layoutX="171.0" layoutY="23.0" maxWidth="1.7976931348623157E308" minHeight="30.0" prefWidth="278.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                             <GridPane.margin>
                                 <Insets />
                             </GridPane.margin></TextField>
@@ -102,12 +103,12 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Label fx:id="lblNoCompte1" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="191.0" text="Date" GridPane.rowIndex="1">
+                  <Label fx:id="datelbl" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="191.0" text="Date" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets right="20.0" />
                      </GridPane.margin>
                   </Label>
-                  <DatePicker prefHeight="27.0" prefWidth="283.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <DatePicker fx:id="dateTXT" prefHeight="27.0" prefWidth="283.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
                <padding>
                   <Insets bottom="20.0" top="20.0" />
