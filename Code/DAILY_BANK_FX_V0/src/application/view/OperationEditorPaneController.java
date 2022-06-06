@@ -70,12 +70,6 @@ public class OperationEditorPaneController implements Initializable {
 			this.btnOk.setText("Effectuer débit");
 			this.btnCancel.setText("Annuler débit");
 
-			// Gestion visibilité :
-
-			this.rBtnYes.setVisible(true);
-			this.rBtnNo.setVisible(true);
-			this.separator.setVisible(true);
-			this.lblDecouvertAutorise.setVisible(true);
 
 			// Chef d'agence ?
 
@@ -83,12 +77,11 @@ public class OperationEditorPaneController implements Initializable {
 				this.rBtnYes.setDisable(false);
 				this.lblDecouvertAutorise.setDisable(false);
 				this.rBtnNo.setDisable(false);
-				this.separator.setDisable(false);
+
 			} else {
 				this.rBtnYes.setDisable(true);
 				this.lblDecouvertAutorise.setDisable(true);
 				this.rBtnNo.setDisable(true);
-				this.separator.setDisable(true);
 			}
 			((VBox) this.gpCenterPane.getParent()).getChildren().remove(gpCenterPane);			
 
@@ -107,12 +100,12 @@ public class OperationEditorPaneController implements Initializable {
 					+ String.format(Locale.ENGLISH, "%12.02f", this.compteEdite.solde);
 			this.lblMessage.setText(info);			
 			((VBox) this.gpCenterPane.getParent()).getChildren().remove(gpCenterPane);
+			((VBox) this.rButtonGrid.getParent()).getChildren().remove(rButtonGrid);
 			this.btnOk.setText("Effectuer crédit");
 			this.btnCancel.setText("Annuler crédit");
 			this.rBtnYes.setVisible(false);
 			this.rBtnNo.setVisible(false);
 			this.lblDecouvertAutorise.setVisible(false);
-			this.separator.setVisible(false);
 
 			list = FXCollections.observableArrayList();
 
@@ -128,6 +121,7 @@ public class OperationEditorPaneController implements Initializable {
 			info = "Cpt. : " + this.compteEdite.idNumCompte + "  "
 					+ String.format(Locale.ENGLISH, "%12.02f", this.compteEdite.solde) + "  /  "
 					+ String.format(Locale.ENGLISH, "%8d", this.compteEdite.debitAutorise);
+			((VBox) this.rButtonGrid.getParent()).getChildren().remove(rButtonGrid);
 			this.lblMessage.setText(info);			
 			this.lblNoCompte.setVisible(true);
 			this.cbNoCompte.setVisible(true);
@@ -136,7 +130,6 @@ public class OperationEditorPaneController implements Initializable {
 			this.rBtnYes.setVisible(false);
 			this.rBtnNo.setVisible(false);
 			this.lblDecouvertAutorise.setVisible(false);
-			this.separator.setVisible(false);
 
 			list = FXCollections.observableArrayList();
 
@@ -213,7 +206,7 @@ public class OperationEditorPaneController implements Initializable {
 	@FXML
 	private RadioButton rBtnNo;
 	@FXML
-	private Separator separator;
+	private GridPane rButtonGrid;
 
 
 
