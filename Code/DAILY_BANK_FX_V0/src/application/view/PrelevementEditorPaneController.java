@@ -84,7 +84,6 @@ public class PrelevementEditorPaneController implements Initializable {
 
                 this.cbTypeOpe.setItems(list);
                 this.cbTypeOpe.getSelectionModel().select(0);
-
                 break;
 
             case MODIFICATION:
@@ -162,9 +161,11 @@ public class PrelevementEditorPaneController implements Initializable {
         if (oldPropertyValue) {
             int val = this.prelevementEdit.dateReccurence;
             try {
-                LocalDate local = this.dateTXT.getValue();
-                val = local.getDayOfMonth();
-                this.prelevementEdit.dateReccurence = val;
+                if(this.dateTXT.getValue() != null){
+                    LocalDate local = this.dateTXT.getValue();
+                    val = local.getDayOfMonth();
+                    this.prelevementEdit.dateReccurence = val;
+                }
             } catch (NumberFormatException nfe) {
                 this.dateTXT.getEditor().setText("" + val);
             }
@@ -247,25 +248,47 @@ public class PrelevementEditorPaneController implements Initializable {
 
 
     private boolean isSaisieValide() {
-        this.prelevementEdit.montant = Integer.valueOf(this.montantTXT.getText());
+        boolean valide = true;
+        if (!this.montantTXT.getText().isEmpty()) {
+            this.prelevementEdit.montant = Integer.valueOf(this.montantTXT.getText());
 
-		/*if (this.prelevementEdit.debitAutorise < 0) {
-			Alert alert = new Alert(AlertType.WARNING);
-			alert.setTitle("Violation des règles");
-			alert.setHeaderText("Changement du découvert impossible, le montant doit être positif ou nul !");
-			alert.showAndWait();
-			return false;
-		 }*/
+            if (this.prelevementEdit.montant <= 0) {
+                Alert alert = new Alert(AlertType.WARNING);
+                alert.setTitle("Violation des règles");
+                alert.setHeaderText("Merci de bien vouloir entrer une valeur positive.");
+                alert.showAndWait();
+                this.montantTXT.requestFocus();
+                valide = false;
+            }
 
-        if (this.prelevementEdit.montant < 0) {
-            Alert alert = new Alert(AlertType.WARNING);
-            alert.setTitle("Violation des règles");
-            alert.setHeaderText("Changement du découvert impossible !");
-            alert.showAndWait();
-            return false;
+            if (this.compteDuClient.solde - this.prelevementEdit.montant < this.compteDuClient.debitAutorise) {
+                this.lblMessage.setText("Le découvert est dépassé");
+                this.montantTXT.requestFocus();
+                valide = false;
+            }
+        } else if (this.montantTXT.getText().isEmpty() && this.beneficiaireTXT.getText().isEmpty() && this.dateTXT.getValue() == null) {
+            this.lblMessage.setText("Merci de bien vouloir remplir tous les champs.");
+            this.beneficiaireTXT.requestFocus();
+            valide = false;
+        } else if (this.montantTXT.getText().isEmpty()) {
+            this.lblMessage.setText("Merci de bien vouloir entrer un montant.");
+            this.montantTXT.requestFocus();
+            valide = false;
         }
 
-        return true;
+        if (this.dateTXT.getValue() == null) {
+            this.lblMessage.setText("Merci de bien vouloir entrer une date.");
+            this.dateTXT.requestFocus();
+            valide = false;
+        }
+
+        if (this.beneficiaireTXT.getText().isEmpty()) {
+            this.lblMessage.setText("Merci de bien vouloir indiquer qui est le bénéficiaire.");
+            this.beneficiaireTXT.requestFocus();
+            valide = false;
+        }
+
+        return valide ;
     }
 
 }
