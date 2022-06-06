@@ -120,6 +120,19 @@ public class PrelevementManagementController implements Initializable {
         }
     }
 
+    @FXML
+    private void doModifierPrelevement() {
+        int selectedIndice = this.lvPrelevement.getSelectionModel().getSelectedIndex();
+        if (selectedIndice >= 0) {
+            CompteCourant compteClient = compteDuClient ;
+            Prelevement prelevement = this.olPrelevement.get(selectedIndice);
+            Prelevement result = this.pm.modifierPrelevement(compteClient, prelevement) ;
+            if (result != null) {
+                this.olPrelevement.set(selectedIndice, result);
+            }
+        }
+    }
+
     /**
      * Recharge la ViewList de comptes.
      */

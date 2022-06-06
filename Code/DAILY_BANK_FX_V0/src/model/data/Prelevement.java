@@ -9,6 +9,7 @@ public class Prelevement {
     public int montant ;
     public String beneficiaire ;
     public int idNumCompte ;
+    private LocalDate datePick ;
 
 
     public Prelevement(int idP, int date, int montant, int idNumCompte, String beneficiaire){
@@ -33,5 +34,13 @@ public class Prelevement {
         String s = "" + String.format("%02d", this.idPrelevement) + " : Date= " + this.dateReccurence +
                  "  ;  Montant = " + String.format("%d", this.montant) + " Bénéficiaire : " + this.beneficiaire;
         return s;
+    }
+
+    public void setDatePick(LocalDate datePick) {
+        this.datePick = datePick;
+    }
+
+    public LocalDate getDatePick() {
+        return datePick;
     }
 }

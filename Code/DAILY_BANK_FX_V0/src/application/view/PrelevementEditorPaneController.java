@@ -101,6 +101,10 @@ public class PrelevementEditorPaneController implements Initializable {
 
                 this.cbTypeOpe.setItems(list);
                 this.cbTypeOpe.getSelectionModel().select(0);
+
+                this.beneficiaireTXT.setText("" + this.prelevementEdit.beneficiaire);
+                this.montantTXT.setText("" + this.prelevementEdit.montant);
+                this.dateTXT.setValue(this.prelevementEdit.getDatePick());
                 break;
         }
 
@@ -164,6 +168,7 @@ public class PrelevementEditorPaneController implements Initializable {
                 if(this.dateTXT.getValue() != null){
                     LocalDate local = this.dateTXT.getValue();
                     val = local.getDayOfMonth();
+                    this.prelevementEdit.setDatePick(local);
                     this.prelevementEdit.dateReccurence = val;
                 }
             } catch (NumberFormatException nfe) {

@@ -81,12 +81,6 @@ public class CompteEditorPaneController implements Initializable {
 			this.btnOk.setText("Modifier");
 			this.btnCancel.setText("Annuler");
 			break;
-			
-		case SUPPRESSION:
-			AlertUtilities.showAlert(this.primaryStage, "Non implémenté", "Suppression de compte n'est pas implémenté",
-					null, AlertType.ERROR);
-			return null;
-		// break;
 		}
 
 		// Paramétrages spécifiques pour les chefs d'agences

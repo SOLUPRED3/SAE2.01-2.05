@@ -6,6 +6,8 @@ import application.tools.EditionMode;
 import application.tools.StageManagement;
 import application.view.PrelevementManagementController;
 import javafx.fxml.FXMLLoader;
+import model.data.Client;
+import model.orm.AccessCompteCourant;
 import model.orm.exception.ApplicationException;
 import model.orm.exception.DatabaseConnexionException;
 import javafx.scene.Scene;
@@ -17,6 +19,8 @@ import model.data.Prelevement;
 import model.orm.AccessPrelevementAutomatique;
 import model.orm.exception.Order;
 import model.orm.exception.Table;
+import oracle.jdbc.proxy.annotation.Pre;
+
 import java.util.ArrayList;
 
 
@@ -88,6 +92,33 @@ public class PrelevementManagement {
         return prelevement;
     }
 
+
+    /**
+     * Fonction qui permet de retourner un compte avec ses informations modifiées.
+     * @param compte : client à qui appartient le compte
+     * @param prelevement : prélèvement concerné
+     * @return le compte modifié, null en cas de problème
+     */
+    public Prelevement modifierPrelevement(CompteCourant compte, Prelevement prelevement) {
+        PrelevementEditorPane pep = new PrelevementEditorPane(this.primaryStage, this.dbs);
+        Prelevement result = pep.doCompteEditorDialog(compte, prelevement, EditionMode.MODIFICATION);
+        if (result != null) {
+            try {
+                AccessPrelevementAutomatique ac = new AccessPrelevementAutomatique();
+                ac.updatePrelevement(result);
+            } catch (DatabaseConnexionException e) {
+                ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
+                ed.doExceptionDialog();
+                result = null;
+                this.primaryStage.close();
+            } catch (ApplicationException ae) {
+                ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
+                ed.doExceptionDialog();
+                result = null;
+            }
+        }
+        return result;
+    }
 
 
     /**
