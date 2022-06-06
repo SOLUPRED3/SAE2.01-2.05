@@ -2,6 +2,7 @@ package application.view;
 
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -159,13 +160,11 @@ public class PrelevementEditorPaneController implements Initializable {
         if (oldPropertyValue) {
             int val = this.prelevementEdit.dateReccurence;
             try {
-                val = Integer.parseInt(this.dateTXT.getText().trim()) ;
-                if (val < 0 || val > 31) {
-                    throw new NumberFormatException();
-                }
+                LocalDate local = this.dateTXT.getValue();
+                val = local.getDayOfMonth();
                 this.prelevementEdit.dateReccurence = val;
             } catch (NumberFormatException nfe) {
-                this.dateTXT.setText("" + val);
+                this.dateTXT.getEditor().setText("" + val);
             }
         }
         return null;
@@ -183,7 +182,7 @@ public class PrelevementEditorPaneController implements Initializable {
     @FXML
     private Label lblMessage;
     @FXML
-    private TextField dateTXT ;
+    private DatePicker dateTXT ;
     @FXML
     private TextField montantTXT;
     @FXML
