@@ -19,6 +19,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import javafx.util.Callback;
 import model.data.Client;
 import model.data.CompteCourant;
 import model.data.Prelevement;
@@ -124,6 +125,7 @@ public class PrelevementEditorPaneController implements Initializable {
     }
 
 
+
     private Object focusMontant(ObservableValue<? extends Boolean> txtField, boolean oldPropertyValue,
                                   boolean newPropertyValue) {
         if (oldPropertyValue) {
@@ -195,9 +197,24 @@ public class PrelevementEditorPaneController implements Initializable {
     private ComboBox<String> cbTypeOpe;
 
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        Callback<DatePicker, DateCell> callB = new Callback<DatePicker, DateCell>() {
+            @Override
+            public DateCell call(final DatePicker param) {
+                return new DateCell() {
+                    @Override
+                    public void updateItem(LocalDate item, boolean empty) {
+                        super.updateItem(item, empty); //To change body of generated methods, choose Tools | Templates.
+                        LocalDate today = LocalDate.now();
+                        setDisable(empty || item.compareTo(today) <= 0);
+                    }
+
+                };
+            }
+
+        };
+        dateTXT.setDayCellFactory(callB);
     }
 
 
