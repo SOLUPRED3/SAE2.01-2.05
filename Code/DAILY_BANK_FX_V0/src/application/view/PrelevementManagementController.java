@@ -160,8 +160,6 @@ public class PrelevementManagementController implements Initializable {
                     }
                 }
                 else{
-                    System.out.println(this.compteDuClient.solde);
-                    System.out.println(this.olPrelevement.get(selectedIndice).montant);
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("Exécution du prélèvement");
                     alert.setHeaderText("Vous ne pouvez pas exécuter ce prélèvement, le découvert serait dépassé.");
@@ -275,4 +273,6 @@ public class PrelevementManagementController implements Initializable {
         }
 
     }
+
+
 }

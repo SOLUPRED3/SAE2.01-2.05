@@ -123,6 +123,8 @@ public class ComptesManagementController implements Initializable {
 				this.cm.gererPrelevement(compte);
 			}
 		}
+		this.loadList();
+		this.validateComponentState();
 	}
 	
 	/**
