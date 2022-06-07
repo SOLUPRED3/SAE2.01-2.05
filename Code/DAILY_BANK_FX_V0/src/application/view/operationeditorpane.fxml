@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -110,8 +111,11 @@
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="actifInactif" />
+                     </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="rBtnNo" mnemonicParsing="false" prefHeight="18.0" prefWidth="125.0" text="Non " GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
+                  <RadioButton fx:id="rBtnNo" mnemonicParsing="false" prefHeight="18.0" prefWidth="125.0" text="Non " toggleGroup="$actifInactif" GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
                </children>
                <padding>
                   <Insets bottom="20.0" top="20.0" />

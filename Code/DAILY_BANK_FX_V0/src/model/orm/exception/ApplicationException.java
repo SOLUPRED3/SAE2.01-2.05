@@ -42,11 +42,4 @@ public class ApplicationException extends Exception {
 		return this.order;
 	}
 
-	// getCause () : héritée.
-	// Ecrite ici UNIQUEMENT pour en disposer facilement ... A enlever
-
-	@Override
-	public Throwable getCause() {
-		return super.getCause();
-	}
 }

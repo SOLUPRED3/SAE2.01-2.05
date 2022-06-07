@@ -4,6 +4,7 @@ package application.view;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import application.DailyBankState;
 import application.control.ExceptionDialog;
@@ -224,7 +225,7 @@ public class OperationEditorPaneController implements Initializable {
 
 	
 	/**
-	 * Ajoute un nouveau client
+	 * Ajoute une nouvelle opération
 	 */
 	@FXML
 	private void doAjouter() {
@@ -255,10 +256,12 @@ public class OperationEditorPaneController implements Initializable {
 				this.txtMontant.requestFocus();
 				return;
 			}
-			if((ConstantesIHM.isAdmin(this.dbs.getEmpAct()))){
-
+			if(!this.rBtnNo.isSelected() || !this.rBtnYes.isSelected()){
+				info = "Merci de bien vouloir indiquer s'il s'agit ou non d'un débit exceptionnel";
+				this.lblMessage.setText(info);
+				rBtnYes.requestFocus();
 			}
-			else{
+			if(this.dbs.isChefDAgence() && this.rBtnNo.isSelected() || !this.dbs.isChefDAgence()){
 				if(this.compteEdite.solde - montant < this.compteEdite.debitAutorise){
 					info = "Dépassement du découvert ! - Cpt. : " + this.compteEdite.idNumCompte + "  "
 							+ String.format(Locale.ENGLISH, "%.02f", this.compteEdite.solde) + "  /  "
@@ -271,9 +274,24 @@ public class OperationEditorPaneController implements Initializable {
 					return;
 				}
 			}
+			else{
+				Alert alert = new Alert(AlertType.CONFIRMATION);
+				alert.setTitle("Gestion des débit");
+				alert.setHeaderText("Êtes vous certain que c'est un débit exceptionnel ?");
+				alert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
+
+				Optional<ButtonType> response = alert.showAndWait();
+				if (response.orElse(null) == ButtonType.NO) {
+					return;
+				} else if(response.orElse(null) == ButtonType.YES) {
+					System.out.println("On reste encore un peu...");
+					this.txtMontant.requestFocus();
+				}
+			}
+
 			
 			String typeOp = this.cbTypeOpe.getValue();
-			this.operationResultat = new Operation(-1, montant, null, null, this.compteEdite.idNumCli, typeOp);
+			this.operationResultat = new Operation(-1, montant, null, null, this.compteEdite.idNumCli, typeOp, 'N');
 			this.primaryStage.close();
 			break;
 			
@@ -301,7 +319,7 @@ public class OperationEditorPaneController implements Initializable {
 			}
 			
 			String typeOpC = this.cbTypeOpe.getValue();
-			this.operationResultat = new Operation(-1, montantC, null, null, this.compteEdite.idNumCli, typeOpC);
+			this.operationResultat = new Operation(-1, montantC, null, null, this.compteEdite.idNumCli, typeOpC, 'N');
 			this.primaryStage.close();
 			break;	
 		}

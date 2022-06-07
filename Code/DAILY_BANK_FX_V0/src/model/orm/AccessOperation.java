@@ -50,7 +50,7 @@ public class AccessOperation {
 				int idNumCompteTrouve = rs.getInt("idNumCompte");
 				String idTypeOp = rs.getString("idTypeOp");
 
-				alResult.add(new Operation(idOperation, montant, dateOp, dateValeur, idNumCompteTrouve, idTypeOp));
+				alResult.add(new Operation(idOperation, montant, dateOp, dateValeur, idNumCompteTrouve, idTypeOp, 'N'));
 			}
 			rs.close();
 			pst.close();
@@ -91,7 +91,7 @@ public class AccessOperation {
 				String idTypeOp = rs.getString("idTypeOp");
 
 				operationTrouvee = new Operation(idOperationTrouve, montant, dateOp, dateValeur, idNumCompteTrouve,
-						idTypeOp);
+						idTypeOp, 'N');
 			} else {
 				rs.close();
 				pst.close();
@@ -211,11 +211,7 @@ public class AccessOperation {
 			// 1 -> valeur du premier paramètre, cf. déf procédure
 			call.setDouble(2, montant);
 			call.setString(3, typeOp);
-			// Paramètres out
-			call.registerOutParameter(4, java.sql.Types.INTEGER);
-			// 4 type du quatrième paramètre qui est déclaré en OUT, cf. déf procédure
 
-			call.execute();
 
 		} catch (SQLException e) {
 			throw new DataAccessException(Table.Operation, Order.INSERT, "Erreur accès", e);
