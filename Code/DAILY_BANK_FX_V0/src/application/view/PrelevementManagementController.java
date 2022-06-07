@@ -2,23 +2,28 @@ package application.view;
 
 import application.DailyBankState;
 import application.control.PrelevementManagement;
+import application.tools.ConstantesIHM;
+import application.tools.PairsOfValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import model.data.Client;
-import model.data.CompteCourant;
-import model.data.Prelevement;
+import model.data.*;
+import model.orm.AccessCompteCourant;
+import model.orm.AccessOperation;
+import model.orm.AccessPrelevementAutomatique;
+import model.orm.exception.DataAccessException;
+import model.orm.exception.DatabaseConnexionException;
+import model.orm.exception.RowNotFoundOrTooManyRowsException;
 import oracle.jdbc.proxy.annotation.Pre;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class PrelevementManagementController implements Initializable {
@@ -46,6 +51,8 @@ public class PrelevementManagementController implements Initializable {
     private Button btnSupprPrelevement;
     @FXML
     private Button btnAjoutPrelevement;
+    @FXML
+    private Button btnExecPrelevement;
 
 
     @Override
@@ -61,21 +68,23 @@ public class PrelevementManagementController implements Initializable {
 
     private void configure() {
         String info;
-        //String info;
         this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
-        this.olPrelevement = FXCollections.observableArrayList();
         this.olPrelevement = FXCollections.observableArrayList();
         this.lvPrelevement.setItems(this.olPrelevement);
         this.lvPrelevement.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         this.lvPrelevement.getFocusModel().focus(-1);
         this.lvPrelevement.getSelectionModel().selectedItemProperty().addListener(e -> this.validateComponentState());
-        if(this.compteDuClient != null){
-            info = "IDNUMCOMPTE : " + this.compteDuClient.idNumCompte + "  SOLDE : " + this.compteDuClient.solde  + " DÉCOUVERT AUTORISÉ : " + this.compteDuClient.debitAutorise;
-            this.lblInfosCompte.setText(info);
-        }
+        setLabelMessage(this.compteDuClient);
        this.validateComponentState();
         this.lvPrelevement.getSelectionModel().selectedItemProperty().addListener(e -> this.validateComponentState());
         this.loadList();
+    }
+
+    private void setLabelMessage(CompteCourant compte){
+        if(compte != null){
+            String info = "IDNUMCOMPTE : " + this.compteDuClient.idNumCompte + "  SOLDE : " + this.compteDuClient.solde  + " DÉCOUVERT AUTORISÉ : " + this.compteDuClient.debitAutorise;
+            this.lblInfosCompte.setText(info);
+        }
     }
 
     private Object closeWindow(WindowEvent e) {
@@ -107,6 +116,7 @@ public class PrelevementManagementController implements Initializable {
         this.primaryStage.showAndWait();
     }
 
+
     /**
      * Créé un compte.
      */
@@ -117,6 +127,52 @@ public class PrelevementManagementController implements Initializable {
         if (prelevement != null) {
             this.olPrelevement.add(prelevement);
             this.loadList();
+        }
+    }
+
+    @FXML
+    private void executePrelevement(){
+        int selectedIndice = this.lvPrelevement.getSelectionModel().getSelectedIndex();
+        LocalDate local = LocalDate.now();
+        int jour = local.getDayOfMonth();
+        int idNumCompte = this.olPrelevement.get(selectedIndice).idNumCompte;
+        int montant = this.olPrelevement.get(selectedIndice).montant;
+        if(this.olPrelevement.get(selectedIndice).dateReccurence == jour){
+            try {
+                if(this.compteDuClient.solde > 0) {
+                    if (this.compteDuClient.solde - this.olPrelevement.get(selectedIndice).montant > this.compteDuClient.debitAutorise) {
+                        AccessOperation ac = new AccessOperation();
+                        ac.insertDebit(idNumCompte, montant, ConstantesIHM.TYPE_OP_8);
+                        this.compteDuClient = loadCompte();
+                        setLabelMessage(this.compteDuClient);
+                    }
+                }
+                else if(this.compteDuClient.solde < 0){
+                    if(this.compteDuClient.solde - this.olPrelevement.get(selectedIndice).montant < this.compteDuClient.debitAutorise){
+                        AccessOperation ac = new AccessOperation();
+                        ac.insertDebit(idNumCompte, montant, ConstantesIHM.TYPE_OP_8);
+                        this.compteDuClient = loadCompte();
+                        setLabelMessage(this.compteDuClient);
+                    }
+                }
+                else{
+                    System.out.println(this.compteDuClient.solde);
+                    System.out.println(this.olPrelevement.get(selectedIndice).montant);
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("Exécution du prélèvement");
+                    alert.setHeaderText("Vous ne pouvez pas exécuter ce prélèvement, le découvert serait dépassé.");
+                    alert.showAndWait();
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else{
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Exécution du prélèvement");
+            alert.setHeaderText("Vous ne pouvez pas exécuter ce prélèvement, nous ne sommes pas encore le " + this.olPrelevement.get(selectedIndice).dateReccurence );
+            alert.showAndWait();
         }
     }
 
@@ -145,6 +201,21 @@ public class PrelevementManagementController implements Initializable {
         }
     }
 
+    private CompteCourant loadCompte(){
+        AccessCompteCourant ac = new AccessCompteCourant();
+        try {
+            CompteCourant compte = ac.getCompteCourant(compteDuClient.idNumCompte);
+            return compte ;
+        } catch (RowNotFoundOrTooManyRowsException e) {
+            e.printStackTrace();
+        } catch (DataAccessException e) {
+            e.printStackTrace();
+        } catch (DatabaseConnexionException e) {
+            e.printStackTrace();
+        }
+        return null ;
+    }
+
 
     private void validateComponentState() {
         int selectedIndice = this.lvPrelevement.getSelectionModel().getSelectedIndex();
@@ -154,11 +225,13 @@ public class PrelevementManagementController implements Initializable {
                 this.btnSupprPrelevement.setDisable(false);
                 this.btnModifierPrelevement.setDisable(false);
                 this.btnAjoutPrelevement.setDisable(false);
+                this.btnExecPrelevement.setDisable(false);
             } else {
                 this.btnVoirHistorique.setDisable(true);
                 this.btnSupprPrelevement.setDisable(true);
                 this.btnModifierPrelevement.setDisable(true);
                 this.btnVoirHistorique.setDisable(true);
+                this.btnExecPrelevement.setDisable(true);
             }
         } else {
             if (selectedIndice >= 0) {
@@ -167,6 +240,7 @@ public class PrelevementManagementController implements Initializable {
                 this.btnVoirHistorique.setDisable(true);
             }
             this.btnSupprPrelevement.setDisable(true);
+            this.btnExecPrelevement.setDisable(true);
             this.btnModifierPrelevement.setDisable(true);
         }
         if (this.compteInactif()) {
@@ -175,7 +249,4 @@ public class PrelevementManagementController implements Initializable {
             this.btnAjoutPrelevement.setDisable(false);
         }
     }
-
-
-
 }

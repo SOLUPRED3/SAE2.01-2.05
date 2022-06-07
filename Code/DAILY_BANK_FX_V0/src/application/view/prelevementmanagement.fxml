@@ -57,6 +57,7 @@
                                         <Insets bottom="10.0" top="10.0" />
                                     </GridPane.margin>
                                 </Button>
+                        <Button fx:id="btnExecPrelevement" mnemonicParsing="false" onAction="#executePrelevement" prefHeight="27.0" prefWidth="207.0" text="Exécuter prélèvement" GridPane.rowIndex="1" />
                             </children>
                         </GridPane>
                     </children>

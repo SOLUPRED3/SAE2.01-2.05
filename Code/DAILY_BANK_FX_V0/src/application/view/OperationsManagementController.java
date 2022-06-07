@@ -131,7 +131,7 @@ public class OperationsManagementController implements Initializable {
 	 * Ouvre un dialogue pour enregistrer un virement de compte à compte.
 	 */
 	@FXML
-	private void doAutre() { //Viremments
+	private void doAutre() { // Virements
 		Operation op = this.om.enregistrerVirement();
 		if (op != null) {
 			this.updateInfoCompteClient();

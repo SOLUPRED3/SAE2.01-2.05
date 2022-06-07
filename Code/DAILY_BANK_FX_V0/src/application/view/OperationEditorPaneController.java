@@ -160,10 +160,6 @@ public class OperationEditorPaneController implements Initializable {
 			break;	
 		}
 
-		// Paramétrages spécifiques pour les chefs d'agences
-		if (ConstantesIHM.isAdmin(this.dbs.getEmpAct())) {
-			// rien pour l'instant
-		}
 
 		this.operationResultat = null;
 		this.cbTypeOpe.requestFocus();
@@ -259,17 +255,21 @@ public class OperationEditorPaneController implements Initializable {
 				this.txtMontant.requestFocus();
 				return;
 			}
-			
-			if (this.compteEdite.solde - montant < this.compteEdite.debitAutorise) {
-				info = "Dépassement du découvert ! - Cpt. : " + this.compteEdite.idNumCompte + "  "
-						+ String.format(Locale.ENGLISH, "%.02f", this.compteEdite.solde) + "  /  "
-						+ String.format(Locale.ENGLISH, "%d", this.compteEdite.debitAutorise);
-				this.lblMessage.setText(info);
-				this.txtMontant.getStyleClass().add("borderred");
-				this.lblMontant.getStyleClass().add("borderred");
-				this.lblMessage.getStyleClass().add("borderred");
-				this.txtMontant.requestFocus();
-				return;
+			if((ConstantesIHM.isAdmin(this.dbs.getEmpAct()))){
+
+			}
+			else{
+				if(this.compteEdite.solde - montant < this.compteEdite.debitAutorise){
+					info = "Dépassement du découvert ! - Cpt. : " + this.compteEdite.idNumCompte + "  "
+							+ String.format(Locale.ENGLISH, "%.02f", this.compteEdite.solde) + "  /  "
+							+ String.format(Locale.ENGLISH, "%d", this.compteEdite.debitAutorise);
+					this.lblMessage.setText(info);
+					this.txtMontant.getStyleClass().add("borderred");
+					this.lblMontant.getStyleClass().add("borderred");
+					this.lblMessage.getStyleClass().add("borderred");
+					this.txtMontant.requestFocus();
+					return;
+				}
 			}
 			
 			String typeOp = this.cbTypeOpe.getValue();
