@@ -47,7 +47,7 @@
                                         <Insets bottom="10.0" top="10.0" />
                                     </GridPane.margin>
                                 </Button>
-                                <Button fx:id="btnSupprPrelevement" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Clôturer prélèvement" GridPane.rowIndex="4">
+                                <Button fx:id="btnSupprPrelevement" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doSupprimerPrelevement" text="Supprimer prélèvement" GridPane.rowIndex="4">
                                     <GridPane.margin>
                                         <Insets bottom="10.0" top="10.0" />
                                     </GridPane.margin>

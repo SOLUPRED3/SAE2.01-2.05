@@ -288,7 +288,7 @@ public class OperationEditorPaneController implements Initializable {
 
 			
 			String typeOp = this.cbTypeOpe.getValue();
-			this.operationResultat = new Operation(-1, montant, null, null, this.compteEdite.idNumCli, typeOp, 'N');
+			this.operationResultat = new Operation(-1, montant, null, null, this.compteEdite.idNumCli, typeOp);
 			this.primaryStage.close();
 			break;
 			
@@ -316,7 +316,7 @@ public class OperationEditorPaneController implements Initializable {
 			}
 			
 			String typeOpC = this.cbTypeOpe.getValue();
-			this.operationResultat = new Operation(-1, montantC, null, null, this.compteEdite.idNumCli, typeOpC, 'N');
+			this.operationResultat = new Operation(-1, montantC, null, null, this.compteEdite.idNumCli, typeOpC);
 			this.primaryStage.close();
 			break;	
 		}

@@ -31,7 +31,7 @@ public class PrelevementManagement {
     private CompteCourant compteDuClient;
 
     /**
-     * Constructueur de ComptesManagement
+     * Constructueur de PrelevementManagement
      * @param _parentStage
      * @param _dbstate
      * @param compte
@@ -63,6 +63,10 @@ public class PrelevementManagement {
         }
     }
 
+    /**
+     * Fonction qui permet de créer un prélèvement et de l'enregistrer en base de données.
+     * @return
+     */
     public Prelevement creerPrelevement(){
         Prelevement prelevement;
         AccessPrelevementAutomatique accessPrelevement = new AccessPrelevementAutomatique();
@@ -94,10 +98,10 @@ public class PrelevementManagement {
 
 
     /**
-     * Fonction qui permet de retourner un compte avec ses informations modifiées.
-     * @param compte : client à qui appartient le compte
+     * Fonction qui permet de retourner un prélèvement avec ses informations modifiées.
+     * @param compte : compte à qui appartient le prélèvement
      * @param prelevement : prélèvement concerné
-     * @return le compte modifié, null en cas de problème
+     * @return le prélèvement modifié, null en cas de problème
      */
     public Prelevement modifierPrelevement(CompteCourant compte, Prelevement prelevement) {
         PrelevementEditorPane pep = new PrelevementEditorPane(this.primaryStage, this.dbs);
@@ -122,7 +126,7 @@ public class PrelevementManagement {
 
 
     /**
-     * @return une ArrayList contenant les comptes d'un client, vide si pas de clients
+     * @return ArrayList contenant les prélèvments d'un compte, vide si pas de comptes.
      */
     public ArrayList<Prelevement> getPrelevementComptes() {
         ArrayList<Prelevement> listePl = new ArrayList<>();
@@ -140,6 +144,24 @@ public class PrelevementManagement {
             listePl = new ArrayList<>();
         }
         return listePl;
+    }
+
+    /**
+     * Procédure qui permet de supprimer un prélèvement et d'enregistrer les modifications dans la base de données.
+     */
+    public void deletePrelevement() {
+        AccessPrelevementAutomatique ap = new AccessPrelevementAutomatique();
+        try {
+            int idPrelev = pmc.getNumIdPrelev();
+            ap.deletePrelevement(idPrelev);
+        } catch (DatabaseConnexionException e) {
+            ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
+            ed.doExceptionDialog();
+            this.primaryStage.close();
+        } catch (ApplicationException ae) {
+            ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
+            ed.doExceptionDialog();
+        }
     }
 
     /**

@@ -50,7 +50,7 @@ public class AccessOperation {
 				int idNumCompteTrouve = rs.getInt("idNumCompte");
 				String idTypeOp = rs.getString("idTypeOp");
 
-				alResult.add(new Operation(idOperation, montant, dateOp, dateValeur, idNumCompteTrouve, idTypeOp, 'N'));
+				alResult.add(new Operation(idOperation, montant, dateOp, dateValeur, idNumCompteTrouve, idTypeOp));
 			}
 			rs.close();
 			pst.close();
@@ -91,7 +91,7 @@ public class AccessOperation {
 				String idTypeOp = rs.getString("idTypeOp");
 
 				operationTrouvee = new Operation(idOperationTrouve, montant, dateOp, dateValeur, idNumCompteTrouve,
-						idTypeOp, 'N');
+						idTypeOp);
 			} else {
 				rs.close();
 				pst.close();

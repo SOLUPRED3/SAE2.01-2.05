@@ -64,7 +64,7 @@ public class AccessCompteCourant {
 	
 	/**
 	 * Enregistre un compte avec ses différentes valeurs en paramètres.
-	 * @param pfCompte : compte à enregistrer 
+	 * @param compte : compte à enregistrer
 	 * @throws DataAccessException
 	 * @throws DatabaseConnexionException
 	 * @throws RowNotFoundOrTooManyRowsException 

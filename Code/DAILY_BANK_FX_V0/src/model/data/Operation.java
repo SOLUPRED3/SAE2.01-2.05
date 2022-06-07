@@ -10,9 +10,8 @@ public class Operation {
 	public Date dateValeur;
 	public int idNumCompte;
 	public String idTypeOp;
-	public char agioCheck;
 
-	public Operation(int idOperation, double montant, Date dateOp, Date dateValeur, int idNumCompte, String idTypeOp, char agioCheck) {
+	public Operation(int idOperation, double montant, Date dateOp, Date dateValeur, int idNumCompte, String idTypeOp) {
 		super();
 		this.idOperation = idOperation;
 		this.montant = montant;
@@ -20,15 +19,14 @@ public class Operation {
 		this.dateValeur = dateValeur;
 		this.idNumCompte = idNumCompte;
 		this.idTypeOp = idTypeOp;
-		this.agioCheck = agioCheck;
 	}
 
 	public Operation(Operation o) {
-		this(o.idOperation, o.montant, o.dateOp, o.dateValeur, o.idNumCompte, o.idTypeOp, o.agioCheck);
+		this(o.idOperation, o.montant, o.dateOp, o.dateValeur, o.idNumCompte, o.idTypeOp);
 	}
 
 	public Operation() {
-		this(-1000, 0, null, null, -1000, null, 'N');
+		this(-1000, 0, null, null, -1000, null);
 	}
 
 	@Override

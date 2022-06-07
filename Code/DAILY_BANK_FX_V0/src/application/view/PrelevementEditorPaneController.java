@@ -266,7 +266,7 @@ public class PrelevementEditorPaneController implements Initializable {
                 valide = false;
             }
 
-            if (this.compteDuClient.solde - this.prelevementEdit.montant < this.compteDuClient.debitAutorise) {
+            if(this.compteDuClient.solde - this.prelevementEdit.montant < this.compteDuClient.debitAutorise) {
                 this.lblMessage.setText("Le découvert est dépassé");
                 this.montantTXT.requestFocus();
                 valide = false;

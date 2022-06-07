@@ -24,6 +24,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class PrelevementManagementController implements Initializable {
@@ -116,6 +117,9 @@ public class PrelevementManagementController implements Initializable {
         this.primaryStage.showAndWait();
     }
 
+    public int getNumIdPrelev(){
+        return this.lvPrelevement.getSelectionModel().getSelectedItem().idPrelevement;
+    }
 
     /**
      * Créé un compte.
@@ -248,5 +252,27 @@ public class PrelevementManagementController implements Initializable {
         } else {
             this.btnAjoutPrelevement.setDisable(false);
         }
+    }
+
+    /**
+     * Vérifie et clôture un compte.
+     */
+    @FXML
+    private void doSupprimerPrelevement() {
+        Prelevement prelevement = this.lvPrelevement.getSelectionModel().getSelectedItem();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setContentText("Êtes-vous certain(e) de vouloir supprimer ce prélèvement ? ");
+
+        alert.getButtonTypes().setAll(ButtonType.YES,ButtonType.NO);
+        Optional<ButtonType> response = alert.showAndWait();
+
+        if (response.orElse(null) == ButtonType.YES) {
+            this.pm.deletePrelevement() ;
+            this.loadList();
+        } else if(response.orElse(null) == ButtonType.NO) {
+            System.out.println("On reste encore un peu...");
+        }
+
     }
 }

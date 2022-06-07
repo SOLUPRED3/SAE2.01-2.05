@@ -196,5 +196,43 @@ public class AccessPrelevementAutomatique {
         return alResult;
     }
 
+    /**
+     * Clôture un compte dans la base de données.
+     * @param pfIdPrelev : le numéro du compte à clôturer
+     * @throws DataAccessException
+     * @throws DatabaseConnexionException
+     * @throws RowNotFoundOrTooManyRowsException
+     */
+    public void deletePrelevement(int pfIdPrelev)
+            throws DataAccessException, DatabaseConnexionException, RowNotFoundOrTooManyRowsException {
+
+        try {
+            Connection con = LogToDatabase.getConnexion();
+
+            String query = "DELETE FROM PRELEVEMENTAUTOMATIQUE "+ "WHERE IDPRELEV = ?" ;
+
+            PreparedStatement pst = con.prepareStatement(query);
+
+            pst.setInt(1, pfIdPrelev);
+            int result = pst.executeUpdate();
+
+            System.err.println(result);
+            if (result != 1) {
+                con.rollback();
+                throw new RowNotFoundOrTooManyRowsException(Table.Client, Order.INSERT,
+                        "Suppression anormale (suppression de moins ou plus d'une ligne)", null, result);
+            } else {
+                con.commit();
+            }
+
+            System.err.println(query);
+            pst.close();
+
+        } catch (SQLException e) {
+            throw new DataAccessException(Table.CompteCourant, Order.SELECT, "Erreur accès", e);
+        }
+
+    }
+
 
 }
