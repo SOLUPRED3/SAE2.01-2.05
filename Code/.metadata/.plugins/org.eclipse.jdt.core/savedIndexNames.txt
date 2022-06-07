@@ -1,4 +1,0 @@
-INDEX VERSION 1.131+/Users/falsimagne/Documents/Info général/ProjetTP/.metadata/.plugins/org.eclipse.jdt.core
-1865797976.index
-819425441.index
-4059212834.index
