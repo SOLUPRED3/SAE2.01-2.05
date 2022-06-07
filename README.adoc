@@ -69,12 +69,12 @@ Dans sa colonne il doit remplir la ligne correspondant à une partie qu'il a dé
 |         | Doc User V1    |https://github.com/IUT-Blagnac/sae2022-bank-4a01/blob/main/V1/Documentation/Documentation_Utilisateur-V1.adoc[Doc. utilisateur-V1]|
 |         | Recette V1  |https://github.com/IUT-Blagnac/sae2022-bank-4a01/blob/main/V1/Cahier_de_recette/Cahier_de_recette-V1.adoc[Cahier de recette-V1]| 
 |         | Suivi projet|   | 
-| 22/05   | Gantt V2  à jour    |       | 
+| 22/05   | Gantt V2  à jour    |https://github.com/IUT-Blagnac/sae2022-bank-4a01/blob/main/V2/Gantt/Gantt-V2.pdf[Gantt-V2]| 
 |         | Doc. Util. V1 |https://github.com/IUT-Blagnac/sae2022-bank-4a01/blob/main/V1/Documentation/Documentation_Utilisateur-V1.adoc[Doc. utilisateur-V1]|     Attention le rôle des utilisateurs doit faire l'objet d'un paragraphe pas d'une note. Réduire un peu la taille des screen. Structurer la doc par utilisateur et par domaine : gestion des clients, gestion des crédits ... N'oubliez pas en entête de préciser de quelle appli il s'agit ... 
 |         | Doc. Tec. V1 |https://github.com/IUT-Blagnac/sae2022-bank-4a01/blob/main/V1/Documentation/Documentation_Technique-V1.adoc[Doc. technique-V1]|https://github.com/IUT-Blagnac/sae2022-bank-4a01/blob/main/V1/Documentation/retour_doc_technique.adoc   
 |         | Code V1     |https://github.com/IUT-Blagnac/sae2022-bank-4a01/tree/main/V1/Code/src[Code-V1]| 
 |         | Recette V1 |    |Pas trouvé
-|         | Gantt V3 à jour   |                      | 
+|         | Gantt V3 à jour   |https://github.com/IUT-Blagnac/sae2022-bank-4a01/blob/main/V3/Gantt/Gantt-V3.pdf[Gantt-V3 (final)]| 
 |         | `jar` projet |https://github.com/IUT-Blagnac/sae2022-bank-4a01/blob/main/V1/Code/DailyBankApp.jar[.jar-V1]|Pas trouvé
 | 05/06   | Gantt V3 à Jour  |    |  
 |         | Doc. Util. V2 |         |           
