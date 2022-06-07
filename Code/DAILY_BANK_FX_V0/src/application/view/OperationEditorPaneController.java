@@ -256,11 +256,7 @@ public class OperationEditorPaneController implements Initializable {
 				this.txtMontant.requestFocus();
 				return;
 			}
-			if(!this.rBtnNo.isSelected() || !this.rBtnYes.isSelected()){
-				info = "Merci de bien vouloir indiquer s'il s'agit ou non d'un débit exceptionnel";
-				this.lblMessage.setText(info);
-				rBtnYes.requestFocus();
-			}
+
 			if(this.dbs.isChefDAgence() && this.rBtnNo.isSelected() || !this.dbs.isChefDAgence()){
 				if(this.compteEdite.solde - montant < this.compteEdite.debitAutorise){
 					info = "Dépassement du découvert ! - Cpt. : " + this.compteEdite.idNumCompte + "  "
@@ -274,7 +270,8 @@ public class OperationEditorPaneController implements Initializable {
 					return;
 				}
 			}
-			else{
+
+			if(this.dbs.isChefDAgence() && this.rBtnYes.isSelected()){
 				Alert alert = new Alert(AlertType.CONFIRMATION);
 				alert.setTitle("Gestion des débit");
 				alert.setHeaderText("Êtes vous certain que c'est un débit exceptionnel ?");
