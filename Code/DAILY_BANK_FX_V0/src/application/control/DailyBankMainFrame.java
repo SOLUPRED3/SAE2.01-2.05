@@ -10,7 +10,9 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import model.data.AgenceBancaire;
+import model.data.Employe;
 import model.orm.AccessAgenceBancaire;
+import model.orm.AccessEmploye;
 import model.orm.LogToDatabase;
 import model.orm.exception.ApplicationException;
 import model.orm.exception.DatabaseConnexionException;
@@ -46,11 +48,11 @@ public class DailyBankMainFrame extends Application {
 			primaryStage.setTitle("Fenêtre Principale");
 			
 			// Forcer une connexion existante pour rentrer dans l'appli en mode connecté
-			/*try {
+			try {
 				Employe e;
 				AccessEmploye ae = new AccessEmploye();
 
-				e = ae.getEmploye("Tuff", "Lejeune");
+				e = ae.getEmploye("AP", "TheVoice");
 
 				if (e == null) {
 					System.out.println("\n\nPB DE CONNEXION\n\n");
@@ -80,7 +82,7 @@ public class DailyBankMainFrame extends Application {
 					ExceptionDialog ed = new ExceptionDialog(primaryStage, this.dbs, e);
 					ed.doExceptionDialog();
 				}
-			}*/			
+			}
 
 			DailyBankMainFrameController dbmc = loader.getController();
 			dbmc.initContext(primaryStage, this, this.dbs);
