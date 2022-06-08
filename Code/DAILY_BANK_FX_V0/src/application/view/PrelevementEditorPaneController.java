@@ -266,11 +266,7 @@ public class PrelevementEditorPaneController implements Initializable {
                 valide = false;
             }
 
-            if(this.compteDuClient.solde - this.prelevementEdit.montant < this.compteDuClient.debitAutorise) {
-                this.lblMessage.setText("Le découvert est dépassé");
-                this.montantTXT.requestFocus();
-                valide = false;
-            }
+
         } else if (this.montantTXT.getText().isEmpty() && this.beneficiaireTXT.getText().isEmpty() && this.dateTXT.getValue() == null) {
             this.lblMessage.setText("Merci de bien vouloir remplir tous les champs.");
             this.beneficiaireTXT.requestFocus();

@@ -67,6 +67,9 @@ public class PrelevementManagementController implements Initializable {
         this.configure();
     }
 
+    /**
+     * Initialise la page de gestion des prélèvements :
+     */
     private void configure() {
         String info;
         this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
@@ -88,6 +91,11 @@ public class PrelevementManagementController implements Initializable {
         }
     }
 
+    /**
+     * Permet de fermer la page de gestion des prélèvements.
+     * @param e
+     * @return
+     */
     private Object closeWindow(WindowEvent e) {
         this.doCancel();
         e.consume();
@@ -111,12 +119,17 @@ public class PrelevementManagementController implements Initializable {
         return true;
     }
 
-
+    /**
+     * Permet d'afficher la page de gestion des prélèvements
+     */
     public void displayDialog() {
         System.out.println(this.primaryStage);
         this.primaryStage.showAndWait();
     }
 
+    /**
+     * @return le numéro ID du prélèvement courant
+     */
     public int getNumIdPrelev(){
         return this.lvPrelevement.getSelectionModel().getSelectedItem().idPrelevement;
     }
@@ -134,6 +147,9 @@ public class PrelevementManagementController implements Initializable {
         }
     }
 
+    /**
+     * Permet d'exécuter un prélèvement
+     */
     @FXML
     private void executePrelevement(){
         int selectedIndice = this.lvPrelevement.getSelectionModel().getSelectedIndex();
@@ -143,27 +159,34 @@ public class PrelevementManagementController implements Initializable {
         int montant = this.olPrelevement.get(selectedIndice).montant;
         if(this.olPrelevement.get(selectedIndice).dateReccurence == jour){
             try {
-                if(this.compteDuClient.solde > 0) {
-                    if (this.compteDuClient.solde - this.olPrelevement.get(selectedIndice).montant > this.compteDuClient.debitAutorise) {
+                if(this.compteDuClient.solde >= 0) {
+                    if (this.compteDuClient.solde - this.olPrelevement.get(selectedIndice).montant >= this.compteDuClient.debitAutorise) {
                         AccessOperation ac = new AccessOperation();
                         ac.insertDebit(idNumCompte, montant, ConstantesIHM.TYPE_OP_8);
                         this.compteDuClient = loadCompte();
                         setLabelMessage(this.compteDuClient);
+                        loadList();
+                    }
+                    else {
+                        Alert alert = new Alert(Alert.AlertType.WARNING);
+                        alert.setTitle("Exécution du prélèvement");
+                        alert.setHeaderText("Vous ne pouvez pas exécuter ce prélèvement, le découvert serait dépassé.");
+                        alert.showAndWait();
                     }
                 }
-                else if(this.compteDuClient.solde < 0){
-                    if(this.compteDuClient.solde - this.olPrelevement.get(selectedIndice).montant < this.compteDuClient.debitAutorise){
+                else if(this.compteDuClient.solde <= 0) {
+                    if (this.compteDuClient.solde - this.olPrelevement.get(selectedIndice).montant >= this.compteDuClient.debitAutorise) {
                         AccessOperation ac = new AccessOperation();
                         ac.insertDebit(idNumCompte, montant, ConstantesIHM.TYPE_OP_8);
                         this.compteDuClient = loadCompte();
+                        loadList();
                         setLabelMessage(this.compteDuClient);
+                    } else {
+                        Alert alert = new Alert(Alert.AlertType.WARNING);
+                        alert.setTitle("Exécution du prélèvement");
+                        alert.setHeaderText("Vous ne pouvez pas exécuter ce prélèvement, le découvert serait dépassé.");
+                        alert.showAndWait();
                     }
-                }
-                else{
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setTitle("Exécution du prélèvement");
-                    alert.setHeaderText("Vous ne pouvez pas exécuter ce prélèvement, le découvert serait dépassé.");
-                    alert.showAndWait();
                 }
 
             } catch (Exception e) {
@@ -178,6 +201,9 @@ public class PrelevementManagementController implements Initializable {
         }
     }
 
+    /**
+     * Permet de modifier un prélèvement
+     */
     @FXML
     private void doModifierPrelevement() {
         int selectedIndice = this.lvPrelevement.getSelectionModel().getSelectedIndex();
@@ -218,7 +244,9 @@ public class PrelevementManagementController implements Initializable {
         return null ;
     }
 
-
+    /**
+     * Permet de gérer l'activation et la désactivation des boutons.
+     */
     private void validateComponentState() {
         int selectedIndice = this.lvPrelevement.getSelectionModel().getSelectedIndex();
         if (!compteInactif()) {

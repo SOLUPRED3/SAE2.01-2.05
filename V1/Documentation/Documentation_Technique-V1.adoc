@@ -327,7 +327,7 @@ Un guichetier peut visualiser (en lecture seule) les informations d'un client (s
 
 
 ===== A) Use case correspondant :
-image::images/voirInfos.svg[]
+image::images/voirInfosClientsUC.svg[]
 
 
 ===== B) Partie du diagramme de classe correspondante :
