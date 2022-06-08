@@ -2,7 +2,7 @@
 :toc:
 
 Thomas Falsimagne, Tilian Hure, Maxime Dourlent +
-*V1* - xx/xx/2022
+*V1* - 05/06/2022
 
 
 .Répartition des tâches et état d'avancement
@@ -46,7 +46,13 @@ L'application DailyBank est destinée à être utilisée par certains employés 
 [.text-justify]
 L'application peut être utilisée par deux types d'utilisateurs : les guichetiers et les chefs d'agence.
 
+==== A) Use Case V0 :
+
 image::images/uc0.svg[UC0]
+
+==== B) Use Case V1 :
+
+image::images/uc1.png[UC0]
 
 {empty} +
 Les *guichetiers* sont les principaux types d'utilisateurs, ils peuvent :
@@ -65,6 +71,9 @@ Ils peuvent accèder à toutes les mêmes fonctionnalités que les guichetiers, 
 
 
 === 2. Diagramme de classe :
+
+===== A) Diagramme de classe V0 - V1 :
+
 image::images/DC0.svg[DC0]
 
 [.text-justify]
