@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="141px" preserveAspectRatio="none" style="width:426px;height:141px;background:#FFFFFF;" version="1.1" viewBox="0 0 426 141" width="426px" zoomAndPan="magnify"><defs/><g><g id="elem_fonctionnalite"><ellipse cx="334.0998" cy="96.69" fill="#F1F1F1" rx="86.5998" ry="19.72" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="134" x="267.0998" y="99.5366">Gérer les employés</text></g><!--MD5=[526518ddf9ffd3b9d06c429d9a70ec57]
+entity guichetier--><g id="elem_guichetier"><ellipse cx="177" cy="74.47" fill="#F1F1F1" rx="16" ry="16" style="stroke:#181818;stroke-width:1.5;"/><path d="M177,94.47 C181,94.47 184,94.47 188,90.47 C196,90.47 204,98.47 204,106.47 L204,110.47 C204,114.47 200,118.47 196,118.47 L158,118.47 C154,118.47 150,114.47 150,110.47 L150,106.47 C150,98.47 158,90.47 166,90.47 C170,94.47 173,94.47 177,94.47 " fill="#F1F1F1" style="stroke:#181818;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="71" x="141.5" y="132.9651">Guichetier</text></g><!--MD5=[ff8250f90b990ced6bd2564acf1d7da5]
+entity chef--><g id="elem_chef"><ellipse cx="56" cy="74.47" fill="#F1F1F1" rx="16" ry="16" style="stroke:#181818;stroke-width:1.5;"/><path d="M56,94.47 C60,94.47 63,94.47 67,90.47 C75,90.47 83,98.47 83,106.47 L83,110.47 C83,114.47 79,118.47 75,118.47 L37,118.47 C33,118.47 29,114.47 29,110.47 L29,106.47 C29,98.47 37,90.47 45,90.47 C49,94.47 52,94.47 56,94.47 " fill="#F1F1F1" style="stroke:#181818;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100" x="6" y="132.9651">Chef d'agence</text></g><!--MD5=[115d4863d7018ededd69deb215d8578b]
+link guichetier to fonctionnalite--><g id="link_guichetier_fonctionnalite"><path d="M212.57,96.47 C222.4,96.47 232.23,96.47 242.06,96.47 " fill="none" id="guichetier-to-fonctionnalite" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="247.2,96.47,238.2,92.47,242.2,96.47,238.2,100.47,247.2,96.47" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[c6eb4afcfd67f5cfac6f524e8f815556]
+link chef to fonctionnalite--><g id="link_chef_fonctionnalite"><path d="M93.32,56.9 C107.16,44.9 123.83,33.24 141.5,26.97 C200.54,6 269.58,46.89 306.83,74.37 " fill="none" id="chef-to-fonctionnalite" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="311.21,77.65,306.41,69.05,307.21,74.65,301.61,75.45,311.21,77.65" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[410a58ce50ce8939e588c8b3132bd60e]
+link chef to guichetier--><g id="link_chef_guichetier"><path d="M106.1,96.47 C111.14,96.47 116.18,96.47 121.21,96.47 " fill="none" id="chef-to-guichetier" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="none" points="121.27,89.47,141.27,96.47,121.27,103.47,121.27,89.47" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[6a76eff618cf17bff15be6c11f0a3876]
+@startuml
+skinparam actorStyle awesome
+
+usecase fonctionnalite as "Gérer les employés"
+actor guichetier as "Guichetier"
+actor chef as "Chef d'agence"
+guichetier -> fonctionnalite
+chef -> fonctionnalite
+chef -|> guichetier
+@enduml
+
+PlantUML version 1.2022.4(Sat Apr 09 13:29:17 UTC 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
