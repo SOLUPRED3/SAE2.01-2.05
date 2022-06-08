@@ -25,7 +25,7 @@ Thomas Falsimagne, Tilian Hure, Maxime Dourlent +
 |2    |Guichetier     | CRUD Prélèvement | R||D |
 |2    |Guichetier     | CRUD Prélèvement | U||D |
 |2    |Guichetier     | CRUD Prélèvement | D||D |
-|3    |Bach     | Prélèvement automatiques | || |
+|3    |Bach     | Prélèvement automatique | || |
 |3    |Bach     | Relevé mensuels | || |
 |=======================
 
@@ -52,7 +52,7 @@ image::images/uc0.svg[UC0]
 
 ==== B) Use Case V1 :
 
-image::images/uc1.png[UC0]
+image::images/uc1.png[UC1]
 
 {empty} +
 Les *guichetiers* sont les principaux types d'utilisateurs, ils peuvent :
@@ -65,14 +65,14 @@ Les *guichetiers* sont les principaux types d'utilisateurs, ils peuvent :
 {empty} +
 [.text-justify]
 Les *chefs d'agence* sont des "super" guichetiers comparables à des administrateurs. +
-Ils peuvent accèder à toutes les mêmes fonctionnalités que les guichetiers, plus :
+Ils peuvent accéder à toutes les mêmes fonctionnalités que les guichetiers, plus :
 
 * Rendre inactif un client
 
 
 === 2. Diagramme de classe :
 
-===== A) Diagramme de classe V0 - V1 :
+==== A) Diagramme de classe V0 - V1 :
 
 image::images/DC0.svg[DC0]
 
@@ -80,10 +80,10 @@ image::images/DC0.svg[DC0]
 Toutes les données manipulées par l'application sont stockées dans une base de données externes. +
 Elles sont structurées de la manière suivante :
 
-* Une *AgenceBancaire* possède des employés, des clients, et gère des comptes courants
+* Une *AgenceBancaire* possède des employés, des clients et gère des comptes courants
 * Un *Employe* peut être un guichetier ou un chef d'agence
 * Un *Client* possède des comptes courants
-* Une *CompteCourant* est composé d'opérations
+* Un *CompteCourant* est composé d'opérations
 * Une *Operation* possède un type d'opération
 
 
@@ -95,17 +95,17 @@ Une agence ne peut avoir qu'un seul chef d'agence. Ce dernier peut gérer les cl
 {empty} +
 
 [.text-justify]
-Les comptes bancaires ne peuvent être clôturés que si leur solde est nulle. Les comptes clôturés ne peuvent plus subir aucune opération mais ces dernières restent tout de même visualisables.
+Les comptes bancaires ne peuvent être clôturés que si leur solde est nul. Les comptes clôturés ne peuvent plus subir aucune opération, mais ces dernières restent tout de même visualisables.
 
 {empty} +
 
 [.text-justify]
-Les clients ne peuvent être rendus inactifs que si tous leurs comptes sont clôturés. Les clients inactifs ne peuvent plus être modifiés mais restent tout de même visualisables.
+Les clients ne peuvent être rendus inactifs que si tous leurs comptes sont clôturés. Les clients inactifs ne peuvent plus être modifiés, mais restent tout de même visualisables.
 
 {empty} +
 
 [.text-justify]
-Les employés inactifs ne peuvent plus être modifiés mais restent tout de même visualisables. Il n'est plus possible de se connecter à l'application avec leurs identifiants.
+Les employés inactifs ne peuvent plus être modifiés, mais restent tout de même visualisables. Il n'est plus possible de se connecter à l'application avec leurs identifiants.
 ====
 
 
@@ -130,7 +130,7 @@ Au niveau des librairies, le code de l'application repose sur une seule librairi
 
 ==== 2.2 Exportation de l'application :
 [.text-justify]
-L'application est disponible à l'exécution et sans prérequis autre qu'une JRE, sous forme de fichier .jar. Elle peut être regénérée à partir du code source et d'un IDE Java, mais ce dernier devra disposer d'une JRE Java versionnée en 1.8 ainsi que de la librairie JavaFX.
+L'application est disponible à l'exécution et sans prérequis autre qu'une JRE, sous forme de fichier .jar. Elle peut être régénérée à partir du code source et d'un IDE Java, mais ce dernier devra disposer d'une JRE Java versionnée en 1.8 ainsi que de la librairie JavaFX.
 
 [.text-justify]
 Pour exécuter l'application en .jar, il faut s'assurer que les postes de travail des employés possèdent également une JRE en 1.8.
@@ -189,10 +189,10 @@ Le package Model correspond à la partie Model du pattern MVC.
 Si le code de l'application devait être repris pour être amélioré ou modifié, le développeur devra avoir au préalable une *JRE version 1.8*. Il faudra ensuite qu'il ait un environnement de développement adapté pour cette version de Java et un Workspace configuré avec *Java FX* et potentiellement le logiciel *SceneBuilder* pour modifier les fichiers FXML.
 
 [.text-justify]
-L'application utilise une *base de données Oracle-SQL* dont le code de déploiement est fourni avec le code source de l'application. Ce dernier pourra être exécuté dans le cas où une autre base de données serait utilisée mais il faudra mettre certaines données à jour dans le code source de l'application qu'il sera nécessaire de regénérer par la suite.
+L'application utilise une *base de données Oracle-SQL* dont le code de déploiement est fourni avec le code source de l'application. Ce dernier pourra être exécuté dans le cas où une autre base de données serait utilisée, mais il faudra mettre certaines données à jour dans le code source de l'application qu'il sera nécessaire de régénérer par la suite.
 
 [.text-justify]
-Ces données concernent la classe "LogToDatabase.java" du sous-package "orm" du package "model". Les ligne 19 à 24 qui devront être modifiées afin de renseigner les nouvelles données de connexion à la base de données utilisée.
+Ces données concernent la classe "LogToDatabase.java" du sous-package "orm" du package "model". Les lignes 19 à 24 qui devront être modifiées afin de renseigner les nouvelles données de connexion à la base de données utilisée.
 
 
 ==== 4.2 Lancement de l'application :
@@ -206,7 +206,7 @@ Pour toute information concernant l'installation d'une JRE 1.8, merci de bien vo
 ====
 
 [.text-justify]
-Avant d'exécuter le fichier .jar, il sera nécessaire de changer l'environnement Java du poste concerné avec celle précédemment mentionnée, une fois installée. Pour cela, un fichier "SETENV.bat" est fourni avec le code source, permettant de momentanément changer de JRE. Éditez son contenu en remplacant le texte entre guillemets de la première ligne par le chemin de la JRE 1.8 du poste concerné, puis sauvegardez les modifications. Pour lancer l'application, vous n'aurez plus qu'à exécuter le fichier .bat pour changer de JRE, avant de faire de même avec le fichier .jar.
+Avant d'exécuter le fichier .jar, il sera nécessaire de changer l'environnement Java du poste concerné avec celle précédemment mentionnée, une fois installée. Pour cela, un fichier "SETENV.bat" est fourni avec le code source, permettant de momentanément changer de JRE. Éditez son contenu en remplaçant le texte entre guillemets de la première ligne par le chemin de la JRE 1.8 du poste concerné, puis sauvegardez les modifications. Pour lancer l'application, vous n'aurez plus qu'à exécuter le fichier .bat pour changer de JRE, avant de faire de même avec le fichier .jar.
 
 
 
@@ -325,7 +325,7 @@ Cette partie du diagramme de classe est en mise-à-jour, certaines données sont
 
 ====== E.2) Classes :
 [.text-justify]
-La classe Client.java est importante car principalement utilisée pour modéliser des clients sous forme d'objets manipulables dans le code.
+La classe Client.java est importante, car principalement utilisée pour modéliser des clients sous forme d'objets manipulables dans le code.
 
 
 {empty} +
@@ -343,7 +343,7 @@ image::images/voirInfosClientsUC.svg[]
 image::images/modifierClientDC.png[]
 
 [.text-justify]
-Cette partie du diagramme de classe est en lecture, aucune données n'est ajoutée, modifiée ou supprimée dans la base de donnée.
+Cette partie du diagramme de classe est en lecture, aucunes données n'est ajoutée, modifiée ou supprimée dans la base de donnée.
 
 
 ===== C) Aperçu des principales fonctionnalités :
@@ -409,7 +409,7 @@ Cette partie du diagramme de classe est en mise-à-jour, certaines données sont
 
 ====== E.2 - Classes :
 [.text-justify]
-La classe CompteCourant.java est importante car principalement utilisée pour modéliser des comptes bancaires sous forme d'objets manipulables dans le code.
+La classe CompteCourant.java est importante, car principalement utilisée pour modéliser des comptes bancaires sous forme d'objets manipulables dans le code.
 
 
 {empty} +
@@ -451,13 +451,13 @@ Cette partie du diagramme de classe est en mise-à-jour, certaines données sont
 
 ====== E.2 - Classes :
 [.text-justify]
-La classe CompteCourant.java est importante car principalement utilisée pour modéliser des comptes bancaires sous forme d'objets manipulables dans le code.
+La classe CompteCourant.java est importante, car principalement utilisée pour modéliser des comptes bancaires sous forme d'objets manipulables dans le code.
 
 
 [NOTE]
 ====
 [.text-justify]
-Seul le découvert autorisé d'un compte peut être modifié. Ce dernier peut être élargi, en revanche il ne peut devenir infèrieur au solde du compte concerné si ce dernier est négatif.
+Seul le découvert autorisé d'un compte peut être modifié. Ce dernier peut être élargi, en revanche il ne peut devenir inférieur au solde du compte concerné si ce dernier est négatif.
 ====
 
 
@@ -475,7 +475,7 @@ image::images/consulterCompte.svg[]
 image::images/compteCourantDC.png[]
 
 [.text-justify]
-Cette partie du diagramme de classe est lecture, aucune données n'est modifiée, ajoutée ou supprimée dans la base de données.
+Cette partie du diagramme de classe est lecture, aucunes données n'est modifiée, ajoutée ou supprimée dans la base de données.
 
 
 ===== C) Aperçu des principales fonctionnalités :
@@ -502,7 +502,7 @@ Pour ce qui est des fonctionnalités concernant la modification des informations
 
 ====== E.2 - Classes :
 [.text-justify]
-La classe CompteCourant.java est importante car principalement utilisée pour modéliser des comptes bancaires sous forme d'objets manipulables dans le code.
+La classe CompteCourant.java est importante, car principalement utilisée pour modéliser des comptes bancaires sous forme d'objets manipulables dans le code.
 
 
 {empty} +
@@ -543,13 +543,13 @@ Cette partie du diagramme de classe est en mise-à-jour, certaines données sont
 
 ====== E.2 - Classes :
 [.text-justify]
-La classe CompteCourant.java est importante car principalement utilisée pour modéliser des comptes bancaires sous forme d'objets manipulables dans le code.
+La classe CompteCourant.java est importante, car principalement utilisée pour modéliser des comptes bancaires sous forme d'objets manipulables dans le code.
 
 
 [NOTE]
 ====
 [.text-justify]
-Les comptes bancaires ne peuvent être clôturés que si leur solde est nulle. Les comptes clôturés ne peuvent plus subir aucune opération mais ces dernières restent tout de même visualisables.
+Les comptes bancaires ne peuvent être clôturés que si leur solde est nul. Les comptes clôturés ne peuvent plus subir aucune opération, mais ces dernières restent tout de même visualisables.
 ====
 
 
@@ -594,13 +594,13 @@ Les parties *CompteCourant* et *TypeOperation* du diagramme de classe sont en le
 
 ====== E.2 - Classes :
 [.text-justify]
-La classe Operation.java est importante car principalement utilisée pour modéliser des opérations de débit, de crédit ou de virement sous forme d'objets manipulables dans le code.
+La classe Operation.java est importante, car principalement utilisée pour modéliser des opérations de débit, de crédit ou de virement sous forme d'objets manipulables dans le code.
 
 
 [NOTE]
 ====
 [.text-justify]
-Un débit doit être d'un motant strictement positif (>0) et ne doit pas enfreindre le découvert autorisé pour le compte concerné.
+Un débit doit être d'un montant strictement positif (>0) et ne doit pas enfreindre le découvert autorisé pour le compte concerné.
 ====
 
 
@@ -618,7 +618,7 @@ image::images/crediterCompteUC.svg[]
 image::images/débitCompte.png[]
 
 [.text-justify]
-Les parties *CompteCourant* et *TypeOperation* du diagramme de classe sont en lecture, aucune données n'est modifiée, ajoutée ou supprimée de la base de données. La partie *Operation* est en mise-à-jour, certaines données sont ajoutées à la base de donneés.
+Les parties *CompteCourant* et *TypeOperation* du diagramme de classe sont en lecture, aucunes données n'est modifiée, ajoutée ou supprimée de la base de données. La partie *Operation* est en mise-à-jour, certaines données sont ajoutées à la base de données.
 
 
 ===== C) Aperçu des principales fonctionnalités :
@@ -645,13 +645,13 @@ Les parties *CompteCourant* et *TypeOperation* du diagramme de classe sont en le
 
 ====== E.2 - Classes :
 [.text-justify]
-La classe Operation.java est importante car principalement utilisée pour modéliser des opérations de débit, de crédit ou de virement sous forme d'objets manipulables dans le code.
+La classe Operation.java est importante, car principalement utilisée pour modéliser des opérations de débit, de crédit ou de virement sous forme d'objets manipulables dans le code.
 
 
 [NOTE]
 ====
 [.text-justify]
-Un crédit doit être d'un motant strictement positif (>0).
+Un crédit doit être d'un montant strictement positif (>0).
 ====
 
 
@@ -704,7 +704,7 @@ La classe Operation.java est importante car principalement utilisée pour modél
 [NOTE]
 ====
 [.text-justify]
-Un virement doit être d'un motant strictement positif (>0) et ne doit pas enfreindre le découvert autorisé pour le compte concerné. Il ne peut être effectués que entre des comptes non-clôturés d'un même client.
+Un virement doit être d'un montant strictement positif (>0) et ne doit pas enfreindre le découvert autorisé pour le compte concerné. Il ne peut être effectués qu'entre des comptes non clôturés d'un même client.
 ====
 
 
@@ -842,7 +842,7 @@ Cette partie du diagramme de classe est en mise-à-jour, certaines données sont
 
 ====== E.2 - Classes :
 [.text-justify]
-La classe Employe.java est importante car principalement utilisée pour modéliser des employés sous forme d'objets manipulables dans le code.
+La classe Employe.java est importante, car principalement utilisée pour modéliser des employés sous forme d'objets manipulables dans le code.
 
 
 {empty} +
@@ -860,7 +860,7 @@ image::images/gererEmployeUC.svg[]
 image::images/employeDC.png[]
 
 [.text-justify]
-Cette partie du diagramme de classe est en lecture, aucune données n'est ajoutée, modifiée ou supprimée dans la base de donnée.
+Cette partie du diagramme de classe est en lecture, aucunes données n'est ajoutée, modifiée ou supprimée dans la base de donnée.
 
 
 ===== C) Aperçu des principales fonctionnalités :
@@ -884,7 +884,7 @@ Cette partie du diagramme de classe est en lecture, aucune données n'est ajout�
 
 ====== E.2 -Classes :
 [.text-justify]
-La classe Employe.java est importante car principalement utilisée pour modéliser des employés sous forme d'objets manipulables dans le code.
+La classe Employe.java est importante, car principalement utilisée pour modéliser des employés sous forme d'objets manipulables dans le code.
 
 
 {empty} +
@@ -927,11 +927,11 @@ Cette partie du diagramme de classe est mise-à-jour, certaines données sont mo
 
 ====== E.2 - Classes :
 [.text-justify]
-La classe Employe.java est importante car principalement utilisée pour modéliser des employés sous forme d'objets manipulables dans le code.
+La classe Employe.java est importante, car principalement utilisée pour modéliser des employés sous forme d'objets manipulables dans le code.
 
 
 [NOTE]
 ====
 [.text-justify]
-Les employés inactifs ne peuvent plus être modifiés mais restent tout de même visualisables.
+Les employés inactifs ne peuvent plus être modifiés, mais restent tout de même visualisables.
 ====
