@@ -239,38 +239,38 @@ La charge de travail concernant le développement de l'application et de ses fon
 Un guichetier peut créer un nouveau client.
 
 
-===== a) Use case correspondant :
+===== A) Use case correspondant :
 image::images/creerClient.svg[]
 
 
-===== b) Partie du diagramme de classe correspondante :
+===== B) Partie du diagramme de classe correspondante :
 image::images/modifierClientDC.png[]
 
 [.text-justify]
 Cette partie du diagramme de classe est en mise-à-jour, certaines données sont ajoutées dans la base de données.
 
 
-===== c) Aperçu des principales fonctionnalités :
+===== C) Aperçu des principales fonctionnalités :
 [.text-justify]
 [blue]#Pour ce qui est des fonctionnalités concernant l'ajout ou la modification des informations d'un client, merci de bien vouloir vous référer à la *documentation utilisateur*.#
 
 
-===== d) Classes et packages impliqués :
+===== D) Classes et packages impliqués :
 . Application/Control -> ClientsManagement.java, ClientEditorPane.java
 . Application/View -> ClientEditorPaneController.java, ClientsManagementController.java, clienteditorpane.fxml, clientsmanagement.fxml
 . Application/Model/data -> Client.java
 . Application/Model/orm -> AccessClient.java
 
 
-===== e) Éléments essentiels :
-====== e.1) Fonctions :
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
 . insertClient(Client client) -> AccessClient.java
 . nouveauClient() -> ClientsManagement.java
 . doAjouter() -> ClientEditorPaneController.java
 . displayDialog(Client client, EditionMode mode) -> ClientEditorPaneController.java
 
 
-====== e.2) Classes :
+====== E.2 - Classes :
 [.text-justify]
 La classe Client.java est importante car principalement utilisée pour modéliser des clients sous forme d'objets manipulables dans le code.
 
@@ -282,31 +282,31 @@ La classe Client.java est importante car principalement utilisée pour modélise
 Un guichetier peut modifier les informations d'un client (son nom, son prénom, son adresse, etc).
 
 
-===== a) Use case correspondant :
+===== A) Use case correspondant :
 image::images/modifierInfo.svg[]
 
 
-===== b) Partie du diagramme de classe correspondante :
+===== B) Partie du diagramme de classe correspondante :
 image::images/modifierClientDC.png[]
 
 [.text-justify]
 Cette partie du diagramme de classe est en mise-à-jour, certaines données sont modifiées dans la base de donnée.
 
 
-===== c) Aperçu des principales fonctionnalités :
+===== C) Aperçu des principales fonctionnalités :
 [.text-justify]
 [blue]#Pour ce qui est des fonctionnalités concernant l'ajout ou la modification des informations d'un client, merci de bien vouloir vous référer à la *documentation utilisateur*.#
 
 
-===== d) Classes et packages impliqués :
+===== D) Classes et packages impliqués :
 . Application/Control -> ClientsManagement.java, ClientEditorPane.java
 . Application/View -> ClientEditorPaneController.java, ClientsManagementController.java, clienteditorpane.fxml, clientsmanagement.fxml
 . Application/Model/data -> Client.java
 . Application/Model/orm -> AccessClient.java
 
 
-===== e) Éléments essentiels :
-====== e.1) Fonctions :
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
 . modifierClient(Client c) -> ClientsManagement.java
 . updateClient(Client client) -> AccessClient.java
 . doAjouter() -> ClientEditorPaneController.java
@@ -314,7 +314,7 @@ Cette partie du diagramme de classe est en mise-à-jour, certaines données sont
 . doModifierClient() -> ClientsManagementController.java
 
 
-====== e.2) Classes :
+====== E.2) Classes :
 [.text-justify]
 La classe Client.java est importante car principalement utilisée pour modéliser des clients sous forme d'objets manipulables dans le code.
 
@@ -326,37 +326,37 @@ La classe Client.java est importante car principalement utilisée pour modélise
 Un guichetier peut visualiser (en lecture seule) les informations d'un client (son nom, son prénom, son adresse, etc).
 
 
-===== a) Use case correspondant :
-image::images/voirInfo.svg[]
+===== A) Use case correspondant :
+image::images/voirInfos.svg[]
 
 
-===== b) Partie du diagramme de classe correspondante :
+===== B) Partie du diagramme de classe correspondante :
 image::images/modifierClientDC.png[]
 
 [.text-justify]
 Cette partie du diagramme de classe est en lecture, aucune données n'est ajoutée, modifiée ou supprimée dans la base de donnée.
 
 
-===== c) Aperçu des principales fonctionnalités :
+===== C) Aperçu des principales fonctionnalités :
 [.text-justify]
 [blue]#Pour ce qui est des fonctionnalités concernant l'ajout ou la modification des informations d'un client, merci de bien vouloir vous référer à la *documentation utilisateur*.#
 
 
-===== d) Classes et packages impliqués :
+===== D) Classes et packages impliqués :
 . Application/Control -> ClientsManagement.java, ClientEditorPane.java
 . Application/View -> ClientEditorPaneController.java, ClientsManagementController.java, clienteditorpane.fxml, clientsmanagement.fxml
 . Application/Model/data -> Client.java
 . Application/Model/orm -> AccessClient.java
 
 
-===== e) Éléments essentiels :
-====== e.1) Fonctions :
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
 . voirClient(Client client) -> ClientsManagement.java
 . displayDialog(Client client, EditionMode mode) -> ClientEditorPaneController.java
 . doVoirClient() -> ClientsManagementController.java
 
 
-====== e.2) Classes :
+====== E-2) Classes :
 [.text-justify]
 La classe Client.java est importante car principalement utilisée pour modéliser des clients sous forme d'objets manipulables dans le code.
 
@@ -367,38 +367,38 @@ La classe Client.java est importante car principalement utilisée pour modélise
 Un guichetier peut créer un nouveau compte bancaire pour un client.
 
 
-===== a) Use case correspondant :
+===== A) Use case correspondant :
 image::images/creerCompte.svg[]
 
 
-===== b) Partie du diagramme de classe correspondante :
+===== B) Partie du diagramme de classe correspondante :
 image::images/compteCourantDC.png[]
 
 [.text-justify]
 Cette partie du diagramme de classe est en mise-à-jour, certaines données sont ajoutées dans la base de données.
 
 
-===== c) Aperçu des principales fonctionnalités :
+===== C) Aperçu des principales fonctionnalités :
 [.text-justify]
 [blue]#Pour ce qui est des fonctionnalités concernant l'ajout ou la modification des informations d'un client, merci de bien vouloir vous référer à la *documentation utilisateur*.#
 
 
-===== d) Classes et packages impliqués :
+===== D) Classes et packages impliqués :
 . Application/Control -> ComptesManagement.java, CompteEditorPane.java
 . Application/View -> CompteEditorPaneController.java, ComptesManagementController.java, compteeditorpane.fxml, comptesmanagement.fxml
 . Application/Model/data -> CompteCourant.java
 . Application/Model/orm -> AccessCompteCourant.java
 
 
-===== e) Éléments essentiels :
-====== e.1) Fonctions :
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
 . enregistrerCompte(Compte compte) -> AccessCompteCourant.java
 . creerCompte() -> ComptesManagement.java
 . doAjouter() -> CompteEditorPaneController.java
 . displayDialog(Client client, Compte cpte, EditionMode mode) -> CompteEditorPaneController.java
 
 
-====== e.2) Classes :
+====== E.2 - Classes :
 [.text-justify]
 La classe CompteCourant.java est importante car principalement utilisée pour modéliser des comptes bancaires sous forme d'objets manipulables dans le code.
 
@@ -409,38 +409,38 @@ La classe CompteCourant.java est importante car principalement utilisée pour mo
 Un guichetier peut modifier un compte bancaire.
 
 
-===== a) Use case correspondant :
+===== A) Use case correspondant :
 image::images/modifierCompteUC.svg[]
 
 
-===== b) Partie du diagramme de classe correspondante :
+===== B) Partie du diagramme de classe correspondante :
 image::images/compteCourantDC.png[]
 
 [.text-justify]
 Cette partie du diagramme de classe est en mise-à-jour, certaines données sont modifiées dans la base de données.
 
 
-===== c) Aperçu des principales fonctionnalités :
+===== C) Aperçu des principales fonctionnalités :
 [.text-justify]
 [blue]#Pour ce qui est des fonctionnalités concernant l'ajout ou la modification des informations d'un client, merci de bien vouloir vous référer à la *documentation utilisateur*.#
 
 
-===== d) Classes et packages impliqués :
+===== D) Classes et packages impliqués :
 . Application/Control -> ComptesManagement.java, CompteEditorPane.java
 . Application/View -> CompteEditorPaneController.java, ComptesManagementController.java, compteeditorpane.fxml, comptesmanagement.fxml
 . Application/Model/data -> CompteCourant.java
 . Application/Model/orm -> AccessCompteCourant.java
 
 
-===== e) Éléments essentiels :
-====== e.1) Fonctions :
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
 . modifierCompte(Compte compte) -> AccessCompteCourant.java
 . modifierCompte() -> ComptesManagement.java
 . doAjouter() -> CompteEditorPaneController.java
 . displayDialog(Client client, Compte cpte, EditionMode mode) -> CompteEditorPaneController.java
 
 
-====== e.2) Classes :
+====== E.2 - Classes :
 [.text-justify]
 La classe CompteCourant.java est importante car principalement utilisée pour modéliser des comptes bancaires sous forme d'objets manipulables dans le code.
 
@@ -458,32 +458,32 @@ Seul le découvert autorisé d'un compte peut être modifié. Ce dernier peut ê
 Un guichetier peut consulter un compte bancaire.
 
 
-===== a) Use case correspondant :
+===== A) Use case correspondant :
 image::images/consulterCompte.svg[]
 
 
-===== b) Partie du diagramme de classe correspondante :
+===== B) Partie du diagramme de classe correspondante :
 image::images/compteCourantDC.png[]
 
 [.text-justify]
 Cette partie du diagramme de classe est lecture, aucune données n'est modifiée, ajoutée ou supprimée dans la base de données.
 
 
-===== c) Aperçu des principales fonctionnalités :
+===== C) Aperçu des principales fonctionnalités :
 [.text-justify]
 Pour ce qui est des fonctionnalités concernant la modification des informations d'un client, merci de bien vouloir vous référer à la documentation utilisateur.
 
 
-===== d) Classes et packages impliqués :
+===== D) Classes et packages impliqués :
 . Application/Control -> ComptesManagement.java, CompteEditorPane.java
 . Application/View -> CompteEditorPaneController.java, ComptesManagementController.java, clienteditorpane.fxml, clientsmanagement.fxml
 . Application/Model/Data -> CompteCourant.java
 . Application/Model/orm -> AccessCompteCourant.java
 
 
-===== e) Éléments essentiels :
+===== E) Éléments essentiels :
 
-====== e.1) Fonctions :
+====== E.1 - Fonctions :
 . loadList() -> ComptesManagementController.java
 . getCompteCourants(int idNumCli) -> AccessCompteCourant.java
 . getCompteCourant(int idNumCompte) -> AccessCompteCourant.java
@@ -491,7 +491,7 @@ Pour ce qui est des fonctionnalités concernant la modification des informations
 . getComptesDunClient() -> ComptesManagement.java
 
 
-====== e.2) Classes :
+====== E.2 - Classes :
 [.text-justify]
 La classe CompteCourant.java est importante car principalement utilisée pour modéliser des comptes bancaires sous forme d'objets manipulables dans le code.
 
@@ -502,37 +502,37 @@ La classe CompteCourant.java est importante car principalement utilisée pour mo
 Un guichetier peut clôturer un compte bancaire.
 
 
-===== a) Use case correspondant :
+===== A) Use case correspondant :
 image::images/cloturerCompte.svg[]
 
 
-===== b) Partie du diagramme de classe correspondante :
+===== B) Partie du diagramme de classe correspondante :
 image::images/compteCourantDC.png[]
 
 [.text-justify]
 Cette partie du diagramme de classe est en mise-à-jour, certaines données sont modifiées dans la base de données.
 
 
-===== c) Aperçu des principales fonctionnalités :
+===== C) Aperçu des principales fonctionnalités :
 [.text-justify]
 [blue]#Pour ce qui est des fonctionnalités concernant l'ajout ou la modification des informations d'un client, merci de bien vouloir vous référer à la *documentation utilisateur*.#
 
 
-===== d) Classes et packages impliqués :
+===== D) Classes et packages impliqués :
 . Application/Control -> ComptesManagement.java, CompteEditorPane.java
 . Application/View -> CompteEditorPaneController.java, ComptesManagementController.java, compteeditorpane.fxml, comptesmanagement.fxml
 . Application/Model/data -> CompteCourant.java
 . Application/Model/orm -> AccessCompteCourant.java
 
 
-===== e) Éléments essentiels :
-====== e.1) Fonctions :
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
 . cloturerCompte(int idNumCompte) -> AccessCompteCourant.java
 . cloturerCompte() -> ComptesManagement.java
 . doCloturerCompte() -> ComptesManagementController.java
 
 
-====== e.2) Classes :
+====== E.2 - Classes :
 [.text-justify]
 La classe CompteCourant.java est importante car principalement utilisée pour modéliser des comptes bancaires sous forme d'objets manipulables dans le code.
 
@@ -550,31 +550,31 @@ Les comptes bancaires ne peuvent être clôturés que si leur solde est nulle. L
 Un guichetier peut débiter un compte bancaire.
 
 
-===== a) Use case correspondant :
+===== A) Use case correspondant :
 image::images/debiterCompte.svg[]
 
 
-===== b) Partie du diagramme de classe correspondante :
+===== B) Partie du diagramme de classe correspondante :
 image::images/débitCompte.png[]
 
 [.text-justify]
 Les parties *CompteCourant* et *TypeOperation* du diagramme de classe sont en lecture, aucune données n'est modifiée, ajoutée ou supprimée de la base de données. La partie *Operation* est en mise-à-jour, certaines données sont ajoutées à la base de donneés.
 
 
-===== c) Aperçu des principales fonctionnalités :
+===== C) Aperçu des principales fonctionnalités :
 [.text-justify]
 [blue]#Pour ce qui est des fonctionnalités concernant l'enregistrement d'un débit sur un compte bancaire, merci de bien vouloir vous référer à la *documentation utilisateur*.#
 
 
-===== d) Classes et packages impliqués :
+===== D) Classes et packages impliqués :
 . Application/Control -> OperationManagement.java, OperationEditorPane.java
 . Application/View -> OperationEditorPaneController.java, OperationManagementController.java, operationeditorpane.fxml, operationmanagement.fxml
 . Application/Model -> CompteCourant.java, Operation.java, TypeOperation.java
 . Application/Model/orm -> AccessCompteCourant.java
 
 
-===== e) Éléments essentiels :
-====== e.1) Fonctions :
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
 . doDebit() -> OperationManagementController.java
 . doAjouter() -> OperationEditorPaneController.java
 . enregistrerDebit() -> OperationManagement.java
@@ -583,7 +583,7 @@ Les parties *CompteCourant* et *TypeOperation* du diagramme de classe sont en le
 . updateInfoCompteClient() -> OperationManagementController.java
 
 
-====== e.2) Classes :
+====== E.2 - Classes :
 [.text-justify]
 La classe Operation.java est importante car principalement utilisée pour modéliser des opérations de débit, de crédit ou de virement sous forme d'objets manipulables dans le code.
 
@@ -601,31 +601,31 @@ Un débit doit être d'un motant strictement positif (>0) et ne doit pas enfrein
 Un guichetier peut créditer un compte bancaire.
 
 
-===== a) Use case correspondant :
+===== A) Use case correspondant :
 image::images/crediterCompteUC.svg[]
 
 
-===== b) Partie du diagramme de classe correspondante :
+===== B) Partie du diagramme de classe correspondante :
 image::images/débitCompte.png[]
 
 [.text-justify]
 Les parties *CompteCourant* et *TypeOperation* du diagramme de classe sont en lecture, aucune données n'est modifiée, ajoutée ou supprimée de la base de données. La partie *Operation* est en mise-à-jour, certaines données sont ajoutées à la base de donneés.
 
 
-===== c) Aperçu des principales fonctionnalités :
+===== C) Aperçu des principales fonctionnalités :
 [.text-justify]
 [blue]#Pour ce qui est des fonctionnalités concernant l'enregistrement d'un débit sur un compte bancaire, merci de bien vouloir vous référer à la *documentation utilisateur*.#
 
 
-===== d) Classes et packages impliqués :
+===== D) Classes et packages impliqués :
 . Application/Control -> OperationManagement.java, OperationEditorPane.java
 . Application/View -> OperationEditorPaneController.java, OperationManagementController.java, operationeditorpane.fxml, operationmanagement.fxml
 . Application/Model -> CompteCourant.java, Operation.java, TypeOperation.java
 . Application/Model/orm -> AccessCompteCourant.java
 
 
-===== e) Éléments essentiels :
-====== e.1) Fonctions :
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
 . doCredit() -> OperationManagementController.java
 . doAjouter() -> OperationEditorPaneController.java
 . enregistrerCredit() -> OperationManagement.java
@@ -634,7 +634,7 @@ Les parties *CompteCourant* et *TypeOperation* du diagramme de classe sont en le
 . updateInfoCompteClient() -> OperationManagementController.java
 
 
-====== e.2) Classes :
+====== E.2 - Classes :
 [.text-justify]
 La classe Operation.java est importante car principalement utilisée pour modéliser des opérations de débit, de crédit ou de virement sous forme d'objets manipulables dans le code.
 
@@ -652,31 +652,31 @@ Un crédit doit être d'un motant strictement positif (>0).
 Un guichetier peut faire un virement d'un compte bancaire à un autre pour un même client.
 
 
-===== a) Use case correspondant :
+===== A) Use case correspondant :
 image::images/virementUC.svg[]
 
 
-===== b) Partie du diagramme de classe correspondante :
+===== B) Partie du diagramme de classe correspondante :
 image::images/débitCompte.png[]
 
 [.text-justify]
 Les parties *CompteCourant* et *TypeOperation* du diagramme de classe sont en lecture, aucune données n'est modifiée, ajoutée ou supprimée de la base de données. La partie *Operation* est en mise-à-jour, certaines données sont ajoutées à la base de donneés.
 
 
-===== c) Aperçu des principales fonctionnalités :
+===== C) Aperçu des principales fonctionnalités :
 [.text-justify]
 [blue]#Pour ce qui est des fonctionnalités concernant l'enregistrement d'un débit sur un compte bancaire, merci de bien vouloir vous référer à la *documentation utilisateur*.#
 
 
-===== d) Classes et packages impliqués :
+===== D) Classes et packages impliqués :
 . Application/Control -> OperationManagement.java, OperationEditorPane.java
 . Application/View -> OperationEditorPaneController.java, OperationManagementController.java, operationeditorpane.fxml, operationmanagement.fxml
 . Application/Model -> CompteCourant.java, Operation.java, TypeOperation.java
 . Application/Model/orm -> AccessCompteCourant.java
 
 
-===== e) Éléments essentiels :
-====== e.1) Fonctions :
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
 . doDebit() -> OperationManagementController.java
 . doAjouter() -> OperationEditorPaneController.java
 . enregistrerDebit() -> OperationManagement.java
@@ -687,7 +687,7 @@ Les parties *CompteCourant* et *TypeOperation* du diagramme de classe sont en le
 . updateInfoCompteClient() -> OperationManagementController.java
 
 
-====== e.2) Classes :
+====== E.2 - Classes :
 [.text-justify]
 La classe Operation.java est importante car principalement utilisée pour modéliser des opérations de débit, de crédit ou de virement sous forme d'objets manipulables dans le code.
 
@@ -706,31 +706,31 @@ Un virement doit être d'un motant strictement positif (>0) et ne doit pas enfre
 Un chef d'agence peut rendre inactif un client.
 
 
-===== a) Use case correspondant :
+===== A) Use case correspondant :
 image::images/rendreInactif.svg[]
 
 
-===== b) Partie du diagramme de classe correspondante :
+===== B) Partie du diagramme de classe correspondante :
 image::images/modifierClientDC.png[]
 
 [.text-justify]
 Cette partie du diagramme de classe est mise-à-jour, certaines données sont modifiées dans la base de données.
 
 
-===== c) Aperçu des principales fonctionnalités :
+===== C) Aperçu des principales fonctionnalités :
 [.text-justify]
 [blue]#Pour ce qui est des fonctionnalités concernant la modification, l'ajout, la visualisation et la suppression des informations d'un employé, merci de bien vouloir vous référer à la *documentation utilisateur*.#
 
 
-===== d) Classes et packages impliqués :
+===== D) Classes et packages impliqués :
 . Application/Control -> ClientsManagement.java, ClientEditorPane.java
 . Application/View -> ClientEditorPaneController.java, ClientsManagementController.java, clienteditorpane.fxml, clientsmanagement.fxml
 . Application/Model/data -> Client.java
 . Application/Model/orm -> AccessClient.java
 
 
-===== e) Éléments essentiels :
-====== e.1) Fonctions :
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
 . modifierClient(Client c) -> ClientsManagement.java
 . updateClient(Client client) -> AccessClient.java
 . doAjouter() -> ClientEditorPaneController.java
@@ -739,7 +739,7 @@ Cette partie du diagramme de classe est mise-à-jour, certaines données sont mo
 . doRendreInactif() -> ClientEditorPaneController.java
 
 
-====== e.2) Classes :
+====== E.2 - Classes :
 [.text-justify]
 La classe Client.java est importante car principalement utilisée pour modéliser des clients sous forme d'objets manipulables dans le code.
 
@@ -757,38 +757,38 @@ Les clients ne peuvent être rendus inactifs que si tous leurs comptes sont clô
 Un chef d'agence peut créer un nouvel employé.
 
 
-===== a) Use case correspondant :
+===== A) Use case correspondant :
 image::images/gererEmployeUC.svg[]
 
 
-===== b) Partie du diagramme de classe correspondante :
+===== B) Partie du diagramme de classe correspondante :
 image::images/employeDC.png[]
 
 [.text-justify]
 Cette partie du diagramme de classe est en mise-à-jour, certaines données sont ajoutées dans la base de données.
 
 
-===== c) Aperçu des principales fonctionnalités :
+===== C) Aperçu des principales fonctionnalités :
 [.text-justify]
 [blue]#Pour ce qui est des fonctionnalités concernant l'ajout ou la modification des informations d'un client, merci de bien vouloir vous référer à la *documentation utilisateur*.#
 
 
-===== d) Classes et packages impliqués :
+===== D) Classes et packages impliqués :
 . Application/Control -> EmployesManagement.java, EmployeEditorPane.java
 . Application/View -> EmployeEditorPaneController.java, EmployesManagementController.java, employeeditorpane.fxml, employesmanagement.fxml
 . Application/Model/data -> Employe.java
 . Application/Model/orm -> AccessEmploye.java
 
 
-===== e) Éléments essentiels :
-====== e.1) Fonctions :
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
 . insertEmploye(Employe employe) -> AccessEmploye.java
 . nouvelEmploye() -> EmployesManagement.java
 . doAjouter() -> EmployeEditorPaneController.java
 . displayDialog(Employe employe, EditionMode mode) -> EmployeEditorPaneController.java
 
 
-====== e.2) Classes :
+====== E.2 - Classes :
 [.text-justify]
 La classe Employe.java est importante car principalement utilisée pour modéliser des employés sous forme d'objets manipulables dans le code.
 
@@ -800,38 +800,38 @@ La classe Employe.java est importante car principalement utilisée pour modélis
 Un chef d'agence peut modifier les informations d'un employé (son nom, son prénom, son login, son mot-de-passe, etc).
 
 
-===== a) Use case correspondant :
+===== A) Use case correspondant :
 image::images/gererEmployeUC.svg[]
 
 
-===== b) Partie du diagramme de classe correspondante :
+===== B) Partie du diagramme de classe correspondante :
 image::images/employeDC.png[]
 
 [.text-justify]
 Cette partie du diagramme de classe est en mise-à-jour, certaines données sont modifiées dans la base de donnée.
 
 
-===== c) Aperçu des principales fonctionnalités :
+===== C) Aperçu des principales fonctionnalités :
 [.text-justify]
 [blue]#Pour ce qui est des fonctionnalités concernant l'ajout ou la modification des informations d'un client, merci de bien vouloir vous référer à la *documentation utilisateur*.#
 
 
-===== d) Classes et packages impliqués :
+===== D) Classes et packages impliqués :
 . Application/Control -> EmployesManagement.java, EmployeEditorPane.java
 . Application/View -> EmployeEditorPaneController.java, EmployesManagementController.java, employeeditorpane.fxml, employesmanagement.fxml
 . Application/Model/data -> Employe.java
 . Application/Model/orm -> AccessEmploye.java
 
 
-===== e) Éléments essentiels :
-====== e.1) Fonctions :
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
 . updateEmploye(Employe employe) -> AccessEmploye.java
 . modifierEmploye() -> EmployesManagement.java
 . doAjouter() -> EmployeEditorPaneController.java
 . displayDialog(Employe employe, EditionMode mode) -> EmployeEditorPaneController.java
 
 
-====== e.2) Classes :
+====== E.2 - Classes :
 [.text-justify]
 La classe Employe.java est importante car principalement utilisée pour modéliser des employés sous forme d'objets manipulables dans le code.
 
@@ -843,37 +843,37 @@ La classe Employe.java est importante car principalement utilisée pour modélis
 Un chef d'agence peut visualiser (en lecture seule) les informations d'un employé (son nom, son prénom, son login, son mot-de-passe, etc).
 
 
-===== a) Use case correspondant :
+===== A) Use case correspondant :
 image::images/gererEmployeUC.svg[]
 
 
-===== b) Partie du diagramme de classe correspondante :
+===== B) Partie du diagramme de classe correspondante :
 image::images/employeDC.png[]
 
 [.text-justify]
 Cette partie du diagramme de classe est en lecture, aucune données n'est ajoutée, modifiée ou supprimée dans la base de donnée.
 
 
-===== c) Aperçu des principales fonctionnalités :
+===== C) Aperçu des principales fonctionnalités :
 [.text-justify]
 [blue]#Pour ce qui est des fonctionnalités concernant l'ajout ou la modification des informations d'un client, merci de bien vouloir vous référer à la *documentation utilisateur*.#
 
 
-===== d) Classes et packages impliqués :
+===== D) Classes et packages impliqués :
 . Application/Control -> EmployesManagement.java, EmployeEditorPane.java
 . Application/View -> EmployeEditorPaneController.java, EmployesManagementController.java, employeeditorpane.fxml, employesmanagement.fxml
 . Application/Model/data -> Employe.java
 . Application/Model/orm -> AccessEmploye.java
 
 
-===== e) Éléments essentiels :
-====== e.1) Fonctions :
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
 . voirEmploye() -> EmployesManagement.java
 . doVoirEmploye() -> EmployesManagementController.java
 . displayDialog(Employe employe, EditionMode mode) -> EmployeEditorPaneController.java
 
 
-====== e.2) Classes :
+====== E.2 -Classes :
 [.text-justify]
 La classe Employe.java est importante car principalement utilisée pour modéliser des employés sous forme d'objets manipulables dans le code.
 
@@ -884,31 +884,31 @@ La classe Employe.java est importante car principalement utilisée pour modélis
 Un chef d'agence peut rendre inactif un employé.
 
 
-===== a) Use case correspondant :
+===== A) Use case correspondant :
 image::images/gererEmployeUC.svg[]
 
 
-===== b) Partie du diagramme de classe correspondante :
+===== B) Partie du diagramme de classe correspondante :
 image::images/employeDC.png[]
 
 [.text-justify]
 Cette partie du diagramme de classe est mise-à-jour, certaines données sont modifiées dans la base de données.
 
 
-===== c) Aperçu des principales fonctionnalités :
+===== C) Aperçu des principales fonctionnalités :
 [.text-justify]
 [blue]#Pour ce qui est des fonctionnalités concernant la modification, l'ajout, la visualisation et la suppression des informations d'un employé, merci de bien vouloir vous référer à la *documentation utilisateur*.#
 
 
-===== d) Classes et packages impliqués :
+===== D) Classes et packages impliqués :
 . Application/Control -> EmployesManagement.java, EmployeEditorPane.java
 . Application/View -> EmployeEditorPaneController.java, EmployesManagementController.java, employeeditorpane.fxml, employesmanagement.fxml
 . Application/Model/data -> Employe.java
 . Application/Model/orm -> AccessEmploye.java
 
 
-===== e) Éléments essentiels :
-====== e.1) Fonctions :
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
 . updateEmploye(Employe employe) -> AccessEmploye.java
 . modifierEmploye() -> EmployesManagement.java
 . doAjouter() -> EmployeEditorPaneController.java
@@ -916,7 +916,7 @@ Cette partie du diagramme de classe est mise-à-jour, certaines données sont mo
 . doRendreInactif() -> ClientEditorPaneController.java
 
 
-====== e.2) Classes :
+====== E.2 - Classes :
 [.text-justify]
 La classe Employe.java est importante car principalement utilisée pour modéliser des employés sous forme d'objets manipulables dans le code.
 
