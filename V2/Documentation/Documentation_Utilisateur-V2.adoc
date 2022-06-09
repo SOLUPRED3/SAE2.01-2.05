@@ -1,5 +1,28 @@
-= Documentation Utilisateur - DailyBankApp (V1)
+= Documentation Utilisateur - DailyBankApp (V2)
 :toc:
+:icons: font
+:toc-title: Sommaire
+:doctype: Book
+
+image:../../Logo/logo.png[]
+
+ifdef::env-github[]
+:toc:
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+:graduation-icon: :mortar_board:
+:cogs-icon: :writing_hand:
+:beginner: :arrow_right:
+:advanced: :arrow_upper_right:
+:expert: :arrow_up:
+:dollar: :dollar:
+:git: link:{giturl}[git]
+:us-icon: :us:
+:fr-icon: :fr:
+endif::[]
 
 Maxime DOURLENT, Thomas FALSIMAGNE et Tilian HURÉ +
 Groupe *4A01*
