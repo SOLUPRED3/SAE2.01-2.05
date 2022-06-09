@@ -294,7 +294,7 @@ Cette partie du diagramme de classe est en mise-à-jour, certaines données sont
 
 ====== E.2 - Classes :
 [.text-justify]
-La classe Client.java est importante car principalement utilisée pour modéliser des clients sous forme d'objets manipulables dans le code.
+La classe Client.java est importante, car principalement utilisée pour modéliser des clients sous forme d'objets manipulables dans le code.
 
 
 {empty} +
@@ -464,7 +464,7 @@ Cette partie du diagramme de classe est en mise-à-jour, certaines données sont
 
 ====== E.2 - Classes :
 [.text-justify]
-La classe CompteCourant.java est importante car principalement utilisée pour modéliser des comptes bancaires sous forme d'objets manipulables dans le code.
+La classe CompteCourant.java est importante, car principalement utilisée pour modéliser des comptes bancaires sous forme d'objets manipulables dans le code.
 
 
 [NOTE]
@@ -739,18 +739,144 @@ La partie *Prélèvement* du diagramme de classe est en mise à jour, des donné
 
 ===== C) Aperçu des principales fonctionnalités :
 [.text-justify]
-[blue]#Pour ce qui est des fonctionnalités concernant l'enregistrement d'un débit sur un compte bancaire, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+[blue]#Pour ce qui est des fonctionnalités concernant le prélèvement d'un compte bancaire, merci de bien vouloir vous référer à la *documentation utilisateur*.#
 
 
 ===== D) Classes et packages impliqués :
-. enregistrerCompte(Compte compte) -> AccessCompteCourant.java
-. creerCompte() -> ComptesManagement.java
-. doAjouter() -> CompteEditorPaneController.java
-. displayDialog(Client client, Compte cpte, EditionMode mode) -> CompteEditorPaneController.java
+
+. Application/Control -> PrelevementManagement.java, PrelevementEditorPane.java
+. Application/View -> PrelevementEditorPaneController.java, PrelevementManagementController.java, prelevementeditorpane.fxml, prelemvementmanagement.fxml
+. Application/Model/data -> Prelevement.java
+. Application/Model/orm -> PrelevementAutomatique.java
+
 
 
 ===== E) Éléments essentiels :
 ====== E.1 - Fonctions :
+
+. enregistrerPrelevement(Prelevement pfPrelevement) -> AccessPrelevementAutomatique.java
+. creerPrelevement() -> PrelevementManagement.java
+. doAjouter() -> PrelevementEditorPaneController.java
+. displayDialog(CompteCourant compte, Prelevement pl, EditionMode mode) ->  PrelevementEditorPaneController.java
+. doNouveauPrelevement() -> PrelevementManagementController.java
+. displayDialog() -> PrelevementManagementController.java
+
+===== E2 - Classes :
+
+La classe Prelevement.java est importante, car c'est elle qui permet de modéliser des prélèvements sous forme d'objets qui sont manipulables dans le code.
+
+
+==== 1.11 Modifier les informations d'un prélèvement :
+
+Un guichetier peut modifier un prélèvement.
+
+
+===== A) Use case correspondant :
+image::images/modifierPrelevementUC.svg[]
+
+
+===== B) Partie du diagramme de classe correspondante :
+image::images/preleverDC.png[]
+
+[.text-justify]
+Cette partie du diagramme de classe est en mise-à-jour, certaines données sont modifiées dans la base de données. Quand nous modifions les informations dans l'application, cela les modifie également dans la base de données.
+
+
+===== C) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant la modification d'un prélèvement relatif à un compte bancaire, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== D) Classes et packages impliqués :
+
+. Application/Control -> PrelevementManagement.java, PrelevementEditorPane.java
+. Application/View -> PrelevementEditorPaneController.java, PrelevementManagementController.java, prelevementeditorpane.fxml, prelevementmanagement.fxml
+. Application/Model/data -> Prelevement.java
+. Application/Model/orm -> AccessPrelevementAutomatique.java
+
+
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
+. updatePrelevement(Prelevement prelevement) -> AccessPrelevementAutomatique.java
+. modifierPrelevement(CompteCourant compte, Prelevement prelevement) -> PrelevementManagement.java
+. doAjouter() -> PrelevementEditorPaneController.java
+. displayDialog(Client client, Compte cpte, EditionMode mode) -> PrelevementEditorPaneController.java
+. displayDialog() -> PrelevementManagementController.java
+. doModifierPrelevement() -> PrelevementManagementController.java
+
+
+
+====== E.2 - Classes :
+
+[.text-justify]
+La classe Prelevement.java est importante, car principalement utilisée pour modéliser des comptes bancaires sous forme d'objets manipulables dans le code.
+
+
+==== 1.12 Supprimer un prélèvement :
+
+Un guichetier peut supprimer un prélèvement.
+
+
+===== A) Use case correspondant :
+image::images/modifierPrelevementUC.svg[]
+
+
+===== B) Partie du diagramme de classe correspondante :
+image::images/preleverDC.png[]
+
+[.text-justify]
+Cette partie du diagramme de classe est en mise-à-jour, certaines données sont modifiées dans la base de données. Quand nous supprimons les informations dans l'application, cela les supprime également dans la base de données.
+
+
+===== C) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant la suppression d'un prélèvement relatif à un compte bancaire, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== D) Classes et packages impliqués :
+
+. Application/Control -> PrelevementManagement.java, PrelevementEditorPane.java
+. Application/View -> PrelevementEditorPaneController.java, PrelevementManagementController.java, prelevementeditorpane.fxml, prelevementmanagement.fxml
+. Application/Model/data -> Prelevement.java
+. Application/Model/orm -> AccessPrelevementAutomatique.java
+
+
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
+. deletePrelevement(int idPrelev) ->
+AccessPrelevementAutomatique.java
+. getNumIdPrelev() -> PrelevementManagementController
+. deletePrelevement() -> PrelevementManagement.java
+. doSupprimerPrelevement() -> PrelevementManagementController.java
+
+====== E.2 - Classes :
+
+[.text-justify]
+La classe Prelevement.java est importante, car principalement utilisée pour modéliser des comptes bancaires sous forme d'objets manipulables dans le code.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 {empty} +
