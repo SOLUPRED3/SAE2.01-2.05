@@ -60,10 +60,10 @@ span {
 }
 
 
-#info-soldes {
+#info-soldes, .info-comptes {
     display:block;
     width:100%;
-    margin-top:100px;
+    margin-top:58.5px;
 }
 
 #tablo-soldes, .tablo-comptes {
@@ -92,12 +92,6 @@ span {
 
 #info-soldes .solde, .info-comptes .montant {
     text-align:right;
-}
-
-.info-comptes {
-    display:block;
-    width:100%;
-    margin-top:50px;
 }
 
 .tablo-comptes .type {

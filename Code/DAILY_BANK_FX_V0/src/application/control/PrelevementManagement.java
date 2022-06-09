@@ -19,7 +19,6 @@ import model.data.Prelevement;
 import model.orm.AccessPrelevementAutomatique;
 import model.orm.exception.Order;
 import model.orm.exception.Table;
-import oracle.jdbc.proxy.annotation.Pre;
 
 import java.util.ArrayList;
 

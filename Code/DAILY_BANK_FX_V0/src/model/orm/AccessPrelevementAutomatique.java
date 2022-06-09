@@ -3,18 +3,17 @@ package model.orm;
 import model.data.CompteCourant;
 import model.data.Prelevement;
 import model.orm.exception.*;
-import oracle.jdbc.proxy.annotation.Pre;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class AccessPrelevementAutomatique {
-    public AccessPrelevementAutomatique() {
 
-    }
+public class AccessPrelevementAutomatique {
+
+    public AccessPrelevementAutomatique() {}
+
 
     /**
      * Enregistre un compte avec ses différentes valeurs en paramètres.
@@ -60,6 +59,7 @@ public class AccessPrelevementAutomatique {
             throw new DataAccessException(Table.CompteCourant, Order.SELECT, "Erreur accès", e);
         }
     }
+
 
     /**
      * Recherche d'un Prelevement à partir de son id (IdPrelevement).
@@ -111,6 +111,7 @@ public class AccessPrelevementAutomatique {
         }
     }
 
+
     /**
      * Mise à jour d'un CompteCourant.
      *
@@ -156,6 +157,7 @@ public class AccessPrelevementAutomatique {
         }
     }
 
+
     /**
      * Recherche des CompteCourant d'un client à partir de son id.
      *
@@ -196,6 +198,7 @@ public class AccessPrelevementAutomatique {
         return alResult;
     }
 
+
     /**
      * Clôture un compte dans la base de données.
      * @param pfIdPrelev : le numéro du compte à clôturer
@@ -233,6 +236,5 @@ public class AccessPrelevementAutomatique {
         }
 
     }
-
 
 }
