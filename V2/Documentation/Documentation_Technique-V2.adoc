@@ -1,5 +1,28 @@
+image:../../Logo/logo.png[]
+
 = Documentation Technique - DailyBankApp (V1)
+:toc: left
+:icons: font
+:toc-title: Sommaire
+:toclevels: 1
+
+ifdef::env-github[]
 :toc:
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+:graduation-icon: :mortar_board:
+:cogs-icon: :writing_hand:
+:beginner: :arrow_right:
+:advanced: :arrow_upper_right:
+:expert: :arrow_up:
+:dollar: :dollar:
+:git: link:{giturl}[git]
+:us-icon: :us:
+:fr-icon: :fr:
+endif::[]
 
 Thomas Falsimagne, Tilian Hure, Maxime Dourlent +
 *V2* - xx/xx/2022
