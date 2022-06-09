@@ -2,7 +2,7 @@
 :toc:
 
 Thomas Falsimagne, Tilian Hure, Maxime Dourlent +
-*V1* - xx/xx/2022
+*V2* - xx/xx/2022
 
 {empty} +
 
@@ -81,7 +81,7 @@ Ils peuvent accéder à toutes les mêmes fonctionnalités que les guichetiers, 
 
 image::images/DC0.svg[DC0]
 
-===== B) Diagramme de classe V2:
+===== B) Diagramme de classe V2 :
 
 image::images/DCV2.svg[DCV2]
 
@@ -730,10 +730,11 @@ image::images/creerPrelevementUC.svg[]
 
 
 ===== B) Partie du diagramme de classe correspondante :
-image::images/prelevementDC.png[]
+
+image::images/preleverDC.png[]
 
 [.text-justify]
-Les parties *CompteCourant* et *TypeOperation* du diagramme de classe sont en lecture, aucunes données n'est modifiée, ajoutée ou supprimée de la base de données. La partie *Operation* est en mise-à-jour, certaines données sont ajoutées à la base de données.
+La partie *Prélèvement* du diagramme de classe est en mise à jour, des données sont ajoutées à la base de données.
 
 
 ===== C) Aperçu des principales fonctionnalités :
@@ -742,22 +743,15 @@ Les parties *CompteCourant* et *TypeOperation* du diagramme de classe sont en le
 
 
 ===== D) Classes et packages impliqués :
-. Application/Control -> OperationManagement.java, OperationEditorPane.java
-. Application/View -> OperationEditorPaneController.java, OperationManagementController.java, operationeditorpane.fxml, operationmanagement.fxml
-. Application/Model -> CompteCourant.java, Operation.java, TypeOperation.java
-. Application/Model/orm -> AccessCompteCourant.java
+. enregistrerCompte(Compte compte) -> AccessCompteCourant.java
+. creerCompte() -> ComptesManagement.java
+. doAjouter() -> CompteEditorPaneController.java
+. displayDialog(Client client, Compte cpte, EditionMode mode) -> CompteEditorPaneController.java
 
 
 ===== E) Éléments essentiels :
 ====== E.1 - Fonctions :
-. doDebit() -> OperationManagementController.java
-. doAjouter() -> OperationEditorPaneController.java
-. enregistrerDebit() -> OperationManagement.java
-. enregistrerCredit() -> OperationManagement.java
-. insertDebit() -> AccessOperation.java
-. insertCredit() -> AccessOperation.java
-. getTypeOperation() -> AccessTypeOperation.java
-. updateInfoCompteClient() -> OperationManagementController.java
+
 
 {empty} +
 
