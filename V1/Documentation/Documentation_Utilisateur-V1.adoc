@@ -332,7 +332,7 @@ image:images/DocumentationUser/rEmp2.png[gérerEmployé2, 900, 500]
 [.text-justify]
 Il vous est possible de visualiser les informations d'un employé même inactif. Pour cela, sélectionnez dans la liste des employés de l'agence, celui à visualiser, puis cliquez sur le bouton "Voir employé".
 
-image:images/DocumentationUser/voirInfosEmpl.png[voirEmployé, 900, 500]
+image:images/voirInfosEmpl.png[voirEmployé, 900, 500]
 
 
 ==== 3.1.4 Modifier les informations d'un employé :
