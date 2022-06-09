@@ -1,10 +1,10 @@
-image:../../Logo/logo.png[]
-
 = Documentation Technique - DailyBankApp (V1)
-:toc: left
+:toc:
 :icons: font
 :toc-title: Sommaire
-:toclevels: 1
+:doctype: Book
+
+image:../../Logo/logo.png[]
 
 ifdef::env-github[]
 :toc:
