@@ -82,7 +82,7 @@ Après avoir renseigné vos informations de connexion, vous pourrez accéder aux
 image:images/DocumentationUser/mainPage.png[mainPage, 600, 500]
 
 [.text-justify]
-Il est possible de se connecter en tant que *Guichetier* ou *Chef d'agence*. Les deux utilisateurs ont la possibilité de gérer des clients mais seuls les chefs d'agence peuvent gérer des employés.
+Il est possible de se connecter en tant que *Guichetier* ou *Chef d'agence*. Les deux utilisateurs ont la possibilité de gérer des clients, mais seuls les chefs d'agence peuvent gérer des employés.
 
 [.text-justify]
 Si vous souhaitez vous déconnecter de l'application, il vous suffit d'appuyer sur le bouton "Déconnexion", présent sur la page principale.
@@ -201,11 +201,11 @@ image:images/DocumentationUser/creerCompte.png[créerCompte, 900, 500]
 [NOTE]
 ====
 [.text-justify]
-Il est évident que le solde de départ d'un compte ne peut êter négatif.
+Il est évident que le solde de départ d'un compte ne peut être négatif.
 ====
 
 
-===== 2.2.2 Modifer un compte bancaire :
+===== 2.2.2 Modifier un compte bancaire :
 [.text-justify]
 Il vous est possible de modifier le découvert autorisé d'un compte bancaire. Pour cela, cliquez sur le bouton "Modifier compte" dans le gestionnaire des comptes bancaires d'un client.
 
@@ -239,7 +239,7 @@ image:images/DocumentationUser/cl3.png[cloturerCompte3, 900, 500]
 [NOTE]
 ====
 [.text-justify]
-Pour clôturer un compte vos devez d'abord vous assurer que son solde est nul, sinon l'opération ne sera pas possible.
+Pour clôturer un compte, vous devez d'abord vous assurer que son solde est nul, sinon l'opération ne sera pas possible.
 ====
 
 
@@ -290,7 +290,7 @@ Si vous souhaitez débiter le compte bancaire d'un client, appuyez sur "Enregist
 
 image:images/DocumentationUser/db1.png[débiter, 900, 500]
 
-Sur la fenêtre qui s'ouvrira, il vous sera possible de choisir le type d'opération de débit en cliquant sur "Retrait Espèce" (opération par défaut) et en saisissant un montant. Pour confirmer le débit, appuyez sur "Effectuer débit".
+Sur la fenêtre qui s'ouvrira, il vous sera possible de choisir le type d'opération de débit en cliquant sur "Retrait Espèces" (opération par défaut) et en saisissant un montant. Pour confirmer le débit, appuyez sur "Effectuer débit".
 
 
 ==== 2.3.4 Effectuer un virement de compte à compte :
@@ -303,10 +303,52 @@ Sur la fenêtre qui s'ouvrira, il vous faudra choisir le compte de destination e
 
 {empty} +
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 === 3. Fonctionnalités des chefs d'agence :
 ==== 3.1 Gestion des employés :
 [.text-justify]
-Pour accéder aux fonctionnalités suivante vous devrez être connecté à l'application en tant que *chef d'agence*.
+Pour accéder aux fonctionnalités suivantes, vous devrez être connecté à l'application en tant que *chef d'agence*.
 
 [.text-justify]
 Si vous souhaitez gérer les employés de votre agence, il vous faut cliquer sur le bouton "Employés", que vous voyez ci-dessous :
@@ -378,6 +420,22 @@ image:images/inactifEmplCheck.png[employéInactif, 900, 500]
 
 [.text-justify]
 Confirmer en suite la modification pour rendre le client inactif de manière permanente.
+
+
+==== 3.1.6 Effectuer un débit exceptionnel :
+
+[.text-justify]
+Si vous souhaitez effectuer un débit exceptionnel, il vous faut tout d'abord ouvrir la fenêtre des opérations
+
+image:images/operationPane.png[]
+
+Une fois sur cette fenêtre, appuyez sur le bouton "Enregistrer débit". Si vous êtes bien connecté en tant que chef d'agence, vous aurez une interface différente de celle des guichetiers.
+
+image:images/debitExceptionnel.png[]
+[.text-justify]
+Ici, vous avez le choix, vous pouvez effectuer un débit classique en cliquant sur "Non", le découvert ne pourra donc pas être dépassé. Ou alors vous pouvez choisir de faire un débit exceptionnel en cliquant sur "Oui", une confirmation vous sera alors demandée.
+
+
 
 
 
