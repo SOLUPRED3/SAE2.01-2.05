@@ -1,13 +1,22 @@
 package application.view;
 
 
+import java.io.*;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import application.DailyBankState;
 import application.control.ComptesManagement;
 import application.control.PrelevementManagement;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.pdf.PdfWriter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -20,8 +29,19 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import model.data.AgenceBancaire;
 import model.data.Client;
 import model.data.CompteCourant;
+import model.data.Operation;
+import model.orm.AccessAgenceBancaire;
+import model.orm.AccessCompteCourant;
+import model.orm.AccessOperation;
+import model.orm.AccessTypeOperation;
+import model.orm.exception.DataAccessException;
+import model.orm.exception.DatabaseConnexionException;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.xhtmlrenderer.pdf.ITextRenderer;
 
 
 public class ComptesManagementController implements Initializable {
@@ -29,7 +49,7 @@ public class ComptesManagementController implements Initializable {
 	// Etat application
 	private DailyBankState dbs;
 	private ComptesManagement cm;
-	private PrelevementManagement pm ;
+	private PrelevementManagement pm;
 	// Fenêtre physique
 	private Stage primaryStage;
 
@@ -105,6 +125,8 @@ public class ComptesManagementController implements Initializable {
 	private Button btnAjoutCompte;
 	@FXML
 	private Button btnVoirPrelevement;
+	@FXML
+	private Button btnGenererPDF;
 
 	
 	@Override
@@ -133,6 +155,114 @@ public class ComptesManagementController implements Initializable {
 	@FXML
 	private void doCancel() {
 		this.primaryStage.close();
+	}
+
+
+	@FXML
+	private void doGenererPDF() {
+		try {
+			this.genererPDF();
+		} catch (Exception e) {
+			System.out.println("Erreur lors de la génération du fichier PDF !");
+			File fichierHTML = new File("src/todelete.html");
+			fichierHTML.delete();
+		}
+	}
+
+	private void genererPDF() throws Exception {
+		//Récupération du fichier HTML
+		File fichier = new File("src/rlvTemplate.html");
+		Document document = Jsoup.parse(fichier, "UTF-8");
+
+		//Initialisations des accesseurs
+		AccessAgenceBancaire aab = new AccessAgenceBancaire();
+		AccessOperation ao = new AccessOperation();
+		AccessCompteCourant acc = new AccessCompteCourant();
+
+		//Récupération de l'agence du client
+		AgenceBancaire agence = aab.getAgenceBancaire(this.clientDesComptes.idAg);
+
+		//Récupération des comptes du client
+		ArrayList<CompteCourant> alComptes = acc.getCompteCourants(this.clientDesComptes.idNumCli);
+
+		//MAJ des infos de l'agence sur le document HTML
+		document.getElementById("adr_agence").html(agence.nomAg + " " + agence.adressePostaleAg);
+
+		//MAJ des infos du client sur le document HTML
+		document.getElementById("nom_client").html(this.clientDesComptes.prenom + " " + this.clientDesComptes.nom.toUpperCase());
+		document.getElementById("adr_client").html(this.clientDesComptes.adressePostale);
+
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY");
+		String dateReleve = dateFormat.format(new Date()); //Date du relevé
+
+		//MAJ de la synthèse des comptes sur le document HTML
+		document.getElementsByClass("date").html(dateReleve);
+
+		String innerComptes = "";
+		for (CompteCourant compte: alComptes) {
+			innerComptes +=
+				"<tr>" +
+					"<td class=\"compte\">Compte de dépot n°<b>" + compte.idNumCompte + "</b></td>" +
+					"<td class=\"solde\">Solde : <b>" + compte.solde + "</b>€</td>" +
+				"</tr>";
+		}
+		document.select("#tablo-soldes > table").html(innerComptes);
+
+		//MAJ des infos des opérations sur le document HTML
+		innerComptes = "";
+		for (CompteCourant compte: alComptes) {
+
+			 innerComptes +=
+				"<section class='info-comptes'>" +
+					"<span style='font-size:25px; color:#5C76D6'><b>Compte de dépot n°" + compte.idNumCompte + "</b></span>" +
+					"<div class='tablo-comptes'>" +
+						"<span style='font-size:25px'><b>Détail des opérations précédentes au " + dateReleve + "</b></span>" +
+						"<span style='font-size:20px; margin-top:20px; text-align:right; margin-right:3px'>Solde : <b>" + compte.solde + "</b>€</span>" +
+						"<table>";
+
+			ArrayList<Operation> alOperation = ao.getOperations(compte.idNumCompte); //Récupération des opérations du compte
+			for (Operation operation: alOperation) {
+				String dateOp = dateFormat.format(operation.dateOp); //Date du relevé
+				innerComptes +=
+					"<tr>" +
+						"<td class=\"date\">Le " + dateOp + "</td>\n" +
+						"<td class=\"type\">" + operation.idTypeOp + "</td>\n" +
+						"<td class=\"montant\">Montant : <b>" + operation.montant + "</b>€</td>\n" +
+					"</tr>";
+			}
+
+			innerComptes += "</table></div></section>";
+		}
+		document.select("article").html(document.select("article").html() + innerComptes);
+
+		PrintWriter sortie = new PrintWriter("src/todelete.html");
+		String html = org.jsoup.parser.Parser.unescapeEntities(document.outerHtml(), true);
+		sortie.println(html);
+		sortie.close();
+
+		dateFormat = new SimpleDateFormat("dd-MM-YYYY");
+		dateReleve = dateFormat.format(new Date()); //Date du relevé
+		String nomPDF = "Relevé de compte de " +
+				this.clientDesComptes.prenom + " " + this.clientDesComptes.nom.toUpperCase() +
+				" du " + dateReleve;
+		document.title(nomPDF);
+		this.HTMLtoPDF("src/todelete.html", "src/"+nomPDF+".pdf");
+	}
+
+
+	public void HTMLtoPDF(String source, String dest) throws Exception {
+		File fichierHTML = new File(source);
+		String contenu = fichierHTML.toURI().toURL().toString();
+
+		OutputStream out = new FileOutputStream(dest);
+		ITextRenderer renderer = new ITextRenderer();
+
+		renderer.setDocument(contenu);
+		renderer.layout();
+		renderer.createPDF(out);
+
+		out.close();
+		fichierHTML.delete();
 	}
 	
 	

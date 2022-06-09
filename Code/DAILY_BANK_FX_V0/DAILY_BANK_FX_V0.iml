@@ -15,7 +15,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" scope="PROVIDED" name="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER" level="application" />
     <orderEntry type="module-library" exported="">
       <library name="ojdbc6.jar">
         <CLASSES>
@@ -25,5 +24,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="kantega.htmltopdf" level="project" />
+    <orderEntry type="library" name="cn.wanghaomiao.JsoupXpath" level="application" />
   </component>
 </module>
