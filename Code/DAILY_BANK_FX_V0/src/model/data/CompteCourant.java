@@ -33,7 +33,7 @@ public class CompteCourant {
 		if (this.estCloture == null) {
 			s = s + " (Cloture)";
 		} else {
-			s = s + (this.estCloture.equals("N") ? " (Ouvert)" : " (Cloture)");
+			s = s + (this.estCloture.equals("N") ? " (Ouvert)" : " (Clôturé)");
 		}
 		return s;
 	}

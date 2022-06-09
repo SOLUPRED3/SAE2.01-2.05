@@ -60,7 +60,7 @@
                            </GridPane.margin>
                         </Button>
                         <Button fx:id="btnVoirPrelevement" mnemonicParsing="false" onAction="#doVoirPrelevement" prefHeight="27.0" prefWidth="199.0" text="Voir prélèvements" GridPane.rowIndex="1" />
-                        <Button fx:id="btnGenererPDF" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doGenererPDF" text="Générer relevé de comptes" GridPane.rowIndex="5" />
+                        <Button fx:id="btnGenererPDF" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doGenererPDF" text="Exporter PDF" GridPane.rowIndex="5" />
                      </children>
                   </GridPane>
                </children>

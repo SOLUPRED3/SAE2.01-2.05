@@ -45,8 +45,6 @@ public class PrelevementManagementController implements Initializable {
     @FXML
     private Label lblInfosCompte;
     @FXML
-    private Button btnVoirHistorique;
-    @FXML
     private Button btnModifierPrelevement;
     @FXML
     private Button btnSupprPrelevement;
@@ -249,34 +247,14 @@ public class PrelevementManagementController implements Initializable {
      */
     private void validateComponentState() {
         int selectedIndice = this.lvPrelevement.getSelectionModel().getSelectedIndex();
-        if (!compteInactif()) {
-            if (selectedIndice >= 0) {
-                this.btnVoirHistorique.setDisable(false);
-                this.btnSupprPrelevement.setDisable(false);
-                this.btnModifierPrelevement.setDisable(false);
-                this.btnAjoutPrelevement.setDisable(false);
-                this.btnExecPrelevement.setDisable(false);
-            } else {
-                this.btnVoirHistorique.setDisable(true);
-                this.btnSupprPrelevement.setDisable(true);
-                this.btnModifierPrelevement.setDisable(true);
-                this.btnVoirHistorique.setDisable(true);
-                this.btnExecPrelevement.setDisable(true);
-            }
+        if (selectedIndice >= 0) {
+            this.btnSupprPrelevement.setDisable(false);
+            this.btnModifierPrelevement.setDisable(false);
+            this.btnExecPrelevement.setDisable(false);
         } else {
-            if (selectedIndice >= 0) {
-                this.btnVoirHistorique.setDisable(false);
-            } else {
-                this.btnVoirHistorique.setDisable(true);
-            }
             this.btnSupprPrelevement.setDisable(true);
-            this.btnExecPrelevement.setDisable(true);
             this.btnModifierPrelevement.setDisable(true);
-        }
-        if (this.compteInactif()) {
-            this.btnAjoutPrelevement.setDisable(true);
-        } else {
-            this.btnAjoutPrelevement.setDisable(false);
+            this.btnExecPrelevement.setDisable(true);
         }
     }
 

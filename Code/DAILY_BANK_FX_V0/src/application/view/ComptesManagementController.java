@@ -166,6 +166,8 @@ public class ComptesManagementController implements Initializable {
 	private void doGenererPDF() {
 		try {
 			this.genererPDF();
+			AlertUtilities.showAlert(this.primaryStage, "PDF exporté", null, "Le relevé de comptes a bien été généré en PDF.",
+					Alert.AlertType.INFORMATION);
 		} catch (Exception e) {
 			AlertUtilities.showAlert(this.primaryStage, "Erreur", null, "Erreur lors lors de la génération du PDF !",
 					Alert.AlertType.WARNING);
@@ -174,6 +176,11 @@ public class ComptesManagementController implements Initializable {
 		}
 	}
 
+
+	/**
+	 * Génère un relevé de compte en PDF
+	 * @throws Exception en cas d'erreur de conversion
+	 */
 	private void genererPDF() throws Exception {
 		//Récupération du fichier HTML
 		File fichier = new File("src/rlvTemplate.html");
@@ -205,10 +212,16 @@ public class ComptesManagementController implements Initializable {
 
 		String innerComptes = "";
 		for (CompteCourant compte: alComptes) {
+
+			String etatCompte = "";
+			if (compte.estCloture.equals("O")) { etatCompte = " (clôturé)"; }
+			String soldeColor = "black";
+			if (compte.solde < 0) { soldeColor = "red"; }
+
 			innerComptes +=
 				"<tr>" +
-					"<td class=\"compte\">Compte de dépot n°<b>" + compte.idNumCompte + "</b></td>" +
-					"<td class=\"solde\">Solde : <b>" + compte.solde + "</b>€</td>" +
+					"<td class=\"compte\">Compte de dépot n°<b>" + compte.idNumCompte + "</b>" + etatCompte + "</td>" +
+					"<td class=\"solde\" style='color:" + soldeColor + "'>Solde : <b>" + compte.solde + "</b>€</td>" +
 				"</tr>";
 		}
 		document.select("#tablo-soldes > table").html(innerComptes);
@@ -217,12 +230,17 @@ public class ComptesManagementController implements Initializable {
 		innerComptes = "";
 		for (CompteCourant compte: alComptes) {
 
+			String etatCompte = "";
+			if (compte.estCloture.equals("O")) { etatCompte = "<span style='font-weight:normal; display:inline; color:#ABABAB'> (clôturé)</span>"; }
+			String soldeColor = "black";
+			if (compte.solde < 0) { soldeColor = "red"; }
+
 			 innerComptes +=
 				"<section class='info-comptes'>" +
-					"<span style='font-size:25px; color:#5C76D6'><b>Compte de dépot n°" + compte.idNumCompte + "</b></span>" +
+					"<span style='font-size:25px; color:#5C76D6'><b>Compte de dépot n°" + compte.idNumCompte + "</b>" + etatCompte + "</span>" +
 					"<div class='tablo-comptes'>" +
 						"<span style='font-size:25px'><b>Détail des opérations précédentes au " + dateReleve + "</b></span>" +
-						"<span style='font-size:20px; margin-top:20px; text-align:right; margin-right:3px'>Solde : <b>" + compte.solde + "</b>€</span>" +
+						"<span style='font-size:20px; margin-top:20px; text-align:right; margin-right:3px; color:" + soldeColor + "'>Solde : <b>" + compte.solde + "</b>€</span>" +
 						"<table>";
 
 			ArrayList<Operation> alOperation = ao.getOperations(compte.idNumCompte); //Récupération des opérations du compte
@@ -256,8 +274,13 @@ public class ComptesManagementController implements Initializable {
 	}
 
 
+	/**
+	 * Convertie un fichier HTMl en fichier PDF.
+	 * @param source : chemin du fichier HTML source
+	 * @param nomFichier : nom du fichier PDF de destination
+	 * @throws Exception
+	 */
 	public void HTMLtoPDF(String source, String nomFichier) throws Exception {
-
 		FileDialog fd = new FileDialog(new JFrame(), "Enregistrer le relevé de comptes", FileDialog.SAVE);
 		fd.setFile(nomFichier + ".pdf");
 		fd.setVisible(true);
@@ -266,6 +289,7 @@ public class ComptesManagementController implements Initializable {
 		File fichierHTML = new File(source);
 		String contenu = fichierHTML.toURI().toURL().toString();
 
+		//Non-fonctionnel pour le moment...
 		String os = System.getProperty("os.name").toLowerCase();
 		 if (os.contains("osx")) {
 			System.setProperty("apple.awt.fileDialofForDirectories", "true");

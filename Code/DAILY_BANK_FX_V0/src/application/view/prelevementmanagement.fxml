@@ -31,33 +31,27 @@
                             </columnConstraints>
                             <rowConstraints>
                                 <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                                 <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <Button fx:id="btnVoirHistorique" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Voir historique">
+                                <Button fx:id="btnModifierPrelevement" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doModifierPrelevement" text="Modifier prélèvement" GridPane.rowIndex="2">
                                     <GridPane.margin>
                                         <Insets bottom="10.0" top="10.0" />
                                     </GridPane.margin>
                                 </Button>
-                                <Button fx:id="btnModifierPrelevement" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doModifierPrelevement" text="Modifier prélèvement" GridPane.rowIndex="3">
+                                <Button fx:id="btnSupprPrelevement" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doSupprimerPrelevement" text="Supprimer prélèvement" GridPane.rowIndex="3">
                                     <GridPane.margin>
                                         <Insets bottom="10.0" top="10.0" />
                                     </GridPane.margin>
                                 </Button>
-                                <Button fx:id="btnSupprPrelevement" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doSupprimerPrelevement" text="Supprimer prélèvement" GridPane.rowIndex="4">
+                                <Button mnemonicParsing="false" text="Button" visible="false">
                                     <GridPane.margin>
                                         <Insets bottom="10.0" top="10.0" />
                                     </GridPane.margin>
                                 </Button>
-                                <Button mnemonicParsing="false" text="Button" visible="false" GridPane.rowIndex="1">
-                                    <GridPane.margin>
-                                        <Insets bottom="10.0" top="10.0" />
-                                    </GridPane.margin>
-                                </Button>
-                        <Button fx:id="btnExecPrelevement" mnemonicParsing="false" onAction="#executePrelevement" prefHeight="27.0" prefWidth="207.0" text="Exécuter prélèvement" GridPane.rowIndex="1" />
+                        <Button fx:id="btnExecPrelevement" mnemonicParsing="false" onAction="#executePrelevement" prefHeight="27.0" prefWidth="207.0" text="Prélever" />
                             </children>
                         </GridPane>
                     </children>

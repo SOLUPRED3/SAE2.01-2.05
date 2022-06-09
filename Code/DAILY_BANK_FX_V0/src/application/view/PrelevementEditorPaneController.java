@@ -76,8 +76,6 @@ public class PrelevementEditorPaneController implements Initializable {
                 this.montantTXT.setDisable(false);
                 this.dateTXT.setDisable(false);
                 this.lblMessage.setText("Informations sur le prélèvement");
-                this.btnOk.setText("Effectuer prélèvement");
-                this.btnCancel.setText("Annuler prélèvement");
 
                 list = FXCollections.observableArrayList();
                     list.add(ConstantesIHM.TYPE_OP_8);
