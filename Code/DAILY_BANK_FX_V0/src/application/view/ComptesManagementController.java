@@ -266,6 +266,14 @@ public class ComptesManagementController implements Initializable {
 		File fichierHTML = new File(source);
 		String contenu = fichierHTML.toURI().toURL().toString();
 
+		String os = System.getProperty("os.name").toLowerCase();
+		 if (os.contains("osx")) {
+			System.setProperty("apple.awt.fileDialofForDirectories", "true");
+		}
+		else if (os.contains("nix") || os.contains("aix") || os.contains("nux")) {
+			System.setProperty("linux.awt.fileDialofForDirectories", "true");
+		}
+
 		OutputStream out = new FileOutputStream(fd.getFiles()[0].getAbsolutePath());
 		ITextRenderer renderer = new ITextRenderer();
 
