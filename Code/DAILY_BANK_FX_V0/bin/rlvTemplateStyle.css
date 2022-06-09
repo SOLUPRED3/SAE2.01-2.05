@@ -77,7 +77,7 @@ span {
     margin-top:20px;
 }
 
-#tablo-soldes tr {
+#tablo-soldes tr, .tablo-comptes {
     line-height:28px;
 }
 

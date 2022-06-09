@@ -24,7 +24,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="kantega.htmltopdf" level="project" />
-    <orderEntry type="library" name="cn.wanghaomiao.JsoupXpath" level="application" />
+    <orderEntry type="library" exported="" name="kantega.htmltopdf" level="project" />
+    <orderEntry type="library" name="cn.wanghaomiao.JsoupXpath" level="project" />
   </component>
 </module>

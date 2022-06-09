@@ -726,11 +726,11 @@ Un guichetier peut créer un prélèvement sur le compte bancaire d'un client.
 
 
 ===== A) Use case correspondant :
-image::images/preleverUC.svg[]
+image::images/creerPrelevementUC.svg[]
 
 
 ===== B) Partie du diagramme de classe correspondante :
-image::images/débitCompte.png[]
+image::images/prelevementDC.png[]
 
 [.text-justify]
 Les parties *CompteCourant* et *TypeOperation* du diagramme de classe sont en lecture, aucunes données n'est modifiée, ajoutée ou supprimée de la base de données. La partie *Operation* est en mise-à-jour, certaines données sont ajoutées à la base de données.
