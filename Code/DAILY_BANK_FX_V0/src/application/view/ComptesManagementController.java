@@ -1,6 +1,7 @@
 package application.view;
 
 
+import java.awt.*;
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -15,6 +16,7 @@ import java.util.ResourceBundle;
 import application.DailyBankState;
 import application.control.ComptesManagement;
 import application.control.PrelevementManagement;
+import application.tools.AlertUtilities;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.PdfWriter;
 import javafx.collections.FXCollections;
@@ -42,6 +44,8 @@ import model.orm.exception.DatabaseConnexionException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.xhtmlrenderer.pdf.ITextRenderer;
+
+import javax.swing.*;
 
 
 public class ComptesManagementController implements Initializable {
@@ -163,7 +167,8 @@ public class ComptesManagementController implements Initializable {
 		try {
 			this.genererPDF();
 		} catch (Exception e) {
-			System.out.println("Erreur lors de la génération du fichier PDF !");
+			AlertUtilities.showAlert(this.primaryStage, "Erreur", null, "Erreur lors lors de la génération du PDF !",
+					Alert.AlertType.WARNING);
 			File fichierHTML = new File("src/todelete.html");
 			fichierHTML.delete();
 		}
@@ -245,16 +250,23 @@ public class ComptesManagementController implements Initializable {
 		String nomPDF = "Relevé de compte de " +
 				this.clientDesComptes.prenom + " " + this.clientDesComptes.nom.toUpperCase() +
 				" du " + dateReleve;
+		System.out.println("NOM : " + nomPDF);
 		document.title(nomPDF);
-		this.HTMLtoPDF("src/todelete.html", "src/"+nomPDF+".pdf");
+		this.HTMLtoPDF("src/todelete.html", nomPDF);
 	}
 
 
-	public void HTMLtoPDF(String source, String dest) throws Exception {
+	public void HTMLtoPDF(String source, String nomFichier) throws Exception {
+
+		FileDialog fd = new FileDialog(new JFrame(), "Enregistrer le relevé de comptes", FileDialog.SAVE);
+		fd.setFile(nomFichier + ".pdf");
+		fd.setVisible(true);
+		File[] f = fd.getFiles();
+
 		File fichierHTML = new File(source);
 		String contenu = fichierHTML.toURI().toURL().toString();
 
-		OutputStream out = new FileOutputStream(dest);
+		OutputStream out = new FileOutputStream(fd.getFiles()[0].getAbsolutePath());
 		ITextRenderer renderer = new ITextRenderer();
 
 		renderer.setDocument(contenu);
