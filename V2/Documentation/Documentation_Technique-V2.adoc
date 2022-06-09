@@ -378,7 +378,7 @@ Cette partie du diagramme de classe est en lecture, aucunes données n'est ajout
 . doVoirClient() -> ClientsManagementController.java
 
 
-====== E-2) Classes :
+====== E.2 - Classes :
 [.text-justify]
 La classe Client.java est importante, car principalement utilisée pour modéliser des clients sous forme d'objets manipulables dans le code.
 
@@ -720,6 +720,44 @@ La classe Operation.java est importante, car principalement utilisée pour modé
 Un virement doit être d'un motant strictement positif (>0) et ne doit pas enfreindre le découvert autorisé pour le compte concerné. Il ne peut être effectués qu'entre des comptes non clôturés d'un même client.
 ====
 
+
+==== 1.10 Créer un prélèvement :
+Un guichetier peut créer un prélèvement sur le compte bancaire d'un client.
+
+
+===== A) Use case correspondant :
+image::images/preleverUC.svg[]
+
+
+===== B) Partie du diagramme de classe correspondante :
+image::images/débitCompte.png[]
+
+[.text-justify]
+Les parties *CompteCourant* et *TypeOperation* du diagramme de classe sont en lecture, aucunes données n'est modifiée, ajoutée ou supprimée de la base de données. La partie *Operation* est en mise-à-jour, certaines données sont ajoutées à la base de données.
+
+
+===== C) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant l'enregistrement d'un débit sur un compte bancaire, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== D) Classes et packages impliqués :
+. Application/Control -> OperationManagement.java, OperationEditorPane.java
+. Application/View -> OperationEditorPaneController.java, OperationManagementController.java, operationeditorpane.fxml, operationmanagement.fxml
+. Application/Model -> CompteCourant.java, Operation.java, TypeOperation.java
+. Application/Model/orm -> AccessCompteCourant.java
+
+
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
+. doDebit() -> OperationManagementController.java
+. doAjouter() -> OperationEditorPaneController.java
+. enregistrerDebit() -> OperationManagement.java
+. enregistrerCredit() -> OperationManagement.java
+. insertDebit() -> AccessOperation.java
+. insertCredit() -> AccessOperation.java
+. getTypeOperation() -> AccessTypeOperation.java
+. updateInfoCompteClient() -> OperationManagementController.java
 
 {empty} +
 
