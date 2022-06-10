@@ -78,8 +78,8 @@ Dans sa colonne il doit remplir la ligne correspondant à une partie qu'il a dé
 |         | Gantt V3 à jour   |https://github.com/IUT-Blagnac/sae2022-bank-4a01/blob/main/V3/Gantt/Gantt-V3.pdf[Gantt-V3 (final)]| 
 |         | `jar` projet |https://github.com/IUT-Blagnac/sae2022-bank-4a01/blob/main/V1/Code/DailyBankApp.jar[.jar-V1]|Pas trouvé
 | 05/06   | Gantt V3 à Jour  |    |  
-|         | Doc. Util. V2 |https://github.com/IUT-Blagnac/sae2022-bank-4a01/blob/ff359fdbbf2cc1c3a244eb33a318707c9e5422cc/V2/Documentation/Documentation_Technique-V2.adoc[Doc. technique-V1]         |           
-|         | Doc. Tec. V2 |    |     
+|         | Doc. Util. V2 |https://github.com/IUT-Blagnac/sae2022-bank-4a01/blob/ff359fdbbf2cc1c3a244eb33a318707c9e5422cc/V2/Documentation/Documentation_Technique-V2.adoc[Doc. technique-V2]         |           
+|         | Doc. Tec. V2 |    https://github.com/IUT-Blagnac/sae2022-bank-4a01/blob/add9828427b53f3dab8e801125a78f3b36b053e1/V2/Documentation/Documentation_Utilisateur-V2.adoc[Doc. utilisateur-V2]|     
 |         | Code V2     |                       |
 |         | Recette V2  |   |
 |         | `jar` projet |     |
