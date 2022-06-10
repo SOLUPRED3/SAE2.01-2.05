@@ -25,6 +25,7 @@ La mission de notre équipe consiste à développer une application existante «
 |1    |Chef d'Agence    |CRUD employé  |U| | |F
 |1    |Chef d'Agence    |CRUD employé  |D| | |F
 |1    |Guichetier     | Compte | Créer| |F |
+|1    |Guichetier     | Compte | Modifer| |F |
 |1    |Guichetier     | Compte | Créditer/Débiter|F | |
 |1    |Guichetier     | Compte | Effectuer un virement| | |F
 |1    |Guichetier     | Compte | Clôturer| |F |
