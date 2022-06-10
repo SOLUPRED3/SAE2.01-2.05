@@ -188,5 +188,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="cn.wanghaomiao.JsoupXpath" level="project" />
+    <orderEntry type="library" name="kantega.htmltopdf" level="project" />
   </component>
 </module>
