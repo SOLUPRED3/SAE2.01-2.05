@@ -3,7 +3,7 @@
 :toc-title: Sommaire
 
 :Entreprise: DailyBank
-:Equipe: Dourlent MAXIME, Thomas FALSIMAGNE, Tilian HURÉ,
+:Equipe: Dourlent MAXIME, Thomas FALSIMAGNE, Tilian HURÉ
 
 Créé par : *_{equipe}_*
 Créé pour : *_{entreprise}_* +
