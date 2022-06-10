@@ -1,4 +1,4 @@
-Cahier de recette <|°_°|>
+Cahier de recette - V1
 =========================
 :toc:
 :toc-title: Sommaire
