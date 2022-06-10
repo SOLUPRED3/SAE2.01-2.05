@@ -169,8 +169,8 @@ public class ComptesManagementController implements Initializable {
 			AlertUtilities.showAlert(this.primaryStage, "PDF exporté", null, "Le relevé de comptes a bien été généré en PDF.",
 					Alert.AlertType.INFORMATION);
 		} catch (Exception e) {
-			AlertUtilities.showAlert(this.primaryStage, "Erreur", null, "Erreur lors lors de la génération du PDF !",
-					Alert.AlertType.WARNING);
+			AlertUtilities.showAlert(this.primaryStage, "Erreur", null, "Erreur lors de la génération du PDF !",
+					Alert.AlertType.ERROR);
 			File fichierHTML = new File("src/todelete.html");
 			fichierHTML.delete();
 		}
@@ -240,7 +240,7 @@ public class ComptesManagementController implements Initializable {
 					"<span style='font-size:25px; color:#5C76D6'><b>Compte de dépot n°" + compte.idNumCompte + "</b>" + etatCompte + "</span>" +
 					"<div class='tablo-comptes'>" +
 						"<span style='font-size:25px'><b>Détail des opérations précédentes au " + dateReleve + "</b></span>" +
-						"<span style='font-size:20px; margin-top:20px; text-align:right; margin-right:3px; color:" + soldeColor + "'>Solde : <b>" + compte.solde + "</b>€</span>" +
+						"<span style='font-size:20px; margin-top:20px; text-align:left; margin-left:2px; color:" + soldeColor + "'>Solde : <b>" + compte.solde + "</b>€</span>" +
 						"<table>";
 
 			ArrayList<Operation> alOperation = ao.getOperations(compte.idNumCompte); //Récupération des opérations du compte
@@ -289,13 +289,14 @@ public class ComptesManagementController implements Initializable {
 		File fichierHTML = new File(source);
 		String contenu = fichierHTML.toURI().toURL().toString();
 
-		//Non-fonctionnel pour le moment...
+		//Non-fonctionnel pour les OS autres que Windows...
 		String os = System.getProperty("os.name").toLowerCase();
-		 if (os.contains("osx")) {
+		 if (os.contains("osx") || os.contains("nix") || os.contains("aix") || os.contains("nux")) {
 			System.setProperty("apple.awt.fileDialofForDirectories", "true");
-		}
-		else if (os.contains("nix") || os.contains("aix") || os.contains("nux")) {
-			System.setProperty("linux.awt.fileDialofForDirectories", "true");
+			 AlertUtilities.showAlert(this.primaryStage, "Attention", null,
+					 "Cette fonctionnalité n'est pas encore disponible pour le système d'exploitaiton utilisé.",
+					 Alert.AlertType.WARNING);
+			 throw new Exception("OS Incompatible !");
 		}
 
 		OutputStream out = new FileOutputStream(fd.getFiles()[0].getAbsolutePath());

@@ -8,6 +8,8 @@
 Créé par : *_{equipe}_* +
 Créé pour : *_{entreprise}_*
 
+image:../../Logo/logo.png[logo, 200]
+
 
 
 == I. Introduction
@@ -42,7 +44,7 @@ Ordinateur sous Windows ou OS équivalent.
 
 |====
 
->|Cas de test 3+|Test-01-01
+>|Cas de test 3+|Test-01-01-01
 >|Titre 3+|Création d'un nouveau client
 >|Objectif 3+| Vérifier qu'il est possible de créer un nouveau client
 
@@ -173,6 +175,25 @@ Ordinateur sous Windows ou OS équivalent.
 4+|
 
 4+|Commentaire : Un compte ne peut être clôturé que si son solde est nul.|
+
+|====
+
+
+|====
+
+>|Cas de test 3+|Test-01-02-05
+>|Titre 3+|Générer un relevé de comptes en PDF
+>|Objectif 3+| Vérifier qu'il est possible générer un PDF d'un relevé de comptes
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|Cliquer sur le bouton "Exporter PDF" ^|Ouverture d'un gestionnaire de fichiers ^|OK
+^|2 ^|Choisir l'emplacement du fichier et cliquer sur le bouton "Enregistrer" dans le gestionnaire de fichiers ^|Enregistre le relevé de compte en PDF à l'emplacement sélectionné ^|OK
+
+4+|
+
+4+|Commentaire : C'est fonctionnalité n'est pas disponible pour les systèmes d'exploitaiton autres que Windows.|
 
 |====
 

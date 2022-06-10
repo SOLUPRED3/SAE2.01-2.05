@@ -4,7 +4,7 @@
 :toc-title: Sommaire
 :doctype: Book
 
-image:../../Logo/logo.png[]
+image:../../Logo/logo.png[logo, 200]
 
 ifdef::env-github[]
 :toc:
@@ -42,9 +42,9 @@ Thomas Falsimagne, Tilian Hure, Maxime Dourlent +
 |1    |Guichetier     | Compte | Effectuer un virement| | |F
 |1    |Guichetier     | Compte | Clôturer| |F |
 |2    |Chef d'Agence     | Compte | Débit exceptionnel||F|
-|2    |Chef d'Agence     | Emprunt | Simuler emprunt|| |
-|2    |Chef d'Agence     | Emprunt | Simuler assurance|| |
-|2    |Guichetier     | Compte | Relevé PDF|| |
+|2    |Chef d'Agence     | Emprunt | Simuler emprunt||D|
+|2    |Chef d'Agence     | Emprunt | Simuler assurance||D|
+|2    |Guichetier     | Compte | Relevé PDF||F|
 |2    |Guichetier     | CRUD Prélèvement | C||F |
 |2    |Guichetier     | CRUD Prélèvement | R||F|
 |2    |Guichetier     | CRUD Prélèvement | U||F |
@@ -66,16 +66,7 @@ L'application DailyBank est destinée à être utilisée par certains employés 
 [.text-justify]
 L'application peut être utilisée par deux types d'utilisateurs : les guichetiers et les chefs d'agence.
 
-==== A) Use Case V0 :
-
-image::images/uc0.svg[UC0]
-
-==== B) Use Case V1 :
-
-image::images/uc1.png[UC1]
-
-==== C) Use Case V2 :
-
+==== A) Use-Case :
 image::images/uc2.svg[UC2]
 
 
@@ -100,12 +91,7 @@ Ils peuvent accéder à toutes les mêmes fonctionnalités que les guichetiers, 
 
 === 2. Diagramme de classe :
 
-===== A) Diagramme de classe V0 - V1 :
-
-image::images/DC0.svg[DC0]
-
-===== B) Diagramme de classe V2 :
-
+===== Diagramme de Classe :
 image::images/DCV2.svg[DCV2]
 
 [.text-justify]
@@ -159,15 +145,22 @@ Ces postes de travails sont les ordinateurs où travaillent les employés et les
 === 2. Ressources externes :
 ==== 2.1. Librairies utilisées :
 [.text-justify]
-Au niveau des librairies, le code de l'application repose sur une seule librairie qui permet de lier l'application à la base de données. Cette librairie est : *objdbc6.jar*
+L'application repose sur plusieurs librairies externes nécessaires à son fonctionnement.
+
+*Librairies nécessaires :*
+
+* ``JavaFX`` (version 1.8) : permet le développement d'interfaces homme-machine
+* ``objdbc6.jar`` : permet la connexion avec une base de données Oracle
+* ``cn.wanghaomiao.JsoupXpath`` (version 0.1.1) : permet la manipulation de fichiers HTML
+* ``kantega.htmltopdf`` (version 1.1) : permet la conversion de fichiers HTML en fichiers PDF
 
 
 ==== 2.2 Exportation de l'application :
 [.text-justify]
-L'application est disponible à l'exécution et sans prérequis autre qu'une JRE, sous forme de fichier .jar. Elle peut être régénérée à partir du code source et d'un IDE Java, mais ce dernier devra disposer d'une JRE Java versionnée en 1.8 ainsi que de la librairie JavaFX.
+L'application est disponible à l'exécution et sans prérequis autre qu'une JRE, sous forme de fichier .jar. Elle peut être régénérée à partir du code source et d'un IDE Java, mais ce dernier devra disposer d'une JRE Java versionnée en 1.8 ainsi que toutes les librairies nécessaires.
 
 [.text-justify]
-Pour exécuter l'application en .jar, il faut s'assurer que les postes de travail des employés possèdent également une JRE en 1.8.
+Pour exécuter l'application en .jar, il faut s'assurer que les postes de travail des employés possèdent une JRE en 1.8.
 
 
 {empty} +
@@ -260,21 +253,32 @@ La charge de travail concernant le développement de l'application et de ses fon
 
 *Fonctionnalités développées :*
 
-* Créer un compte
-* Modifier un compte
-* Clôturer un compte
-* Gérer des prélèvements (Ajout, consultation, modification et suppression)
-* Effectuer un débit exceptionnel
+* Gestion des comptes
+** Créer un compte
+** Modifier un compte
+** Clôturer un compte
+* Gestion des prélèvements
+** Ajouter un prélèvement
+** Consulter un prélèvement
+** Modifier un prélèvement
+** Supprimer un prélèvement
+* Effectuer un débit exceptionnel (gestion des opérations)
 
 
 === 3. Tilian HURÉ :
 
 *Fonctionnalités développées :*
 
-* Faire un virement de compte à compte
-* Gérer des employés (modification, ajout, visualisation et suppression)
-* Visualiser un client
-* Rendre inactif un client
+* Faire un virement de compte à compte (gestion des opérations)
+* Gestion des employés
+** Créer un employé
+** Modifier un employé
+** Visualiser un employé
+** Rendre inactif un employé
+* Gestion des clients
+** Visualiser un client
+** Rendre inactif un client
+* Générer un relevé de comptes en PDF
 
 
 
@@ -591,6 +595,54 @@ Les comptes bancaires ne peuvent être clôturés que si leur solde est nul. Les
 
 {empty} +
 
+==== 1.7 Générer un relevé de comptes en PDF :
+Un guichetier peut générer un relevé de comptes en PDF pour un client.
+
+
+===== A) Use case correspondant :
+image::images/genererPDFUC.svg[]
+
+
+===== B) Partie du diagramme de classe correspondante :
+image::images/débitCompte.png[]
+
+[.text-justify]
+Cette partie du diagramme de classe est en lecture, aucune données n'est ajoutée, modifiée ou supprimée dans la base de données.
+
+
+===== C) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant l'ajout ou la modification des informations d'un client, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== D) Classes et packages impliqués :
+. Application/Control -> ComptesManagement.java
+. Application/View -> ComptesManagementController.java, comptesmanagement.fxml
+. Application/Model/data -> CompteCourant.java, Operation.java
+. Application/Model/orm -> AccessCompteCourant.java, AccessOperation.java
+
+
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
+. doGenererPDF() -> ComptesManagementController.java
+. genererPDF() -> ComptesManagementController.java
+. HTMLtoPDF() -> ComptesManagementController.java
+
+
+====== E.2 - Classes :
+[.text-justify]
+La CompteCourant.java est importante, car principalement utilisée pour modéliser des comptes bancaires sous forme d'objets manipulables dans le code, de même pour la classe Operation.java pour modéliser des opérations.
+
+
+[WARNING]
+====
+[.text-justify]
+Cette fonctionnalité n'est pas disponible pour les systèmes d'exploitation autres que Windows.
+====
+
+
+{empty} +
+
 ==== 1.7 Débiter un compte :
 Un guichetier peut débiter un compte bancaire.
 
@@ -743,8 +795,11 @@ La classe Operation.java est importante, car principalement utilisée pour modé
 Un virement doit être d'un motant strictement positif (>0) et ne doit pas enfreindre le découvert autorisé pour le compte concerné. Il ne peut être effectués qu'entre des comptes non clôturés d'un même client.
 ====
 
+
 {empty} +
+
 ==== 1.10 Créer un prélèvement :
+[.text-justify]
 Un guichetier peut créer un prélèvement sur le compte bancaire d'un client.
 
 
@@ -753,7 +808,6 @@ image::images/creerPrelevementUC.svg[]
 
 
 ===== B) Partie du diagramme de classe correspondante :
-
 image::images/preleverDC.png[]
 
 [.text-justify]
@@ -766,17 +820,14 @@ La partie *Prélèvement* du diagramme de classe est en mise à jour, des donné
 
 
 ===== D) Classes et packages impliqués :
-
 . Application/Control -> PrelevementManagement.java, PrelevementEditorPane.java
 . Application/View -> PrelevementEditorPaneController.java, PrelevementManagementController.java, prelevementeditorpane.fxml, prelemvementmanagement.fxml
 . Application/Model/data -> Prelevement.java
 . Application/Model/orm -> PrelevementAutomatique.java
 
 
-
 ===== E) Éléments essentiels :
 ====== E.1 - Fonctions :
-
 . enregistrerPrelevement(Prelevement pfPrelevement) -> AccessPrelevementAutomatique.java
 . creerPrelevement() -> PrelevementManagement.java
 . doAjouter() -> PrelevementEditorPaneController.java
@@ -784,14 +835,15 @@ La partie *Prélèvement* du diagramme de classe est en mise à jour, des donné
 . doNouveauPrelevement() -> PrelevementManagementController.java
 . displayDialog() -> PrelevementManagementController.java
 
-===== E2 - Classes :
 
+===== E2 - Classes :
 La classe Prelevement.java est importante, car c'est elle qui permet de modéliser des prélèvements sous forme d'objets qui sont manipulables dans le code.
+
 
 {empty} +
 
 ==== 1.11 Modifier les informations d'un prélèvement :
-
+[.text-justify]
 Un guichetier peut modifier un prélèvement.
 
 
@@ -829,16 +881,16 @@ Cette partie du diagramme de classe est en mise-à-jour, certaines données sont
 . doModifierPrelevement() -> PrelevementManagementController.java
 
 
-
 ====== E.2 - Classes :
 
 [.text-justify]
 La classe Prelevement.java est importante, car principalement utilisée pour modéliser des comptes bancaires sous forme d'objets manipulables dans le code.
 
+
 {empty} +
 
 ==== 1.12 Supprimer un prélèvement :
-
+[.text-justify]
 Un guichetier peut supprimer un prélèvement.
 
 
@@ -875,7 +927,6 @@ AccessPrelevementAutomatique.java
 . doSupprimerPrelevement() -> PrelevementManagementController.java
 
 ====== E.2 - Classes :
-
 [.text-justify]
 La classe Prelevement.java est importante, car principalement utilisée pour modéliser des comptes bancaires sous forme d'objets manipulables dans le code.
 
