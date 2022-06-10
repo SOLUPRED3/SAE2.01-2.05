@@ -276,29 +276,115 @@ Ici, le compte est ouvert, il est donc possible d'y réaliser des opérations.
 
 
 ===== 2.3.2 Créditer un compte client :
+[.text-justify]
 Si vous souhaitez créditer le compte bancaire d'un client, appuyez sur "Enregistrer crédit" dans la fenêtre de gestion des opérations d'un compte bancaire d'un client.
 
 image:images/DocumentationUser/cr1.png[créditer, 900, 500]
-
+[.text-justify]
 Sur la fenêtre qui s'ouvrira, il vous sera possible de choisir le type d'opération de crédit en cliquant sur "Dépôt Espèces" (opération par défaut) et en saisissant un montant. Pour confirmer le crédit, appuyez sur "Effectuer crédit".
 
 image:images/DocumentationUser/cr2.png[créditer2, 900, 500]
 
 
 ===== 2.3.3 Débiter un compte client :
+[.text-justify]
 Si vous souhaitez débiter le compte bancaire d'un client, appuyez sur "Enregistrer débit" dans la fenêtre de gestion des opérations d'un compte bancaire d'un client.
 
 image:images/DocumentationUser/db1.png[débiter, 900, 500]
-
+[.text-justify]
 Sur la fenêtre qui s'ouvrira, il vous sera possible de choisir le type d'opération de débit en cliquant sur "Retrait Espèces" (opération par défaut) et en saisissant un montant. Pour confirmer le débit, appuyez sur "Effectuer débit".
 
 
 ==== 2.3.4 Effectuer un virement de compte à compte :
+[.text-justify]
 Si vous souhaitez réaliser un virement de compte à compte appuyez sur "Enregistrer virement" dans la fenêtre de gestion des opérations d'un compte bancaire d'un client.
 
 image:images/DocumentationUser/virementCompte.png[virement, 900, 500]
-
+[.text-justify]
 Sur la fenêtre qui s'ouvrira, il vous faudra choisir le compte de destination et à saisir un montant. Pour confirmer le virement, appuyez sur "Effectuer virement".
+
+{empty} +
+
+==== 2.4 Gestion des prélèvements :
+
+===== 2.4.1 Consulter un prélèvement :
+
+[.text-justify]
+Si vous souhaitez consulter un prélèvement, il vous faudra vous rendre sur la page de gestion des prélèvements. Tout d'abord, il vous faudra être sur la page de gestion des comptes.
+
+image:images/compteCourantPane.png[]
+
+Ici, il vous faudra sélectionner un compte.
+
+image:images/compteCourantPaneSelect.png[]
+
+Ensuite, cliquez sur le bouton "Voir prélèvements". Vous verrez s'afficher cette fenêtre.
+
+image:images/prelevementPane.png[]
+
+
+===== 2.4.2 Créer un prélèvement :
+
+
+[.text-justify]
+Si vous souhaitez créer un prélèvement, il vous faudra au préalable vous rendre sur la page de gestion des prélèvements.
+
+image:images/prelevementPane.png[]
+
+[.text-justify]
+Ici, cliquez sur "Nouveau prélèvement", vous verrez cette fenêtre s'afficher, vous permettant de saisir les différentes informations.
+
+image:images/creerPrelevement.png[]
+
+Une fois les informations, complétées, cliquez sur "Valider".
+
+image:images/creationDonePrelev.png[]
+
+===== 2.4.3 Modifier un prélèvement :
+
+[.text-justify]
+Si vous souhaitez modifier un prélèvement, il vous faudra au préalable vous rendre sur la page de gestion des prélèvements.
+
+image:images/modifierPrelevPane.png[]
+[.text-justify]
+Après avoir cliqué sur un prélèvement existant, vous débloquerez la possibilité de cliquer sur "Modifier prélèvement".
+
+image:images/modifierPrelevement.png[]
+
+[.text-justify]
+Une fois les informations saisies, cliquez sur "Modifier".
+
+
+===== 2.4.4 Supprimer un prélèvement :
+[.text-justify]
+Si vous souhaitez supprimer un prélèvement, il vous faudra au préalable vous rendre sur la page de gestion des prélèvements.
+
+image:images/modifierPrelevPane.png[]
+[.text-justify]
+Après avoir cliqué sur un prélèvement existant, vous débloquerez la possibilité de cliquer sur "Supprimer prélèvement".
+
+image:images/supprimerPrelevement.png[]
+
+Ici, cliquez sur "No" ou "Yes" selon votre choix.
+
+===== 2.4.5 Exécuter un prélèvement :
+
+[.text-justify]
+Si vous souhaitez exécuter un prélèvement, il vous faudra au préalable vous rendre sur la page de gestion des prélèvements.
+
+image:images/modifierPrelevPane.png[]
+[.text-justify]
+Après avoir cliqué sur un prélèvement existant, vous débloquerez la possibilité de cliquer sur "Prélever".
+
+image:images/preleverPaneAfter.png[]
+
+Ce faisant, les boutons sur la droite se désactiveront.
+
+[NOTE]
+====
+[.text-justify]
+Notez qu'il est possible de cliquer à nouveau sur le prélèvement et d'effectuer une nouvelle fois le prélèvement. Ce sera donc à l'utilisateur de faire attention à ne pas exécuter deux fois le même prélèvement. Il ne vous sera toutefois pas possible de dépasser le découvert autorisé.
+====
 
 
 {empty} +
