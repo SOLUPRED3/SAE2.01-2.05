@@ -1,8 +1,12 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+/misc.xml
+/modules.xml
+/vcs.xml
 # Editor-based HTTP Client requests
 /httpRequests/
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+../DAILY_BANK_FX_V0.iml
