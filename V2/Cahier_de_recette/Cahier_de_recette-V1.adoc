@@ -1,7 +1,7 @@
-Cahier de recette - V1
-=========================
+= Cahier de recette - V1
 :toc:
 :toc-title: Sommaire
+
 
 :Entreprise: DailyBank
 :Equipe: Dourlent Maxime, Tilian Huré, Thomas Falsimagne
@@ -9,29 +9,30 @@ Cahier de recette - V1
 Créée pour : *_{entreprise}_* +
 Créée par : *_{equipe}_*
 
+image:../../Logo/logo.png[]
 
 == 1 - Introduction
 
-=== Objet
-
 [.text-justify]
-Ce document a été produit dans le cadre d'un projet d'élaboration d'une application bancaire pour {entreprise}. Ce document spécifie l'ensemble des cas testés pour l'application. Ces cas de test sont présentés à partir du chapitre 3.
+Ce document a été produit dans le cadre de la création de l'application bancaire de {entreprise}. Dans ce document sont spécifiés l'ensemble des cas testés pour l'application. Ces différents cas sont présentés à partir du chapitre 3.
 
-== 2 - Pre-Requis
+== 2 - Prérequis
 [.text-justify]
-L'exécution des tests spécifiés au chapitre suivant requiert :
+Pour pouvoir exécuter ces tests, il vous faudra :
 
 * Une base de données installée (Référence document technique).
 * L'environnement de test tel que spécifié dans la partie "Environnement de test" de ce document.
-* Les fiches de tests. *À vérifier*
+* Les fiches de tests.
 
 === Elément à tester
 
-Les éléments testés concernent les users cases spécifiées dans la documentation technique.
+Les éléments testés concernent les cas d'utilisation spécifiés dans la documentation technique.
 
 === Environnement de test
 
-Ordinateur sous Windows ou OS équivalent.
+Ordinateur sous Windows, Linux ou MacOS.
+
+{empty} +
 
 == 3 - Cas de test
 
