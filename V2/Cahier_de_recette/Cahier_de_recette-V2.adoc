@@ -1,0 +1,369 @@
+= Cahier De Recette
+:toc:
+:toc-title: Sommaire
+
+:Entreprise: DailyBank
+:Equipe: Dourlent MAXIME, Thomas FALSIMAGNE, Tilian HURÉ,
+
+Créé par : *_{equipe}_*
+Créé pour : *_{entreprise}_* +
+
+
+
+== I. Introduction
+=== 1. Objet :
+[.text-justify]
+Ce document a été produit dans le cadre d'un projet d'élaboration d'une application bancaire pour {entreprise}. Ce document spécifie l'ensemble des cas testés pour l'application. Ces cas de test sont présentés à partir du chapitre 3.
+
+
+== II. Pre-Requis :
+[.text-justify]
+L'exécution des tests spécifiés au chapitre suivant requiert :
+
+* Une base de données installée (Référence document technique).
+* L'environnement de test tel que spécifié dans la partie "Environnement de test" de ce document.
+* Les fiches de tests. *À vérifier*
+
+
+=== 1. Éléments à tester :
+[.text-justify]
+Les éléments testés concernent les Use-Cases spécifiées dans la *documentation technique*.
+
+
+=== 2. Environnement de test :
+[.text-justify]
+Ordinateur sous Windows ou OS équivalent.
+
+
+
+== III. Cas de test :
+=== 1.Fonctionnalités des guichetiers :
+==== 1.1 Gestion des clients :
+
+|====
+
+>|Cas de test 3+|Test-01-01
+>|Titre 3+|Création d'un nouveau client
+>|Objectif 3+| Vérifier qu'il est possible de créer un nouveau client
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|Cliquer sur le bouton "Nouveau client". ^|La fenêtre de création des clients s'ouvre. ^|OK
+^|2 ^|Compléter les champs spécifiés. ^|Un nouveau client est créé. ^|OK
+
+4+|
+
+4+|Commentaire : --|
+
+|====
+
+
+|====
+
+>|Cas de test 3+|Test-01-01-02
+>|Titre 3+|Modification d'un client
+>|Objectif 3+| Vérifier qu'il est possible de modifier un client
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|Sélectionner le client puis cliquer sur le bouton "Modifier client". ^|La fenêtre de modification des données du clients s'ouvre. ^|OK
+^|2 ^|Modifier les champs souhaités et confirmer. ^|Le client est modifié. ^|OK
+
+4+|
+
+4+|Commentaire : --|
+
+|====
+
+
+|====
+
+>|Cas de test 3+|Test-01-01-03
+>|Titre 3+|Visualisation d'un client
+>|Objectif 3+| Vérifier qu'il est possible de visualiser les informations d'un client
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|Sélectionner puis cliquer sur le bouton "Voir client". ^|La page de visualisation des données du client s’affiche. ^|OK
+
+4+|
+
+4+|Commentaire : --|
+
+|====
+
+
+
+
+
+==== 1.2 Gestion des comptes bancaires :
+
+|====
+
+>|Cas de test 3+|Test-01-02-01
+>|Titre 3+|Création d'un compte
+>|Objectif 3+| Vérifier qu'il est possible de créer un compte
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|Cliquer sur le bouton "Créer compte" ^|Affichage de la fenêtre de création du compte. ^|OK
+^|2 ^|Cliquer sur le bouton "Ajouter" dans la fenêtre de création ^|Ajout du compte en base de données et dans la liste des comptes. ^|OK
+
+4+|
+
+4+|Commentaire : *_—_*|
+
+|====
+
+
+|====
+
+>|Cas de test 3+|Test-01-02-02
+>|Titre 3+|Modification d'un compte
+>|Objectif 3+| Vérifier qu'il est possible de modifier un compte
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|Sélectionner le compte et cliquer sur le bouton "Modifier compte" ^|Affichage de la fenêtre de modification du compte. ^|OK
+^|2 ^|Modifier les champs souhaités puis confirmer. ^|Modification des données du compte. ^|OK
+
+4+|
+
+4+|Commentaire : *_—_*|
+
+|====
+
+
+|====
+
+>|Cas de test 3+|Test-01-02-03
+>|Titre 3+|Consultation d'un compte
+>|Objectif 3+| Vérifier qu'il est possible de consulter un compte
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|Sélectionner le compte et cliquer sur le bouton "Comptes client". ^|La page des comptes du client s’affiche. ^|OK
+^|2 ^|Sélectionner le bouton "Voir opérations". ^|La page des opérations du compte s’affiche. ^|OK
+
+4+|
+
+4+|Commentaire : --|
+
+|====
+
+
+|====
+
+>|Cas de test 3+|Test-01-02-04
+>|Titre 3+|Clôturer un compte
+>|Objectif 3+| Vérifier qu'il est possible de clôturer un compte
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|Sélectionner le compte et cliquer sur le bouton "Clôturer compte" ^|Affichage de la fenêtre de clôture du compte ^|OK
+^|2 ^|Cliquer sur le bouton "Ok" dans la fenêtre de clôture ^|Rendre inactif le compte dans la base de données et dans l'application ^|OK
+
+4+|
+
+4+|Commentaire : Un compte ne peut être clôturé que si son solde est nul.|
+
+|====
+
+
+==== 1.3 Gestion des opérations :
+
+|====
+
+>|Cas de test 3+|Test-01-03-01
+>|Titre 3+|Débiter un compte
+>|Objectif 3+| Vérifier qu'il est possible de débiter un compte
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|Sélectionner le client puis cliquer sur le bouton "Comptes client". ^|La page des comptes du client s’affiche. ^|OK
+^|2 ^|Sélectionner le compte et cliquer sur le bouton "Voir opérations". ^|La page des opérations du compte s’affiche. ^|OK
+^|3 ^|Cliquer sur le bouton "Enregistrer Débit". ^|La page des opérations du compte s’affiche. ^|OK
+^|4 ^|Rentrer un montant dans le champ "Montant". ^|Le débit est enregistré et s'affiche dans la liste des opérations. ^|OK
+
+4+|
+
+4+|Commentaire :Le montant renseigné doit respecter le découvert autorisé pour le compte sélectionné, dans le cas d'un débit simple. |
+
+|====
+
+
+|====
+
+>|Cas de test 3+|Test-01-03-02
+>|Titre 3+|Créditer un compte
+>|Objectif 3+| Vérifier qu'il est possible de créditer un compte
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|Sélectionner le client et cliquer sur le bouton "Comptes client". ^|La page des comptes du client s’affiche. ^|OK
+^|2 ^|Sélectionner le compte et cliquer sur le bouton "Voir opérations". ^|La page des opérations du compte s’affiche. ^|OK
+^|3 ^|Cliquer sur le bouton "Enregistrer crédit". ^|La page des opérations du compte s’affiche. ^|OK
+^|4 ^|Rentrer un montant dans le champ "Montant". ^|Le crédit est enregistré et s'affiche dans la liste des opérations. ^|OK
+
+4+|
+
+4+|Commentaire : --|
+
+|====
+
+
+|====
+
+>|Cas de test 3+|Test-01-03-03
+>|Titre 3+|Virement de compte à compte
+>|Objectif 3+| Vérifier qu'il est possible d'effectuer un virement d'un compte à un autre
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|Sélectionner le compte et cliquer sur le bouton "Comptes client". ^|La page des comptes du client s’affiche. ^|OK
+^|2 ^|Sélectionner le compte et cliquer sur le bouton "Voir opérations". ^|La page des opérations du compte s’affiche. ^|OK
+^|3 ^|Cliquer sur le bouton "Enregistrer virement". ^|La page des opérations du compte s’affiche. ^|OK
+^|4 ^|Sélectionné un compte de destination et rentrer un montant dans le champ "Montant". ^|Le virement est enregistré et s'affiche dans la liste des opérations. ^|OK
+
+4+|
+
+4+|Commentaire : Un virement n'est possible qu'entre les même comptes des clients et si ce dernier possède plus d'un compte courant non-clôturé.|
+
+|====
+
+
+=== 2. Fonctionnalités des chefs d'agence :
+[.text-justify]
+Les chefs d'agence ont accès aux mêmes fonctionnalités que les guichetiers, ainsi que d'autres qui leur sont réservées.
+
+==== 2.1 Gestion des clients :
+
+|====
+
+>|Cas de test 3+|Test-02-01-01
+>|Titre 3+|Rendre inactif un client
+>|Objectif 3+| Vérifier qu'il est possible de rendre un client inactif
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|Sélectionner le client puis cliquer sur le bouton pour modifier les informations clients. ^|La page de modification des données du client s’affiche. ^|OK
+^|2 ^|Sélectionner le bouton "Inactif" et confirmer. ^|Le client est rendu inactif. ^|OK
+
+4+|
+
+4+|Commentaire :
+Tous les comptes du client à rendre inactifs doivent être *clôturés*.|
+
+|====
+
+
+==== 2.2. Gestion des employés :
+
+|====
+
+>|Cas de test 3+|Test-02-02-01
+>|Titre 3+|Création d'un nouvel employé
+>|Objectif 3+| Vérifier qu'il est possible de créer un nouvel employé
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|Cliquer sur le bouton "Nouvel employé". ^|La fenêtre de création des employés s'ouvre. ^|OK
+^|2 ^|Compléter les champs spécifiés. ^|Un nouvel employé est créé. ^|OK
+
+4+|
+
+4+|Commentaire : --|
+
+|====
+
+
+|====
+
+>|Cas de test 3+|Test-02-02-02
+>|Titre 3+|Modification d'un employé
+>|Objectif 3+| Vérifier qu'il est possible de modifier un employé
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|Sélectionner l'employé et cliquer sur le bouton "Modifier employé". ^|La fenêtre de modification des employés s'ouvre. ^|OK
+^|2 ^|Modifier les champs souhaités et confirmer. ^|L'employé est modifié. ^|OK
+
+4+|
+
+4+|Commentaire : --|
+
+|====
+
+
+|====
+
+>|Cas de test 3+|Test-02-02-03
+>|Titre 3+|Visualisation d'un employé
+>|Objectif 3+| Vérifier qu'il est possible de visualiser les informations d'un employé
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|Sélectionner l'employé et cliquer sur le bouton "Voir employé". ^|La page de visualisation des données de l'employé s’affiche. ^|OK
+
+4+|
+
+4+|Commentaire : --|
+
+|====
+
+
+|====
+
+>|Cas de test 3+|Test-02-02-04
+>|Titre 3+|Rendre inactif un employé
+>|Objectif 3+| Vérifier qu'il est possible de rendre un employé inactif
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|Sélectionner l'employé et cliquer le bouton pour modifier les informations employés. ^|La page de modification des données de l'employé s’affiche. ^|OK
+^|2 ^|Sélectionner le bouton "Inactif" et confirmer. ^|L'employé est rendu inactif. ^|OK
+
+4+|
+
+4+|Commentaire : --|
+
+|====
+
+
+
+{empty} +
+
+=== Template
+
+|====
+
+>|Cas de test 3+|*_num du test_*
+>|Titre 3+|*_nom du test_*
+>|Objectif 3+| *_Objectif du test_*
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|*_Action_* ^|*_Comportement_* ^|*_OK/pas OK_*
+^|2 ^|*_Action_* ^|*_Comportement_* ^|*_OK/pas OK_*
+
+4+|
+
+4+|Commentaire : *_Commentaire_*|
+
+|====
