@@ -6,7 +6,4 @@
 - Générer la javadoc et le .jar
 - Ajouter le code source avec :
    - le src du workspace
-   - un sous-répertoir avec les scripts SQL pour setup la DB
-   - un sour-répertoir avec les librairies nécessaires au code source
    - le .jar runnable (jre 1.8) du projet
-   - le fichier .bat pour switch la jre en 1.8
