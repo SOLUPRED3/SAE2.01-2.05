@@ -48,7 +48,7 @@ public class DailyBankMainFrame extends Application {
 			primaryStage.setTitle("Fenêtre Principale");
 			
 			// Forcer une connexion existante pour rentrer dans l'appli en mode connecté
-			try {
+			/*try {
 				Employe e;
 				AccessEmploye ae = new AccessEmploye();
 
@@ -82,7 +82,7 @@ public class DailyBankMainFrame extends Application {
 					ExceptionDialog ed = new ExceptionDialog(primaryStage, this.dbs, e);
 					ed.doExceptionDialog();
 				}
-			}
+			}*/
 
 			DailyBankMainFrameController dbmc = loader.getController();
 			dbmc.initContext(primaryStage, this, this.dbs);

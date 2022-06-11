@@ -281,25 +281,25 @@ public class ComptesManagementController implements Initializable {
 	 * @throws Exception
 	 */
 	public void HTMLtoPDF(String source, String nomFichier) throws Exception {
-		FileDialog fd = new FileDialog(new JFrame(), "Enregistrer le relevé de comptes", FileDialog.SAVE);
-		fd.setFile(nomFichier + ".pdf");
-		fd.setVisible(true);
-		File[] f = fd.getFiles();
+		//Altérnative pour les OS autres que Windows...
+		String os = System.getProperty("os.name").toLowerCase(), dlPath = "";
+		if (os.contains("osx") || os.contains("nix") || os.contains("aix") || os.contains("nux")) {
+			AlertUtilities.showAlert(this.primaryStage, "Attention", null,
+					"Cette fonctionnalité n'est pas encore disponible pour le système d'exploitaiton utilisé." +
+							"Le fichier sera disponible directement dans vos téléchargements.\n",
+					Alert.AlertType.WARNING);
+			dlPath = System.getProperty("user.home")+"/Downloads/" + nomFichier + ".pdf";
+		} else {
+			FileDialog fd = new FileDialog(new JFrame(), "Enregistrer le relevé de comptes", FileDialog.SAVE);
+			fd.setFile(nomFichier + ".pdf");
+			fd.setVisible(true);
+			dlPath = fd.getFiles()[0].getAbsolutePath();
+		}
 
 		File fichierHTML = new File(source);
 		String contenu = fichierHTML.toURI().toURL().toString();
 
-		//Non-fonctionnel pour les OS autres que Windows...
-		String os = System.getProperty("os.name").toLowerCase();
-		 if (os.contains("osx") || os.contains("nix") || os.contains("aix") || os.contains("nux")) {
-			System.setProperty("apple.awt.fileDialofForDirectories", "true");
-			 AlertUtilities.showAlert(this.primaryStage, "Attention", null,
-					 "Cette fonctionnalité n'est pas encore disponible pour le système d'exploitaiton utilisé.",
-					 Alert.AlertType.WARNING);
-			 throw new Exception("OS Incompatible !");
-		}
-
-		OutputStream out = new FileOutputStream(fd.getFiles()[0].getAbsolutePath());
+		OutputStream out = new FileOutputStream(dlPath);
 		ITextRenderer renderer = new ITextRenderer();
 
 		renderer.setDocument(contenu);

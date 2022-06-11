@@ -42,8 +42,8 @@ Thomas Falsimagne, Tilian Hure, Maxime Dourlent +
 |1    |Guichetier     | Compte | Effectuer un virement| | |F
 |1    |Guichetier     | Compte | Clôturer| |F |
 |2    |Chef d'Agence     | Compte | Débit exceptionnel||F|
-|2    |Chef d'Agence     | Emprunt | Simuler emprunt||D|
-|2    |Chef d'Agence     | Emprunt | Simuler assurance||D|
+|2    |Chef d'Agence     | Emprunt | Simuler emprunt||F|
+|2    |Chef d'Agence     | Emprunt | Simuler assurance||F|
 |2    |Guichetier     | Compte | Relevé PDF||F|
 |2    |Guichetier     | CRUD Prélèvement | C||F |
 |2    |Guichetier     | CRUD Prélèvement | R||F|
@@ -637,7 +637,7 @@ La CompteCourant.java est importante, car principalement utilisée pour modélis
 [WARNING]
 ====
 [.text-justify]
-Cette fonctionnalité n'est pas disponible pour les systèmes d'exploitation autres que Windows.
+La sélection du répertoire d'enregistrement n'est pas encore disponible pour les systèmes d'exploitation autres que Windows. Le document sera téléchargé dans le répertoire de téléchargement du système utilisé.
 ====
 
 
