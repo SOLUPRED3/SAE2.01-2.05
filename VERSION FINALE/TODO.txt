@@ -3,6 +3,6 @@
 - Générer et ajouter la javadoc dans la documentation
 - Ajouter le Gantt réel
 - Mettre à jour et checker tout le code
-- Générer et ajouter le .jar dans le root du répertoire "VERSION FINALE"
+- Générer et ajouter le .jar dans le répertoire "Application"
 - Ajouter le code source avec :
    - le src du workspace
