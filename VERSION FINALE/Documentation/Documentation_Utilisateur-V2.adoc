@@ -1,0 +1,512 @@
+= Documentation Utilisateur - DailyBankApp (V2)
+:toc:
+:icons: font
+:toc-title: Sommaire
+:doctype: Book
+
+image:../../Logo/logo.png[logo, 200]
+
+ifdef::env-github[]
+:toc:
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+:graduation-icon: :mortar_board:
+:cogs-icon: :writing_hand:
+:beginner: :arrow_right:
+:advanced: :arrow_upper_right:
+:expert: :arrow_up:
+:dollar: :dollar:
+:git: link:{giturl}[git]
+:us-icon: :us:
+:fr-icon: :fr:
+endif::[]
+
+Maxime DOURLENT, Thomas FALSIMAGNE et Tilian HURÉ +
+Groupe *4A01*
+
+
+
+== I. Présentation générale et rôle de l'application
+[.text-justify]
+Tout d'abord, notre travail aura été de concevoir une application pour la banque DailyBank, fonctionnelle et optimisée.
+
+[.text-justify]
+DailyBankApp a été conçue pour permettre aux guichetiers et aux chefs d'agence de gérer des comptes bancaires de dépôt de clients préalablement créés. Elle permet donc de créditer et débiter un compte, soit par virement, c'est-à-dire un échange d'argent entre deux comptes distincts, mais domiciliés dans le réseau bancaire, soit par une personne physique se présentant devant son guichet.
+
+
+
+== II. Installation et utilisation
+[.text-justify]
+Concernant l'installation de l'application et son utilisation, l'utilisateur aura besoin de certains prérequis.
+
+[.text-justify]
+En effet, il sera indispensable de disposer d'un environnement d'exécution Java en version 8 (JRE 1.8), pour pouvoir exécuter l'application. +
+ +
+
+Référence : https://www.java.com/fr/download/manual.jsp +
+ +
+[.text-justify]
+Cette version devra être installée et configurée dans le terminal, par exemple avec *jenv* sur Mac et Linux, ou une alternative sur Windows. +
+ +
+
+Référence : https://www.jenv.be/ +
+ +
+
+[.text-justify]
+Une fois la configuration terminée, il vous faudra installer l'application qui sera un fichier .jar exécutable. +
+
+Pour l'exécuter, il vous faudra aller dans le terminal et exécuter la commande :
+
+[source]
+java - jar DailyBank.jar
+
+
+
+== III. Fonctionnement de DailyBankApp
+=== 1. Connexion à l'application :
+[.text-justify]
+À l'ouverture de l'application, vous vous trouverez face à cette fenêtre :
+
+image:images/DocumentationUser/login.png[login, 600]
+
+[.text-justify]
+Il vous suffit d'appuyer sur le bouton "Connexion" pour voir apparaître une page de connexion.
+
+image:images/DocumentationUser/connexionPage.png[connexion, 600]
+
+[.text-justify]
+Après avoir renseigné vos informations de connexion, vous pourrez accéder aux fonctionnalités de l'application.
+
+image:images/DocumentationUser/mainPage.png[mainPage, 600]
+
+[.text-justify]
+Il est possible de se connecter en tant que *Guichetier* ou *Chef d'agence*. Les deux utilisateurs ont la possibilité de gérer des clients, mais seuls les chefs d'agence peuvent gérer des employés.
+
+[.text-justify]
+Si vous souhaitez vous déconnecter de l'application, il vous suffit d'appuyer sur le bouton "Déconnexion", présent sur la page principale.
+
+
+{empty} +
+
+=== 2. Fonctionnalités des guichetiers :
+==== 2.1 Gestion des clients :
+[.text-justify]
+Si vous souhaitez gérer les clients de votre agence, il vous faut cliquer sur le bouton "Clients", que vous voyez ci-dessous.
+
+image:images/DocumentationUser/gestionC1.png[gestionClient, 600]
+
+[.text-justify]
+Vous arriverez ainsi sur cet onglet, qui vous permettra de faire toutes sortes d'actions concernant les clients :
+
+image:images/DocumentationUser/gestionC2.png[gestionClient2, 900]
+
+
+===== 2.1.1 Créer un client :
+[.text-justify]
+Pour pouvoir créer un client, il vous faut cliquer sur le bouton "Nouveau client", situé en bas à droite de la fenêtre.
+
+image:images/DocumentationUser/gestionC2.png[gestionClient2, 900]
+
+[.text-justify]
+Vous verrez s'afficher cette interface vous permettant de créer le client souhaité. Entrez les informations voulues puis cliquer sur "Ajouter" pour confirmer (tous les champs doivent être complétés).
+
+image:images/DocumentationUser/gestionC3.png[gestionClient3, 900]
+
+
+===== 2.1.2 Rechercher un client :
+[.text-justify]
+À votre arrivée sur l'onglet de gestion du client, vous trouverez un onglet vide, comme ceci :
+
+image:images/DocumentationUser/gestionC2.png[gestionClient2, 900]
+
+[.text-justify]
+Si vous souhaitez rechercher un client en particulier, vous pourrez vous servir des deux zones de saisies situées en haut de la fenêtre. Si vous souhaitez simplement afficher tous les clients présents dans l'agence, il vous suffit d'appuyer directement sur le bouton "Rechercher".
+
+[.text-justify]
+Voici une recherche sans spécifications :
+
+image:images/DocumentationUser/gestionC4.png[gestionClient4, 900]
+
+[.text-justify]
+Voici une recherche avec spécifications :
+
+image:images/DocumentationUser/gestionC5.png[gestionClient5, 900]
+
+
+===== 2.1.3 Voir les informations d'un client :
+[.text-justify]
+Il vous est possible de visualiser les informations d'un client même inactif. Pour cela, sélectionnez dans la liste des clients de l'agence, celui à visualiser, puis cliquez sur le bouton "Voir client".
+
+image:images/DocumentationUser/voirCl1.png[voirClient, 900]
+
+
+===== 2.1.4 Modifier les informations d'un client :
+[.text-justify]
+Si vous souhaitez modifier les informations d'un client, il vous faut d'abord sélectionner dans la liste des clients de l'agence, celui à modifier, puis cliquer sur le bouton "Modifier client" situé dans la barre d'outils à droite de la fenêtre.
+
+image:images/DocumentationUser/gestionC6.png[gestionClient6, 900]
+
+[.text-justify]
+Vous verrez s'afficher cet onglet, il vous suffira de modifier les informations voulues et de les confirmer en appuyant sur "Modifier" :
+
+image:images/DocumentationUser/gestionC7.png[gestionClient7, 900]
+
+
+===== 2.1.5 Rendre inactif un client :
+[.text-justify]
+Pour rendre inactif un client, vous devrez être connecté à l'application en tant que *chef d'agence*.
+
+[.text-justify]
+Si vous souhaitez rendre inactif un client, il vous faut ouvrir la fenêtre de modification après avoir sélectionné le client souhaité dans la liste des clients de l'agence, puis cocher la case "Inactif" en bas de la fenêtre.
+
+image:images/inactifCheck.png[clientInactif, 900]
+
+[NOTE]
+====
+[.text-justify]
+Vous ne pouvez désactiver un client que si tous les comptes bancaires de ce dernier sont clôturés.
+====
+
+[.text-justify]
+Confirmer en suite la modification pour rendre le client inactif de manière permanente.
+
+
+{empty} +
+
+==== 2.2 Gestion des comptes bancaires :
+[.text-justify]
+Si vous souhaitez consulter les comptes d'un client, sélectionnez d'abord un client dans la fenêtre de gestion des clients, puis appuyez simplement sur le bouton "Comptes client".
+
+image:images/DocumentationUser/gestionC6.png[gestionCompte, 900]
+
+[.text-justify]
+Vous vous trouverez face à cet onglet qui vous affiche les informations des différents comptes bancaires d'un client :
+
+image:images/DocumentationUser/consC1.png[gestionCompte1, 900]
+
+
+===== 2.2.1 Créer un compte bancaire :
+[.text-justify]
+Il vous est possible de créer un compte bancaire pour un client, pour cela, cliquez sur le bouton "Nouveau compte" dans le gestionnaire des comptes bancaires d'un client.
+
+image:images/DocumentationUser/cl2.png[gestionCompte2, 900]
+
+[.text-justify]
+Saisissez le découvert autorisé ainsi que le solde du nouveau compte (son premier crédit).
+
+image:images/DocumentationUser/creerCompte.png[créerCompte, 900]
+
+[NOTE]
+====
+[.text-justify]
+Il est évident que le solde de départ d'un compte ne peut être négatif.
+====
+
+
+===== 2.2.2 Modifier un compte bancaire :
+[.text-justify]
+Il vous est possible de modifier le découvert autorisé d'un compte bancaire. Pour cela, cliquez sur le bouton "Modifier compte" dans le gestionnaire des comptes bancaires d'un client.
+
+image:images/DocumentationUser/cl2.png[gestionCompte2, 900]
+
+[.text-justify]
+Saisissez ensuite le nouveau découvert autorisé.
+
+image:images/DocumentationUser/modifierCompte.png[modifierCompte, 900]
+
+[NOTE]
+====
+[.text-justify]
+Le découvert autorisé saisi ne peut être supérieur à la solde du compte concerné lorsque ce dernier est négatif.
+====
+
+
+===== 2.2.3 Clôturer un compte bancaire :
+[.text-justify]
+Si vous souhaitez clôturer un compte bancaire, il vous faut d'abord sélectionner le compte souhaité dans la liste des comptes d'un client.
+
+image:images/DocumentationUser/cl1.png[cloturerCompte, 900]
+
+[.text-justify]
+Cliquez en suite sur le bouton "Clôturer compte" puis confirmez la clôturation.
+
+image:images/DocumentationUser/cl2.png[cloturerCompte2, 900]
+
+image:images/DocumentationUser/cl3.png[cloturerCompte3, 900]
+
+[NOTE]
+====
+[.text-justify]
+Pour clôturer un compte, vous devez d'abord vous assurer que son solde est nul, sinon l'opération ne sera pas possible.
+====
+
+
+===== 2.2.4 Générer un relevé de comptes en PDF :
+[.text-justify]
+Si vous souhaitez obtenir la trasse des comptes d'un client dans un format plus portable, il vous est possible de générer le relevé de comptes pour tous les comptes d'un client. +
+Pour cela, il vous faut simplement cliquer sur le bouton "Exporter PDF" dans la fenêtre de gestion des comptes d'un client.
+
+image:images/DocumentationUser/TODO.png[genererPDF, 900]
+
+Choisissez ensuite l'emplacement où enregistrer le PDF et cliquer sur "Enregistrer" pour sauvegardé le relevé.
+
+image:images/DocumentationUser/emplacementPDF.png[emplacementPDF, 500]
+
+Aperçu d'un relevé de comptes au format PDF :
+
+image:images/DocumentationUser/exemplePDF.png[exemplePDF, 800]
+
+
+{empty} +
+
+==== 2.3 Gestion des opérations
+[.text-justify]
+Il vous est possible d'enregistrer des opérations de crédit, de débit et de virement sur le compte bancaire d'un client si ce dernier n'est pas clôturé.
+
+image:images/DocumentationUser/consC4.png[gestionCompte4, 900]
+
+[.text-justify]
+Ici, le compte est ouvert, il est donc possible d'y réaliser des opérations.
+
+
+===== 2.3.1 Consulter les opérations d'un compte :
+[.text-justify]
+Il vous est possible de voir les opérations réalisées sur le compte bancaire d'un client, même une fois clôturé. Pour cela, sélectionnez le compte bancaire souhaité dans la liste des comptes d'un client, puis cliquez sur le bouton "Voir opérations".
+
+image:images/DocumentationUser/consC2.png[gestionCompte2, 900]
+
+[.text-justify]
+Vous pouvez ainsi consulter les différentes opérations réalisées sur le compte sélectionné.
+
+image:images/DocumentationUser/consC3.png[gestionCompte3, 900]
+
+[.text-justify]
+Il vous est possible d'enregistrer des opérations de crédit, de débit et de virement sur le compte bancaire d'un client si ce dernier n'est pas clôturé.
+
+image:images/DocumentationUser/consC4.png[gestionCompte4, 900]
+
+[.text-justify]
+Ici, le compte est ouvert, il est donc possible d'y réaliser des opérations.
+
+
+===== 2.3.2 Créditer un compte client :
+[.text-justify]
+Si vous souhaitez créditer le compte bancaire d'un client, appuyez sur "Enregistrer crédit" dans la fenêtre de gestion des opérations d'un compte bancaire d'un client.
+
+image:images/DocumentationUser/cr1.png[créditer, 900]
+[.text-justify]
+Sur la fenêtre qui s'ouvrira, il vous sera possible de choisir le type d'opération de crédit en cliquant sur "Dépôt Espèces" (opération par défaut) et en saisissant un montant. Pour confirmer le crédit, appuyez sur "Effectuer crédit".
+
+image:images/DocumentationUser/cr2.png[créditer2, 900]
+
+
+===== 2.3.3 Débiter un compte client :
+[.text-justify]
+Si vous souhaitez débiter le compte bancaire d'un client, appuyez sur "Enregistrer débit" dans la fenêtre de gestion des opérations d'un compte bancaire d'un client.
+
+image:images/DocumentationUser/db1.png[débiter, 900]
+[.text-justify]
+Sur la fenêtre qui s'ouvrira, il vous sera possible de choisir le type d'opération de débit en cliquant sur "Retrait Espèces" (opération par défaut) et en saisissant un montant. Pour confirmer le débit, appuyez sur "Effectuer débit".
+
+
+===== 2.3.4 Effectuer un virement de compte à compte :
+[.text-justify]
+Si vous souhaitez réaliser un virement de compte à compte appuyez sur "Enregistrer virement" dans la fenêtre de gestion des opérations d'un compte bancaire d'un client.
+
+image:images/DocumentationUser/virementCompte.png[virement, 900]
+[.text-justify]
+Sur la fenêtre qui s'ouvrira, il vous faudra choisir le compte de destination et à saisir un montant. Pour confirmer le virement, appuyez sur "Effectuer virement".
+
+
+{empty} +
+
+==== 2.4 Gestion des prélèvements :
+===== 2.4.1 Consulter un prélèvement :
+[.text-justify]
+Si vous souhaitez consulter un prélèvement, il vous faudra vous rendre sur la page de gestion des prélèvements. Tout d'abord, il vous faudra être sur la page de gestion des comptes.
+
+image:images/compteCourantPane.png[prelevement, 900]
+
+Ici, il vous faudra sélectionner un compte.
+
+image:images/compteCourantPaneSelect.png[prelevement, 900]
+
+Ensuite, cliquez sur le bouton "Voir prélèvements". Vous verrez s'afficher cette fenêtre.
+
+image:images/prelevementPane.png[prelevement, 900]
+
+
+{empty} +
+
+===== 2.4.2 Créer un prélèvement :
+[.text-justify]
+Si vous souhaitez créer un prélèvement, il vous faudra au préalable vous rendre sur la page de gestion des prélèvements.
+
+image:images/prelevementPane.png[prelevement, 900]
+
+[.text-justify]
+Ici, cliquez sur "Nouveau prélèvement", vous verrez cette fenêtre s'afficher, vous permettant de saisir les différentes informations.
+
+image:images/creerPrelevement.png[prelevement, 900]
+
+Une fois les informations, complétées, cliquez sur "Valider".
+
+image:images/creationDonePrelev.png[prelevement, 900]
+
+
+{empty} +
+
+===== 2.4.3 Modifier un prélèvement :
+[.text-justify]
+Si vous souhaitez modifier un prélèvement, il vous faudra au préalable vous rendre sur la page de gestion des prélèvements.
+
+image:images/modifierPrelevPane.png[prelevement, 900]
+
+[.text-justify]
+Après avoir cliqué sur un prélèvement existant, vous débloquerez la possibilité de cliquer sur "Modifier prélèvement".
+
+image:images/modifierPrelevement.png[prelevement, 900]
+
+[.text-justify]
+Une fois les informations saisies, cliquez sur "Modifier".
+
+
+{empty} +
+
+===== 2.4.4 Supprimer un prélèvement :
+[.text-justify]
+Si vous souhaitez supprimer un prélèvement, il vous faudra au préalable vous rendre sur la page de gestion des prélèvements.
+
+image:images/modifierPrelevPane.png[prelevement, 900]
+[.text-justify]
+Après avoir cliqué sur un prélèvement existant, vous débloquerez la possibilité de cliquer sur "Supprimer prélèvement".
+
+image:images/supprimerPrelevement.png[prelevement, 900]
+
+Ici, cliquez sur "No" ou "Yes" selon votre choix.
+
+
+{empty} +
+
+===== 2.4.5 Exécuter un prélèvement :
+[.text-justify]
+Si vous souhaitez exécuter un prélèvement, il vous faudra au préalable vous rendre sur la page de gestion des prélèvements.
+
+image:images/modifierPrelevPane.png[prelevement, 900]
+
+[.text-justify]
+Après avoir cliqué sur un prélèvement existant, vous débloquerez la possibilité de cliquer sur "Prélever".
+
+image:images/preleverPaneAfter.png[prelevement, 900]
+
+Ce faisant, les boutons sur la droite se désactiveront.
+
+[NOTE]
+====
+[.text-justify]
+Notez qu'il est possible de cliquer à nouveau sur le prélèvement et d'effectuer une nouvelle fois le prélèvement. Ce sera donc à l'utilisateur de faire attention à ne pas exécuter deux fois le même prélèvement. Il ne vous sera toutefois pas possible de dépasser le découvert autorisé.
+====
+
+
+{empty} +
+
+=== 3. Fonctionnalités des chefs d'agence :
+==== 3.1 Gestion des employés :
+[.text-justify]
+Pour accéder aux fonctionnalités suivantes, vous devrez être connecté à l'application en tant que *chef d'agence*.
+
+[.text-justify]
+Si vous souhaitez gérer les employés de votre agence, il vous faut cliquer sur le bouton "Employés", que vous voyez ci-dessous :
+
+image:images/DocumentationUser/gEmp1.png[gérerEmployé1, 600]
+
+[.text-justify]
+Vous arriverez ainsi sur cet onglet, qui vous permettra de faire toutes sortes d'actions concernant les employés :
+
+image:images/DocumentationUser/gEmp2.png[gérerEmployé2, 900]
+
+
+===== 3.1.1 Créer un employé :
+[.text-justify]
+Pour pouvoir créer un employé, il vous faut cliquer sur le bouton "Nouvel employé", situé en bas à droite de la fenêtre.
+
+image:images/DocumentationUser/gEmp2.png[gérerEmployé2, 900]
+
+[.text-justify]
+Vous verrez s'afficher cette interface vous permettant de créer l'employé souhaité. Entrez les informations voulues puis cliquer sur "Ajouter" pour confirmer (tous les champs doivent être complétés).
+
+image:images/DocumentationUser/rEmp3.png[gérerEmployé3, 900]
+
+
+==== 3.1.2 Rechercher un employé :
+[.text-justify]
+À votre arrivée sur l'onglet de gestion de l'employé, vous trouverez un onglet vide, comme ceci :
+
+image:images/DocumentationUser/gEmp2.png[gérerEmployé2, 900]
+
+[.text-justify]
+Si vous souhaitez rechercher un employé en particulier, vous pourrez vous servir des deux zones de saisies situées en haut de la fenêtre. Si vous souhaitez simplement afficher tous les employés présents dans l'agence, il vous suffit d'appuyer directement sur le bouton "Rechercher".
+
+[.text-justify]
+Voici une recherche sans spécifications :
+
+image:images/DocumentationUser/rEmp1.png[gérerEmployé1, 900]
+
+[.text-justify]
+Voici une recherche avec spécifications :
+
+image:images/DocumentationUser/rEmp2.png[gérerEmployé2, 900]
+
+
+==== 3.1.3 Voir les informations d'un employé :
+[.text-justify]
+Il vous est possible de visualiser les informations d'un employé même inactif. Pour cela, sélectionnez dans la liste des employés de l'agence, celui à visualiser, puis cliquez sur le bouton "Voir employé".
+
+image:images/voirInfosEmpl.png[voirEmployé, 900]
+
+
+==== 3.1.4 Modifier les informations d'un employé :
+[.text-justify]
+Si vous souhaitez modifier les informations d'un employé, il vous faut d'abord sélectionner dans la liste des employés de l'agence, celui à modifier, puis cliquer sur le bouton "Modifier employé" situé dans la barre d'outils à droite de la fenêtre.
+
+image:images/DocumentationUser/rEmp4.png[gérerEmployé4, 900]
+
+[.text-justify]
+Vous verrez s'afficher cet onglet, il vous suffira de modifier les informations voulues et de les confirmer en appuyant sur "Modifier" :
+
+image:images/DocumentationUser/rEmp5.png[gérerEmployé5, 900]
+
+
+==== 3.1.5 Rendre inactif un employé :
+[.text-justify]
+Si vous souhaitez rendre inactif un employé, il vous faut ouvrir la fenêtre de modification après avoir sélectionné l'employé souhaité dans la liste des employés de l'agence, puis cocher la case "Inactif" en bas de la fenêtre.
+
+image:images/inactifEmplCheck.png[employéInactif, 900]
+
+[.text-justify]
+Confirmer en suite la modification pour rendre le client inactif de manière permanente.
+
+
+==== 3.1.6 Effectuer un débit exceptionnel :
+
+[.text-justify]
+Si vous souhaitez effectuer un débit exceptionnel, il vous faut tout d'abord ouvrir la fenêtre des opérations
+
+image:images/operationPane.png[]
+
+Une fois sur cette fenêtre, appuyez sur le bouton "Enregistrer débit". Si vous êtes bien connecté en tant que chef d'agence, vous aurez une interface différente de celle des guichetiers.
+
+image:images/debitExceptionnel.png[]
+[.text-justify]
+Ici, vous avez le choix, vous pouvez effectuer un débit classique en cliquant sur "Non", le découvert ne pourra donc pas être dépassé. Ou alors vous pouvez choisir de faire un débit exceptionnel en cliquant sur "Oui", une confirmation vous sera alors demandée.
+
+
+
+
+
+== IV. Résultats produits avec jeux d'essai commentés
+[.text-justify]
+[blue]#Pour ce qui est des résultats produits avec des jeux d'essai commentés, merci de bien vouloir vous référer au *cahier de recette*.#
