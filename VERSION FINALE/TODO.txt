@@ -1,5 +1,6 @@
 - Renommer le workspace "Code" en "Workspace"
-- Mettre à jour et renommer les fichiers de documentation sans la version ("Doc. Utilisateur-V2.adoc" --> "Doc. Utilisateur.adoc").
+- Mettre à jour et renommer les fichiers de documentation sans la version ("Doc. Utilisateur-V2.adoc" --> "Doc. Utilisateur.adoc")
+- Ajouter la javadoc dans la documentation
 - Ajouter le Gantt réel
 - Mettre à jour et checker tout le code
 - Générer la javadoc et le .jar
@@ -9,4 +10,3 @@
    - un sour-répertoir avec les librairies nécessaires au code source
    - le .jar runnable (jre 1.8) du projet
    - le fichier .bat pour switch la jre en 1.8
-   - la javadoc
