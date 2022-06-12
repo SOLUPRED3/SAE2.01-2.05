@@ -1,0 +1,1206 @@
+= Documentation Technique - DailyBankApp (V1)
+:toc:
+:icons: font
+:toc-title: Sommaire
+:doctype: Book
+
+image:../../Logo/logo.png[logo, 200]
+
+ifdef::env-github[]
+:toc:
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+:graduation-icon: :mortar_board:
+:cogs-icon: :writing_hand:
+:beginner: :arrow_right:
+:advanced: :arrow_upper_right:
+:expert: :arrow_up:
+:dollar: :dollar:
+:git: link:{giturl}[git]
+:us-icon: :us:
+:fr-icon: :fr:
+endif::[]
+
+Thomas Falsimagne, Tilian Hure, Maxime Dourlent +
+*V2* - xx/xx/2022
+
+{empty} +
+
+.Répartition des tâches et état d'avancement
+[options="header,footer"]
+|=======================
+|version|user     |use case   |cas...                 |   Maxime DOURLENT | Thomas FALSIMAGNE  |   Tilian HURÉ
+|1    |Chef d'Agence    |CRUD employé  |C| | |F
+|1    |Chef d'Agence    |CRUD employé  |R| | |F
+|1    |Chef d'Agence    |CRUD employé  |U| | |F
+|1    |Chef d'Agence    |CRUD employé  |D| | |F
+|1    |Guichetier     | Compte | Créer| |F |
+|1    |Guichetier     | Compte | Créditer/Débiter|F | |
+|1    |Guichetier     | Compte | Effectuer un virement| | |F
+|1    |Guichetier     | Compte | Clôturer| |F |
+|2    |Chef d'Agence     | Compte | Débit exceptionnel||F|
+|2    |Chef d'Agence     | Emprunt | Simuler emprunt||D|
+|2    |Chef d'Agence     | Emprunt | Simuler assurance||D|
+|2    |Guichetier     | Compte | Relevé PDF||F|
+|2    |Guichetier     | CRUD Prélèvement | C||F |
+|2    |Guichetier     | CRUD Prélèvement | R||F|
+|2    |Guichetier     | CRUD Prélèvement | U||F |
+|2    |Guichetier     | CRUD Prélèvement | D||F |
+|3    |Bach     | Prélèvement automatiques | || |
+|3    |Bach     | Relevé mensuels | || |
+|=======================
+
+{empty} +
+
+
+
+== I. Présentation de l'application
+[.text-justify]
+L'application DailyBank est destinée à être utilisée par certains employés d'une agence bancaire. Elle permet de gérer des clients, leurs comptes bancaires de dépôt avec leurs opérations, mais aussi des employés tels des guichetiers et des chefs d'agence.
+
+
+=== 1. Les utilisateurs :
+[.text-justify]
+L'application peut être utilisée par deux types d'utilisateurs : les guichetiers et les chefs d'agence.
+
+==== A) Use-Case :
+image::images/uc2.svg[UC2]
+
+
+{empty} +
+
+Les *guichetiers* sont les principaux types d'utilisateurs, ils peuvent :
+
+* Créer un nouveau client
+* Modifier les informations d'un client
+* Consulter les comptes d'un client et leurs opérations
+* Débiter le compte d'un client
+* Gérer les prélèvements d'un compte
+
+{empty} +
+[.text-justify]
+Les *chefs d'agence* sont des "super" guichetiers comparables à des administrateurs. +
+Ils peuvent accéder à toutes les mêmes fonctionnalités que les guichetiers, plus :
+
+* Rendre inactif un client
+* Effectuer un débit exceptionnel
+
+
+=== 2. Diagramme de classe :
+
+===== Diagramme de Classe :
+image::images/DCV2.svg[DCV2]
+
+[.text-justify]
+Toutes les données manipulées par l'application sont stockées dans une base de données externes. +
+Elles sont structurées de la manière suivante :
+
+* Une *AgenceBancaire* possède des employés, des clients et gère des comptes courants
+* Un *Employe* peut être un guichetier ou un chef d'agence
+* Un *Client* possède des comptes courants
+* Un *CompteCourant* est composé d'opérations
+* Une *Operation* possède un type d'opération
+* Un *Prélèvement* est une opération.
+
+
+[NOTE]
+====
+[.text-justify]
+Une agence ne peut avoir qu'un seul chef d'agence. Ce dernier peut gérer les clients et les autres employés (guichetiers) de son agence. Il est également le seul à pouvoir rendre un client ou un employé inactif.
+
+{empty} +
+
+[.text-justify]
+Les comptes bancaires ne peuvent être clôturés que si leur solde est nul. Les comptes clôturés ne peuvent plus subir aucune opération, mais ces dernières restent tout de même visualisables.
+
+{empty} +
+
+[.text-justify]
+Les clients ne peuvent être rendus inactifs que si tous leurs comptes sont clôturés. Les clients inactifs ne peuvent plus être modifiés, mais restent tout de même visualisables.
+
+{empty} +
+
+[.text-justify]
+Les employés inactifs ne peuvent plus être modifiés, mais restent tout de même visualisables. Il n'est plus possible de se connecter à l'application avec leurs identifiants.
+====
+
+
+
+
+== II. Architecture
+
+=== 1. Architecture générale :
+[.text-justify]
+Pour l'application de la banque DailyBank, l'architecture générale est assez simple. Elle est basée sur un fonctionnement centralisé, avec des postes de travails qui sont directement reliés à une base de données.
+
+[.text-justify]
+Ces postes de travails sont les ordinateurs où travaillent les employés et les chefs d'agence. Concernant la base de données, elle permet de stocker toutes les informations relatives à l'agence bancaire. Que ce soit les informations des employés, des clients, des comptes et des opérations.
+
+
+{empty} +
+
+=== 2. Ressources externes :
+==== 2.1. Librairies utilisées :
+[.text-justify]
+L'application repose sur plusieurs librairies externes nécessaires à son fonctionnement.
+
+*Librairies nécessaires :*
+
+* ``JavaFX`` (version 1.8) : permet le développement d'interfaces homme-machine
+* ``objdbc6.jar`` : permet la connexion avec une base de données Oracle
+* ``cn.wanghaomiao.JsoupXpath`` (version 0.1.1) : permet la manipulation de fichiers HTML
+* ``kantega.htmltopdf`` (version 1.1) : permet la conversion de fichiers HTML en fichiers PDF
+
+
+==== 2.2 Exportation de l'application :
+[.text-justify]
+L'application est disponible à l'exécution et sans prérequis autre qu'une JRE, sous forme de fichier .jar. Elle peut être régénérée à partir du code source et d'un IDE Java, mais ce dernier devra disposer d'une JRE Java versionnée en 1.8 ainsi que toutes les librairies nécessaires.
+
+[.text-justify]
+Pour exécuter l'application en .jar, il faut s'assurer que les postes de travail des employés possèdent une JRE en 1.8.
+
+
+{empty} +
+
+=== 3. Structuration de l'application :
+==== 3.1 Principe retenu pour la structuration du code :
+[.text-justify]
+Le code de l'application est structuré en plusieurs packages. Les packages Model, View, Controller et Tools. Le principe qui nous a permis de structurer le code de cette manière est le MCV pattern.
+
+[.text-justify]
+Modèle-vue-contrôleur ou MVC est un motif d'architecture logiciel destiné aux interfaces graphiques lancé en 1978 et très populaire pour les applications web. Le motif est composé de trois types de modules ayant trois responsabilités différentes : les modèles, les vues et les contrôleurs.
+
+
+==== 3.2 Aperçu :
+[source]
+----
+├── application
+    │   ├── control
+    │   ├── tools
+    │   └── view
+    └── model
+        ├── data
+        └── orm
+            └── exception
+----
+
+
+===== Package Application :
+[.text-justify]
+Le package application correspond à la partie View et la partie Controller avec ses deux packages "view" et "control" par rapport au pattern MVC.
+
+*Principaux sous-packages :*
+
+. *control* -> Fichiers permettant d'afficher les différentes fenêtres.
+. *tools* -> Fichiers permettant de gérer certaines parties du code.
+. *view* -> Controllers des différentes vues (fenêtres) avec les fichiers fxml correspondants.
+
+
+===== Package Model :
+Le package Model correspond à la partie Model du pattern MVC.
+
+*Principaux sous-packages :*
+
+. *data* -> Fichiers représentant les personnes réelles et l'agence bancaire.
+. *orm* -> Fichiers permettant la liaison à la base de données et contient également le sous-package Exception contenant les fichiers java permettant de gérer les exceptions
+
+
+{empty} +
+
+=== 4. Éléments essentiels :
+==== 4.1 Prérequis pour le développeur :
+[.text-justify]
+Si le code de l'application devait être repris pour être amélioré ou modifié, le développeur devra avoir au préalable une *JRE version 1.8*. Il faudra ensuite qu'il ait un environnement de développement adapté pour cette version de Java et un Workspace configuré avec *Java FX* et potentiellement le logiciel *SceneBuilder* pour modifier les fichiers FXML.
+
+[.text-justify]
+L'application utilise une *base de données Oracle-SQL* dont le code de déploiement est fourni avec le code source de l'application. Ce dernier pourra être exécuté dans le cas où une autre base de données serait utilisée, mais il faudra mettre certaines données à jour dans le code source de l'application qu'il sera nécessaire de régénérer par la suite.
+
+[.text-justify]
+Ces données concernent la classe "LogToDatabase.java" du sous-package "orm" du package "model". Les lignes 19 à 24 qui devront être modifiées afin de renseigner les nouvelles données de connexion à la base de données utilisée.
+
+
+==== 4.2 Lancement de l'application :
+[.text-justify]
+Le poste sur lequel souhaite être lancée l'application avec le fichier "DailyBankApp.jar", devra préalablement disposer d'une JRE versionné en 1.8.
+
+[NOTE]
+====
+[.text-justify]
+Pour toute information concernant l'installation d'une JRE 1.8, merci de bien vouloir vous référer à la *documentation utilisateur*.
+====
+
+[.text-justify]
+Avant d'exécuter le fichier .jar, il sera nécessaire de changer l'environnement Java du poste concerné avec celle précédemment mentionnée, une fois installée. Pour cela, un fichier "SETENV.bat" est fourni avec le code source, permettant de momentanément changer de JRE. Éditez son contenu en remplaçant le texte entre guillemets de la première ligne par le chemin de la JRE 1.8 du poste concerné, puis sauvegardez les modifications. Pour lancer l'application, vous n'aurez plus qu'à exécuter le fichier .bat pour changer de JRE, avant de faire de même avec le fichier .jar.
+
+
+
+== IV. Répartition du travail
+[.text-justify]
+La charge de travail concernant le développement de l'application et de ses fonctionnalités a été répartie entre les trois membres de l'équipe.
+
+
+=== 1. Maxime DOURLENT :
+
+*Fonctionnalités développées :*
+
+* Créditer un compte
+
+
+=== 2. Thomas FALSIMAGNE :
+
+*Fonctionnalités développées :*
+
+* Gestion des comptes
+** Créer un compte
+** Modifier un compte
+** Clôturer un compte
+* Gestion des prélèvements
+** Ajouter un prélèvement
+** Consulter un prélèvement
+** Modifier un prélèvement
+** Supprimer un prélèvement
+* Effectuer un débit exceptionnel (gestion des opérations)
+
+
+=== 3. Tilian HURÉ :
+
+*Fonctionnalités développées :*
+
+* Faire un virement de compte à compte (gestion des opérations)
+* Gestion des employés
+** Créer un employé
+** Modifier un employé
+** Visualiser un employé
+** Rendre inactif un employé
+* Gestion des clients
+** Visualiser un client
+** Rendre inactif un client
+* Générer un relevé de comptes en PDF
+
+
+
+== IV. Description et explication des fonctionnalités implémentées
+=== 1. Fonctionnalités des guichetiers :
+==== 1.1 Créer un client :
+Un guichetier peut créer un nouveau client.
+
+
+===== A) Use case correspondant :
+image::images/creerClient.svg[]
+
+
+===== B) Partie du diagramme de classe correspondante :
+image::images/modifierClientDC.png[]
+
+[.text-justify]
+Cette partie du diagramme de classe est en mise-à-jour, certaines données sont ajoutées dans la base de données.
+
+
+===== C) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant l'ajout ou la modification des informations d'un client, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== D) Classes et packages impliqués :
+. Application/Control -> ClientsManagement.java, ClientEditorPane.java
+. Application/View -> ClientEditorPaneController.java, ClientsManagementController.java, clienteditorpane.fxml, clientsmanagement.fxml
+. Application/Model/data -> Client.java
+. Application/Model/orm -> AccessClient.java
+
+
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
+. insertClient(Client client) -> AccessClient.java
+. nouveauClient() -> ClientsManagement.java
+. doAjouter() -> ClientEditorPaneController.java
+. displayDialog(Client client, EditionMode mode) -> ClientEditorPaneController.java
+
+
+====== E.2 - Classes :
+[.text-justify]
+La classe Client.java est importante, car principalement utilisée pour modéliser des clients sous forme d'objets manipulables dans le code.
+
+
+{empty} +
+
+==== 1.2 Modifier les informations d'un client :
+[.text-justify]
+Un guichetier peut modifier les informations d'un client (son nom, son prénom, son adresse, etc).
+
+
+===== A) Use case correspondant :
+image::images/modifierInfo.svg[]
+
+
+===== B) Partie du diagramme de classe correspondante :
+image::images/modifierClientDC.png[]
+
+[.text-justify]
+Cette partie du diagramme de classe est en mise-à-jour, certaines données sont modifiées dans la base de donnée.
+
+
+===== C) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant l'ajout ou la modification des informations d'un client, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== D) Classes et packages impliqués :
+. Application/Control -> ClientsManagement.java, ClientEditorPane.java
+. Application/View -> ClientEditorPaneController.java, ClientsManagementController.java, clienteditorpane.fxml, clientsmanagement.fxml
+. Application/Model/data -> Client.java
+. Application/Model/orm -> AccessClient.java
+
+
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
+. modifierClient(Client c) -> ClientsManagement.java
+. updateClient(Client client) -> AccessClient.java
+. doAjouter() -> ClientEditorPaneController.java
+. displayDialog(Client client, EditionMode mode) -> ClientEditorPaneController.java
+. doModifierClient() -> ClientsManagementController.java
+
+
+====== E.2) Classes :
+[.text-justify]
+La classe Client.java est importante, car principalement utilisée pour modéliser des clients sous forme d'objets manipulables dans le code.
+
+
+{empty} +
+
+==== 1.3 Visualiser les informations d'un client :
+[.text-justify]
+Un guichetier peut visualiser (en lecture seule) les informations d'un client (son nom, son prénom, son adresse, etc).
+
+
+===== A) Use case correspondant :
+image::images/voirInfosClientsUC.svg[]
+
+
+===== B) Partie du diagramme de classe correspondante :
+image::images/modifierClientDC.png[]
+
+[.text-justify]
+Cette partie du diagramme de classe est en lecture, aucunes données n'est ajoutée, modifiée ou supprimée dans la base de donnée.
+
+
+===== C) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant l'ajout ou la modification des informations d'un client, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== D) Classes et packages impliqués :
+. Application/Control -> ClientsManagement.java, ClientEditorPane.java
+. Application/View -> ClientEditorPaneController.java, ClientsManagementController.java, clienteditorpane.fxml, clientsmanagement.fxml
+. Application/Model/data -> Client.java
+. Application/Model/orm -> AccessClient.java
+
+
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
+. voirClient(Client client) -> ClientsManagement.java
+. displayDialog(Client client, EditionMode mode) -> ClientEditorPaneController.java
+. doVoirClient() -> ClientsManagementController.java
+
+
+====== E.2 - Classes :
+[.text-justify]
+La classe Client.java est importante, car principalement utilisée pour modéliser des clients sous forme d'objets manipulables dans le code.
+
+
+{empty} +
+
+==== 1.4 Créer un compte bancaire :
+Un guichetier peut créer un nouveau compte bancaire pour un client.
+
+
+===== A) Use case correspondant :
+image::images/creerCompte.svg[]
+
+
+===== B) Partie du diagramme de classe correspondante :
+image::images/compteCourantDC.png[]
+
+[.text-justify]
+Cette partie du diagramme de classe est en mise-à-jour, certaines données sont ajoutées dans la base de données.
+
+
+===== C) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant l'ajout ou la modification des informations d'un client, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== D) Classes et packages impliqués :
+. Application/Control -> ComptesManagement.java, CompteEditorPane.java
+. Application/View -> CompteEditorPaneController.java, ComptesManagementController.java, compteeditorpane.fxml, comptesmanagement.fxml
+. Application/Model/data -> CompteCourant.java
+. Application/Model/orm -> AccessCompteCourant.java
+
+
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
+. enregistrerCompte(Compte compte) -> AccessCompteCourant.java
+. creerCompte() -> ComptesManagement.java
+. doAjouter() -> CompteEditorPaneController.java
+. displayDialog(Client client, Compte cpte, EditionMode mode) -> CompteEditorPaneController.java
+
+
+====== E.2 - Classes :
+[.text-justify]
+La classe CompteCourant.java est importante, car principalement utilisée pour modéliser des comptes bancaires sous forme d'objets manipulables dans le code.
+
+
+{empty} +
+
+==== 1.5 Modifier les informations d'un compte bancaire :
+Un guichetier peut modifier un compte bancaire.
+
+
+===== A) Use case correspondant :
+image::images/modifierCompteUC.svg[]
+
+
+===== B) Partie du diagramme de classe correspondante :
+image::images/compteCourantDC.png[]
+
+[.text-justify]
+Cette partie du diagramme de classe est en mise-à-jour, certaines données sont modifiées dans la base de données.
+
+
+===== C) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant l'ajout ou la modification des informations d'un client, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== D) Classes et packages impliqués :
+. Application/Control -> ComptesManagement.java, CompteEditorPane.java
+. Application/View -> CompteEditorPaneController.java, ComptesManagementController.java, compteeditorpane.fxml, comptesmanagement.fxml
+. Application/Model/data -> CompteCourant.java
+. Application/Model/orm -> AccessCompteCourant.java
+
+
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
+. modifierCompte(Compte compte) -> AccessCompteCourant.java
+. modifierCompte() -> ComptesManagement.java
+. doAjouter() -> CompteEditorPaneController.java
+. displayDialog(Client client, Compte cpte, EditionMode mode) -> CompteEditorPaneController.java
+
+
+====== E.2 - Classes :
+[.text-justify]
+La classe CompteCourant.java est importante, car principalement utilisée pour modéliser des comptes bancaires sous forme d'objets manipulables dans le code.
+
+
+[NOTE]
+====
+[.text-justify]
+Seul le découvert autorisé d'un compte peut être modifié. Ce dernier peut être élargi, en revanche il ne peut devenir inférieur au solde du compte concerné si ce dernier est négatif.
+====
+
+
+{empty} +
+
+==== 1.5 Consulter un compte bancaire :
+Un guichetier peut consulter un compte bancaire.
+
+
+===== A) Use case correspondant :
+image::images/consulterCompte.svg[]
+
+
+===== B) Partie du diagramme de classe correspondante :
+image::images/compteCourantDC.png[]
+
+[.text-justify]
+Cette partie du diagramme de classe est lecture, aucunes données n'est modifiée, ajoutée ou supprimée dans la base de données.
+
+
+===== C) Aperçu des principales fonctionnalités :
+[.text-justify]
+Pour ce qui est des fonctionnalités concernant la modification des informations d'un client, merci de bien vouloir vous référer à la documentation utilisateur.
+
+
+===== D) Classes et packages impliqués :
+. Application/Control -> ComptesManagement.java, CompteEditorPane.java
+. Application/View -> CompteEditorPaneController.java, ComptesManagementController.java, clienteditorpane.fxml, clientsmanagement.fxml
+. Application/Model/Data -> CompteCourant.java
+. Application/Model/orm -> AccessCompteCourant.java
+
+
+===== E) Éléments essentiels :
+
+====== E.1 - Fonctions :
+. loadList() -> ComptesManagementController.java
+. getCompteCourants(int idNumCli) -> AccessCompteCourant.java
+. getCompteCourant(int idNumCompte) -> AccessCompteCourant.java
+. displayDialog(Client client, CompteCourant cpte, EditionMode mode) -> CompteEditorPaneController.java
+. getComptesDunClient() -> ComptesManagement.java
+
+
+====== E.2 - Classes :
+[.text-justify]
+La classe CompteCourant.java est importante, car principalement utilisée pour modéliser des comptes bancaires sous forme d'objets manipulables dans le code.
+
+
+{empty} +
+
+==== 1.6 Clôturer un compte bancaire :
+Un guichetier peut clôturer un compte bancaire.
+
+
+===== A) Use case correspondant :
+image::images/cloturerCompte.svg[]
+
+
+===== B) Partie du diagramme de classe correspondante :
+image::images/compteCourantDC.png[]
+
+[.text-justify]
+Cette partie du diagramme de classe est en mise-à-jour, certaines données sont modifiées dans la base de données.
+
+
+===== C) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant l'ajout ou la modification des informations d'un client, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== D) Classes et packages impliqués :
+. Application/Control -> ComptesManagement.java, CompteEditorPane.java
+. Application/View -> CompteEditorPaneController.java, ComptesManagementController.java, compteeditorpane.fxml, comptesmanagement.fxml
+. Application/Model/data -> CompteCourant.java
+. Application/Model/orm -> AccessCompteCourant.java
+
+
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
+. cloturerCompte(int idNumCompte) -> AccessCompteCourant.java
+. cloturerCompte() -> ComptesManagement.java
+. doCloturerCompte() -> ComptesManagementController.java
+
+
+====== E.2 - Classes :
+[.text-justify]
+La classe CompteCourant.java est importante, car principalement utilisée pour modéliser des comptes bancaires sous forme d'objets manipulables dans le code.
+
+
+[NOTE]
+====
+[.text-justify]
+Les comptes bancaires ne peuvent être clôturés que si leur solde est nul. Les comptes clôturés ne peuvent plus subir aucune opération, mais ces dernières restent tout de même visualisables.
+====
+
+
+{empty} +
+
+==== 1.7 Générer un relevé de comptes en PDF :
+Un guichetier peut générer un relevé de comptes en PDF pour un client.
+
+
+===== A) Use case correspondant :
+image::images/genererPDFUC.svg[]
+
+
+===== B) Partie du diagramme de classe correspondante :
+image::images/débitCompte.png[]
+
+[.text-justify]
+Cette partie du diagramme de classe est en lecture, aucune données n'est ajoutée, modifiée ou supprimée dans la base de données.
+
+
+===== C) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant l'ajout ou la modification des informations d'un client, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== D) Classes et packages impliqués :
+. Application/Control -> ComptesManagement.java
+. Application/View -> ComptesManagementController.java, comptesmanagement.fxml
+. Application/Model/data -> CompteCourant.java, Operation.java
+. Application/Model/orm -> AccessCompteCourant.java, AccessOperation.java
+
+
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
+. doGenererPDF() -> ComptesManagementController.java
+. genererPDF() -> ComptesManagementController.java
+. HTMLtoPDF() -> ComptesManagementController.java
+
+
+====== E.2 - Classes :
+[.text-justify]
+La CompteCourant.java est importante, car principalement utilisée pour modéliser des comptes bancaires sous forme d'objets manipulables dans le code, de même pour la classe Operation.java pour modéliser des opérations.
+
+
+[WARNING]
+====
+[.text-justify]
+Cette fonctionnalité n'est pas disponible pour les systèmes d'exploitation autres que Windows.
+====
+
+
+{empty} +
+
+==== 1.7 Débiter un compte :
+Un guichetier peut débiter un compte bancaire.
+
+
+===== A) Use case correspondant :
+image::images/debiterCompte.svg[]
+
+
+===== B) Partie du diagramme de classe correspondante :
+image::images/débitCompte.png[]
+
+[.text-justify]
+Les parties *CompteCourant* et *TypeOperation* du diagramme de classe sont en lecture, aucunes données n'est modifiée, ajoutée ou supprimée de la base de données. La partie *Operation* est en mise-à-jour, certaines données sont ajoutées à la base de données.
+
+
+===== C) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant l'enregistrement d'un débit sur un compte bancaire, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== D) Classes et packages impliqués :
+. Application/Control -> OperationManagement.java, OperationEditorPane.java
+. Application/View -> OperationEditorPaneController.java, OperationManagementController.java, operationeditorpane.fxml, operationmanagement.fxml
+. Application/Model -> CompteCourant.java, Operation.java, TypeOperation.java
+. Application/Model/orm -> AccessCompteCourant.java
+
+
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
+. doDebit() -> OperationManagementController.java
+. doAjouter() -> OperationEditorPaneController.java
+. enregistrerDebit() -> OperationManagement.java
+. insertDebit() -> AccessOperation.java
+. getTypeOperation() -> AccessTypeOperation.java
+. updateInfoCompteClient() -> OperationManagementController.java
+
+
+====== E.2 - Classes :
+[.text-justify]
+La classe Operation.java est importante, car principalement utilisée pour modéliser des opérations de débit, de crédit ou de virement sous forme d'objets manipulables dans le code.
+
+
+[NOTE]
+====
+[.text-justify]
+Un débit doit être d'un montant strictement positif (>0) et ne doit pas enfreindre le découvert autorisé pour le compte concerné.
+====
+
+
+{empty} +
+
+==== 1.8 Créditer un compte :
+Un guichetier peut créditer un compte bancaire.
+
+
+===== A) Use case correspondant :
+image::images/crediterCompteUC.svg[]
+
+
+===== B) Partie du diagramme de classe correspondante :
+image::images/débitCompte.png[]
+
+[.text-justify]
+Les parties *CompteCourant* et *TypeOperation* du diagramme de classe sont en lecture, aucunes données n'est modifiée, ajoutée ou supprimée de la base de données. La partie *Operation* est en mise-à-jour, certaines données sont ajoutées à la base de données.
+
+
+===== C) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant l'enregistrement d'un débit sur un compte bancaire, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== D) Classes et packages impliqués :
+. Application/Control -> OperationManagement.java, OperationEditorPane.java
+. Application/View -> OperationEditorPaneController.java, OperationManagementController.java, operationeditorpane.fxml, operationmanagement.fxml
+. Application/Model -> CompteCourant.java, Operation.java, TypeOperation.java
+. Application/Model/orm -> AccessCompteCourant.java
+
+
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
+. doCredit() -> OperationManagementController.java
+. doAjouter() -> OperationEditorPaneController.java
+. enregistrerCredit() -> OperationManagement.java
+. insertCredit() -> AccessOperation.java
+. getTypeOperation() -> AccessTypeOperation.java
+. updateInfoCompteClient() -> OperationManagementController.java
+
+
+====== E.2 - Classes :
+[.text-justify]
+La classe Operation.java est importante, car principalement utilisée pour modéliser des opérations de débit, de crédit ou de virement sous forme d'objets manipulables dans le code.
+
+
+[NOTE]
+====
+[.text-justify]
+Un crédit doit être d'un montant strictement positif (>0).
+====
+
+
+{empty} +
+
+==== 1.9 Effectuer un virement de compte à compte :
+Un guichetier peut faire un virement d'un compte bancaire à un autre pour un même client.
+
+
+===== A) Use case correspondant :
+image::images/virementUC.svg[]
+
+
+===== B) Partie du diagramme de classe correspondante :
+image::images/débitCompte.png[]
+
+[.text-justify]
+Les parties *CompteCourant* et *TypeOperation* du diagramme de classe sont en lecture, aucunes données n'est modifiée, ajoutée ou supprimée de la base de données. La partie *Operation* est en mise-à-jour, certaines données sont ajoutées à la base de données.
+
+
+===== C) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant l'enregistrement d'un débit sur un compte bancaire, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== D) Classes et packages impliqués :
+. Application/Control -> OperationManagement.java, OperationEditorPane.java
+. Application/View -> OperationEditorPaneController.java, OperationManagementController.java, operationeditorpane.fxml, operationmanagement.fxml
+. Application/Model -> CompteCourant.java, Operation.java, TypeOperation.java
+. Application/Model/orm -> AccessCompteCourant.java
+
+
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
+. doDebit() -> OperationManagementController.java
+. doAjouter() -> OperationEditorPaneController.java
+. enregistrerDebit() -> OperationManagement.java
+. enregistrerCredit() -> OperationManagement.java
+. insertDebit() -> AccessOperation.java
+. insertCredit() -> AccessOperation.java
+. getTypeOperation() -> AccessTypeOperation.java
+. updateInfoCompteClient() -> OperationManagementController.java
+
+
+====== E.2 - Classes :
+[.text-justify]
+La classe Operation.java est importante, car principalement utilisée pour modéliser des opérations de débit, de crédit ou de virement sous forme d'objets manipulables dans le code.
+
+
+[NOTE]
+====
+[.text-justify]
+Un virement doit être d'un motant strictement positif (>0) et ne doit pas enfreindre le découvert autorisé pour le compte concerné. Il ne peut être effectués qu'entre des comptes non clôturés d'un même client.
+====
+
+
+{empty} +
+
+==== 1.10 Créer un prélèvement :
+[.text-justify]
+Un guichetier peut créer un prélèvement sur le compte bancaire d'un client.
+
+
+===== A) Use case correspondant :
+image::images/creerPrelevementUC.svg[]
+
+
+===== B) Partie du diagramme de classe correspondante :
+image::images/preleverDC.png[]
+
+[.text-justify]
+La partie *Prélèvement* du diagramme de classe est en mise à jour, des données sont ajoutées à la base de données.
+
+
+===== C) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant le prélèvement d'un compte bancaire, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== D) Classes et packages impliqués :
+. Application/Control -> PrelevementManagement.java, PrelevementEditorPane.java
+. Application/View -> PrelevementEditorPaneController.java, PrelevementManagementController.java, prelevementeditorpane.fxml, prelemvementmanagement.fxml
+. Application/Model/data -> Prelevement.java
+. Application/Model/orm -> PrelevementAutomatique.java
+
+
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
+. enregistrerPrelevement(Prelevement pfPrelevement) -> AccessPrelevementAutomatique.java
+. creerPrelevement() -> PrelevementManagement.java
+. doAjouter() -> PrelevementEditorPaneController.java
+. displayDialog(CompteCourant compte, Prelevement pl, EditionMode mode) ->  PrelevementEditorPaneController.java
+. doNouveauPrelevement() -> PrelevementManagementController.java
+. displayDialog() -> PrelevementManagementController.java
+
+
+===== E2 - Classes :
+La classe Prelevement.java est importante, car c'est elle qui permet de modéliser des prélèvements sous forme d'objets qui sont manipulables dans le code.
+
+
+{empty} +
+
+==== 1.11 Modifier les informations d'un prélèvement :
+[.text-justify]
+Un guichetier peut modifier un prélèvement.
+
+
+===== A) Use case correspondant :
+image::images/modifierPrelevementUC.svg[]
+
+
+===== B) Partie du diagramme de classe correspondante :
+image::images/preleverDC.png[]
+
+[.text-justify]
+Cette partie du diagramme de classe est en mise-à-jour, certaines données sont modifiées dans la base de données. Quand nous modifions les informations dans l'application, cela les modifie également dans la base de données.
+
+
+===== C) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant la modification d'un prélèvement relatif à un compte bancaire, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== D) Classes et packages impliqués :
+
+. Application/Control -> PrelevementManagement.java, PrelevementEditorPane.java
+. Application/View -> PrelevementEditorPaneController.java, PrelevementManagementController.java, prelevementeditorpane.fxml, prelevementmanagement.fxml
+. Application/Model/data -> Prelevement.java
+. Application/Model/orm -> AccessPrelevementAutomatique.java
+
+
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
+. updatePrelevement(Prelevement prelevement) -> AccessPrelevementAutomatique.java
+. modifierPrelevement(CompteCourant compte, Prelevement prelevement) -> PrelevementManagement.java
+. doAjouter() -> PrelevementEditorPaneController.java
+. displayDialog(Client client, Compte cpte, EditionMode mode) -> PrelevementEditorPaneController.java
+. displayDialog() -> PrelevementManagementController.java
+. doModifierPrelevement() -> PrelevementManagementController.java
+
+
+====== E.2 - Classes :
+
+[.text-justify]
+La classe Prelevement.java est importante, car principalement utilisée pour modéliser des comptes bancaires sous forme d'objets manipulables dans le code.
+
+
+{empty} +
+
+==== 1.12 Supprimer un prélèvement :
+[.text-justify]
+Un guichetier peut supprimer un prélèvement.
+
+
+===== A) Use case correspondant :
+image::images/modifierPrelevementUC.svg[]
+
+
+===== B) Partie du diagramme de classe correspondante :
+image::images/preleverDC.png[]
+
+[.text-justify]
+Cette partie du diagramme de classe est en mise-à-jour, certaines données sont modifiées dans la base de données. Quand nous supprimons les informations dans l'application, cela les supprime également dans la base de données.
+
+
+===== C) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant la suppression d'un prélèvement relatif à un compte bancaire, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== D) Classes et packages impliqués :
+
+. Application/Control -> PrelevementManagement.java, PrelevementEditorPane.java
+. Application/View -> PrelevementEditorPaneController.java, PrelevementManagementController.java, prelevementeditorpane.fxml, prelevementmanagement.fxml
+. Application/Model/data -> Prelevement.java
+. Application/Model/orm -> AccessPrelevementAutomatique.java
+
+
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
+. deletePrelevement(int idPrelev) ->
+AccessPrelevementAutomatique.java
+. getNumIdPrelev() -> PrelevementManagementController
+. deletePrelevement() -> PrelevementManagement.java
+. doSupprimerPrelevement() -> PrelevementManagementController.java
+
+====== E.2 - Classes :
+[.text-justify]
+La classe Prelevement.java est importante, car principalement utilisée pour modéliser des comptes bancaires sous forme d'objets manipulables dans le code.
+
+
+{empty} +
+
+=== 2. Fonctionnalités des chefs d'agence :
+==== 2.1 Rendre inactif un client :
+Un chef d'agence peut rendre inactif un client.
+
+
+===== A) Use case correspondant :
+image::images/rendreInactif.svg[]
+
+
+===== B) Partie du diagramme de classe correspondante :
+image::images/modifierClientDC.png[]
+
+[.text-justify]
+Cette partie du diagramme de classe est mise-à-jour, certaines données sont modifiées dans la base de données.
+
+
+===== C) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant la modification, l'ajout, la visualisation et la suppression des informations d'un employé, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== D) Classes et packages impliqués :
+. Application/Control -> ClientsManagement.java, ClientEditorPane.java
+. Application/View -> ClientEditorPaneController.java, ClientsManagementController.java, clienteditorpane.fxml, clientsmanagement.fxml
+. Application/Model/data -> Client.java
+. Application/Model/orm -> AccessClient.java
+
+
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
+. modifierClient(Client c) -> ClientsManagement.java
+. updateClient(Client client) -> AccessClient.java
+. doAjouter() -> ClientEditorPaneController.java
+. displayDialog(Client client, EditionMode mode) -> ClientEditorPaneController.java
+. doModifierClient() -> ClientsManagementController.java
+. doRendreInactif() -> ClientEditorPaneController.java
+
+
+====== E.2 - Classes :
+[.text-justify]
+La classe Client.java est importante car principalement utilisée pour modéliser des clients sous forme d'objets manipulables dans le code.
+
+
+[NOTE]
+====
+[.text-justify]
+Les clients ne peuvent être rendus inactifs que si tous leurs comptes sont clôturés (voir la fonctionnalité "Clôturer un compte"). Les clients inactifs ne peuvent plus être modifiés, mais restent tout de même visualisables.
+====
+
+
+{empty} +
+
+==== 2.2 Créer un employé :
+Un chef d'agence peut créer un nouvel employé.
+
+
+===== A) Use case correspondant :
+image::images/gererEmployeUC.svg[]
+
+
+===== B) Partie du diagramme de classe correspondante :
+image::images/employeDC.png[]
+
+[.text-justify]
+Cette partie du diagramme de classe est en mise-à-jour, certaines données sont ajoutées dans la base de données.
+
+
+===== C) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant l'ajout ou la modification des informations d'un client, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== D) Classes et packages impliqués :
+. Application/Control -> EmployesManagement.java, EmployeEditorPane.java
+. Application/View -> EmployeEditorPaneController.java, EmployesManagementController.java, employeeditorpane.fxml, employesmanagement.fxml
+. Application/Model/data -> Employe.java
+. Application/Model/orm -> AccessEmploye.java
+
+
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
+. insertEmploye(Employe employe) -> AccessEmploye.java
+. nouvelEmploye() -> EmployesManagement.java
+. doAjouter() -> EmployeEditorPaneController.java
+. displayDialog(Employe employe, EditionMode mode) -> EmployeEditorPaneController.java
+
+
+====== E.2 - Classes :
+[.text-justify]
+La classe Employe.java est importante, car principalement utilisée pour modéliser des employés sous forme d'objets manipulables dans le code.
+
+
+{empty} +
+
+==== 2.3 Modifier les informations d'un employé :
+[.text-justify]
+Un chef d'agence peut modifier les informations d'un employé (son nom, son prénom, son login, son mot-de-passe, etc).
+
+
+===== A) Use case correspondant :
+image::images/gererEmployeUC.svg[]
+
+
+===== B) Partie du diagramme de classe correspondante :
+image::images/employeDC.png[]
+
+[.text-justify]
+Cette partie du diagramme de classe est en mise-à-jour, certaines données sont modifiées dans la base de donnée.
+
+
+===== C) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant l'ajout ou la modification des informations d'un client, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== D) Classes et packages impliqués :
+. Application/Control -> EmployesManagement.java, EmployeEditorPane.java
+. Application/View -> EmployeEditorPaneController.java, EmployesManagementController.java, employeeditorpane.fxml, employesmanagement.fxml
+. Application/Model/data -> Employe.java
+. Application/Model/orm -> AccessEmploye.java
+
+
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
+. updateEmploye(Employe employe) -> AccessEmploye.java
+. modifierEmploye() -> EmployesManagement.java
+. doAjouter() -> EmployeEditorPaneController.java
+. displayDialog(Employe employe, EditionMode mode) -> EmployeEditorPaneController.java
+
+
+====== E.2 - Classes :
+[.text-justify]
+La classe Employe.java est importante, car principalement utilisée pour modéliser des employés sous forme d'objets manipulables dans le code.
+
+
+{empty} +
+
+==== 2.4 Visualiser les informations d'un employé :
+[.text-justify]
+Un chef d'agence peut visualiser (en lecture seule) les informations d'un employé (son nom, son prénom, son login, son mot-de-passe, etc).
+
+
+===== A) Use case correspondant :
+image::images/gererEmployeUC.svg[]
+
+
+===== B) Partie du diagramme de classe correspondante :
+image::images/employeDC.png[]
+
+[.text-justify]
+Cette partie du diagramme de classe est en lecture, aucunes données n'est ajoutée, modifiée ou supprimée dans la base de donnée.
+
+
+===== C) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant l'ajout ou la modification des informations d'un client, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== D) Classes et packages impliqués :
+. Application/Control -> EmployesManagement.java, EmployeEditorPane.java
+. Application/View -> EmployeEditorPaneController.java, EmployesManagementController.java, employeeditorpane.fxml, employesmanagement.fxml
+. Application/Model/data -> Employe.java
+. Application/Model/orm -> AccessEmploye.java
+
+
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
+. voirEmploye() -> EmployesManagement.java
+. doVoirEmploye() -> EmployesManagementController.java
+. displayDialog(Employe employe, EditionMode mode) -> EmployeEditorPaneController.java
+
+
+====== E.2 -Classes :
+[.text-justify]
+La classe Employe.java est importante, car principalement utilisée pour modéliser des employés sous forme d'objets manipulables dans le code.
+
+
+{empty} +
+
+==== 2.5 Rendre inactif un employé :
+Un chef d'agence peut rendre inactif un employé.
+
+
+===== A) Use case correspondant :
+image::images/gererEmployeUC.svg[]
+
+
+===== B) Partie du diagramme de classe correspondante :
+image::images/employeDC.png[]
+
+[.text-justify]
+Cette partie du diagramme de classe est mise-à-jour, certaines données sont modifiées dans la base de données.
+
+
+===== C) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant la modification, l'ajout, la visualisation et la suppression des informations d'un employé, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== D) Classes et packages impliqués :
+. Application/Control -> EmployesManagement.java, EmployeEditorPane.java
+. Application/View -> EmployeEditorPaneController.java, EmployesManagementController.java, employeeditorpane.fxml, employesmanagement.fxml
+. Application/Model/data -> Employe.java
+. Application/Model/orm -> AccessEmploye.java
+
+
+===== E) Éléments essentiels :
+====== E.1 - Fonctions :
+. updateEmploye(Employe employe) -> AccessEmploye.java
+. modifierEmploye() -> EmployesManagement.java
+. doAjouter() -> EmployeEditorPaneController.java
+. displayDialog(Employe employe, EditionMode mode) -> EmployeEditorPaneController.java
+. doRendreInactif() -> ClientEditorPaneController.java
+
+
+====== E.2 - Classes :
+[.text-justify]
+La classe Employe.java est importante, car principalement utilisée pour modéliser des employés sous forme d'objets manipulables dans le code.
+
+
+[NOTE]
+====
+[.text-justify]
+Les employés inactifs ne peuvent plus être modifiés, mais restent tout de même visualisables.
+====
+
+{empty} +
+
+==== 2.6 Effectuer un débit exceptionnel sur un compte :
+[.text-justify]
+Un chef d'agence peut effectuer un débit exceptionnel sur un compte bancaire. Cela lui permet de pouvoir dépasser le découvert maximal autorisé.
+
+
+===== A) Use case correspondant :
+image::images/debitExceptionnelUC.svg[]
+
+
+===== B) Partie du diagramme de classe correspondante :
+image::images/débitCompte.png[]
+
+[.text-justify]
+Les parties *CompteCourant* et *TypeOperation* du diagramme de classe sont en lecture, aucunes données n'est modifiée, ajoutée ou supprimée de la base de données. La partie *Operation* est en mise-à-jour, certaines données sont ajoutées à la base de données.
+
+
+===== C) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant l'enregistrement d'un débit exceptionnel sur un compte bancaire, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== D) Classes et packages impliqués :
+. Application/Control -> OperationManagement.java, OperationEditorPane.java
+. Application/View -> OperationEditorPaneController.java, OperationManagementController.java, operationeditorpane.fxml, operationmanagement.fxml
+. Application/Model -> CompteCourant.java, Operation.java, TypeOperation.java
+. Application/Model/orm -> AccessCompteCourant.java
+
+
+===== E) Éléments essentiels :
+
+====== E.1 - Fonctions :
+. doDebit() -> OperationManagementController.java
+. doAjouter() -> OperationEditorPaneController.java
+. enregistrerDebit() -> OperationManagement.java
+. insertDebit() -> AccessOperation.java
+. getTypeOperation() -> AccessTypeOperation.java
+. updateInfoCompteClient() -> OperationManagementController.java
+
+
+====== E.2 - Classes :
+
+[.text-justify]
+La classe Operation.java est importante, car principalement utilisée pour modéliser des opérations de débit, de crédit ou de virement sous forme d'objets manipulables dans le code.
