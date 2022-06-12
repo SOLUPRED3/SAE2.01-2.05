@@ -247,7 +247,7 @@ Ordinateur sous Windows ou OS équivalent.
 
 |====
 
->|Cas de test 3+|01.04-01
+>|Cas de test 3+|01-04-01
 >|Titre 3+|Consulter prélèvement
 >|Objectif 3+| Vérifier l'affichage de la page de gestion des prélèvements
 
@@ -263,7 +263,7 @@ Ordinateur sous Windows ou OS équivalent.
 
 |====
 
->|Cas de test 3+|01.04-02
+>|Cas de test 3+|01-04-02
 
 
 
@@ -281,7 +281,7 @@ Ordinateur sous Windows ou OS équivalent.
 
 |====
 
->|Cas de test 3+|01.04-03
+>|Cas de test 3+|01-04-03
 >|Titre 3+|Modifier prélèvement
 >|Objectif 3+| Tester le bon fonctionnement de la modification d'un prélèvement.
 
@@ -298,7 +298,7 @@ Ordinateur sous Windows ou OS équivalent.
 
 |====
 
->|Cas de test 3+|01.04-04
+>|Cas de test 3+|01-04-04
 >|Titre 3+|Supprimer un prélèvement
 >|Objectif 3+| Tester le bon fonctionnement de la suppression d'un prélèvement
 
@@ -314,7 +314,7 @@ Ordinateur sous Windows ou OS équivalent.
 
 |====
 
->|Cas de test 3+|01.04-05
+>|Cas de test 3+|01-04-05
 >|Titre 3+|Exécuter un prélèvement
 >|Objectif 3+| Tester le bon fonctionnement de l'exécution du prélèvement
 
@@ -421,7 +421,7 @@ Tous les comptes du client à rendre inactifs doivent être *clôturés*.|
 
 |====
 
->|Cas de test 3+|02.03_01
+>|Cas de test 3+|02-03-01
 >|Titre 3+|Effectuer un débit exceptionnel
 >|Objectif 3+| Gérer le bon fonctionnement du débit exceptionnel
 
