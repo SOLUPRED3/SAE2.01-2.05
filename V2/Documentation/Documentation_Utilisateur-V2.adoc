@@ -57,11 +57,8 @@ Référence : https://www.jenv.be/ +
 
 [.text-justify]
 Une fois la configuration terminée, il vous faudra installer l'application qui sera un fichier .jar exécutable. +
-
-Pour l'exécuter, il vous faudra aller dans le terminal et exécuter la commande :
-
-[source]
-java - jar DailyBank.jar
+ +
+Pour exécuter ce dernier, il sera nécessaire de changer l'environnement Java du poste concerné avec celle précédemment mentionnée, une fois installée. Pour cela, un fichier "SETENV.bat" est fourni avec le code source, permettant de momentanément changer de JRE. Éditez son contenu en remplaçant le texte entre guillemets de la première ligne par le chemin de la JRE 1.8 du poste concerné, puis sauvegardez les modifications. Pour lancer l'application, il vous faudra impérativement passer par l'exécution de ce fichier .bat.
 
 
 

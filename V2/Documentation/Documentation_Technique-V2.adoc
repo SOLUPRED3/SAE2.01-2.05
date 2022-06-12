@@ -233,7 +233,7 @@ Pour toute information concernant l'installation d'une JRE 1.8, merci de bien vo
 ====
 
 [.text-justify]
-Avant d'exécuter le fichier .jar, il sera nécessaire de changer l'environnement Java du poste concerné avec celle précédemment mentionnée, une fois installée. Pour cela, un fichier "SETENV.bat" est fourni avec le code source, permettant de momentanément changer de JRE. Éditez son contenu en remplaçant le texte entre guillemets de la première ligne par le chemin de la JRE 1.8 du poste concerné, puis sauvegardez les modifications. Pour lancer l'application, vous n'aurez plus qu'à exécuter le fichier .bat pour changer de JRE, avant de faire de même avec le fichier .jar.
+Avant d'exécuter le fichier .jar, il sera nécessaire de changer l'environnement Java du poste concerné avec celle précédemment mentionnée, une fois installée. Pour cela, un fichier "SETENV.bat" est fourni avec le code source, permettant de momentanément changer de JRE. Éditez son contenu en remplaçant le texte entre guillemets de la première ligne par le chemin de la JRE 1.8 du poste concerné, puis sauvegardez les modifications. Pour lancer l'application, il vous faudra impérativement passer par l'exécution de ce fichier .bat.
 
 
 
