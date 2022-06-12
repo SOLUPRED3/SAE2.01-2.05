@@ -39,7 +39,7 @@ Ordinateur sous Windows ou OS équivalent.
 
 
 == III. Cas de test :
-=== 1.Fonctionnalités des guichetiers :
+=== 1. Fonctionnalités des guichetiers :
 ==== 1.1 Gestion des clients :
 
 |====
@@ -54,9 +54,6 @@ Ordinateur sous Windows ou OS équivalent.
 ^|1 ^|Cliquer sur le bouton "Nouveau client". ^|La fenêtre de création des clients s'ouvre. ^|OK
 ^|2 ^|Compléter les champs spécifiés. ^|Un nouveau client est créé. ^|OK
 
-4+|
-
-4+|Commentaire : --|
 
 |====
 
@@ -73,9 +70,6 @@ Ordinateur sous Windows ou OS équivalent.
 ^|1 ^|Sélectionner le client puis cliquer sur le bouton "Modifier client". ^|La fenêtre de modification des données du clients s'ouvre. ^|OK
 ^|2 ^|Modifier les champs souhaités et confirmer. ^|Le client est modifié. ^|OK
 
-4+|
-
-4+|Commentaire : --|
 
 |====
 
@@ -91,9 +85,6 @@ Ordinateur sous Windows ou OS équivalent.
 ^|ID ^|Action ^|Comportement attendu ^|Résultat
 ^|1 ^|Sélectionner puis cliquer sur le bouton "Voir client". ^|La page de visualisation des données du client s’affiche. ^|OK
 
-4+|
-
-4+|Commentaire : --|
 
 |====
 
@@ -115,9 +106,6 @@ Ordinateur sous Windows ou OS équivalent.
 ^|1 ^|Cliquer sur le bouton "Créer compte" ^|Affichage de la fenêtre de création du compte. ^|OK
 ^|2 ^|Cliquer sur le bouton "Ajouter" dans la fenêtre de création ^|Ajout du compte en base de données et dans la liste des comptes. ^|OK
 
-4+|
-
-4+|Commentaire : *_—_*|
 
 |====
 
@@ -134,9 +122,6 @@ Ordinateur sous Windows ou OS équivalent.
 ^|1 ^|Sélectionner le compte et cliquer sur le bouton "Modifier compte" ^|Affichage de la fenêtre de modification du compte. ^|OK
 ^|2 ^|Modifier les champs souhaités puis confirmer. ^|Modification des données du compte. ^|OK
 
-4+|
-
-4+|Commentaire : *_—_*|
 
 |====
 
@@ -153,9 +138,6 @@ Ordinateur sous Windows ou OS équivalent.
 ^|1 ^|Sélectionner le compte et cliquer sur le bouton "Comptes client". ^|La page des comptes du client s’affiche. ^|OK
 ^|2 ^|Sélectionner le bouton "Voir opérations". ^|La page des opérations du compte s’affiche. ^|OK
 
-4+|
-
-4+|Commentaire : --|
 
 |====
 
@@ -193,7 +175,7 @@ Ordinateur sous Windows ou OS équivalent.
 
 4+|
 
-4+|Commentaire : C'est fonctionnalité n'est pas disponible pour les systèmes d'exploitaiton autres que Windows.|
+4+|Commentaire : Cette fonctionnalité n'est pas disponible pour les systèmes exploitation autres que Windows.|
 
 |====
 
@@ -235,10 +217,6 @@ Ordinateur sous Windows ou OS équivalent.
 ^|3 ^|Cliquer sur le bouton "Enregistrer crédit". ^|La page des opérations du compte s’affiche. ^|OK
 ^|4 ^|Rentrer un montant dans le champ "Montant". ^|Le crédit est enregistré et s'affiche dans la liste des opérations. ^|OK
 
-4+|
-
-4+|Commentaire : --|
-
 |====
 
 
@@ -258,9 +236,96 @@ Ordinateur sous Windows ou OS équivalent.
 
 4+|
 
-4+|Commentaire : Un virement n'est possible qu'entre les même comptes des clients et si ce dernier possède plus d'un compte courant non-clôturé.|
+4+|Commentaire : Un virement n'est possible qu'entre les mêmes comptes des clients et si ce dernier possède plus d'un compte courant non clôturé.|
 
 |====
+
+
+{empty} +
+
+==== 1.4 Gestion des prélèvements
+
+|====
+
+>|Cas de test 3+|01.04-01
+>|Titre 3+|Consulter prélèvement
+>|Objectif 3+| Vérifier l'affichage de la page de gestion des prélèvements
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|Clic sur le bouton "Voir Prélèvements" ^|Affichage de la fenêtre des prélèvements ^|OK
+
+
+
+|====
+
+
+|====
+
+>|Cas de test 3+|01.04-02
+
+
+
+>|Titre 3+|Créer un prélèvement
+>|Objectif 3+| Tester le bon fonctionnement de la création d'un prélèvement.
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|Clic sur le bouton "Nouveau prélèvement" ^|Affichage de la fenêtre de création du prélèvement ^|OK
+^|2 ^|Remplir de mauvaises informations ou incomplètes ^|Contrôle de la saisie pour tous les cas ^|OK
+
+|====
+
+
+|====
+
+>|Cas de test 3+|01.04-03
+>|Titre 3+|Modifier prélèvement
+>|Objectif 3+| Tester le bon fonctionnement de la modification d'un prélèvement.
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|Clic sur le bouton "Modifier prélèvement" ^|Affichage de la fenêtre de modification ^|OK
+^|2 ^|Entrer des informations incorrectes ou partielles ^|Contrôle total de la saisie ^|OK
+
+|====
+
+
+
+
+|====
+
+>|Cas de test 3+|01.04-04
+>|Titre 3+|Supprimer un prélèvement
+>|Objectif 3+| Tester le bon fonctionnement de la suppression d'un prélèvement
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|Clic sur le bouton "Supprimer prélèvement" ^|Affichage d'une alerte demandant la confirmation par l'utilisateur de la suppression_* ^|OK
+^|2 ^|Clic sur "Yes" ^|Suppression ^|OK
+^|3 ^|Clic sur "No" ^|Retour sur la page de gestion des prélèvements ^|OK
+
+|====
+
+
+|====
+
+>|Cas de test 3+|01.04-05
+>|Titre 3+|Exécuter un prélèvement
+>|Objectif 3+| Tester le bon fonctionnement de l'exécution du prélèvement
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|Clic sur exécuter ^|Prélèvement ^|OK
+^|2 ^|Clic sur exécuter ^|Alerte indiquant le dépassement du découvert autorisé ^|OK
+
+|====
+
 
 
 === 2. Fonctionnalités des chefs d'agence :
@@ -303,9 +368,6 @@ Tous les comptes du client à rendre inactifs doivent être *clôturés*.|
 ^|1 ^|Cliquer sur le bouton "Nouvel employé". ^|La fenêtre de création des employés s'ouvre. ^|OK
 ^|2 ^|Compléter les champs spécifiés. ^|Un nouvel employé est créé. ^|OK
 
-4+|
-
-4+|Commentaire : --|
 
 |====
 
@@ -322,9 +384,6 @@ Tous les comptes du client à rendre inactifs doivent être *clôturés*.|
 ^|1 ^|Sélectionner l'employé et cliquer sur le bouton "Modifier employé". ^|La fenêtre de modification des employés s'ouvre. ^|OK
 ^|2 ^|Modifier les champs souhaités et confirmer. ^|L'employé est modifié. ^|OK
 
-4+|
-
-4+|Commentaire : --|
 
 |====
 
@@ -340,9 +399,6 @@ Tous les comptes du client à rendre inactifs doivent être *clôturés*.|
 ^|ID ^|Action ^|Comportement attendu ^|Résultat
 ^|1 ^|Sélectionner l'employé et cliquer sur le bouton "Voir employé". ^|La page de visualisation des données de l'employé s’affiche. ^|OK
 
-4+|
-
-4+|Commentaire : --|
 
 |====
 
@@ -356,35 +412,7 @@ Tous les comptes du client à rendre inactifs doivent être *clôturés*.|
 4+|
 
 ^|ID ^|Action ^|Comportement attendu ^|Résultat
-^|1 ^|Sélectionner l'employé et cliquer le bouton pour modifier les informations employés. ^|La page de modification des données de l'employé s’affiche. ^|OK
+^|1 ^|Sélectionner l'employé et cliquer le bouton pour modifier les informations employé. ^|La page de modification des données de l'employé s’affiche. ^|OK
 ^|2 ^|Sélectionner le bouton "Inactif" et confirmer. ^|L'employé est rendu inactif. ^|OK
 
-4+|
 
-4+|Commentaire : --|
-
-|====
-
-
-
-{empty} +
-
-=== Template
-
-|====
-
->|Cas de test 3+|*_num du test_*
->|Titre 3+|*_nom du test_*
->|Objectif 3+| *_Objectif du test_*
-
-4+|
-
-^|ID ^|Action ^|Comportement attendu ^|Résultat
-^|1 ^|*_Action_* ^|*_Comportement_* ^|*_OK/pas OK_*
-^|2 ^|*_Action_* ^|*_Comportement_* ^|*_OK/pas OK_*
-
-4+|
-
-4+|Commentaire : *_Commentaire_*|
-
-|====
