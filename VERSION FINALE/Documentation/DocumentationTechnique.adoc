@@ -1,4 +1,4 @@
-= Documentation Technique - DailyBankApp (V1)
+= Documentation Technique - DailyBankApp
 :toc:
 :icons: font
 :toc-title: Sommaire
@@ -25,7 +25,7 @@ ifdef::env-github[]
 endif::[]
 
 Thomas Falsimagne, Tilian Hure, Maxime Dourlent +
-*V2* - xx/xx/2022
+*V2* - 13/06/2022
 
 {empty} +
 
