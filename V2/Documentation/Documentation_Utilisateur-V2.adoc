@@ -250,12 +250,12 @@ image:images/compteCourantPane.png[genererPDF, 900]
 
 Choisissez ensuite l'emplacement où enregistrer le PDF et cliquer sur "Enregistrer" pour sauvegardé le relevé.
 
+image:images/DocumentationUser/emplacementPDF.png[emplacementPDF, 500]
+
 [WARNING]
 ====
 La sélection du répertoire d'enregistrement n'est pas encore disponible pour les systèmes d'exploitation autres que Windows. Le document sera téléchargé dans le répertoire de téléchargement du système utilisé.
 ====
-
-image:images/DocumentationUser/emplacementPDF.png[emplacementPDF, 500]
 
 Aperçu d'un relevé de comptes au format PDF :
 
