@@ -1,2 +1,1 @@
-- Renommer le workspace "Code" en "Workspace"
 - Mettre à jour et renommer les fichiers de documentation sans la version ("Doc. Utilisateur-V2.adoc" --> "Doc. Utilisateur.adoc")
