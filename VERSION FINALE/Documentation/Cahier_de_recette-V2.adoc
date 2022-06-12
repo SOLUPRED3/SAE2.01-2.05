@@ -415,4 +415,24 @@ Tous les comptes du client à rendre inactifs doivent être *clôturés*.|
 ^|1 ^|Sélectionner l'employé et cliquer le bouton pour modifier les informations employé. ^|La page de modification des données de l'employé s’affiche. ^|OK
 ^|2 ^|Sélectionner le bouton "Inactif" et confirmer. ^|L'employé est rendu inactif. ^|OK
 
+|====
+
+==== 2.3 Gestion des débits exceptionnels :
+
+|====
+
+>|Cas de test 3+|02.03_01
+>|Titre 3+|Effectuer un débit exceptionnel
+>|Objectif 3+| Gérer le bon fonctionnement du débit exceptionnel
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|Clic sur le bouton radio “Oui" ^|Sélection du bouton “Oui” uniquement ^|OK
+^|2 ^|Clic sur “Débiter” ^|Demande de confirmation ^|OK
+^|1 ^|*Clic sur le bouton radio “Non"|Sélection du bouton “Non” uniquement ^|OK
+^|4^|Clic sur “Débiter” ^|Indication que le découvert est dépassé ^|OK
+
+|====
+
 
