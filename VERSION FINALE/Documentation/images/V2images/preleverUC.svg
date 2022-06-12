@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="141px" preserveAspectRatio="none" style="width:428px;height:141px;background:#FFFFFF;" version="1.1" viewBox="0 0 428 141" width="428px" zoomAndPan="magnify"><defs/><g><g id="elem_fonctionnalite"><ellipse cx="335.0368" cy="96.2574" fill="#F1F1F1" rx="87.0368" ry="19.8074" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="135" x="267.5368" y="99.104">Prélever un compte</text></g><!--MD5=[526518ddf9ffd3b9d06c429d9a70ec57]
+entity guichetier--><g id="elem_guichetier"><ellipse cx="177" cy="74.45" fill="#F1F1F1" rx="16" ry="16" style="stroke:#181818;stroke-width:1.5;"/><path d="M177,94.45 C181,94.45 184,94.45 188,90.45 C196,90.45 204,98.45 204,106.45 L204,110.45 C204,114.45 200,118.45 196,118.45 L158,118.45 C154,118.45 150,114.45 150,110.45 L150,106.45 C150,98.45 158,90.45 166,90.45 C170,94.45 173,94.45 177,94.45 " fill="#F1F1F1" style="stroke:#181818;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="71" x="141.5" y="132.9451">Guichetier</text></g><!--MD5=[ff8250f90b990ced6bd2564acf1d7da5]
+entity chef--><g id="elem_chef"><ellipse cx="56" cy="74.45" fill="#F1F1F1" rx="16" ry="16" style="stroke:#181818;stroke-width:1.5;"/><path d="M56,94.45 C60,94.45 63,94.45 67,90.45 C75,90.45 83,98.45 83,106.45 L83,110.45 C83,114.45 79,118.45 75,118.45 L37,118.45 C33,118.45 29,114.45 29,110.45 L29,106.45 C29,98.45 37,90.45 45,90.45 C49,94.45 52,94.45 56,94.45 " fill="#F1F1F1" style="stroke:#181818;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100" x="6" y="132.9451">Chef d'agence</text></g><!--MD5=[115d4863d7018ededd69deb215d8578b]
+link guichetier to fonctionnalite--><g id="link_guichetier_fonctionnalite"><path d="M212.8,96.45 C222.69,96.45 232.58,96.45 242.47,96.45 " fill="none" id="guichetier-to-fonctionnalite" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="247.64,96.45,238.64,92.45,242.64,96.45,238.64,100.45,247.64,96.45" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[c6eb4afcfd67f5cfac6f524e8f815556]
+link chef to fonctionnalite--><g id="link_chef_fonctionnalite"><path d="M93.32,56.88 C107.16,44.88 123.83,33.22 141.5,26.95 C200.49,6 269.46,46.37 307.06,73.88 " fill="none" id="chef-to-fonctionnalite" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="311.49,77.16,306.6557,68.5793,307.478,74.176,301.8813,74.9984,311.49,77.16" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[410a58ce50ce8939e588c8b3132bd60e]
+link chef to guichetier--><g id="link_chef_guichetier"><path d="M106.1,96.45 C111.14,96.45 116.18,96.45 121.21,96.45 " fill="none" id="chef-to-guichetier" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="none" points="121.27,89.45,141.27,96.45,121.27,103.45,121.27,89.45" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[39090819917a1d2761b3b363fcaa5021]
+@startuml
+skinparam actorStyle awesome
+
+usecase fonctionnalite as "Prélever un compte"
+actor guichetier as "Guichetier"
+actor chef as "Chef d'agence"
+guichetier -> fonctionnalite
+chef -> fonctionnalite
+chef -|> guichetier
+@enduml
+
+PlantUML version 1.2022.4(Sat Apr 09 13:29:17 UTC 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

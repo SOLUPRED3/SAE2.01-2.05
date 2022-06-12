@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="131px" preserveAspectRatio="none" style="width:390px;height:131px;background:#FFFFFF;" version="1.1" viewBox="0 0 390 131" width="390px" zoomAndPan="magnify"><defs/><g><g id="elem_fonctionnalite"><ellipse cx="316.1011" cy="86.1802" fill="#F1F1F1" rx="68.6011" ry="16.1202" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="89" x="268.6011" y="89.9278">Générer PDF</text></g><!--MD5=[526518ddf9ffd3b9d06c429d9a70ec57]
+entity guichetier--><g id="elem_guichetier"><ellipse cx="177" cy="64.06" fill="#F1F1F1" rx="16" ry="16" style="stroke:#181818;stroke-width:1.5;"/><path d="M177,84.06 C181,84.06 184,84.06 188,80.06 C196,80.06 204,88.06 204,96.06 L204,100.06 C204,104.06 200,108.06 196,108.06 L158,108.06 C154,108.06 150,104.06 150,100.06 L150,96.06 C150,88.06 158,80.06 166,80.06 C170,84.06 173,84.06 177,84.06 " fill="#F1F1F1" style="stroke:#181818;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="71" x="141.5" y="122.5551">Guichetier</text></g><!--MD5=[ff8250f90b990ced6bd2564acf1d7da5]
+entity chef--><g id="elem_chef"><ellipse cx="56" cy="64.06" fill="#F1F1F1" rx="16" ry="16" style="stroke:#181818;stroke-width:1.5;"/><path d="M56,84.06 C60,84.06 63,84.06 67,80.06 C75,80.06 83,88.06 83,96.06 L83,100.06 C83,104.06 79,108.06 75,108.06 L37,108.06 C33,108.06 29,104.06 29,100.06 L29,96.06 C29,88.06 37,80.06 45,80.06 C49,84.06 52,84.06 56,84.06 " fill="#F1F1F1" style="stroke:#181818;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100" x="6" y="122.5551">Chef d'agence</text></g><!--MD5=[115d4863d7018ededd69deb215d8578b]
+link guichetier to fonctionnalite--><g id="link_guichetier_fonctionnalite"><path d="M212.56,86.06 C222.43,86.06 232.29,86.06 242.15,86.06 " fill="none" id="guichetier-to-fonctionnalite" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="247.31,86.06,238.31,82.06,242.31,86.06,238.31,90.06,247.31,86.06" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[c6eb4afcfd67f5cfac6f524e8f815556]
+link chef to fonctionnalite--><g id="link_chef_fonctionnalite"><path d="M93.32,46.49 C107.16,34.49 123.83,22.83 141.5,16.56 C171.24,6 182.31,7.37 212.5,16.56 C244.72,26.37 276.02,49.94 295.6,66.91 " fill="none" id="chef-to-fonctionnalite" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="299.36,70.21,295.2376,61.2654,295.6033,66.9104,289.9583,67.2761,299.36,70.21" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[410a58ce50ce8939e588c8b3132bd60e]
+link chef to guichetier--><g id="link_chef_guichetier"><path d="M106.1,86.06 C111.14,86.06 116.18,86.06 121.21,86.06 " fill="none" id="chef-to-guichetier" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="none" points="121.27,79.06,141.27,86.06,121.27,93.06,121.27,79.06" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[7d52a18886a07e3eac4e0b24c9be82c2]
+@startuml
+skinparam actorStyle awesome
+
+usecase fonctionnalite as "Générer PDF"
+actor guichetier as "Guichetier"
+actor chef as "Chef d'agence"
+guichetier -> fonctionnalite
+chef -> fonctionnalite
+chef -|> guichetier
+@enduml
+
+PlantUML version 1.2022.4(Sat Apr 09 13:29:17 UTC 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
