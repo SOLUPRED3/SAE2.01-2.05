@@ -247,7 +247,7 @@ Ordinateur sous Windows ou OS équivalent.
 
 |====
 
->|Cas de test 3+|01.04-01
+>|Cas de test 3+|01-04-01
 >|Titre 3+|Consulter prélèvement
 >|Objectif 3+| Vérifier l'affichage de la page de gestion des prélèvements
 
@@ -263,7 +263,7 @@ Ordinateur sous Windows ou OS équivalent.
 
 |====
 
->|Cas de test 3+|01.04-02
+>|Cas de test 3+|01-04-02
 
 
 
@@ -281,7 +281,7 @@ Ordinateur sous Windows ou OS équivalent.
 
 |====
 
->|Cas de test 3+|01.04-03
+>|Cas de test 3+|01-04-03
 >|Titre 3+|Modifier prélèvement
 >|Objectif 3+| Tester le bon fonctionnement de la modification d'un prélèvement.
 
@@ -298,7 +298,7 @@ Ordinateur sous Windows ou OS équivalent.
 
 |====
 
->|Cas de test 3+|01.04-04
+>|Cas de test 3+|01-04-04
 >|Titre 3+|Supprimer un prélèvement
 >|Objectif 3+| Tester le bon fonctionnement de la suppression d'un prélèvement
 
@@ -314,7 +314,7 @@ Ordinateur sous Windows ou OS équivalent.
 
 |====
 
->|Cas de test 3+|01.04-05
+>|Cas de test 3+|01-04-05
 >|Titre 3+|Exécuter un prélèvement
 >|Objectif 3+| Tester le bon fonctionnement de l'exécution du prélèvement
 
@@ -421,7 +421,7 @@ Tous les comptes du client à rendre inactifs doivent être *clôturés*.|
 
 |====
 
->|Cas de test 3+|02.03_01
+>|Cas de test 3+|02-03-01
 >|Titre 3+|Effectuer un débit exceptionnel
 >|Objectif 3+| Gérer le bon fonctionnement du débit exceptionnel
 
@@ -430,9 +430,25 @@ Tous les comptes du client à rendre inactifs doivent être *clôturés*.|
 ^|ID ^|Action ^|Comportement attendu ^|Résultat
 ^|1 ^|Clic sur le bouton radio “Oui" ^|Sélection du bouton “Oui” uniquement ^|OK
 ^|2 ^|Clic sur “Débiter” ^|Demande de confirmation ^|OK
-^|1 ^|*Clic sur le bouton radio “Non"|Sélection du bouton “Non” uniquement ^|OK
+^|3 ^|*Clic sur le bouton radio “Non"|Sélection du bouton “Non” uniquement ^|OK
 ^|4^|Clic sur “Débiter” ^|Indication que le découvert est dépassé ^|OK
 
 |====
 
+==== 2.4 Simulation d'un emprunt :
 
+|====
+
+>|Cas de test 3+|02-04-01
+>|Titre 3+|Effectuer une simulation d'emprunt
+>|Objectif 3+| Vérifier qu'il est possible de simuler un emprunt
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|Clic sur le bouton “Simuler emprunt" en tant qu'employé ^|Alerte indiquant que les employés n'ont pas accès à cette fonctionnalité ^|OK
+^|2 ^|Clic sur le bouton “Simuler emprunt" en tant que chef d'agence ^|La fenêtre de simulation d'emprunt s'ouvre ^|OK
+^|3 ^|Entrer des informations incorrectes ou partielles ^|Contrôle de la saisie pour tous les cas ^|OK
+^|4 ^|Entrer des informations correctes|La fenêtre de résultats s'ouvre ^|OK
+
+|====
