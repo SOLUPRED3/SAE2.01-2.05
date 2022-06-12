@@ -1204,3 +1204,84 @@ Les parties *CompteCourant* et *TypeOperation* du diagramme de classe sont en le
 
 [.text-justify]
 La classe Operation.java est importante, car principalement utilisée pour modéliser des opérations de débit, de crédit ou de virement sous forme d'objets manipulables dans le code.
+
+{empty} +
+
+==== 2.6 Effectuer un débit exceptionnel sur un compte :
+[.text-justify]
+Un chef d'agence peut effectuer un débit exceptionnel sur un compte bancaire. Cela lui permet de pouvoir dépasser le découvert maximal autorisé.
+
+
+===== A) Use case correspondant :
+image::images/debitExceptionnelUC.svg[]
+
+
+===== B) Partie du diagramme de classe correspondante :
+image::images/débitCompte.png[]
+
+[.text-justify]
+Les parties *CompteCourant* et *TypeOperation* du diagramme de classe sont en lecture, aucunes données n'est modifiée, ajoutée ou supprimée de la base de données. La partie *Operation* est en mise-à-jour, certaines données sont ajoutées à la base de données.
+
+
+===== C) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant l'enregistrement d'un débit exceptionnel sur un compte bancaire, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== D) Classes et packages impliqués :
+. Application/Control -> OperationManagement.java, OperationEditorPane.java
+. Application/View -> OperationEditorPaneController.java, OperationManagementController.java, operationeditorpane.fxml, operationmanagement.fxml
+. Application/Model -> CompteCourant.java, Operation.java, TypeOperation.java
+. Application/Model/orm -> AccessCompteCourant.java
+
+
+===== E) Éléments essentiels :
+
+====== E.1 - Fonctions :
+. doDebit() -> OperationManagementController.java
+. doAjouter() -> OperationEditorPaneController.java
+. enregistrerDebit() -> OperationManagement.java
+. insertDebit() -> AccessOperation.java
+. getTypeOperation() -> AccessTypeOperation.java
+. updateInfoCompteClient() -> OperationManagementController.java
+
+
+====== E.2 - Classes :
+
+[.text-justify]
+La classe Operation.java est importante, car principalement utilisée pour modéliser des opérations de débit, de crédit ou de virement sous forme d'objets manipulables dans le code.
+
+{empty} +
+
+==== 2.7 Effectuer une simulation d'emprunt :
+[.text-justify]
+Un chef d'agence peut effectuer une simulation d'emprunt. Cela lui permet de calculer facilement une mensualité avec des variables spécifiques.
+
+
+===== A) Use case correspondant :
+image::images/simulerEmprunt.svg[]
+
+
+===== B) Partie du diagramme de classe correspondante :
+[.text-justify]
+Cette partie du code est indépendante de la base de données, aucune données n'est manipulée, pas même en lecture. Il n'y as donc aucune correspondance avec le diagramme de classe.
+
+
+===== C) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant la simulation d'un emprunt, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== D) Classes et packages impliqués :
+. Application/control -> ComptesManagement.java
+. Application/Control -> Simulation.java
+. Application/view -> ComptesManagementController.java
+. Application/view -> SimulationController.java
+. Application/view -> simulationemprunt.fxml
+
+===== E) Éléments essentiels :
+
+====== E.1 - Fonctions :
+. doSimulation() -> SimulationController.java
+. realiserSimulation -> ComptesManagement.java
+
