@@ -246,16 +246,16 @@ Pour clôturer un compte, vous devez d'abord vous assurer que son solde est nul,
 Si vous souhaitez obtenir la trasse des comptes d'un client dans un format plus portable, il vous est possible de générer le relevé de comptes pour tous les comptes d'un client. +
 Pour cela, il vous faut simplement cliquer sur le bouton "Exporter PDF" dans la fenêtre de gestion des comptes d'un client.
 
-image:images/DocumentationUser/TODO.png[genererPDF, 900]
+image:images/compteCourantPane.png[genererPDF, 900]
 
 Choisissez ensuite l'emplacement où enregistrer le PDF et cliquer sur "Enregistrer" pour sauvegardé le relevé.
+
+image:images/DocumentationUser/emplacementPDF.png[emplacementPDF, 500]
 
 [WARNING]
 ====
 La sélection du répertoire d'enregistrement n'est pas encore disponible pour les systèmes d'exploitation autres que Windows. Le document sera téléchargé dans le répertoire de téléchargement du système utilisé.
 ====
-
-image:images/DocumentationUser/emplacementPDF.png[emplacementPDF, 500]
 
 Aperçu d'un relevé de comptes au format PDF :
 
