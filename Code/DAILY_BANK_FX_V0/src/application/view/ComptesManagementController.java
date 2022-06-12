@@ -169,9 +169,9 @@ public class ComptesManagementController implements Initializable {
 			AlertUtilities.showAlert(this.primaryStage, "PDF exporté", null, "Le relevé de comptes a bien été généré en PDF.",
 					Alert.AlertType.INFORMATION);
 		} catch (Exception e) {
-			AlertUtilities.showAlert(this.primaryStage, "Erreur", null, "Erreur lors de la génération du PDF !",
+			AlertUtilities.showAlert(this.primaryStage, "Erreur", null, "Erreur lors de la génération du PDF !\n\n"+e,
 					Alert.AlertType.ERROR);
-			File fichierHTML = new File("src/todelete.html");
+			File fichierHTML = new File("resource/todelete.html");
 			fichierHTML.delete();
 		}
 	}
@@ -183,7 +183,7 @@ public class ComptesManagementController implements Initializable {
 	 */
 	private void genererPDF() throws Exception {
 		//Récupération du fichier HTML
-		File fichier = new File("src/rlvTemplate.html");
+		File fichier = new File("resource/rlvTemplate.html");
 		Document document = Jsoup.parse(fichier, "UTF-8");
 
 		//Initialisations des accesseurs
@@ -258,19 +258,20 @@ public class ComptesManagementController implements Initializable {
 		}
 		document.select("article").html(document.select("article").html() + innerComptes);
 
-		PrintWriter sortie = new PrintWriter("src/todelete.html");
-		String html = org.jsoup.parser.Parser.unescapeEntities(document.outerHtml(), true);
-		sortie.println(html);
-		sortie.close();
-
+		//Nom du fichier PDF
 		dateFormat = new SimpleDateFormat("dd-MM-YYYY");
 		dateReleve = dateFormat.format(new Date()); //Date du relevé
 		String nomPDF = "Relevé de compte de " +
 				this.clientDesComptes.prenom + " " + this.clientDesComptes.nom.toUpperCase() +
 				" du " + dateReleve;
-		System.out.println("NOM : " + nomPDF);
 		document.title(nomPDF);
-		this.HTMLtoPDF("src/todelete.html", nomPDF);
+
+		PrintWriter sortie = new PrintWriter("resource/todelete.html");
+		String html = org.jsoup.parser.Parser.unescapeEntities(document.outerHtml(), true);
+		sortie.println(html);
+		sortie.close();
+
+		this.HTMLtoPDF("resource/todelete.html", nomPDF);
 	}
 
 
@@ -294,6 +295,7 @@ public class ComptesManagementController implements Initializable {
 			fd.setFile(nomFichier + ".pdf");
 			fd.setVisible(true);
 			dlPath = fd.getFiles()[0].getAbsolutePath();
+
 		}
 
 		File fichierHTML = new File(source);

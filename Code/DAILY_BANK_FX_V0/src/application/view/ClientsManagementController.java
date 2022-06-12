@@ -11,10 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
@@ -156,6 +153,22 @@ public class ClientsManagementController implements Initializable {
 		if (selectedIndice >= 0) {
 			Client client = this.olc.get(selectedIndice);
 			this.cm.gererComptesClient(client);
+		}
+	}
+
+
+	/**
+	 * Permet de réaliser une simulation d'emprunt en tant que chef d'agence.
+	 */
+	@FXML
+	private void doSimulation() {
+		if(this.dbs.isChefDAgence()) {
+			this.cm.realiserSimulation();
+		} else {
+			Alert alertinfo = new Alert(Alert.AlertType.WARNING);
+			alertinfo.setHeaderText("Seul les chefs d'agence peuvent effectuer une simulation !");
+			alertinfo.setTitle("Erreur");
+			alertinfo.show();
 		}
 	}
 	

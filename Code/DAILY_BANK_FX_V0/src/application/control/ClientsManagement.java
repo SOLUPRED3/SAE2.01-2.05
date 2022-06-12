@@ -1,7 +1,7 @@
 package application.control;
 
-import java.util.ArrayList;
 
+import java.util.ArrayList;
 import application.DailyBankApp;
 import application.DailyBankState;
 import application.tools.EditionMode;
@@ -17,11 +17,13 @@ import model.orm.AccessClient;
 import model.orm.exception.ApplicationException;
 import model.orm.exception.DatabaseConnexionException;
 
+
 public class ClientsManagement {
 
 	private Stage primaryStage;
 	private DailyBankState dbs;
 	private ClientsManagementController cmc;
+
 
 	public ClientsManagement(Stage _parentStage, DailyBankState _dbstate) {
 		this.dbs = _dbstate;
@@ -39,23 +41,23 @@ public class ClientsManagement {
 			this.primaryStage.setScene(scene);
 			this.primaryStage.setTitle("Gestion des clients");
 			this.primaryStage.setResizable(false);
-
 			this.cmc = loader.getController();
 			this.cmc.initContext(this.primaryStage, this, _dbstate);
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
+
 	public void doClientManagementDialog() {
 		this.cmc.displayDialog();
 	}
-	
+
+
 	/*
 	 * Fonction qui permet de retourner un client avec ses informations modifiées.
-	 * @param IN Client c 
-	 * @return Client.
+	 * @param IN Client c
+	 * @return le client modifié
 	 */
 	public Client modifierClient(Client c) {
 		ClientEditorPane cep = new ClientEditorPane(this.primaryStage, this.dbs);
@@ -77,11 +79,13 @@ public class ClientsManagement {
 		}
 		return result;
 	}
+
 	
 	public void voirClient(Client c) {
 		ClientEditorPane cep = new ClientEditorPane(this.primaryStage, this.dbs);
 		cep.doClientEditorDialog(c, EditionMode.VISUALISATION);
 	}
+
 
 	/*
 	 * Fonction qui permet de créer un nouveau client.
@@ -109,6 +113,7 @@ public class ClientsManagement {
 		}
 		return client;
 	}
+
 	
 	/*
 	 * Procédure qui permet de gérer le compte d'un client 
@@ -118,6 +123,7 @@ public class ClientsManagement {
 		ComptesManagement cm = new ComptesManagement(this.primaryStage, this.dbs, c);
 		cm.doComptesManagementDialog();
 	}
+
 	
 	/*
 	 * Fonction qui permet de retourner ume ArrayList contenant les comptes d'un client.
@@ -150,4 +156,14 @@ public class ClientsManagement {
 		}
 		return listeCli;
 	}
+
+
+	/**
+	 * Permet de lancer une simulation d'emprunt.
+	 */
+	public void realiserSimulation() {
+		Simulation sm = new Simulation(this.primaryStage);
+		sm.doSimulationDialog();
+	}
+
 }
