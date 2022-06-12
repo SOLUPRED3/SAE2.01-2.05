@@ -1,4 +1,4 @@
-= Documentation Utilisateur - DailyBankApp (V2)
+= Documentation Utilisateur - DailyBankApp
 :toc:
 :icons: font
 :toc-title: Sommaire
@@ -57,11 +57,8 @@ Référence : https://www.jenv.be/ +
 
 [.text-justify]
 Une fois la configuration terminée, il vous faudra installer l'application qui sera un fichier .jar exécutable. +
-
-Pour l'exécuter, il vous faudra aller dans le terminal et exécuter la commande :
-
-[source]
-java - jar DailyBank.jar
+ +
+Pour exécuter ce dernier, il sera nécessaire de changer l'environnement Java du poste concerné avec celle précédemment mentionnée, une fois installée. Pour cela, un fichier "SETENV.bat" est fourni avec le code source, permettant de momentanément changer de JRE. Éditez son contenu en remplaçant le texte entre guillemets de la première ligne par le chemin de la JRE 1.8 du poste concerné, puis sauvegardez les modifications. Pour lancer l'application, il vous faudra impérativement passer par l'exécution de ce fichier .bat.
 
 
 
@@ -192,12 +189,12 @@ image:images/DocumentationUser/consC1.png[gestionCompte1, 900]
 [.text-justify]
 Il vous est possible de créer un compte bancaire pour un client, pour cela, cliquez sur le bouton "Nouveau compte" dans le gestionnaire des comptes bancaires d'un client.
 
-image:images/DocumentationUser/cl2.png[gestionCompte2, 900]
+image:images/DocumentationUser/creerCompte.png[créerCompte, 900]
 
 [.text-justify]
 Saisissez le découvert autorisé ainsi que le solde du nouveau compte (son premier crédit).
 
-image:images/DocumentationUser/creerCompte.png[créerCompte, 900]
+image:images/DocumentationUser/cl2.png[gestionCompte2, 900]
 
 [NOTE]
 ====
@@ -249,11 +246,16 @@ Pour clôturer un compte, vous devez d'abord vous assurer que son solde est nul,
 Si vous souhaitez obtenir la trasse des comptes d'un client dans un format plus portable, il vous est possible de générer le relevé de comptes pour tous les comptes d'un client. +
 Pour cela, il vous faut simplement cliquer sur le bouton "Exporter PDF" dans la fenêtre de gestion des comptes d'un client.
 
-image:images/DocumentationUser/TODO.png[genererPDF, 900]
+image:images/compteCourantPane.png[genererPDF, 900]
 
 Choisissez ensuite l'emplacement où enregistrer le PDF et cliquer sur "Enregistrer" pour sauvegardé le relevé.
 
 image:images/DocumentationUser/emplacementPDF.png[emplacementPDF, 500]
+
+[WARNING]
+====
+La sélection du répertoire d'enregistrement n'est pas encore disponible pour les systèmes d'exploitation autres que Windows. Le document sera téléchargé dans le répertoire de téléchargement du système utilisé.
+====
 
 Aperçu d'un relevé de comptes au format PDF :
 
@@ -414,9 +416,10 @@ Notez qu'il est possible de cliquer à nouveau sur le prélèvement et d'effectu
 {empty} +
 
 === 3. Fonctionnalités des chefs d'agence :
-==== 3.1 Gestion des employés :
 [.text-justify]
 Pour accéder aux fonctionnalités suivantes, vous devrez être connecté à l'application en tant que *chef d'agence*.
+
+==== 3.1 Gestion des employés :
 
 [.text-justify]
 Si vous souhaitez gérer les employés de votre agence, il vous faut cliquer sur le bouton "Employés", que vous voyez ci-dessous :
@@ -490,7 +493,7 @@ image:images/inactifEmplCheck.png[employéInactif, 900]
 Confirmer en suite la modification pour rendre le client inactif de manière permanente.
 
 
-==== 3.1.6 Effectuer un débit exceptionnel :
+==== 3.2 Effectuer un débit exceptionnel :
 
 [.text-justify]
 Si vous souhaitez effectuer un débit exceptionnel, il vous faut tout d'abord ouvrir la fenêtre des opérations
@@ -504,8 +507,36 @@ image:images/debitExceptionnel.png[]
 Ici, vous avez le choix, vous pouvez effectuer un débit classique en cliquant sur "Non", le découvert ne pourra donc pas être dépassé. Ou alors vous pouvez choisir de faire un débit exceptionnel en cliquant sur "Oui", une confirmation vous sera alors demandée.
 
 
+==== 3.3 Simulation d'un emprunt :
+[.text-justify]
+Si vous souhaitez simuler un emprunt, il vous faut cliquer sur le bouton "Clients", que vous voyez ci-dessous :
 
+image:images/DocumentationUser/gEmp1.png[gérerEmployé1, 600]
 
+[.text-justify]
+Vous arriverez ainsi sur cet onglet, qui vous permettra d'accéder à la fonctionnalité voulue :
+
+image:images/compteCourantSimuPane.png[compteCourantSimulationPane, 600]
+
+[.text-justify]
+Une fois sur cette fenêtre, appuyez sur le bouton "Enregistrer débit". Si vous n'êtes pas connecté en tant que chef d’agence, vous verrez cette fenêtre d'erreur :
+
+image:images/paneSimulationWarning.png[paneSimulationWarning, 600]
+
+[.text-justify]
+Si vous êtes bien connecté en tant que chef d’agence, vous verrez cette fenêtre :
+
+image:images/simulationPane.png[simulationPane, 600]
+
+[.text-justify]
+Entrez les informations voulues puis cliquer sur "Simuler" pour confirmer (tous les champs doivent être complétés) :
+
+image:images/simulationCalculPane.png[simulationCalculPane, 600]
+
+[.text-justify]
+La fenêtre suivante s'affichera avec les résultats de la simulation. 
+
+image:images/simulationDoneAlert.png[simulationDoneAlert, 600]
 
 == IV. Résultats produits avec jeux d'essai commentés
 [.text-justify]
