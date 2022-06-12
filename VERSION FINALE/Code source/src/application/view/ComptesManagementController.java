@@ -169,7 +169,7 @@ public class ComptesManagementController implements Initializable {
 			AlertUtilities.showAlert(this.primaryStage, "PDF exporté", null, "Le relevé de comptes a bien été généré en PDF.",
 					Alert.AlertType.INFORMATION);
 		} catch (Exception e) {
-			AlertUtilities.showAlert(this.primaryStage, "Erreur", null, "Erreur lors de la génération du PDF !\n\n"+e,
+			AlertUtilities.showAlert(this.primaryStage, "Erreur", null, "Erreur lors de la génération du PDF !",
 					Alert.AlertType.ERROR);
 			File fichierHTML = new File("resource/todelete.html");
 			fichierHTML.delete();
@@ -283,19 +283,18 @@ public class ComptesManagementController implements Initializable {
 	 */
 	public void HTMLtoPDF(String source, String nomFichier) throws Exception {
 		//Altérnative pour les OS autres que Windows...
-		String os = System.getProperty("os.name").toLowerCase(), dlPath = "";
-		if (os.contains("osx") || os.contains("nix") || os.contains("aix") || os.contains("nux")) {
+		String os = System.getProperty("os.name"), dlPath = "";
+		if (os.contains("Windows")) {
+			FileDialog fd = new FileDialog(new JFrame(), "Enregistrer le relevé de comptes", FileDialog.SAVE);
+			fd.setFile(nomFichier + ".pdf");
+			fd.setVisible(true);
+			dlPath = fd.getFiles()[0].getAbsolutePath();
+		} else {
 			AlertUtilities.showAlert(this.primaryStage, "Attention", null,
 					"Cette fonctionnalité n'est pas encore disponible pour le système d'exploitaiton utilisé." +
 							"Le fichier sera disponible directement dans vos téléchargements.\n",
 					Alert.AlertType.WARNING);
 			dlPath = System.getProperty("user.home")+"/Downloads/" + nomFichier + ".pdf";
-		} else {
-			FileDialog fd = new FileDialog(new JFrame(), "Enregistrer le relevé de comptes", FileDialog.SAVE);
-			fd.setFile(nomFichier + ".pdf");
-			fd.setVisible(true);
-			dlPath = fd.getFiles()[0].getAbsolutePath();
-
 		}
 
 		File fichierHTML = new File(source);
