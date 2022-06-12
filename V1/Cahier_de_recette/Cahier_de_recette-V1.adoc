@@ -1,5 +1,5 @@
-Cahier de recette <|°_°|>
-=========================
+Cahier de recette
+=================
 :toc:
 :toc-title: Sommaire
 
@@ -104,8 +104,8 @@ Tous les comptes d'un client doivent être vide pour pouvoir l'inactiver.|
 4+|
 
 ^|ID ^|Action ^|Comportement attendu ^|Résultat
-^|1 ^|*_Clic sur le bouton "Créer compte"_* ^|*_Affichage de la fenêtre de création du compte_* ^|*OK*
-^|2 ^|*_Clic sur le bouton "Ajouter" dans la fenêtre de création_* ^|*_Ajout du compte en base de données et dans la liste des comptes_* ^|*OK*
+^|1 ^|Clic sur le bouton "Créer compte" ^|Affichage de la fenêtre de création du compte ^|*OK*
+^|2 ^|Clic sur le bouton "Ajouter" dans la fenêtre de création ^|Ajout du compte en base de données et dans la liste des comptes ^|*OK*
 
 4+|
 
@@ -185,12 +185,14 @@ Tous les comptes d'un client doivent être vide pour pouvoir l'inactiver.|
 4+|
 
 ^|ID ^|Action ^|Comportement attendu ^|Résultat
-^|1 ^|*_Action_* ^|*_Comportement_* ^|*_OK/pas OK_*
-^|2 ^|*_Action_* ^|*_Comportement_* ^|*_OK/pas OK_*
+^|1 ^|Sélectionner le compte et cliquer sur le bouton "Comptes client". ^|La page des comptes du client s’affiche. ^|OK
+^|2 ^|Sélectionner le compte et cliquer sur le bouton "Voir opérations". ^|La page des opérations du compte s’affiche. ^|OK
+^|3 ^|Cliquer sur le bouton "Enregistrer virement". ^|La page des opérations du compte s’affiche. ^|OK
+^|4 ^|Sélectionné un compte de destination et rentrer un montant dans le champ "Montant". ^|Le virement est enregistré et s'affiche dans la liste des opérations. ^|OK
 
 4+|
 
-4+|Commentaire : --|
+4+|Commentaire : Un virement n'est possible qu'entre les même comptes des clients et si ce dernier possède plus d'un compte courant non-clôturé.|
 
 |====
 
@@ -203,8 +205,8 @@ Tous les comptes d'un client doivent être vide pour pouvoir l'inactiver.|
 4+|
 
 ^|ID ^|Action ^|Comportement attendu ^|Résultat
-^|1 ^|*_Clic sur le bouton "Clôturer compte"_* ^|*_Affichage de la fenêtre de clôture du compte_* ^|*OK*
-^|2 ^|*_Clic sur le bouton "Ok" dans la fenêtre de clôture_* ^|*_Rendre inactif le compte dans la base de données et dans l'application_* ^|*OK*
+^|1 ^|Clic sur le bouton "Clôturer compte" ^|Affichage de la fenêtre de clôture du compte ^|*OK*
+^|2 ^|Clic sur le bouton "Ok" dans la fenêtre de clôture ^|Rendre inactif le compte dans la base de données et dans l'application ^|*OK*
 
 4+|
 
@@ -219,18 +221,74 @@ Tous les comptes d'un client doivent être vide pour pouvoir l'inactiver.|
 |====
 
 >|Cas de test 3+|Test-03-01
->|Titre 3+|Gestion d'un employé
->|Objectif 3+| Vérifier qu'il est possible de gérer un employé
+>|Titre 3+|Création d'un nouvel employé
+>|Objectif 3+| Vérifier qu'il est possible de créer un nouvel employé
 
 4+|
 
 ^|ID ^|Action ^|Comportement attendu ^|Résultat
-^|1 ^|*_Action_* ^|*_Comportement_* ^|*_OK/pas OK_*
-^|2 ^|*_Action_* ^|*_Comportement_* ^|*_OK/pas OK_*
+^|1 ^|Cliquer sur le bouton "Nouvel employé". ^|La fenêtre de création des employés s'ouvre. ^|OK
+^|2 ^|Compléter les champs spécifiés. ^|Un nouvel employé est créé. ^|OK
 
 4+|
 
-4+|Commentaire : *_Commentaire_*|
+4+|Commentaire : --|
+
+|====
+
+
+|====
+
+>|Cas de test 3+|Test-03-02
+>|Titre 3+|Modification d'un employé
+>|Objectif 3+| Vérifier qu'il est possible de modifier un employé
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|Sélectionner l'employé et cliquer sur le bouton "Modifier employé". ^|La fenêtre de modification des employés s'ouvre. ^|OK
+^|2 ^|Modifier les champs souhaités et confirmer. ^|L'employé est modifié. ^|OK
+
+4+|
+
+4+|Commentaire : --|
+
+|====
+
+
+|====
+
+>|Cas de test 3+|Test-03-03
+>|Titre 3+|Visualisation d'un employé
+>|Objectif 3+| Vérifier qu'il est possible de visualiser les informations d'un employé
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|Sélectionner l'employé et cliquer sur le bouton "Voir employé". ^|La page de visualisation des données de l'employé s’affiche. ^|OK
+
+4+|
+
+4+|Commentaire : --|
+
+|====
+
+
+|====
+
+>|Cas de test 3+|Test-03-04
+>|Titre 3+|Rendre inactif un employé
+>|Objectif 3+| Vérifier qu'il est possible de rendre un employé inactif
+
+4+|
+
+^|ID ^|Action ^|Comportement attendu ^|Résultat
+^|1 ^|Sélectionner l'employé et cliquer le bouton pour modifier les informations employés. ^|La page de modification des données de l'employé s’affiche. ^|OK
+^|2 ^|Sélectionner le bouton "Inactif" et confirmer. ^|L'employé est rendu inactif. ^|OK
+
+4+|
+
+4+|Commentaire : --|
 
 |====
 
