@@ -421,7 +421,7 @@ Tous les comptes du client à rendre inactifs doivent être *clôturés*.|
 
 |====
 
->|Cas de test 3+|02-03-01
+>|Cas de test 3+|Test-02-03-01
 >|Titre 3+|Effectuer un débit exceptionnel
 >|Objectif 3+| Gérer le bon fonctionnement du débit exceptionnel
 
@@ -439,7 +439,7 @@ Tous les comptes du client à rendre inactifs doivent être *clôturés*.|
 
 |====
 
->|Cas de test 3+|02-04-01
+>|Cas de test 3+|Test-02-04-01
 >|Titre 3+|Effectuer une simulation d'emprunt
 >|Objectif 3+| Vérifier qu'il est possible de simuler un emprunt
 
