@@ -42,8 +42,8 @@ Thomas Falsimagne, Tilian Hure, Maxime Dourlent +
 |1    |Guichetier     | Compte | Effectuer un virement| | |F
 |1    |Guichetier     | Compte | Clôturer| |F |
 |2    |Chef d'Agence     | Compte | Débit exceptionnel||F|
-|2    |Chef d'Agence     | Emprunt | Simuler emprunt||D|
-|2    |Chef d'Agence     | Emprunt | Simuler assurance||D|
+|2    |Chef d'Agence     | Emprunt | Simuler emprunt||F|
+|2    |Chef d'Agence     | Emprunt | Simuler assurance||F|
 |2    |Guichetier     | Compte | Relevé PDF||F|
 |2    |Guichetier     | CRUD Prélèvement | C||F |
 |2    |Guichetier     | CRUD Prélèvement | R||F|
@@ -233,7 +233,7 @@ Pour toute information concernant l'installation d'une JRE 1.8, merci de bien vo
 ====
 
 [.text-justify]
-Avant d'exécuter le fichier .jar, il sera nécessaire de changer l'environnement Java du poste concerné avec celle précédemment mentionnée, une fois installée. Pour cela, un fichier "SETENV.bat" est fourni avec le code source, permettant de momentanément changer de JRE. Éditez son contenu en remplaçant le texte entre guillemets de la première ligne par le chemin de la JRE 1.8 du poste concerné, puis sauvegardez les modifications. Pour lancer l'application, vous n'aurez plus qu'à exécuter le fichier .bat pour changer de JRE, avant de faire de même avec le fichier .jar.
+Avant d'exécuter le fichier .jar, il sera nécessaire de changer l'environnement Java du poste concerné avec celle précédemment mentionnée, une fois installée. Pour cela, un fichier "SETENV.bat" est fourni avec le code source, permettant de momentanément changer de JRE. Éditez son contenu en remplaçant le texte entre guillemets de la première ligne par le chemin de la JRE 1.8 du poste concerné, puis sauvegardez les modifications. Pour lancer l'application, il vous faudra impérativement passer par l'exécution de ce fichier .bat.
 
 
 
@@ -637,7 +637,7 @@ La CompteCourant.java est importante, car principalement utilisée pour modélis
 [WARNING]
 ====
 [.text-justify]
-Cette fonctionnalité n'est pas disponible pour les systèmes d'exploitation autres que Windows.
+La sélection du répertoire d'enregistrement n'est pas encore disponible pour les systèmes d'exploitation autres que Windows. Le document sera téléchargé dans le répertoire de téléchargement du système utilisé.
 ====
 
 
@@ -1204,3 +1204,84 @@ Les parties *CompteCourant* et *TypeOperation* du diagramme de classe sont en le
 
 [.text-justify]
 La classe Operation.java est importante, car principalement utilisée pour modéliser des opérations de débit, de crédit ou de virement sous forme d'objets manipulables dans le code.
+
+{empty} +
+
+==== 2.6 Effectuer un débit exceptionnel sur un compte :
+[.text-justify]
+Un chef d'agence peut effectuer un débit exceptionnel sur un compte bancaire. Cela lui permet de pouvoir dépasser le découvert maximal autorisé.
+
+
+===== A) Use case correspondant :
+image::images/debitExceptionnelUC.svg[]
+
+
+===== B) Partie du diagramme de classe correspondante :
+image::images/débitCompte.png[]
+
+[.text-justify]
+Les parties *CompteCourant* et *TypeOperation* du diagramme de classe sont en lecture, aucunes données n'est modifiée, ajoutée ou supprimée de la base de données. La partie *Operation* est en mise-à-jour, certaines données sont ajoutées à la base de données.
+
+
+===== C) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant l'enregistrement d'un débit exceptionnel sur un compte bancaire, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== D) Classes et packages impliqués :
+. Application/Control -> OperationManagement.java, OperationEditorPane.java
+. Application/View -> OperationEditorPaneController.java, OperationManagementController.java, operationeditorpane.fxml, operationmanagement.fxml
+. Application/Model -> CompteCourant.java, Operation.java, TypeOperation.java
+. Application/Model/orm -> AccessCompteCourant.java
+
+
+===== E) Éléments essentiels :
+
+====== E.1 - Fonctions :
+. doDebit() -> OperationManagementController.java
+. doAjouter() -> OperationEditorPaneController.java
+. enregistrerDebit() -> OperationManagement.java
+. insertDebit() -> AccessOperation.java
+. getTypeOperation() -> AccessTypeOperation.java
+. updateInfoCompteClient() -> OperationManagementController.java
+
+
+====== E.2 - Classes :
+
+[.text-justify]
+La classe Operation.java est importante, car principalement utilisée pour modéliser des opérations de débit, de crédit ou de virement sous forme d'objets manipulables dans le code.
+
+
+{empty} +
+
+==== 2.7 Effectuer une simulation d'emprunt :
+[.text-justify]
+Un chef d'agence peut effectuer une simulation d'emprunt. Cela lui permet de calculer facilement une mensualité avec des variables spécifiques.
+
+
+===== A) Use case correspondant :
+image::images/simulerEmprunt.svg[]
+
+
+===== B) Partie du diagramme de classe correspondante :
+[.text-justify]
+Cette partie du code est indépendante de la base de données, aucune données n'est manipulée, pas même en lecture. Il n'y as donc aucune correspondance avec le diagramme de classe.
+
+
+===== C) Aperçu des principales fonctionnalités :
+[.text-justify]
+[blue]#Pour ce qui est des fonctionnalités concernant la simulation d'un emprunt, merci de bien vouloir vous référer à la *documentation utilisateur*.#
+
+
+===== D) Classes et packages impliqués :
+. Application/control -> ComptesManagement.java
+. Application/Control -> Simulation.java
+. Application/view -> ComptesManagementController.java
+. Application/view -> SimulationController.java
+. Application/view -> simulationemprunt.fxml
+
+===== E) Éléments essentiels :
+
+====== E.1 - Fonctions :
+. doSimulation() -> SimulationController.java
+. realiserSimulation -> ComptesManagement.java
