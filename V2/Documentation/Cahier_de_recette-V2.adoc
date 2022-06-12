@@ -1,4 +1,4 @@
-= Cahier De Recette
+= Cahier De Recette - DailyBankApp
 :toc:
 :toc-title: Sommaire
 
