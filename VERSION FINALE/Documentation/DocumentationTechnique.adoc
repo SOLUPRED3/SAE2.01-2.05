@@ -160,7 +160,7 @@ L'application repose sur plusieurs librairies externes nécessaires à son fonct
 L'application est disponible à l'exécution et sans prérequis autre qu'une JRE, sous forme de fichier .jar. Elle peut être régénérée à partir du code source et d'un IDE Java, mais ce dernier devra disposer d'une JRE Java versionnée en 1.8 ainsi que toutes les librairies nécessaires.
 
 [.text-justify]
-Pour exécuter l'application en .jar, il faut s'assurer que les postes de travail des employés possèdent une JRE en 1.8.
+Pour exécuter l'application en .jar, il faut s'assurer que les postes de travail des employés possèdent une JRE en 1.8. Le répertoire "resource", ainsi que le fichier "SETENV.bat" fournis avec le code source sont nécessaires pour le bon fonctionnement de l'application, *voir la documentation utilisateur* pour plus d'informations.
 
 
 {empty} +
