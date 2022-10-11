@@ -1,4 +1,4 @@
-= DailyBank
+= (SAE 2.01 & 2.05) DailyBank
 v1, 2022-03-29 : Initial readme
 :icons: font
 :experimental:
